@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <nav class="navbar-default navbar-static-side" role="navigation">
+    {{-- <nav class="navbar-default navbar-static-side" role="navigation">
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
@@ -235,5 +235,7 @@
             </ul>
 
         </div>
-    </nav>
+    </nav> --}}
+
+    <h1 style="color:white;">User Home</h1>
 @endsection

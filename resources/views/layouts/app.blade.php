@@ -74,6 +74,11 @@
                             </div>
                         </li>
                         @endguest
+                        <li>
+                         @role('super-admin')
+             <a type="button" href="{{ url('/dashboard') }}" class=" btn btn-success text-sm ml-3 text-gray-700 underline">Admin Penal</a>
+             @endrole
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -57,6 +57,8 @@
              @if (Route::has('login'))
              @auth
              <a type="button" href="{{ url('/home') }}" class=" btn btn-success text-sm text-gray-700 underline">Home</a>
+             <a type="button" href="{{ url('/logout') }}" class=" btn btn-success text-sm ml-3 text-gray-700 underline">Logout</a>
+            
              @else
              <a type="button" href="{{ route('login') }}" class=" btn btn-success text-sm text-gray-700 underline">Log in</a>
              @if (Route::has('register'))
