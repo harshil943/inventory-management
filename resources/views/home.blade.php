@@ -236,6 +236,6 @@
 
         </div>
     </nav> --}}
-
+    @include('layouts.nav')
     <h1 style="color:white;">User Home</h1>
 @endsection

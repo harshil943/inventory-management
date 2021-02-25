@@ -1138,7 +1138,7 @@ be a descendant of the grid when it is being dragged.
 
 .fc-time-grid-event.fc-selected {
 	/* need to allow touch resizers to extend outside event's bounding box */
-	/* components fc-selected styles hide the fc-bg, so don't need this anyway */
+	/* common fc-selected styles hide the fc-bg, so don't need this anyway */
 	overflow: visible;
 }
 
