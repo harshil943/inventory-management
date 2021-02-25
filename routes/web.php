@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\logoutController;
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\ordersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,8 +33,8 @@ route::get('logout',[logoutController::class,'out']);
 
 
 Route::group(['middleware' => ['role:super-admin']], function () {
-    Route::get('dashboard',function(){
-        return view('dashboard');
-    });
+    Route::get('dashboard',[dashboardController::class,'index']);
     
 });
+
+Route::get('orders',[ordersController::class,'index']);
