@@ -43,7 +43,7 @@ tbody,
 }
 
 /* kill the overlaid, absolutely-positioned components */
-/* components... */
+/* common... */
 .fc-bg,
 .fc-bgevent-skeleton,
 .fc-highlight-skeleton,

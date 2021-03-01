@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\logoutController;
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\ordersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-route::get('/dashboard',function(){
-    return view('dashboard');
-});
+
 
 
 route::get('/login',function(){
@@ -28,3 +28,13 @@ route::get('/login',function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+route::get('logout',[logoutController::class,'out']);
+
+
+Route::group(['middleware' => ['role:super-admin']], function () {
+    Route::get('dashboard',[dashboardController::class,'index']);
+    
+});
+
+Route::get('orders',[ordersController::class,'index']);
