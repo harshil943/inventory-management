@@ -1101,7 +1101,7 @@
     </div>
 
   
-
+{{-- 
     <script>
         $(document).ready(function() {
 
@@ -1136,7 +1136,7 @@
             new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
 
         });
-    </script>
+    </script> --}}
 </body>
      
     
