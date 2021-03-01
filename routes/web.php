@@ -38,3 +38,6 @@ Route::group(['middleware' => ['role:super-admin']], function () {
 });
 
 Route::get('orders',[ordersController::class,'index']);
+
+
+Route::post('orderDetails/{data}',[ordersController::class,'details']);

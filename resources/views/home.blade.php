@@ -236,7 +236,7 @@
 
         </div>
     </nav> --}}
-    @include('layouts.nav')
+   
     <section class="section-main bg-light padding-y mt-5">
         <div class="container">
         

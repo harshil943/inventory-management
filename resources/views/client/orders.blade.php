@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@include('layouts.nav')
+
 <h1>Orders page</h1>
 <div class="ibox-content">
   <div class="table-responsive">
@@ -43,7 +43,14 @@
               }
             ?>
           </td>
-          <td></td>
+          <td>
+            <form action="{{URL('orderDetails',[$data => '1'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
         </tr>
         <tr class="gradeU">
           <td></td>
@@ -71,10 +78,18 @@
               }
             ?>
           </td>
-          <td></td>
+          <td>
+            <form action="{{URL('orderDetails',[$data => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
         </tr>
       </tbody>
     </table>
+    
   </div>
 </div>
 @endsection

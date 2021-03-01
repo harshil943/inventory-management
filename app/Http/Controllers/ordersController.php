@@ -9,4 +9,8 @@ class ordersController extends Controller
     public function index(){
         return view('client.orders');
     }
+
+    public function details($data){
+        return view('client.orderDetails')->with('order',$data);
+    }
 }

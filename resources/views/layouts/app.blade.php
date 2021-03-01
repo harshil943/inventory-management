@@ -55,7 +55,7 @@
 
 <body >
     <div id="app">
-      
+        @include('layouts.nav')
         <main class="">
             @yield('content')
         </main>
