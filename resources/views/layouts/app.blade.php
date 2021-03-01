@@ -42,7 +42,7 @@
         }
     </style>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -102,8 +102,17 @@
     <script src="{{asset('js/demo/sparkline-demo.js')}}"></script>
 
     <!-- ChartJS-->
-    <script src="{{asset('js/plugins/chartJs/Chart.min.js')}}"></script>
-    
+    {{-- <script src="{{asset('js/plugins/chartJs/Chart.min.js')}}"></script> --}}
+    <script>
+        $(document).ready(function(){
+            $('#ordersTable').DataTable(
+
+            );
+
+        });
+
+    </script>
+
 </body>
 
 </html>
