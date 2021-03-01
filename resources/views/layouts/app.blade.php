@@ -53,7 +53,7 @@
 
 </head>
 
-<body>
+<body style="background-color: #ffffff">
     <div id="app">
       
         <main class="">
