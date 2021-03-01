@@ -53,7 +53,7 @@
 
 </head>
 
-<body>
+<body >
     <div id="app">
       
         <main class="">
