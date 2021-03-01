@@ -102,13 +102,40 @@
     <script src="{{asset('js/demo/sparkline-demo.js')}}"></script>
 
     <!-- ChartJS-->
-    {{-- <script src="{{asset('js/plugins/chartJs/Chart.min.js')}}"></script> --}}
+    <script src="{{asset('js/plugins/chartJs/Chart.min.js')}}"></script> 
     <script>
         $(document).ready(function(){
-            $('#ordersTable').DataTable(
+            var t = $('#ordersTable').DataTable({
+                "columnDefs": [ {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": 0
+                } ],
+                "order": [[ 1, 'asc' ]],
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
 
-            );
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
 
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+            });
+            t.on( 'order.dt search.dt', function () {
+                t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                    cell.innerHTML = i+1;
+                } );
+            } ).draw();
         });
 
     </script>
