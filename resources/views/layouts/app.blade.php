@@ -51,6 +51,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    {{-- Select 2 CSS --}}
+    <link href="{{ asset('css/plugins/select2/select2.min.css') }}" rel="stylesheet">
+
 </head>
 
 <body >
@@ -103,6 +106,37 @@
 
     <!-- ChartJS-->
     <script src="{{asset('js/plugins/chartJs/Chart.min.js')}}"></script> 
+    
+    {{-- Select 2 JS --}}
+    <script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script>
+    
+    <!-- iCheck -->
+    <script src="{{asset('js/plugins/iCheck/icheck.min.js')}}"></script>
+
+    {{-- Country Code JS --}}
+     <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+            $("#country").select2({
+                placeholder: "Select a country",
+                allowClear: true
+            });
+        });
+        const url = '/country';
+            window.onload = async function() {
+            const response = await fetch(url);
+            window.data = await response.json();
+            conData = data;
+            for (var i = 0; i < conData.length; i++) {
+                var newOption = new Option(conData[i]['Iso']+" - "+conData[i]['name'],conData[i]['Iso'], false, false);
+                $('#country').append(newOption);
+            }
+            $('#country').trigger('change');
+        }
+    </script>
     <script>
         $(document).ready(function(){
             var t = $('#ordersTable').DataTable({
