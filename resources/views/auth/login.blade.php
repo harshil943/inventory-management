@@ -7,7 +7,7 @@
         <div class="row">
 
             <div class="col-md-6">
-                <h2 class="font-bold">Welcome to Bright Containers</h2>
+                <h2 class="font-bold">Welcome to <br> Bright Containers</h2>
 
                 <p>
                     Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
