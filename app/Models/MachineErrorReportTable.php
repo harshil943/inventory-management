@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MachineErrorReportTable extends Model
 {
     use HasFactory;
+
+
+    protected $table = 'machine_error_report';
 }

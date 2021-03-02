@@ -42,6 +42,8 @@
         }
     </style>
     <!-- Scripts -->
+    @yield('css')
+
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
@@ -52,7 +54,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     {{-- Select 2 CSS --}}
-    <link href="{{ asset('css/plugins/select2/select2.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/plugins/select2/select2.min.css') }}" rel="stylesheet"> --}}
 
 </head>
 
@@ -64,7 +66,9 @@
         </main>
     </div>
   
-
+    {{-- Java Script Section --}}
+    @yield('script')
+    
     <script src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
@@ -92,26 +96,26 @@
     <script src="{{asset('js/plugins/pace/pace.min.js')}}"></script>
 
     <!-- jQuery UI -->
-    <script src="{{asset('js/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+    {{-- <script src="{{asset('js/plugins/jquery-ui/jqu ery-ui.min.js')}}"></script> --}}
 
     <!-- Jvectormap -->
-    <script src="{{asset('js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
-    <script src="{{asset('js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
+    {{-- <script src="{{asset('js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js')}}"></script> --}}
+    {{-- <script src="{{asset('js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script> --}}
 
     <!-- Sparkline -->
-    <script src="{{asset('js/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
+    {{-- <script src="{{asset('js/plugins/sparkline/jquery.sparkline.min.js')}}"></script> --}}
 
     <!-- Sparkline demo data  -->
-    <script src="{{asset('js/demo/sparkline-demo.js')}}"></script>
+    {{-- <script src="{{asset('js/demo/sparkline-demo.js')}}"></script> --}}
 
     <!-- ChartJS-->
-    <script src="{{asset('js/plugins/chartJs/Chart.min.js')}}"></script> 
+    {{-- <script src="{{asset('js/plugins/chartJs/Chart.min.js')}}"></script>  --}}
     
     {{-- Select 2 JS --}}
-    <script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script>
+    {{-- <script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script> --}}
     
     <!-- iCheck -->
-    <script src="{{asset('js/plugins/iCheck/icheck.min.js')}}"></script>
+    {{-- <script src="{{asset('js/plugins/iCheck/icheck.min.js')}}"></script> --}}
 
     {{-- Country Code JS --}}
      <script>

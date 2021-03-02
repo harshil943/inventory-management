@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class MaliSubscription extends Model
 {
     use HasFactory;
+
+    protected $table = 'mail_subscription';
 }
