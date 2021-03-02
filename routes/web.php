@@ -41,3 +41,4 @@ Route::get('orders',[ordersController::class,'index']);
 
 
 Route::post('orderDetails/{data}',[ordersController::class,'details']);
+
