@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PaymentStatus extends Model
 {
-    use HasFactory;
+   use HasFactory;
+
+   protected $table = 'payment_status';
 }

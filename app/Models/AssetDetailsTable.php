@@ -9,5 +9,5 @@ class AssetDetailsTable extends Model
 {
     use HasFactory;
 
-    protected $table = '';
+    protected $table = 'assets_details';
 }
