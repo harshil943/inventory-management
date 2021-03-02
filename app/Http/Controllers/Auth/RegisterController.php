@@ -64,10 +64,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+
+            $logo = $data['comp_logo'];
+            $logoName = $data['email'].'.'.$logo->getClientOriginalExtension();
+            $path = $data['comp_logo']->storeAs('public/Logo',$logoName);
+
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'countryCode' => $data['country'],
+            'mobile' => $data['mobile'],
+            'address' => $data['office_add'],
+            'company_name' => $data['company_name'],
+            'comp_logo' => $logoName
         ]);
+
+        
     }
 }
