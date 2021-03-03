@@ -46,3 +46,5 @@ Route::get('/country', function () {
     $country = Storage::get('public/country.json');
     return json_decode($country, true);
 });
+
+route::get('brochure',function(){return view('client.brochure');});
