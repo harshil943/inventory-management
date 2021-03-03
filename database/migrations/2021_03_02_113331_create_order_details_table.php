@@ -14,7 +14,17 @@ class CreateOrderDetailsTable extends Migration
     public function up()
     {
         Schema::create('order_details', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('product_details');
+            $table->integer('quantity');
+            $table->float('price_per_piece');
+            $table->string('name_of_extra_cost');
+            $table->float('extra_cost_price');
+            $table->string('payment_link');
+            $table->string('payment_status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +36,8 @@ class CreateOrderDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_details');
+        Schema::create('order_details', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

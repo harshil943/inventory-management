@@ -14,7 +14,15 @@ class CreateMachineErrorReportTable extends Migration
     public function up()
     {
         Schema::create('machine_error_report', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->unsignedInteger('asset_id');
+            $table->foreign('asset_id')->references('id')->on('assets_details');
+            $table->string('error_details');
+            $table->date('error_issue_date');
+            $table->date('error_solve_date')->nullable();
+            $table->boolean('error_status');
+            $table->float('cost');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +34,8 @@ class CreateMachineErrorReportTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('machine_error_report');
+        Schema::create('machine_error_report', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }
