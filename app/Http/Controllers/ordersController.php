@@ -3,11 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Interfaces\OrderInterface;
 
 class ordersController extends Controller
 {
+    private $orderRepository;
+
+    public function __construct(OrderInterface $orderRepository)
+    {
+        $this->orderRepository = $orderRepository;
+    }
+
     public function index(){
-        return view('client.orders');
+
+        $data = $this->orderRepository->all();
+
+        return view('client.orders')->with('data',$data);
     }
 
     public function details($data){
