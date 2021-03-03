@@ -14,7 +14,16 @@ class CreateEmployeeDetailsTable extends Migration
     public function up()
     {
         Schema::create('employee_details', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->string('employee_name');
+            $table->string('email_id')->nullable();
+            $table->string('mobile_number');
+            $table->text('residence_address');
+            $table->text('bank_name')->nullable();
+            $table->text('bank_account_number')->nullable();
+            $table->text('bank_IFSC_code')->nullable();
+            $table->integer('salary');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +35,8 @@ class CreateEmployeeDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_details');
+        Schema::create('employee_details', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

@@ -14,7 +14,11 @@ class CreateExpenseDetailsTable extends Migration
     public function up()
     {
         Schema::create('expense_details', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->string('expense_details');
+            $table->integer('quantity');
+            $table->float('cost_per_quantity');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +30,9 @@ class CreateExpenseDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expense_details');
+        Schema::create('expense_details', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
+        
     }
 }

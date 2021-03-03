@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
             $table->string('name');
             $table->string('email')->unique();
             $table->text('countryCode');
@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->text('address');
             $table->string('company_name');
             $table->string('comp_logo');
+            $table->string('testimonial')->default('null');
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -36,6 +38,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+            Schema::create('users', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+            });
     }
 }

@@ -14,7 +14,11 @@ class CreateRawMaterialPurchaseDetailsTable extends Migration
     public function up()
     {
         Schema::create('raw_material_purchase_details', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->string('material_name');
+            $table->integer('quantity');
+            $table->float('cost_per_quantity');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +30,8 @@ class CreateRawMaterialPurchaseDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('raw_material_purchase_details');
+        Schema::create('raw_material_purchase_details', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

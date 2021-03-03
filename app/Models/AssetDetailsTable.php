@@ -4,10 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AssetDetailsTable extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
 
-    protected $table = 'assets_details';
+    protected $table = 'asset_details';
+
+    protected $fillable =[
+        'asset_name',
+        'purchase_date',
+        'selling_date',
+        'asset_amount',
+    ];
 }
