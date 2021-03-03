@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->text('address');
             $table->string('company_name');
             $table->string('comp_logo');
-            $table->string('testimonial');
+            $table->string('testimonial')->default('null');
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

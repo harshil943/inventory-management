@@ -8,5 +8,4 @@ interface OrderInterface
 {
     public function all();
 
-    
 }
