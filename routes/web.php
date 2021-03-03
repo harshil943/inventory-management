@@ -45,4 +45,4 @@ Route::post('orderDetails/{data}',[ordersController::class,'details']);
 Route::get('/country', function () {
     $country = Storage::get('public/country.json');
     return json_decode($country, true);
-   });
+});
