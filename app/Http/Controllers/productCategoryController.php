@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class productCategoryController extends Controller
 {
-    public function productCategory($category)
+    public function productCategory($categoryId)
     {
-        return view('client.productCategory')->with('data',$category);
+        $categoryData = DB::table('product_details')->where('category_id',$categoryId)->get();
+        return view('client.productCategory')->with('data',$categoryData);
     }
 }
