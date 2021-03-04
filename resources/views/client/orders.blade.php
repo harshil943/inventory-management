@@ -30,26 +30,26 @@
           <td>Product 1</td>
           <td>1000</td>
           <td>
-            <?php
+            @php
               $data = 0;
               if($data == 1){
                 echo '<i class="fa fa-check" aria-hidden="true"></i>';
               }
               else {
                 echo '<i class="fa fa-times" aria-hidden="true"></i>';
-              }
-            ?>
+              }  
+            @endphp
           </td>
           <td>
-            <?php
+            @php
               $data = 1;
               if($data == 1){
                 echo '<i class="fa fa-check" aria-hidden="true"></i>';
               }
               else {
                 echo '<i class="fa fa-times" aria-hidden="true"></i>';
-              }
-            ?>
+              }  
+            @endphp
           </td>
           <td>
             <form action="{{URL('orderDetails',[$data => '1'])}}" method="post">
@@ -65,26 +65,26 @@
           <td>Product 2</td>
           <td>2000</td>
           <td>
-            <?php
-              $data = 1;
-              if($data == 1){
-                echo '<i class="fa fa-check" aria-hidden="true"></i>';
-              }
-              else {
-                echo '<i class="fa fa-times" aria-hidden="true"></i>';
-              }
-            ?>
-          </td>
-          <td>
-            <?php
+            @php
               $data = 0;
               if($data == 1){
                 echo '<i class="fa fa-check" aria-hidden="true"></i>';
               }
               else {
                 echo '<i class="fa fa-times" aria-hidden="true"></i>';
+              }  
+            @endphp
+          </td>
+          <td>
+            @php
+              $data = 1;
+              if($data == 1){
+                echo '<i class="fa fa-check" aria-hidden="true"></i>';
               }
-            ?>
+              else {
+                echo '<i class="fa fa-times" aria-hidden="true"></i>';
+              }  
+            @endphp
           </td>
           <td>
             <form action="{{URL('orderDetails',[$data => '2'])}}" method="post">
