@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Register | Bright Containers
+@endsection
+
 @section('css')
 
     <!-- Ladda style -->
@@ -15,13 +19,10 @@
 
 @section('content')
 <div class="gray-bg container">
-
     <div class="text-center loginscreen animated fadeInDown">
         <div>
             <div>
-
                 <h1 class="logo-name">Logo</h1>
-
             </div>
             <h3>Register to <br>Bright Containers</h3>
             <p>Create account to see it in action.</p>
@@ -83,7 +84,7 @@
                             <Label style="padding:10px;">Company Logo</Label>
                             <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                 <div class="form-control" style="width:70%;" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-                                <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+                                <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file" name="comp_logo" id="comp_logo"></span>
                                 <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                             </div>
                         </div>
@@ -98,7 +99,6 @@
                     </div>
                 </div>
                 <button type="submit" class="ladda-button btn btn-primary m-b" data-style="expand-right">Register</button>    
-                
                 <p class="text-muted text-center">
                     <small>Already have an account?</small>
                     <center><a class="btn btn-white btn-block" style="width:200px;" href="login">Login</a></center>
@@ -151,46 +151,9 @@
     </script>
 
     {{-- Register Button JS --}}
-
     <script>
-
         $(document).ready(function (){
-
-            // Bind normal buttons
             Ladda.bind( '.ladda-button',{ timeout: 2000 });
-
-            // Bind progress buttons and simulate loading progress
-            // Ladda.bind( '.progress-demo .ladda-button',{
-            //     callback: function( instance ){
-            //         var progress = 0;
-            //         var interval = setInterval( function(){
-            //             progress = Math.min( progress + Math.random() * 0.1, 1 );
-            //             instance.setProgress( progress );
-
-            //             if( progress === 1 ){
-            //                 instance.stop();
-            //                 clearInterval( interval );
-            //             }
-            //         }, 200 );
-            //     }
-            // });
-
-
-            // var l = $( '.ladda-button-demo' ).ladda();
-
-                // l.click(function(){
-                //     // Start loading
-                //     l.ladda( 'start' );
-
-                //     // Timeout example
-                //     // Do something in backend and then stop ladda
-                //     setTimeout(function(){
-                //         l.ladda('stop');
-                //     },12000)
-
-
-                // });
-
         });
     </script>
 @endsection

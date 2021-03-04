@@ -9,5 +9,4 @@ class ClientDetails extends Model
 {
     use HasFactory;
 
-    protected $table ='client_details';
 }

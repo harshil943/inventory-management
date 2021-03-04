@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Dashboard | Bright Containers
+@endsection
+
 @section('content')
 <body class="fixed-navigation">
     <div id="wrapper">
@@ -1139,5 +1143,8 @@
     </script> --}}
 </body>
      
-    
+@endsection
+
+@section('script')
+<script src="{{asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>    
 @endsection

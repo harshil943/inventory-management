@@ -14,7 +14,12 @@ class CreateInventoryDetailsTable extends Migration
     public function up()
     {
         Schema::create('inventory_details', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->unsignedInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('product_details');
+            $table->string('quantity');
+            $table->float('cost_per_product');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +31,8 @@ class CreateInventoryDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventory_details');
+        Schema::create('inventory_details', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

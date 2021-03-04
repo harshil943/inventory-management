@@ -14,7 +14,9 @@ class CreateMailSubscriptionTable extends Migration
     public function up()
     {
         Schema::create('mail_subscription', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->string('subscriber_mail')->unique();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +28,8 @@ class CreateMailSubscriptionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mail_subscription');
+        Schema::create('mail_subscription', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

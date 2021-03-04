@@ -14,7 +14,22 @@ class CreateProductDetailsTable extends Migration
     public function up()
     {
         Schema::create('product_details', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->unsignedInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('product_category');
+            $table->string('product_name');
+            $table->string('product_image_name');
+            $table->boolean('product_filter_type');
+            $table->string('product_info_1');
+            $table->string('product_info_2');
+            $table->string('extra_info_1')->nullable();
+            $table->string('extra_info_2')->nullable();
+            $table->string('extra_info_3')->nullable();
+            $table->string('extra_info_4')->nullable();
+            $table->string('available_sizes')->nullable();
+            $table->string('available_color_bottle')->nullable();
+            $table->string('available_color_cap')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +41,8 @@ class CreateProductDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_details');
+        Schema::create('product_details', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

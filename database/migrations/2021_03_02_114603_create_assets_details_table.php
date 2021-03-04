@@ -14,7 +14,12 @@ class CreateAssetsDetailsTable extends Migration
     public function up()
     {
         Schema::create('assets_details', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->string('asset_name');
+            $table->date('purchase_date');
+            $table->date('selling_date');
+            $table->float('asset_amount');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +31,8 @@ class CreateAssetsDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assets_details');
+        Schema::create('assets_details', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

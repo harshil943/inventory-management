@@ -14,7 +14,10 @@ class CreateEmployeeSalaryHistoryTable extends Migration
     public function up()
     {
         Schema::create('employee_salary_history', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
+            $table->float('salary_paid');
+            $table->string('payment_status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -26,6 +29,8 @@ class CreateEmployeeSalaryHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_salary_history');
+        Schema::create('employee_salary_history', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

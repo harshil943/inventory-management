@@ -4,10 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PaymentStatus extends Model
 {
-   use HasFactory;
+    use HasFactory,SoftDeletes;
 
-   protected $table = 'payment_status';
+    protected $table = 'payment_status';
+    protected $fillable =[
+        'payment_link',
+        'payable_amount',
+        'payment_status',
+    ];
 }
