@@ -6,6 +6,7 @@ use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\ordersController;
 use App\Http\Controllers\brochureController;
 use App\Http\Controllers\productCategoryController;
+use App\Http\Controllers\productDetailsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,4 +54,5 @@ Route::get('/country', function () {
 route::get('brochure',[brochureController::class,'brochure']);
 route::get('brochureDetails/{id}',[brochureController::class,'brochureDetails']);
 
-route::get('productCategory/{category}',[productCategoryController::class,'productCategory']);
+route::get('productCategory/{categoryData}',[productCategoryController::class,'productCategory']);
+route::get('productDetails/{id}',[productDetailsController::class,'productDetails']);
