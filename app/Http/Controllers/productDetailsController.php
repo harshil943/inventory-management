@@ -9,7 +9,7 @@ class productDetailsController extends Controller
     public function productDetails($id)
     {
 
-        $data = DB::table('product_details')->where('id',$id)->get();
-        return $data;
+        $data = DB::table('product_details')->where('id',$id)->first();
+        return view('client.productDetails')->with('product',$data);
     }
 }

@@ -14,7 +14,7 @@
     <img alt="image" class="img" src="{{asset('img/a2.jpg')}}">
     <div class="contact-box-footer">
       <div class="m-t-xs btn-group">
-        <h3>Brochure Name</h3>
+        <h3>{{$item->product_name}}</h3>
       </div>
     </div>
   </a> 
