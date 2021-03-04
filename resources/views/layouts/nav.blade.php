@@ -1,3 +1,4 @@
+
  <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -26,7 +27,10 @@
                             Product Category
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
+                            @foreach ($name as $category)
+                            <a class="dropdown-item" href="{{url('productCategory',[$category=>$category])}}">{{$category}}</a>
+                                
+                            @endforeach
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
