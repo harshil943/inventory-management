@@ -33,6 +33,3 @@
         </div> <!-- container //  -->
         </section>
 @endsection
-
-
-

@@ -4,9 +4,9 @@
     Your Orders | Bright Containers
 @endsection
 
-@section('css')
+@push('css')
   <link href="{{asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">  
-@endsection
+@endpush
 
 @section('content')
 
@@ -102,7 +102,7 @@
 </div>
 @endsection
 
-@section('script')
+@push('script')
   <script src="{{asset('js/plugins/dataTables/datatables.min.js')}}"></script>
   <script src="{{asset('js/plugins/dataTables/dataTables.bootstrap4.min.js')}}"></script>
   <script>
@@ -141,4 +141,4 @@
     });
 
   </script>
-@endsection
+@endpush

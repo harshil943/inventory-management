@@ -1145,6 +1145,6 @@
      
 @endsection
 
-@section('script')
+@push('script')
 <script src="{{asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>    
-@endsection
+@endpush
