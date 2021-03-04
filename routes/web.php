@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\logoutController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\ordersController;
+use App\Http\Controllers\brochureController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,4 +49,5 @@ Route::get('/country', function () {
     return json_decode($country, true);
 });
 
-route::get('brochureDetails',function(){return view('client.brochure');});
+route::get('brochure',[brochureController::class,'brochure']);
+route::get('brochureDetails/{id}',[brochureController::class,'brochureDetails']);
