@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+{{-- Temp --}}
+    {{$id}}
+{{-- EndTemp --}}
     <div class="text-center pdf-toolbar">
         <div class="btn-group">
             <button id="prev" class="btn btn-white"><i class="fa fa-long-arrow-left"></i> <span class="hidden-xs">Previous</span></button>
