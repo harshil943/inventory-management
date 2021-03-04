@@ -5,6 +5,7 @@ use App\Http\Controllers\logoutController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\ordersController;
 use App\Http\Controllers\brochureController;
+use App\Http\Controllers\productCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,3 +52,5 @@ Route::get('/country', function () {
 
 route::get('brochure',[brochureController::class,'brochure']);
 route::get('brochureDetails/{id}',[brochureController::class,'brochureDetails']);
+
+route::get('productCategory/{category}',[productCategoryController::class,'productCategory']);
