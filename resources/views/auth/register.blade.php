@@ -109,7 +109,7 @@
 </div>
 @endsection
 
-@section('script')
+@push('script')
 
     {{-- Select 2 JS --}}
     <script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script>
@@ -156,4 +156,4 @@
             Ladda.bind( '.ladda-button',{ timeout: 2000 });
         });
     </script>
-@endsection
+@endpush

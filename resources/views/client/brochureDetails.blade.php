@@ -29,7 +29,7 @@
     </div>
 @endsection
 
-@section('script')
+@push('script')
 <script src="{{asset('js/plugins/pdfjs/pdf.js')}}"></script>
 <script>
     
@@ -177,4 +177,4 @@
         renderPage(pageNum, scale);
     });
 </script>
-@endsection
+@endpush

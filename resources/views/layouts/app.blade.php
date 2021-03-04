@@ -57,7 +57,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    @yield('css')
+    @stack('css')
 
 </head>
 
@@ -109,7 +109,7 @@
     <!-- ChartJS-->
     {{-- <script src="{{asset('js/plugins/chartJs/Chart.min.js')}}"></script>  --}}
     
-    @yield('script')
+    @stack('script')
 
 </body>
 
