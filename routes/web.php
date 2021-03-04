@@ -48,4 +48,4 @@ Route::get('/country', function () {
     return json_decode($country, true);
 });
 
-route::get('brochure',function(){return view('client.brochure');});
+route::get('brochureDetails',function(){return view('client.brochure');});

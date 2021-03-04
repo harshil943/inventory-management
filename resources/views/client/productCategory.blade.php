@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+  Product Category | Bright Containers
+@endsection
+
 @section('content')
 
 <h1>Orders page</h1>

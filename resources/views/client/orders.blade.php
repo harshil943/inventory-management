@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Your Orders | Bright Containers
+@endsection
+
 @section('css')
   <link href="{{asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">  
 @endsection

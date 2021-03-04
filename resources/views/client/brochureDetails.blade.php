@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Brochure Details | Bright Containers
+@endsection
+
 @section('content')
     <div class="text-center pdf-toolbar">
         <div class="btn-group">
