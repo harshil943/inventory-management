@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Order Details | Bright Containers
+@endsection
+
 @section('content')    
 <h1>{{$order}}</h1>
 <div class="wrapper wrapper-content animated fadeInRight">

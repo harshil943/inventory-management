@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Home | Bright Containers
+@endsection
+
 @section('content')
 
     <section class="section-main bg-light padding-y mt-5">

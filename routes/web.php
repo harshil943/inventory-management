@@ -32,10 +32,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 route::get('logout',[logoutController::class,'out']);
 
 
-Route::group(['middleware' => ['role:super-admin']], function () {
-    Route::get('dashboard',[dashboardController::class,'index']);
+// Route::group(['middleware' => ['role:super-admin']], function () {
+//     Route::get('dashboard',[dashboardController::class,'index']);
     
-});
+// });
+Route::get('dashboard',[dashboardController::class,'index']);
 
 Route::get('orders',[ordersController::class,'index']);
 
@@ -47,4 +48,4 @@ Route::get('/country', function () {
     return json_decode($country, true);
 });
 
-route::get('brochure',function(){return view('client.brochure');});
+route::get('brochureDetails',function(){return view('client.brochure');});
