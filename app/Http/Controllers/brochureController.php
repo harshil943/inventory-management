@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\productCategory;
+
+use App\Repositories\Interfaces\productInterface;
 
 
 class brochureController extends Controller
 {
+    private $productRepository;
+
+    public function __construct(productInterface $productRepository)
+    {
+        $this->productRepository = $productRepository;
+    }
     public function brochure()
     {
-        $categoryBrochure = productCategory::all();
+        $categoryBrochure = $this->productRepository->productCategoryAll();
         return view('client.brochure')->with('brochure',$categoryBrochure);
     }
 
