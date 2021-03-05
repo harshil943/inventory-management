@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')    
-<h1>{{$order}}</h1>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="ibox-content p-xl">
             <div class="row">
@@ -20,8 +19,8 @@
                 </div>
 
                 <div class="col-sm-6 text-right">
-                    <h4>Invoice No.</h4>
-                    <h4 class="text-navy">INV-000567F7-00</h4>
+                    <h4>Invoice No. -  {{$order}}</h4>
+                    
                     <span>To:</span>
                     <address>
                         <strong>Corporate, Inc.</strong><br>
@@ -59,15 +58,13 @@
                     @for ($i = 0; $i < 3; $i++)
                         
                     <tr>
-                        <td><div><strong>Admin Theme with psd project layouts</strong></div>
-                            <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small></td>
-                            <td>{{$quantity}}</td>
-                            <td>${{$unitPrice}}</td>
-                            <td>18%</td>
-                            <td>{{ (($unitPrice * 18)/100) + $unitPrice }}</td>
+                        <td><div><strong>Product 1</strong></div></td>
+                        <td>{{$quantity}}</td>
+                        <td><i class="fa fa-inr"></i> {{$unitPrice}}</td>
+                        <td><i class="fa fa-inr"></i> {{ ($unitPrice * 18)/100}}</td>
+                        <td><i class="fa fa-inr"></i> {{(($unitPrice * 18)/100) + $unitPrice }}</td>
                         </tr>
                         @php
-                            
                             $subTotal = $subTotal + ($unitPrice*$quantity);
                             $tax = $tax + ((($unitPrice*18)/100) * $quantity);
                         @endphp
@@ -81,24 +78,30 @@
                 <tbody>
                 <tr>
                     <td><strong>Sub Total :</strong></td>
-                    <td>{{$subTotal}}</td>
+                    <td><i class="fa fa-inr"></i> {{$subTotal}}</td>
                 </tr>
                 <tr>
                     <td><strong>TAX :</strong></td>
-                    <td>{{$tax}}</td>
+                    <td><i class="fa fa-inr"></i> {{$tax}}</td>
                 </tr>
                 <tr>
                     <td><strong>TOTAL :</strong></td>
-                    <td>{{$subTotal + $tax}}</td>
+                    <td><i class="fa fa-inr"></i> {{$subTotal + $tax}}</td>
                 </tr>
                 </tbody>
             </table>
+            <br><br>
             <div class="text-right">
-                <button class="btn btn-primary"><i class="fa fa-dollar"></i> Make A Payment</button>
-            </div>
-
-            <div class="well m-t"><strong>Comments</strong>
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
+                @php
+                    $status = 'pending';
+                    // $status = 'pendig';
+                    if($status == 'pending')
+                    {
+                        echo '<button class="btn btn-primary"> Make Payment</button>';
+                    }
+                @endphp
+                <button class="btn btn-warning"> Download Invoice</button>
+                <button class="btn btn-danger"> Print Invoice</button>
             </div>
         </div>
 </div>
