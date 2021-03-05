@@ -31,28 +31,61 @@
           <td>1000</td>
           <td>
             @php
-              $data = 0;
-              if($data == 1){
-                echo '<i class="fa fa-check" aria-hidden="true"></i>';
+              $status = 'pending';
+              // $status = 'shipped';
+              // $status = 'canceled';
+              // $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
               }
-              else {
-                echo '<i class="fa fa-times" aria-hidden="true"></i>';
-              }  
             @endphp
           </td>
           <td>
             @php
-              $data = 1;
-              if($data == 1){
-                echo '<i class="fa fa-check" aria-hidden="true"></i>';
+              // $status = 'pending';
+              // $status = 'completed';
+              // $status = 'canceled';
+              $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
               }
-              else {
-                echo '<i class="fa fa-times" aria-hidden="true"></i>';
-              }  
             @endphp
           </td>
           <td>
-            <form action="{{URL('orderDetails',[$data => '1'])}}" method="post">
+            <form action="{{URL('orderDetails',[$status => '1'])}}" method="post">
               @csrf
               <button type="submit" class="btn btn-primary">
                 Show
@@ -66,28 +99,945 @@
           <td>2000</td>
           <td>
             @php
-              $data = 0;
-              if($data == 1){
-                echo '<i class="fa fa-check" aria-hidden="true"></i>';
+              // $status = 'pending';
+              $status = 'shipped';
+              // $status = 'canceled';
+              // $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
               }
-              else {
-                echo '<i class="fa fa-times" aria-hidden="true"></i>';
-              }  
             @endphp
           </td>
           <td>
             @php
-              $data = 1;
-              if($data == 1){
-                echo '<i class="fa fa-check" aria-hidden="true"></i>';
+              // $status = 'pending';
+              // $status = 'completed';
+              $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
               }
-              else {
-                echo '<i class="fa fa-times" aria-hidden="true"></i>';
-              }  
             @endphp
           </td>
           <td>
-            <form action="{{URL('orderDetails',[$data => '2'])}}" method="post">
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeU">
+          <td></td>
+          <td>Product 2</td>
+          <td>2000</td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'shipped';
+              $status = 'canceled';
+              // $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              // $status = 'pending';
+              $status = 'completed';
+              // $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeU">
+          <td></td>
+          <td>Product 2</td>
+          <td>2000</td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'shipped';
+              // $status = 'canceled';
+              $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              $status = 'pending';
+              // $status = 'completed';
+              // $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeU">
+          <td></td>
+          <td>Product 2</td>
+          <td>2000</td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'shipped';
+              // $status = 'canceled';
+              // $status = 'completed';
+              $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              // $status = 'pending';
+              $status = 'completed';
+              // $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeX">
+          <td></td>
+          <td>Product 1</td>
+          <td>1000</td>
+          <td>
+            @php
+              $status = 'pending';
+              // $status = 'shipped';
+              // $status = 'canceled';
+              // $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'completed';
+              // $status = 'canceled';
+              $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '1'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeU">
+          <td></td>
+          <td>Product 2</td>
+          <td>2000</td>
+          <td>
+            @php
+              // $status = 'pending';
+              $status = 'shipped';
+              // $status = 'canceled';
+              // $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'completed';
+              $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeU">
+          <td></td>
+          <td>Product 2</td>
+          <td>2000</td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'shipped';
+              $status = 'canceled';
+              // $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              // $status = 'pending';
+              $status = 'completed';
+              // $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeU">
+          <td></td>
+          <td>Product 2</td>
+          <td>2000</td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'shipped';
+              // $status = 'canceled';
+              $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              $status = 'pending';
+              // $status = 'completed';
+              // $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeU">
+          <td></td>
+          <td>Product 2</td>
+          <td>2000</td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'shipped';
+              // $status = 'canceled';
+              // $status = 'completed';
+              $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              // $status = 'pending';
+              $status = 'completed';
+              // $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeX">
+          <td></td>
+          <td>Product 1</td>
+          <td>1000</td>
+          <td>
+            @php
+              $status = 'pending';
+              // $status = 'shipped';
+              // $status = 'canceled';
+              // $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'completed';
+              // $status = 'canceled';
+              $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '1'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeU">
+          <td></td>
+          <td>Product 2</td>
+          <td>2000</td>
+          <td>
+            @php
+              // $status = 'pending';
+              $status = 'shipped';
+              // $status = 'canceled';
+              // $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'completed';
+              $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeU">
+          <td></td>
+          <td>Product 2</td>
+          <td>2000</td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'shipped';
+              $status = 'canceled';
+              // $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              // $status = 'pending';
+              $status = 'completed';
+              // $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeU">
+          <td></td>
+          <td>Product 2</td>
+          <td>2000</td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'shipped';
+              // $status = 'canceled';
+              $status = 'completed';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              $status = 'pending';
+              // $status = 'completed';
+              // $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
+              @csrf
+              <button type="submit" class="btn btn-primary">
+                Show
+            </button>
+            </form>
+          </td>
+        </tr>
+        <tr class="gradeU">
+          <td></td>
+          <td>Product 2</td>
+          <td>2000</td>
+          <td>
+            @php
+              // $status = 'pending';
+              // $status = 'shipped';
+              // $status = 'canceled';
+              // $status = 'completed';
+              $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'shipped':
+                  echo '<span class="label label-success">Shipped</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                case 'completed':
+                  echo '<span class="label label-primary">Completed</span>';
+                  break;
+            
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            @php
+              // $status = 'pending';
+              $status = 'completed';
+              // $status = 'canceled';
+              // $status = 'complet';
+              switch($status){
+                case 'pending':
+                  echo '<span class="label label-warning">Pending</span>';
+                  break;
+                
+                case 'completed':
+                  echo '<span class="label label-success">Completed</span>';
+                  break;
+                
+                case 'canceled':
+                  echo '<span class="label label-danger">Canceled</span>';
+                  break;
+              
+                default :
+                  echo '<span class="label label-block">Unknown</span>';
+                  break;
+              }
+            @endphp
+          </td>
+          <td>
+            <form action="{{URL('orderDetails',[$status => '2'])}}" method="post">
               @csrf
               <button type="submit" class="btn btn-primary">
                 Show
@@ -114,7 +1064,7 @@
                 "targets": 0
             } ],
             "order": [[ 1, 'asc' ]],
-            pageLength: 25,
+            pageLength: 10,
             responsive: true,
             dom: '<"html5buttons"B>lTfgitp',
             buttons: [
@@ -123,12 +1073,11 @@
 
                 {extend: 'print',
                 customize: function (win){
-                        $(win.document.body).addClass('white-bg');
-                        $(win.document.body).css('font-size', '10px');
-
-                        $(win.document.body).find('table')
-                                .addClass('compact')
-                                .css('font-size', 'inherit');
+                  $(win.document.body).addClass('white-bg');
+                  $(win.document.body).css('font-size', '10px');
+                  $(win.document.body).find('table')
+                  .addClass('compact')
+                  .css('font-size', 'inherit');
                 }
                 }
             ]

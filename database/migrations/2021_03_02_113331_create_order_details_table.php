@@ -22,6 +22,7 @@ class CreateOrderDetailsTable extends Migration
             $table->float('price_per_piece');
             $table->string('name_of_extra_cost');
             $table->float('extra_cost_price');
+            $table->string('order_status');
             $table->string('payment_link');
             $table->string('payment_status');
             $table->softDeletes();

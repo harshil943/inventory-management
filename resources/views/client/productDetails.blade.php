@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="ibox-content">
 
     <div class="row">
