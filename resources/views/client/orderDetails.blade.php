@@ -34,7 +34,6 @@
                     </p>
                 </div>
             </div>
-
             <div class="table-responsive m-t">
                 <table class="table invoice-table">
                     <thead>
