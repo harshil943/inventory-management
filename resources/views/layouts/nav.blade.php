@@ -75,13 +75,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @if(auth()->user()->can('allAccess'))
-                                        <a href="{{ url('/dashboard') }}" class="dropdown-item">Admin Penal</a>
-                                                 
-                                    @else
                                     <a href="{{ url('/orders') }}" class="dropdown-item">Oreder Details</a>
-                                    @endif
-
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
