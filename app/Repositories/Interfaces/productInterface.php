@@ -8,6 +8,8 @@ interface productInterface
 {
     public function productsByCategory($id);
 
+    public function productById($id);
+
   
 
 }

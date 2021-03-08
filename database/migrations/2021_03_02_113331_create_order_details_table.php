@@ -16,8 +16,9 @@ class CreateOrderDetailsTable extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('product_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('product_details');
+            $table->foreign('product_id')->references('id')->on('product_details');
             $table->integer('quantity');
             $table->float('price_per_piece');
             $table->string('name_of_extra_cost');

@@ -14,6 +14,13 @@ class productRepository implements productInterface
         return DB::table('product_details')->where('category_id',$id)->get();
     }
 
+   public function productById($id)
+   {
+       return DB::table('product_details')->where('id',$id)->first();
+   }
    
-   
+   public function productsCategoryAll()
+   {
+       return DB::table('product_category')->get();
+   }
 }

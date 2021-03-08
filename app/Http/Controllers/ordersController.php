@@ -15,8 +15,7 @@ class ordersController extends Controller
     }
 
     public function index(){
-        // $data = DB::table('order_details')->all();
-        // return view('client.productDetails')->with('product',$data);
+        
         $data = $this->orderRepository->all();
         return view('client.orders')->with('order',$data);
     }
