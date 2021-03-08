@@ -5,6 +5,7 @@ use App\Http\Controllers\logoutController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\ordersController;
 use App\Http\Controllers\brochureController;
+use App\Http\Controllers\employeeController;
 use App\Http\Controllers\productCategoryController;
 use App\Http\Controllers\productDetailsController;
 /*
@@ -56,3 +57,8 @@ route::get('brochureDetails/{id}',[brochureController::class,'brochureDetails'])
 
 route::get('productCategory/{categoryData}',[productCategoryController::class,'productCategory']);
 route::get('productDetails/{id}',[productDetailsController::class,'productDetails']);
+
+// Export To PDF
+Route::get('/create-pdf/{id}', [ordersController::class, 'exportPDF']);
+
+Route::resource('employee',employeeController::class);
