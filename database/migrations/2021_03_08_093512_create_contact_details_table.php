@@ -16,7 +16,7 @@ class CreateContactDetailsTable extends Migration
         Schema::create('contact_details', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('name');
-            $table->string('email')-nullable();
+            $table->string('email')->nullable();
             $table->string('contact_number');
             $table->string('company_name')->nullable();
             $table->string('product_category')->nullable();

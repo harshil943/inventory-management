@@ -15,7 +15,6 @@ class AssetDetailsTable extends Model
     protected $fillable =[
         'asset_name',
         'purchase_date',
-        
         'selling_date',
         'asset_amount',
     ];
