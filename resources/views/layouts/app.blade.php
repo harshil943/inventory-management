@@ -63,7 +63,15 @@
 
 <body >
     <div id="app">
-        @include('layouts.nav')
+        @if (Auth::user())
+            @if (!(auth()->user()->hasRole('super-admin')))
+                @include('layouts.nav')
+            @endif
+        @else
+            @include('layouts.nav')    
+        @endif
+
+        
         <main class="">
             @yield('content')
         </main>

@@ -26,7 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
-        return view('home');
+        if(Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+        {
+            return view('admin.dashboard');
+        }
+        else
+        {
+
+            return view('home');
+        }
     }
 }

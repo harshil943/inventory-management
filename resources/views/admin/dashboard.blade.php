@@ -15,14 +15,18 @@
                             <img alt="image" class="img-circle" src="img/profile_small.jpg" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{auth()->user()->name}}</strong>
+                             </span> <span class="text-muted text-xs block">@if (auth()->user()->hasRole('super-admin'))
+                                 Owner
+                             @else
+                                 Admin
+                             @endif <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
                             <li><a href="contacts.html">Contacts</a></li>
                             <li><a href="mailbox.html">Mailbox</a></li>
                             <li class="divider"></li>
-                            <li><a href="login.html">Logout</a></li>
+                            <li><a href={{route('logout')}}>Logout</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -30,7 +34,10 @@
                     </div>
                 </li>
                 <li class="active">
-                    <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                    <a href="{{url('dashboard')}}"><i class="fa fa-user"></i> <span class="nav-label">Admin Dashboard</span> </a>
+                </li>
+                <li>
+                    <a href="index.html"><i class="fa fa-users"></i> <span class="nav-label">Employee</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="index.html">Dashboard v.1</a></li>
                         <li><a href="dashboard_2.html">Dashboard v.2</a></li>
@@ -256,7 +263,7 @@
         </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to Bright Containers</span>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -356,8 +363,8 @@
 
 
                 <li>
-                    <a href="login.html">
-                        <i class="fa fa-sign-out"></i> Log out
+                    <a href={{route('logout')}}>
+                        <i class="fa fa-sign-out"></i> Logout
                     </a>
                 </li>
                 <li>
@@ -449,6 +456,7 @@
                     </div>
                 </div>
             </div>
+            @yield('temp')
             <div class="wrapper wrapper-content">
                 <div class="row">
                     <div class="col-lg-12">
@@ -714,14 +722,14 @@
                 </div>
 
             </div>
-        <div class="footer">
+        {{-- <div class="footer">
             <div class="pull-right">
                 10GB of <strong>250GB</strong> Free.
             </div>
             <div>
                 <strong>Copyright</strong> Example Company &copy; 2014-2017
             </div>
-        </div>
+        </div> --}}
 
         </div>
         <div id="right-sidebar">
@@ -1105,7 +1113,14 @@
     </div>
 
   
-{{-- 
+
+</body>
+     
+@endsection
+
+@push('script')
+<script src="{{asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>    
+
     <script>
         $(document).ready(function() {
 
@@ -1140,11 +1155,5 @@
             new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
 
         });
-    </script> --}}
-</body>
-     
-@endsection
-
-@push('script')
-<script src="{{asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>    
+    </script>
 @endpush
