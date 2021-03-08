@@ -4,7 +4,7 @@
     Register | Bright Containers
 @endsection
 
-@section('css')
+@push('css')
 
     <!-- Ladda style -->
     <link href="{{ asset('css/plugins/ladda/ladda-themeless.min.css')}}" rel="stylesheet">    
@@ -15,7 +15,7 @@
     {{-- File upload CSS --}}
     <link href="{{asset('css/plugins/jasny/jasny-bootstrap.min.css')}}" rel="stylesheet">
 
-@endsection
+@endpush
 
 @section('content')
 <div class="gray-bg container">
@@ -40,9 +40,9 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
         
-                            @error('password')
+                            @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -57,9 +57,9 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
         
-                            @error('email')
+                            @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -133,8 +133,8 @@
                 radioClass: 'iradio_square-green',
             });
             $("#country").select2({
-                // placeholder: "Select a country",
-                // allowClear: true
+                placeholder: "Select a country",
+                allowClear: true
             });
         });
         const url = '/country';
