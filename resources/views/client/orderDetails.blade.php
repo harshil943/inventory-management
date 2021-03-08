@@ -96,13 +96,21 @@
                     // $status = 'pendig';
                     if($status == 'pending')
                     {
-                        echo '<button class="btn btn-primary"> Make Payment</button>';
+                        echo '<form action="/orders" method="get">';
+                            // @csrf
+                            echo '<button type="submit" class="btn btn-primary">Make Payment</button>';
+                                
+                            
+                        echo '</form>';
+                        // echo '<button class="btn btn-primary"> Make Payment</button>';
                     }
                 @endphp
-                
-                
-                <a href="{{URL::to('/create-pdf/'.$order)}}" class="btn btn-warning"> Download Invoice</a>
-                <button class="btn btn-danger"> Print Invoice</button>
+                <form action="{{URL::to('/create-pdf/'.$order)}}" method="get">
+                    @csrf
+                    <button type="submit" class="btn btn-warning">
+                        Download/Print Invoice
+                  </button>
+                </form>
             </div>
         </div>
 </div>
