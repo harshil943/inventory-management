@@ -133,8 +133,8 @@
                 radioClass: 'iradio_square-green',
             });
             $("#country").select2({
-                placeholder: "Select a country",
-                allowClear: true
+                // placeholder: "Select a country",
+                // allowClear: true
             });
         });
         const url = '/country';

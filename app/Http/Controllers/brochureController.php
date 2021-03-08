@@ -17,7 +17,7 @@ class brochureController extends Controller
     }
     public function brochure()
     {
-        $categoryBrochure = $this->productRepository->productCategoryAll();
+        $categoryBrochure = $this->productRepository->productsCategoryAll();
         return view('client.brochure')->with('brochure',$categoryBrochure);
     }
 

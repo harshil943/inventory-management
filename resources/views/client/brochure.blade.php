@@ -13,7 +13,6 @@
 @endsection
 
 @section('content')
-
     <div class="container wrapper wrapper-content animated fadeInRight">
         <div class="row">
             @foreach ($brochure as $item)
@@ -23,7 +22,7 @@
                     <img alt="image" class="img" src="{{asset('img/a2.jpg')}}">
                     <div class="contact-box-footer">
                         <div class="m-t-xs btn-group">
-                            <h3>{{$item->category_brochure_file_name}}</h3>
+                            <h3>{{$item->category_name}}</h3>
                         </div>
                     </div>
                 </a> 

@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Repositories\Interfaces\productInterface;
 class productDetailsController extends Controller
 {
+    private $productRepository;
+    public function __construct(productInterface $productRepository)
+    {
+        $this->productRepository = $productRepository;
+    }
     public function productDetails($id)
     {
-        $data = DB::table('product_details')->where('id',$id)->first();
+        $data = $this->productRepository->productById($id);
         return view('client.productDetails')->with('product',$data);
     }
 }

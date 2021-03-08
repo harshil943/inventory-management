@@ -10,6 +10,7 @@
 
 @section('content')
 <h1>Orders page</h1>
+
 <div class="ibox-content">
   <div class="table-responsive">
     <table class="table text-center table-striped table-bordered table-hover" id="ordersTable" >
@@ -28,7 +29,7 @@
         @foreach ($order as $item)
           <tr class="gradeX">
             <td></td>
-            <td>{{$item->product_details}}</td>
+            <td>{{$item->product_name}}</td>
             <td>{{$item->quantity}}</td>
             <td>
               @php
