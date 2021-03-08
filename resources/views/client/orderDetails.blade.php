@@ -99,7 +99,9 @@
                         echo '<button class="btn btn-primary"> Make Payment</button>';
                     }
                 @endphp
-                <button class="btn btn-warning"> Download Invoice</button>
+                
+                
+                <a href="{{URL::to('/create-pdf/'.$order)}}" class="btn btn-warning"> Download Invoice</a>
                 <button class="btn btn-danger"> Print Invoice</button>
             </div>
         </div>
