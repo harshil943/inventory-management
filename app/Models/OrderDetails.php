@@ -22,11 +22,5 @@ class OrderDetails extends Model
         'payment_status',
     ];
 
-    // protected $casts = [
-    //     'product_id',
-    //     'quantity',
-    //     'price_per_piece',
-    //     'name_of_extra_cost',
-    //     'extra_cost_price',
-    // ];
+
 }

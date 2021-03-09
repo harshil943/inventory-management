@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('company_name');
             $table->string('comp_logo')->nullable();
             $table->string('testimonial')->default('null');
+            $table->string('gst_number')->nullable();
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

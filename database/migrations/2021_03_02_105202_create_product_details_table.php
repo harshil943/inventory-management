@@ -29,6 +29,16 @@ class CreateProductDetailsTable extends Migration
             $table->string('available_sizes')->nullable();
             $table->string('available_color_bottle')->nullable();
             $table->string('available_color_cap')->nullable();
+            $table->json('table_header')->nullable();
+            $table->json('brimful_capacity')->nullable();
+            $table->json('height')->nullable();
+            $table->json('length')->nullable();
+            $table->json('thickness')->nullable();
+            $table->json('label_height')->nullable();
+            $table->json('neck_id')->nullable();
+            $table->json('standard_weight')->nullable();
+            $table->json('MOQ')->nullable();
+            $table->json('cap_name')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
