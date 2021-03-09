@@ -25,5 +25,15 @@ class ProductDetails extends Model
         'available_sizes',
         'available_color_bottle',
         'available_color_cap',
+        'table_header',
+        'brimful_capacity',
+        'height',
+        'length',
+        'thickness',
+        'label_height',
+        'neck_id',
+        'standard_weight',
+        'MOQ',
+        'cap_name',
     ];
 }

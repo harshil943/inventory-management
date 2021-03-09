@@ -24,6 +24,7 @@ class employeeController extends Controller
      */
     public function create()
     {
+        
         return view('admin.empForm');
     }
 
@@ -35,7 +36,7 @@ class employeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('admin.empDetails');
     }
 
     /**

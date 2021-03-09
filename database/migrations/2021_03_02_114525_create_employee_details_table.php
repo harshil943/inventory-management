@@ -15,6 +15,7 @@ class CreateEmployeeDetailsTable extends Migration
     {
         Schema::create('employee_details', function (Blueprint $table) {
             $table->increments('id')->unique();
+            $table->unsignedInteger('designation_id');
             $table->string('employee_name');
             $table->string('email_id')->nullable();
             $table->string('mobile_number');
@@ -25,6 +26,9 @@ class CreateEmployeeDetailsTable extends Migration
             $table->integer('salary');
             $table->softDeletes();
             $table->timestamps();
+        });
+        Schema::table('employee_details', function($table) {
+            $table->foreign('designation_id')->references('id')->on('designation');
         });
     }
 

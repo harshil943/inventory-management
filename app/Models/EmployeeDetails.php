@@ -21,5 +21,6 @@ class EmployeeDetails extends Model
         'bank_account_number',
         'bank_IFSC_code',
         'salary',
+        'designation',
     ];
 }
