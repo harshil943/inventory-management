@@ -28,6 +28,7 @@ class User extends Authenticatable
         'company_name',
         'comp_logo',
         'testimonial',
+        'gst_number',
     ];
 
     /**
