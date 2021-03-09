@@ -24,7 +24,7 @@ class employeeController extends Controller
      */
     public function create()
     {
-        
+
         return view('admin.empForm');
     }
 
@@ -36,6 +36,17 @@ class employeeController extends Controller
      */
     public function store(Request $request)
     {
+        $emp = new EmployeeDetails;
+        $emp->employee_name = $request->name;
+        $emp->email_id = $request->email;
+        $emp->mobile_number = $request->mobile;
+        $emp->residence_address = $request->residenence_add;
+        $emp->bank_name = $request->bank_name;
+        $emp->bank_account_number = $request->bank_account_number;
+        $emp->bank_IFSC_code = $request->bank_IFSC_code;
+        $emp->salary = $request->salary;
+
+        $emp->save();
         return view('admin.empDetails');
     }
 
