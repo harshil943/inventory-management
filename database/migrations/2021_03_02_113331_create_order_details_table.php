@@ -16,13 +16,12 @@ class CreateOrderDetailsTable extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('product_id');
+            $table->json('product_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('product_id')->references('id')->on('product_details');
-            $table->integer('quantity');
-            $table->float('price_per_piece');
-            $table->string('name_of_extra_cost');
-            $table->float('extra_cost_price');
+            $table->json('quantity');
+            $table->json('price_per_piece');
+            $table->json('name_of_extra_cost');
+            $table->json('extra_cost_price');
             $table->string('order_status');
             $table->string('payment_link');
             $table->string('payment_status');

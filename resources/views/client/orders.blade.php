@@ -28,10 +28,30 @@
         
         @foreach ($order as $item)
           <tr class="gradeX">
-            <td></td>
-            <td>{{$item->product_name}}</td>
-            <td>{{$item->quantity}}</td>
-            <td>
+            <td style="vertical-align:middle;"></td>
+            <td class="text-left ml-5 p-3">
+              @php
+                $count = 0;    
+              @endphp
+              @foreach ($item->product_id as $name)
+                {{$name}} 
+                @if(count($item->product_id) != ++$count)
+                  <hr>
+                @endif
+              @endforeach
+            </td>
+            <td class="ml-5 p-3">
+              @php
+                $count = 0;    
+              @endphp
+              @foreach ($item->quantity as $quantity)
+                {{$quantity}} 
+                @if(count($item->quantity) != ++$count)
+                  <hr>
+                @endif
+              @endforeach
+            </td>
+            <td style="vertical-align:middle;">
               @php
                 // $status = 'pending';
                 // $status = 'shipped';
@@ -61,7 +81,7 @@
                 }
               @endphp
             </td>
-            <td>
+            <td style="vertical-align:middle;">
               @php
                 // $status = 'pending';
                 // $status = 'completed';
@@ -86,7 +106,7 @@
                 }
               @endphp
             </td>
-            <td>
+            <td style="vertical-align:middle;">
               <form action="{{URL('orderDetails',[$item->id])}}" method="post">
                 @csrf
                 <button type="submit" class="btn btn-primary">
