@@ -25,6 +25,8 @@ class CreateOrderDetailsTable extends Migration
             $table->string('order_status');
             $table->string('payment_link');
             $table->string('payment_status');
+            $table->date('order_date');
+            $table->date('due_date');
             $table->softDeletes();
             $table->timestamps();
         });
