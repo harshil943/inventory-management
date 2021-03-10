@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\EmployeeDetails;
 use Illuminate\Http\Request;
+use App\Repositories\Interfaces\designationInterface;
+use App\Repositories\Interfaces\employeeInterface;
 
 class employeeController extends Controller
 {
+    private $designationRepository;
+    private $employeeRepository;
+
+    public function __construct(designationInterface $designationRepository,employeeInterface $employeeRepository)
+    {
+        $this->designationRepository = $designationRepository;
+        $this->employeeRepository = $employeeRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,8 @@ class employeeController extends Controller
      */
     public function index()
     {
-        //
+        $designation = $this->designationRepository->all();
+        return view('admin.empForm')->with('designation',$designation);
     }
 
     /**
@@ -24,8 +35,8 @@ class employeeController extends Controller
      */
     public function create()
     {
-
-        return view('admin.empForm');
+        $employees = $this->employeeRepository->all();
+        return view('admin.empDetails')->with('employees',$employees);
     }
 
     /**
@@ -36,18 +47,10 @@ class employeeController extends Controller
      */
     public function store(Request $request)
     {
-        $emp = new EmployeeDetails;
-        $emp->employee_name = $request->name;
-        $emp->email_id = $request->email;
-        $emp->mobile_number = $request->mobile;
-        $emp->residence_address = $request->residenence_add;
-        $emp->bank_name = $request->bank_name;
-        $emp->bank_account_number = $request->bank_account_number;
-        $emp->bank_IFSC_code = $request->bank_IFSC_code;
-        $emp->salary = $request->salary;
 
-        $emp->save();
-        return view('admin.empDetails');
+        $this->employeeRepository->storeEmp($request);
+
+        return redirect()->route('employee.create');
     }
 
     /**
@@ -58,7 +61,7 @@ class employeeController extends Controller
      */
     public function show(EmployeeDetails $employeeDetails)
     {
-        //
+
     }
 
     /**
@@ -67,9 +70,11 @@ class employeeController extends Controller
      * @param  \App\Models\EmployeeDetails  $employeeDetails
      * @return \Illuminate\Http\Response
      */
-    public function edit(EmployeeDetails $employeeDetails)
+    public function edit($id)
     {
-        //
+        $designation = $this->designationRepository->all();
+        $employeeDetails = $this->employeeRepository->empById($id);
+        return view('admin.empForm',compact(['employeeDetails','designation']));
     }
 
     /**
@@ -79,9 +84,10 @@ class employeeController extends Controller
      * @param  \App\Models\EmployeeDetails  $employeeDetails
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EmployeeDetails $employeeDetails)
+    public function update(Request $request, $id)
     {
-        //
+        $this->employeeRepository->updateEmp($id,$request);
+        return redirect()->route('employee.create');
     }
 
     /**
@@ -90,8 +96,10 @@ class employeeController extends Controller
      * @param  \App\Models\EmployeeDetails  $employeeDetails
      * @return \Illuminate\Http\Response
      */
-    public function destroy(EmployeeDetails $employeeDetails)
+    public function destroy($id)
     {
-        //
+        $this->employeeRepository->delete($id);
+
+        return back();
     }
 }

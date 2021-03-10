@@ -4,18 +4,13 @@
     Designation | Bright Containers
 @endsection
 
-@push('css')
 
-    {{-- Select 2 CSS --}}
-    <link href="{{ asset('css/plugins/select2/select2.min.css') }}" rel="stylesheet">
-
-@endpush
 @section('content')
     @include('admin.adminNav')
 
     <div class="gray-bg container">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#designationForm">
-            Launch demo modal
+        <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#designationForm">
+            Add Designation
         </button>
         <div class="text-center loginscreen animated fadeInDown">
                 <div class="modal fade" id="designationForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -48,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="ibox-content mt-5">
+        <div class="ibox-content mt-5 mb-5">
             <div class="table-responsive">
               <table class="table text-center table-bordered table-hover" id="ordersTable" >
                 <thead>
@@ -78,22 +73,6 @@
 
             </div>
           </div>
-
     </div>
 @endsection
 
-@push('script')
-
-    {{-- Select 2 JS --}}
-    <script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script>
-
-    {{-- Country Code JS --}}
-    <script>
-        $(document).ready(function(){
-            $("#access").select2({
-                placeholder: "Select Designation",
-                allowClear: true
-            });
-        });
-    </script>
-@endpush

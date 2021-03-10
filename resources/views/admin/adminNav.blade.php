@@ -30,8 +30,8 @@
             <li>
                 <a href=""><i class="fa fa-users"></i> <span class="nav-label">Employee</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="{{route('employee.create')}}">Add Employee</a></li>
-                    <li><a href="dashboard_2.html">Manage Employee</a></li>
+                    <li><a href="{{route('employee.index')}}">Add Employee</a></li>
+                    <li><a href="{{route('employee.create')}}">Manage Employee</a></li>
                     <li><a href="{{route('designation.index')}}">Designation</a></li>
                     <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
                     <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
