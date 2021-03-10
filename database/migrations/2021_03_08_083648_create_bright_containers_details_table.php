@@ -15,6 +15,7 @@ class CreateBrightContainersDetailsTable extends Migration
     {
         Schema::create('bright_containers_details', function (Blueprint $table) {
             $table->string('name')->nullable();
+            $table->string('email');
             $table->text('head_office_address');
             $table->string('gst_number');
             $table->string('contact_number');

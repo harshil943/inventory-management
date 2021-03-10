@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Designation;
 use Illuminate\Http\Request;
+use App\Repositories\Interfaces\designationInterface;
 
 class designationController extends Controller
 {
+    private $designationRepository;
+
+    public function __construct(designationInterface $designationRepository)
+    {
+        $this->designationRepository = $designationRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,7 @@ class designationController extends Controller
      */
     public function index()
     {
-        $designation = Designation::all();
+        $designation = $this->designationRepository->all();
         return view('admin.designation')->with('designation',$designation);
     }
 
