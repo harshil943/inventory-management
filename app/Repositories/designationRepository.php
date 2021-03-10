@@ -16,4 +16,11 @@ class designationRepository implements designationInterface
         return $designation;
     }
 
+    public function delete($id)
+    {
+        $designation = Designation::findorfail($id);
+        $designation->delete();
+        return true;
+    }
+
 }

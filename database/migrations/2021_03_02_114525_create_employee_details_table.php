@@ -23,6 +23,7 @@ class CreateEmployeeDetailsTable extends Migration
             $table->text('bank_account_number')->nullable();
             $table->text('bank_IFSC_code')->nullable();
             $table->integer('salary');
+            $table->string('designation');
             $table->softDeletes();
             $table->timestamps();
         });

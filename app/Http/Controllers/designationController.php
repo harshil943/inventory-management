@@ -92,9 +92,7 @@ class designationController extends Controller
      */
     public function destroy($id)
     {
-        $designation = Designation::findorfail($id);
-
-        $designation->delete();
+        $this->designationRepository->delete($id);
 
         return back();
     }

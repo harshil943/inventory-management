@@ -8,4 +8,5 @@ interface designationInterface
 {
     public function all();
 
+    public function delete($id);
 }
