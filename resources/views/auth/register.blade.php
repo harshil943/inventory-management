@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Company Name" autofocus>
         
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -40,7 +40,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Company Email Id">
         
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input id="company_name" type="text" class="form-control" name="company_name" required placeholder="Company Name">
+                            <input id="gst" type="text" class="form-control" name="gst" placeholder="GST Number">
                         </div>
                         <div class="form-group">
                             <textarea id="office_add" name="office_add" rows="3" class="form-control" placeholder="Parmenent Office Address" required></textarea>
