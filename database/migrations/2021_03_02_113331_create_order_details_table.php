@@ -20,8 +20,8 @@ class CreateOrderDetailsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->json('quantity');
             $table->json('price_per_piece');
-            $table->json('name_of_extra_cost');
-            $table->json('extra_cost_price');
+            $table->json('name_of_extra_cost')->nullable();
+            $table->json('extra_cost_price')->nullable();
             $table->string('order_status');
             $table->string('payment_link');
             $table->string('payment_status');

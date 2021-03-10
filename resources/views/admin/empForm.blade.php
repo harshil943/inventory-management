@@ -64,7 +64,7 @@
                         <div class="form-group">
                             <input id="salary" type="text" class="form-control" name="salary" placeholder="Salary">
                         </div>
-                        <select class="form-control" id="country" name="country" required>
+                        <select class="form-control" id="designation" name="designation" required>
                             <option>Worker</option>
                             <option>Manager</option>
                             <option>Admin</option>
@@ -86,7 +86,7 @@
     {{-- Country Code JS --}}
     <script>
         $(document).ready(function(){
-            $("#country").select2({
+            $("#designation").select2({
                 placeholder: "Select Designation",
                 allowClear: true
             });

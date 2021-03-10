@@ -5,9 +5,12 @@ use App\Http\Controllers\logoutController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\ordersController;
 use App\Http\Controllers\brochureController;
+use App\Http\Controllers\designationController;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\productCategoryController;
 use App\Http\Controllers\productDetailsController;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +41,7 @@ route::get('logout',[logoutController::class,'out']);
 
 Route::group(['middleware' => ['role:super-admin']], function () {
     Route::get('dashboard',[dashboardController::class,'index']);
-    
+
 });
 // Route::get('dashboard',[dashboardController::class,'index']);
 
@@ -62,3 +65,5 @@ route::get('productDetails/{id}',[productDetailsController::class,'productDetail
 Route::get('/create-pdf/{id}', [ordersController::class, 'exportPDF']);
 
 Route::resource('employee',employeeController::class);
+
+Route::resource('designation',designationController::class);
