@@ -13,6 +13,7 @@ class brightContainersDetails extends Model
 
     protected $fillable = [
         'name',
+        'email',
         'head_office_address',
         'gst_number',
         'contact_number',
