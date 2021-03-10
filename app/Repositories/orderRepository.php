@@ -68,39 +68,36 @@ class orderRepository implements OrderInterface
     public function details($id)
     {
         $details = DB::table('order_details')
-                    ->join('users', 'order_details.user_id' , '=' , 'users.id')
-                    ->select('order_details.id','users.name','users.address','users.gst_number','users.email','users.countryCode','users.mobile','order_details.order_date','order_details.due_date','order_details.product_id','order_details.quantity','order_details.price_per_piece','order_details.name_of_extra_cost','order_details.extra_cost_price')
+                    ->join('users', 'order_details.user_id','=','users.id')
+                    ->select('order_details.id','users.name','users.address','users.gst_number','users.email','users.countryCode','users.mobile','order_details.order_date','order_details.due_date','order_details.product_id','order_details.quantity','order_details.price_per_piece','order_details.name_of_extra_cost','order_details.extra_cost_price','order_details.payment_link','order_details.payment_status')
                     ->where('order_details.id',$id)
-                    ->get();
+                    ->first();
 
         $bright_detail = DB::table('bright_containers_details')
                     ->select('name','head_office_address','email','contact_number','gst_number','gst_percentage')
                     ->where('name','Bright Containers')
-                    ->get();
+                    ->first();        
 
-        foreach($details as $item)
+        $pi = json_decode($details->product_id,true);
+        $q = json_decode($details->quantity,true);
+        $ppp = json_decode($details->price_per_piece,true);
+        $ex = json_decode($details->name_of_extra_cost,true);
+        $cp = json_decode($details->extra_cost_price,true);
+        $arr = array();
+        foreach($pi as $id)
         {
-            $pi = json_decode($item->product_id,true);
-            $q = json_decode($item->quantity,true);
-            $ppp = json_decode($item->price_per_piece,true);
-            $ex = json_decode($item->name_of_extra_cost,true);
-            $cp = json_decode($item->extra_cost_price,true);
-            $arr = array();
-            foreach($pi as $id)
-            {
-                $data2 = DB::table('product_details')
-                ->select('product_name')
-                ->where('id',$id)
-                ->get();
-                
-                array_push($arr,$data2[0]->product_name);
-            }
-            $item->product_id = $arr;
-            $item->quantity = $q;
-            $item->price_per_piece = $ppp;
-            $item->name_of_extra_cost = $ex;
-            $item->extra_cost_price = $cp;
+            $data2 = DB::table('product_details')
+            ->select('product_name')
+            ->where('id',$id)
+            ->get();
+            
+            array_push($arr,$data2[0]->product_name);
         }
+        $details->product_id = $arr;
+        $details->quantity = $q;
+        $details->price_per_piece = $ppp;
+        $details->name_of_extra_cost = $ex;
+        $details->extra_cost_price = $cp;
         return [$details,$bright_detail];
     }
 }

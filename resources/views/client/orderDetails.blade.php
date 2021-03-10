@@ -8,114 +8,174 @@
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="ibox-content p-xl">
             <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="text-right">Invoice No. - {{$order->id}}</h4>
+                </div>
+                
                 <div class="col-sm-6">
-                    <h5>From:</h5>
+                    <br>
+                    <h5>From: </h5>
                     <address>
-                        <strong>Inspinia, Inc.</strong><br>
-                        106 Jorg Avenu, 600/10<br>
-                        Chicago, VT 32456<br>
-                        <abbr title="Phone">P:</abbr> (123) 601-4590
+                        <strong>{{$bright->name}}</strong><br>
+                        @php
+                            $add_arr = explode(",",$bright->head_office_address);
+                        @endphp
+                        @foreach ($add_arr as $element)
+                            {{$element}},
+                            <br>
+                        @endforeach
+                        <br><br>
+                        Contact No: {{$bright->contact_number}}
+                        <br>
+                        Email Id: {{$bright->email}}
+                        <br>
+                        GST Number: {{$bright->gst_number}}
                     </address>
                 </div>
-
                 <div class="col-sm-6 text-right">
-                    <h4>Invoice No. - </h4>
-                    
-                    <span>To:</span>
+                    <br>
+                    <h5>To: </h5>
                     <address>
-                        <strong>Corporate, Inc.</strong><br>
-                        112 Street Avenu, 1080<br>
-                        Miami, CT 445611<br>
-                        <abbr title="Phone">P:</abbr> (120) 9000-4321
+                        <strong>{{$order->name}}</strong><br>
+                        @php
+                            $add_arr = explode(",",$order->address);
+                        @endphp
+                        @foreach ($add_arr as $element)
+                            {{$element}},
+                            <br>
+                        @endforeach
+                        <br><br>
+                        Contact No:  {{$order->mobile}}
+                        <br>
+                        Email Id: {{$order->email}}
+                        <br>
+                        GST Number: {{$order->gst_number}}
                     </address>
+                    <br>
                     <p>
-                        <span><strong>Invoice Date:</strong> Marh 18, 2014</span><br/>
-                        <span><strong>Due Date:</strong> March 24, 2014</span>
+                        <span><strong>Invoice Date:</strong> {{$order->order_date}}</span><br/>
+                        <span><strong>Due Date:</strong> {{$order->due_date}}</span>
                     </p>
                 </div>
             </div>
+            @php
+                $subtotal1 = 0;
+                $subtotal2 = 0;
+            @endphp
             <div class="table-responsive m-t">
                 <table class="table invoice-table">
                     <thead>
-                    <tr>
-                        <th>Item List</th>
-                        <th>Quantity</th>
-                        <th>Unit Price</th>
-                        <th>Tax</th>
-                        <th>Total Price</th>
-                    </tr>
+                        <tr>
+                            <th>Item List</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Tax (Per Piece)</th>
+                            <th>Total Price</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    @php
-                        
-                        $subTotal = 0;
-                        $tax = 0;
-                        $unitPrice = 2600;
-                        $quantity = 2;
-                    @endphp
-                    
-                    @for ($i = 0; $i < 3; $i++)
-                        
-                    <tr>
-                        <td><div><strong>Product 1</strong></div></td>
-                        <td>{{$quantity}}</td>
-                        <td><i class="fa fa-inr"></i> {{$unitPrice}}</td>
-                        <td><i class="fa fa-inr"></i> {{ ($unitPrice * 18)/100}}</td>
-                        <td><i class="fa fa-inr"></i> {{(($unitPrice * 18)/100) + $unitPrice }}</td>
+                        @for($i = 0; $i < sizeof($order->product_id); $i++)    
+                            <tr>
+                                <td>
+                                    <strong>{{$order->product_id[$i]}}</strong>
+                                </td>
+                                <td>
+                                    {{$order->quantity[$i]}}
+                                </td>
+                                <td>
+                                    <i class="fa fa-inr">{{$order->price_per_piece[$i]}}</i>
+                                </td>
+                                <td>
+                                    <i class="fa fa-inr">{{($order->price_per_piece[$i] * $bright->gst_percentage)/100}}</i>
+                                </td>
+                                <td>
+                                    <i class="fa fa-inr">{{($order->price_per_piece[$i] + ($order->price_per_piece[$i] * $bright->gst_percentage)/100) * $order->quantity[$i]}}</i> 
+                                    @php
+                                        $subtotal1 += ($order->price_per_piece[$i] + ($order->price_per_piece[$i] * $bright->gst_percentage)/100) * $order->quantity[$i];
+                                    @endphp 
+                                </td>
+                            </tr>
+                        @endfor
+                        </tbody>
+                    </table>
+                </div>
+                <table class="table invoice-total">
+                    <tbody>
+                        <tr>
+                            <td><strong>Sub Total :</strong></td>
+                            <td>
+                                <i class="fa fa-inr">{{$subtotal1}}</i> 
+                            </td>
                         </tr>
-                        @php
-                            $subTotal = $subTotal + ($unitPrice*$quantity);
-                            $tax = $tax + ((($unitPrice*18)/100) * $quantity);
-                        @endphp
-                        
-                    @endfor
                     </tbody>
                 </table>
-            </div><!-- /table-responsive -->
-
+            <br>
+            @if($order->name_of_extra_cost != NULL)
+                <div class="table-responsive m-t">
+                    <table class="table invoice-table">
+                        <thead>
+                            <tr>
+                                <th>Extra Cost List</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for($i = 0; $i < sizeof($order->name_of_extra_cost); $i++)    
+                                <tr>
+                                    <td>
+                                        <strong>{{$order->name_of_extra_cost[$i]}}</strong>
+                                    </td>
+                                    <td>
+                                        <i class="fa fa-inr">{{$order->extra_cost_price[$i]}}</i> 
+                                        @php
+                                            $subtotal2 += $order->extra_cost_price[$i];
+                                        @endphp
+                                        
+                                    </td>
+                                </tr>
+                            @endfor
+                        </tbody>
+                    </table>
+                </div>
+                <table class="table invoice-total">
+                    <tbody>
+                        <tr>
+                            <td><strong>Sub Total :</strong></td>
+                            <td>
+                                <i class="fa fa-inr">{{$subtotal2}}</i> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            @endif
             <table class="table invoice-total">
                 <tbody>
-                <tr>
-                    <td><strong>Sub Total :</strong></td>
-                    <td><i class="fa fa-inr"></i> {{$subTotal}}</td>
-                </tr>
-                <tr>
-                    <td><strong>TAX :</strong></td>
-                    <td><i class="fa fa-inr"></i> {{$tax}}</td>
-                </tr>
-                <tr>
-                    <td><strong>TOTAL :</strong></td>
-                    <td><i class="fa fa-inr"></i> {{$subTotal + $tax}}</td>
-                </tr>
+                    <tr>
+                        <td><strong>Total :</strong></td>
+                        <td>
+                            <i class="fa fa-inr">{{$subtotal1+ $subtotal2}}</i> 
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <br><br>
-            <div class="text-right">
-                @php
-                    $status = 'pending';
-                    // $status = 'pendig';
-                    if($status == 'pending')
-                    {
-                        echo '<form action="/orders" method="get">';
-                            // @csrf
-                            echo '<button type="submit" class="btn btn-primary">Make Payment</button>';
-                                
-                            
-                        echo '</form>';
-                        // echo '<button class="btn btn-primary"> Make Payment</button>';
-                    }
-                @endphp
-                <form action="{{URL::to('/create-pdf/'.$order)}}" method="get">
-                    @csrf
-                    <button type="submit" class="btn btn-warning">
-                        Download/Print Invoice
-                  </button>
-                </form>
+            <div class="row">
+                <div class="col-sm-6">
+                    @if ($order->payment_status != 'completed')
+                        <form action="{{$order->payment_link}}" method="get">
+                            <button type="submit" class="btn btn-primary">Make Payment</button>
+                        </form>    
+                    @endif
+                </div>
+                <div class="text-right col-sm-6">
+                    <form action="{{URL::to('/create-pdf/'.$order->id)}}" method="get">
+                        <button type="submit" class="btn btn-warning">
+                            Download/Print Invoice
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
 </div>
 
 @endsection
-
-{{-- {{$order}}
-{{$orders}} --}}
