@@ -21,8 +21,11 @@ class ordersController extends Controller
         return view('client.orders')->with('order',$data);
     }
 
-    public function details($data){
-        return view('client.orderDetails')->with('order',$data);
+    public function details($id){
+        [$details,$bright_details] = $this->orderRepository->details($id);
+        dd($details);
+        // dd($bright_details);
+        return view('client.orderDetails')->with('bright',$bright_details)->with('order',$details);
     }
 
     public function exportPDF() {        

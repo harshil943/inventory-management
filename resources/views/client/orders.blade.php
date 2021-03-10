@@ -13,7 +13,7 @@
 
 <div class="ibox-content">
   <div class="table-responsive">
-    <table class="table text-center table-striped table-bordered table-hover" id="ordersTable" >
+    <table class="table text-center table-bordered table-hover" id="ordersTable" >
       <thead>
         <tr>
           <th></th>
@@ -60,23 +60,27 @@
                 // $status = 'complet';
                 switch($item->order_status){
                   case 'pending':
-                    echo '<span class="label label-warning">Pending</span>';
+                    echo '<center><span class="label label-warning" style="display:block;width:35%;padding:6px;">Pending</span></center>';
                     break;
                   
                   case 'shipped':
-                    echo '<span class="label label-success">Shipped</span>';
+                    echo '<center><span class="label label-success" style="display:block;width:35%;padding:6px;">Shipped</span></center>';
+                    // echo '<span class="label label-success">Shipped</span>';
                     break;
                   
                   case 'canceled':
-                    echo '<span class="label label-danger">Canceled</span>';
+                    echo '<center><span class="label label-danger" style="display:block;width:35%;padding:6px;">Canceled</span></center>';
+                    // echo '<span class="label label-danger">Canceled</span>';
                     break;
                 
                   case 'completed':
-                    echo '<span class="label label-primary">Completed</span>';
+                  echo '<center><span class="label label-primary" style="display:block;width:35%;padding:6px;">Completed</span></center>';
+                    // echo '<span class="label label-primary">Completed</span>';
                     break;
               
                   default :
-                    echo '<span class="label label-block">Unknown</span>';
+                    echo '<center><span class="label label-block" style="display:block;width:35%;padding:6px;">Unknown</span></center>';
+                    // echo '<span class="label label-block">Unknown</span>';
                     break;
                 }
               @endphp
@@ -89,19 +93,23 @@
                 // $status = 'complet';
                 switch($item->payment_status){
                   case 'pending':
-                    echo '<span class="label label-warning">Pending</span>';
+                    // echo '<span class="label label-warning">Pending</span>';
+                    echo '<center><span class="label label-warning" style="display:block;width:35%;padding:6px;">Pending</span></center>';
                     break;
                   
                   case 'completed':
-                    echo '<span class="label label-primary">Completed</span>';
+                    // echo '<span class="label label-primary">Completed</span>';
+                    echo '<center><span class="label label-primary" style="display:block;width:35%;padding:6px;">Completed</span></center>';
                     break;
                   
                   case 'canceled':
-                    echo '<span class="label label-danger">Canceled</span>';
+                    // echo '<span class="label label-danger">Canceled</span>';
+                    echo '<center><span class="label label-danger" style="display:block;width:35%;padding:6px;">Canceled</span></center>';
                     break;
                 
                   default :
-                    echo '<span class="label label-block">Unknown</span>';
+                    // echo '<span class="label label-block">Unknown</span>';
+                    echo '<center><span class="label label-block" style="display:block;width:35%;padding:6px;">Unknown</span></center>';
                     break;
                 }
               @endphp
@@ -109,9 +117,11 @@
             <td style="vertical-align:middle;">
               <form action="{{URL('orderDetails',[$item->id])}}" method="post">
                 @csrf
-                <button type="submit" class="btn btn-primary">
-                  Show
-              </button>
+                <center>
+                  <button type="submit" class="btn btn-primary" style="display:block;width:50%;padding:1px;">
+                    Show
+                  </button>
+                </center>
               </form>
             </td>
           </tr>
@@ -134,8 +144,7 @@
                 "orderable": false,
                 "targets": 0
             } ],
-            "order": [[ 1, 'asc' ]],
-            pageLength: 10,
+            pageLength: 5,
             responsive: true,
             dom: '<"html5buttons"B>lTfgitp',
             buttons: [
