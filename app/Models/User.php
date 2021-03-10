@@ -25,7 +25,6 @@ class User extends Authenticatable
         'countryCode',
         'mobile',
         'address',
-        'company_name',
         'comp_logo',
         'testimonial',
         'gst_number',
