@@ -8,9 +8,9 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{auth()->user()->name}}</strong>
                          </span> <span class="text-muted text-xs block">@if (auth()->user()->hasRole('super-admin'))
-                             Owner 
+                             Owner
                          @else
-                             Admin 
+                             Admin
                          @endif <b class="caret"></b></span> </span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="profile.html">Profile</a></li>
@@ -32,7 +32,7 @@
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('employee.create')}}">Add Employee</a></li>
                     <li><a href="dashboard_2.html">Manage Employee</a></li>
-                    <li class="active"><a href="dashboard_3.html">Dashboard v.3</a></li>
+                    <li><a href="{{route('designation.index')}}">Designation</a></li>
                     <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
                     <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
                 </ul>
