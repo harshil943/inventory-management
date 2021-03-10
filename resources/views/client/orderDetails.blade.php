@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="col-sm-6 text-right">
-                    <h4>Invoice No. -  {{$order}}</h4>
+                    <h4>Invoice No. - </h4>
                     
                     <span>To:</span>
                     <address>
@@ -116,3 +116,6 @@
 </div>
 
 @endsection
+
+{{-- {{$order}}
+{{$orders}} --}}
