@@ -23,8 +23,6 @@ class ordersController extends Controller
 
     public function details($id){
         [$details,$bright_details] = $this->orderRepository->details($id);
-        dd($details);
-        // dd($bright_details);
         return view('client.orderDetails')->with('bright',$bright_details)->with('order',$details);
     }
 
