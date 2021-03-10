@@ -80,7 +80,7 @@ class RegisterController extends Controller
                 'countryCode' => $data['country'],
                 'mobile' => $data['mobile'],
                 'address' => $data['office_add'],
-                'company_name' => $data['company_name'],
+                'gst_number' => $data['gst'],
                 'comp_logo' => $logoName
                 ]);
         }
@@ -92,7 +92,7 @@ class RegisterController extends Controller
                 'countryCode' => $data['country'],
                 'mobile' => $data['mobile'],
                 'address' => $data['office_add'],
-                'company_name' => $data['company_name'],
+                'gst_number' => $data['gst'],
                 ]);
         }
         

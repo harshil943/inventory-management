@@ -69,13 +69,12 @@ class orderRepository implements OrderInterface
     {
         $details = DB::table('order_details')
                     ->join('users', 'order_details.user_id' , '=' , 'users.id')
-                    ->select('order_details.id','users.company_name','users.address','users.gst_number','users.email','users.countryCode','users.mobile','order_details.order_date','order_details.due_date','order_details.product_id','order_details.quantity','order_details.price_per_piece','order_details.name_of_extra_cost','order_details.extra_cost_price')
+                    ->select('order_details.id','users.name','users.address','users.gst_number','users.email','users.countryCode','users.mobile','order_details.order_date','order_details.due_date','order_details.product_id','order_details.quantity','order_details.price_per_piece','order_details.name_of_extra_cost','order_details.extra_cost_price')
                     ->where('order_details.id',$id)
                     ->get();
 
         $bright_detail = DB::table('bright_containers_details')
-                    // ->select('name','head_office_address','email','contact_number','gst_number','gst_percentage')
-                    ->select('name','head_office_address','contact_number','gst_number','gst_percentage')
+                    ->select('name','head_office_address','email','contact_number','gst_number','gst_percentage')
                     ->where('name','Bright Containers')
                     ->get();
 
