@@ -29,7 +29,6 @@ class designationRepository implements designationInterface
         $designation = new Designation;
         $designation->designation_name = $request->designation;
         $designation->save();
-        Role::create(['name'=>$request->designation]);
     }
 
 }
