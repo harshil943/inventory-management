@@ -6,6 +6,7 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
 use App\Repositories\Interfaces\designationInterface;
 use App\Models\Designation;
+use Spatie\Permission\Models\Role;
 
 class designationRepository implements designationInterface
 {
@@ -21,6 +22,14 @@ class designationRepository implements designationInterface
         $designation = Designation::findorfail($id);
         $designation->delete();
         return true;
+    }
+
+    public function storeDesignation($request)
+    {
+        $designation = new Designation;
+        $designation->designation_name = $request->designation;
+        $designation->save();
+        Role::create(['name'=>$request->designation]);
     }
 
 }

@@ -9,4 +9,6 @@ interface designationInterface
     public function all();
 
     public function delete($id);
+
+    public function storeDesignation($request);
 }

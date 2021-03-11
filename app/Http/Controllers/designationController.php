@@ -43,10 +43,8 @@ class designationController extends Controller
      */
     public function store(Request $request)
     {
-        $designation = new Designation;
-        $designation->designation_name = $request->designation;
-        $designation->save();
-
+        
+        $this->designationRepository->storeDesignation($request);
         return back();
     }
 
