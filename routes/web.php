@@ -44,6 +44,7 @@ Route::group(['middleware' => ['role:super-admin|admin']], function () {
     Route::resource('employee',employeeController::class);
     Route::resource('designation',designationController::class);
     Route::post('makeAdmin/{id}',[employeeController::class,'makeAdmin']);
+    Route::get('removeadmin/{id}',[employeeController::class,'removeAdmin']);
 
 });
 // Route::get('dashboard',[dashboardController::class,'index']);

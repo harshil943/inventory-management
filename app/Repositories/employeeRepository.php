@@ -7,6 +7,7 @@ use App\Models\Designation;
 use App\Models\EmployeeDetails;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 use App\Repositories\Interfaces\employeeInterface;
 
@@ -70,8 +71,10 @@ class employeeRepository implements employeeInterface
     public function makeAdmin($id,$request)
     {
         $emp = EmployeeDetails::find($id);
-
-        // user table
+        EmployeeDetails::where('id',$id)->update([
+            'admin'=>'1',
+        ]);
+        
         $user = new User;
         
         $user->name = $emp->employee_name;
@@ -81,10 +84,37 @@ class employeeRepository implements employeeInterface
         $user->address = $emp->residence_address;
 
         $user->save();
-
         $newadmin = User::where('email',$emp->email_id)->first();
         $newadmin->assignRole('admin');
+
+        
         return true;
         
+    }
+
+    public function findAdmins()
+    {   $admins=array();
+        $data = EmployeeDetails::where('admin','1')->get();
+        foreach($data as $item)
+        {
+            array_push($admins,$item->email_id);    
+        }
+        // dd($data);  
+        return $admins;
+    }
+
+    public function removeAdmin($email)
+    {
+        $emp = User::where('email',$email)->first();
+        
+        $emp->removeRole('admin');
+
+        User::where('email',$email)->forcedelete();
+        
+        EmployeeDetails::where('email_id',$email)->update([
+            'admin'=>'0',
+        ]);
+        return true;
+
     }
 }

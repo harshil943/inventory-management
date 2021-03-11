@@ -24,6 +24,7 @@ class CreateEmployeeDetailsTable extends Migration
             $table->text('bank_IFSC_code')->nullable();
             $table->integer('salary');
             $table->string('designation');
+            $table->boolean('admin')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

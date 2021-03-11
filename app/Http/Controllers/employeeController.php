@@ -36,7 +36,8 @@ class employeeController extends Controller
     public function create()
     {
         $employees = $this->employeeRepository->all();
-        return view('admin.empDetails')->with('employees',$employees);
+        $admins = $this->employeeRepository->findAdmins();
+        return view('admin.empDetails')->with('employees',$employees)->with('admins',$admins);
     }
 
     /**
@@ -107,6 +108,12 @@ class employeeController extends Controller
     {
         
         $this->employeeRepository->makeAdmin($id,$request);
-        return back();
+        return redirect()->route('employee.create');
+    }
+
+    public function removeAdmin($email)
+    {
+        $this->employeeRepository->removeAdmin($email);
+        return redirect()->route('employee.create');
     }
 }
