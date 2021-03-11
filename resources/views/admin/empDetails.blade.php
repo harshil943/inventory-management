@@ -54,7 +54,7 @@
                     <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
-                <td> 
+                <td>
                   <!-- Button trigger modal -->
                   <button type="button" class="btn btn-primary admin-btn" data-toggle="modal" data-target="#makeAdmin" data-whatever="{{$item->id}}">
                     Make Admin
