@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Designation;
 use App\Models\EmployeeDetails;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 use App\Repositories\Interfaces\employeeInterface;
@@ -63,5 +64,13 @@ class employeeRepository implements employeeInterface
         $employee->delete();
 
         return true;
+    }
+
+    public function makeAdmin($id)
+    {
+        $emp = EmployeeDetails::find($id);
+        $user = new User;
+        
+        
     }
 }

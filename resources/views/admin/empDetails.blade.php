@@ -35,6 +35,9 @@
             @foreach ($employees as $item)
             <tr>
                 <td></td>
+                @php
+                    $current_id = $item->id;
+                @endphp
                 <td>{{$item->employee_name}}</td>
                 <td>{{$item->email_id}}</td>
                 <td>{{$item->mobile_number}}</td>
@@ -51,12 +54,43 @@
                     <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
-                <td> <a href="" class="btn btn-primary">Make Admin</a> </td>
+                <td> 
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary admin-btn" data-toggle="modal" data-target="#makeAdmin" data-whatever="{{$item->id}}">
+                    Make Admin
+                  </button> 
+                   {{-- Modal --}}
+                      <div class="modal fade" id="makeAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Give Temporary Password</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <form class="setPass m-t" role="form" method="POST" >
+                              @csrf
+                            <div class="modal-body">
+                                    <div class="form-group">
+                                        <input id="password" type="password" class="form-control" name="password"  required placeholder="Make admin password" autofocus>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Add Password</button>
+                            </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </td>
             </tr>
             @endforeach
         </tbody>
       </table>
 
+     
     </div>
 </div>
 @endsection
@@ -98,4 +132,13 @@
     });
 
   </script>
+  <script>
+    $(document).on("click", ".admin-btn", function () {
+        var itemid= $(this).attr('data-whatever');
+        $(".setPass").attr("action","/makeAdmin/" + itemid)
+    });
+  </script>
 @endpush
+
+
+
