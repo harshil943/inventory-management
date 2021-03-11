@@ -15,4 +15,8 @@ interface employeeInterface
     public function delete($id);
 
     public function makeAdmin($id,$request);
+
+    public function findAdmins();
+
+    public function removeAdmin($email);
 }

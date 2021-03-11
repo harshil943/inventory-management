@@ -55,10 +55,17 @@
                     </form>
                 </td>
                 <td>
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary admin-btn" data-toggle="modal" data-target="#makeAdmin" data-whatever="{{$item->id}}">
-                    Make Admin
-                  </button> 
+                  @if ($item->admin == 1)
+                      <a href="{{url('removeadmin',$item->email_id)}}">
+                        <button class="btn btn-danger">Remove Admin</button>
+                      </a>
+                  @else
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-primary admin-btn" data-toggle="modal" data-target="#makeAdmin" data-whatever="{{$item->id}}">
+                        Make Admin
+                      </button>
+                  @endif    
+                  
                    {{-- Modal --}}
                       <div class="modal fade" id="makeAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
