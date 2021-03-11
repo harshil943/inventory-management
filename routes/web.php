@@ -39,8 +39,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 route::get('logout',[logoutController::class,'out']);
 
 
-Route::group(['middleware' => ['role:super-admin']], function () {
+Route::group(['middleware' => ['role:super-admin|admin']], function () {
     Route::get('dashboard',[dashboardController::class,'index']);
+    Route::resource('employee',employeeController::class);
+    Route::resource('designation',designationController::class);
+    Route::post('makeAdmin/{id}',[employeeController::class,'makeAdmin']);
 
 });
 // Route::get('dashboard',[dashboardController::class,'index']);
@@ -64,6 +67,4 @@ route::get('productDetails/{id}',[productDetailsController::class,'productDetail
 // Export To PDF
 Route::get('/create-pdf/{id}', [ordersController::class, 'exportPDF']);
 
-Route::resource('employee',employeeController::class);
 
-Route::resource('designation',designationController::class);

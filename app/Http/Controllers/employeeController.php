@@ -102,4 +102,11 @@ class employeeController extends Controller
 
         return back();
     }
+
+    public function makeAdmin($id,Request $request)
+    {
+        dd($request);
+        $this->employeeRepository->makeAdmin($id);
+        return back();
+    }
 }
