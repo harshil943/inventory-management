@@ -2,10 +2,11 @@
 
 namespace App\Repositories;
 
+
 use App\Models\Designation;
 use App\Models\EmployeeDetails;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 use App\Repositories\Interfaces\employeeInterface;
 
@@ -66,11 +67,24 @@ class employeeRepository implements employeeInterface
         return true;
     }
 
-    public function makeAdmin($id)
+    public function makeAdmin($id,$request)
     {
         $emp = EmployeeDetails::find($id);
+
+        // user table
         $user = new User;
         
+        $user->name = $emp->employee_name;
+        $user->email = $emp->email_id;
+        $user->mobile = $emp->mobile_number;
+        $user->password = Hash::make($request->password);
+        $user->address = $emp->residence_address;
+
+        $user->save();
+
+        $newadmin = User::where('email',$emp->email_id)->first();
+        $newadmin->assignRole('admin');
+        return true;
         
     }
 }

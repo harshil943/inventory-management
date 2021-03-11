@@ -14,5 +14,5 @@ interface employeeInterface
 
     public function delete($id);
 
-    public function makeAdmin($id);
+    public function makeAdmin($id,$request);
 }
