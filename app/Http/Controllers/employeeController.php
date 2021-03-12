@@ -97,9 +97,9 @@ class employeeController extends Controller
      * @param  \App\Models\EmployeeDetails  $employeeDetails
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($email_id)
     {
-        $this->employeeRepository->delete($id);
+        $this->employeeRepository->delete($email_id);
 
         return back();
     }

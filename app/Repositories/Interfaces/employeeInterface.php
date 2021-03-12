@@ -12,7 +12,7 @@ interface employeeInterface
 
     public function updateEmp($id,$request);
 
-    public function delete($id);
+    public function delete($email_id);
 
     public function makeAdmin($id,$request);
 
