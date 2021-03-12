@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('testimonial')->default('null');
             $table->string('gst_number')->nullable();
             $table->boolean('password_change')->default('0');
+            $table->string('state_code');
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
