@@ -144,6 +144,9 @@
             conData = data;
             for (var i = 0; i < conData.length; i++) {
                 var newOption = new Option(conData[i]['Iso']+" - "+conData[i]['name'],conData[i]['Iso'], false, false);
+                // var newOption = new Option(conData[i]["HSC Code"]+" - "+conData[i]["HSC Description"],conData[i]["HSC Code"], false, false);
+                // var newOption = new Option(conData[i]["Unit Code"]+" - "+conData[i]["Unit Description"],conData[i]["Unit Code"], false, false);
+                // var newOption = new Option(conData[i]["State Code"]+" - "+conData[i]["State Name"],conData[i]["State Code"], false, false);
                 $('#country').append(newOption);
             }
             $('#country').trigger('change');
