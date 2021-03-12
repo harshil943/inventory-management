@@ -64,7 +64,7 @@
 <body >
     <div id="app">
         @if (Auth::user())
-            @if (!(auth()->user()->hasRole('super-admin')))
+            @if (!(auth()->user()->hasRole('super-admin')) && !(auth()->user()->hasRole('admin')))
                 @include('layouts.nav')
             @endif
         @else
