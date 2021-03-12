@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Interfaces\OrderInterface;
 use PDF;
+use DataTables;
 
 class ordersController extends Controller
 {
@@ -19,6 +20,21 @@ class ordersController extends Controller
         
         $data = $this->orderRepository->all();
         return view('client.orders')->with('order',$data);
+    }
+
+    public function getOrders(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $this->orderRepository->all();
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
     }
 
     public function details($id){

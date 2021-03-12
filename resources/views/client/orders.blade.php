@@ -5,7 +5,13 @@
 @endsection
 
 @push('css')
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  
   <link href="{{asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">  
+  
+  {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/> --}}
+  <link href="https://cdn/.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -16,7 +22,7 @@
     <table class="table text-center table-bordered table-hover" id="ordersTable" >
       <thead>
         <tr>
-          <th></th>
+          <th>Sr. No</th>
           <th>Product Name</th>
           <th>Quantity</th>
           <th>Order Status</th>
@@ -51,68 +57,40 @@
                 @endif
               @endforeach
             </td>
-            <td style="vertical-align:middle;">
-              @php
-                // $status = 'pending';
-                // $status = 'shipped';
-                // $status = 'canceled';
-                // $status = 'completed';
-                // $status = 'complet';
-                switch($item->order_status){
-                  case 'pending':
-                    echo '<center><span class="label label-warning" style="display:block;width:35%;padding:6px;">Pending</span></center>';
-                    break;
-                  
-                  case 'shipped':
-                    echo '<center><span class="label label-success" style="display:block;width:35%;padding:6px;">Shipped</span></center>';
-                    // echo '<span class="label label-success">Shipped</span>';
-                    break;
-                  
-                  case 'canceled':
-                    echo '<center><span class="label label-danger" style="display:block;width:35%;padding:6px;">Canceled</span></center>';
-                    // echo '<span class="label label-danger">Canceled</span>';
-                    break;
-                
-                  case 'completed':
-                  echo '<center><span class="label label-primary" style="display:block;width:35%;padding:6px;">Completed</span></center>';
-                    // echo '<span class="label label-primary">Completed</span>';
-                    break;
-              
-                  default :
-                    echo '<center><span class="label label-block" style="display:block;width:35%;padding:6px;">Unknown</span></center>';
-                    // echo '<span class="label label-block">Unknown</span>';
-                    break;
-                }
-              @endphp
+            <td class="justify-content-center align-middle">
+              @switch($item->order_status)
+                  @case('pending')
+                    <center><span class="label label-warning" style="display:block;width:35%;padding:6px;">Pending</span></center>
+                    @break
+                  @case('shipped')
+                    <center><span class="label label-success" style="display:block;width:35%;padding:6px;">Shipped</span></center>
+                    @break
+                  @case('canceled')
+                    <center><span class="label label-danger" style="display:block;width:35%;padding:6px;">Canceled</span></center>
+                    @break
+                  @case('completed')
+                    <center><span class="label label-primary" style="display:block;width:35%;padding:6px;">Completed</span></center>
+                    @break
+                  @default
+                    <center><span class="label label-block" style="display:block;width:35%;padding:6px;">Unknown</span></center>
+                    @break
+              @endswitch
             </td>
-            <td style="vertical-align:middle;">
-              @php
-                // $status = 'pending';
-                // $status = 'completed';
-                // $status = 'canceled';
-                // $status = 'complet';
-                switch($item->payment_status){
-                  case 'pending':
-                    // echo '<span class="label label-warning">Pending</span>';
-                    echo '<center><span class="label label-warning" style="display:block;width:35%;padding:6px;">Pending</span></center>';
-                    break;
-                  
-                  case 'completed':
-                    // echo '<span class="label label-primary">Completed</span>';
-                    echo '<center><span class="label label-primary" style="display:block;width:35%;padding:6px;">Completed</span></center>';
-                    break;
-                  
-                  case 'canceled':
-                    // echo '<span class="label label-danger">Canceled</span>';
-                    echo '<center><span class="label label-danger" style="display:block;width:35%;padding:6px;">Canceled</span></center>';
-                    break;
-                
-                  default :
-                    // echo '<span class="label label-block">Unknown</span>';
-                    echo '<center><span class="label label-block" style="display:block;width:35%;padding:6px;">Unknown</span></center>';
-                    break;
-                }
-              @endphp
+            <td class="justify-content-center align-middle">
+              @switch($item->payment_status)
+                  @case('pending')
+                    <center><span class="label label-warning" style="display:block;width:35%;padding:6px;">Pending</span></center>
+                    @break
+                  @case('canceled')
+                    <center><span class="label label-danger" style="display:block;width:35%;padding:6px;">Canceled</span></center>
+                    @break
+                  @case('completed')
+                    <center><span class="label label-primary" style="display:block;width:35%;padding:6px;">Completed</span></center>
+                    @break
+                  @default
+                    <center><span class="label label-block" style="display:block;width:35%;padding:6px;">Unknown</span></center>
+                    @break
+              @endswitch
             </td>
             <td style="vertical-align:middle;">
               <form action="{{URL('orderDetails',[$item->id])}}" method="post">
@@ -128,16 +106,33 @@
         @endforeach
       </tbody>
     </table>
+
+
+    <table class="table text-center table-bordered table-hover" id="yajra-datatable" >
+      <thead>
+        <tr>
+          <th>Sr. No</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Order Status</th>
+          <th>Payment Status</th>
+          <th></th>
+        </tr>
+      </thead>  
+      <tbody>
+      </tbody>
+    </table>
     
   </div>
 </div>
 @endsection
 
 @push('script')
-  <script src="{{asset('js/plugins/dataTables/datatables.min.js')}}"></script>
+  <script src="{{asset('js/plugins /dataTables/datatables.min.js')}}"></script>
   <script src="{{asset('js/plugins/dataTables/dataTables.bootstrap4.min.js')}}"></script>
   <script>
     $(document).ready(function(){
+      // var t = $('#yajra-datatable').DataTable({
         var t = $('#ordersTable').DataTable({
             "columnDefs": [ {
                 "searchable": false,
@@ -150,7 +145,6 @@
             buttons: [
                 {extend: 'excel', title: 'ExampleFile'},
                 {extend: 'pdf', title: 'ExampleFile'},
-
                 {extend: 'print',
                 customize: function (win){
                   $(win.document.body).addClass('white-bg');
@@ -170,4 +164,30 @@
     });
 
   </script>
-@endpush
+
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script> --}}
+
+<script type="text/javascript">
+  $(function () {
+    var table = $('#yajra-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('orders.list') }}",
+        columns: [    
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'product_id', name: 'name'},
+            {data: 'quantity', name: 'email'},
+            {data: 'order_status', name: 'username'},
+            {data: 'payment_status', name: 'phone'},
+            {data: 'action', name: 'action', orderable: true, searchable: true}
+        ]
+    });
+    
+  });
+</script>
+
+@endpush 
