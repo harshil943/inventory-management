@@ -67,4 +67,7 @@ route::get('productDetails/{id}',[productDetailsController::class,'productDetail
 // Export To PDF
 Route::get('/create-pdf/{id}', [ordersController::class, 'exportPDF']);
 
+ // Ajax Request for Orders
+Route::get('orders/list', [ordersController::class, 'getOrders'])->name('orders.list');
+
 
