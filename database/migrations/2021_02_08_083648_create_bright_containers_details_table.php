@@ -14,10 +14,13 @@ class CreateBrightContainersDetailsTable extends Migration
     public function up()
     {
         Schema::create('bright_containers_details', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name')->nullable();
             $table->string('email');
             $table->text('head_office_address');
             $table->string('gst_number');
+            $table->string('pan_number');
+            $table->string('state_code');
             $table->string('contact_number');
             $table->string('alternative_contact_number');
             $table->string('facebook_link')->nullable();

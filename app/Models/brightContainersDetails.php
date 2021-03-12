@@ -16,6 +16,8 @@ class brightContainersDetails extends Model
         'email',
         'head_office_address',
         'gst_number',
+        'pan_number',
+        'state_code',
         'contact_number',
         'alternative_contact_number',
         'facebook_link',
