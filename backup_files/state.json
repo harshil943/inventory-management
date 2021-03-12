@@ -1,0 +1,158 @@
+﻿[
+    {
+        "State Code": "1",
+        "State Name": "JAMMU AND KASHMIR"
+    },
+    {
+        "State Code": "2",
+        "State Name": "HIMACHAL PRADESH"
+    },
+    {
+        "State Code": "3",
+        "State Name": "PUNJAB"
+    },
+    {
+        "State Code": "4",
+        "State Name": "CHANDIGARH"
+    },
+    {
+        "State Code": "5",
+        "State Name": "UTTARAKHAND"
+    },
+    {
+        "State Code": "6",
+        "State Name": "HARYANA"
+    },
+    {
+        "State Code": "7",
+        "State Name": "DELHI"
+    },
+    {
+        "State Code": "8",
+        "State Name": "RAJASTHAN"
+    },
+    {
+        "State Code": "9",
+        "State Name": "UTTAR PRADESH"
+    },
+    {
+        "State Code": "10",
+        "State Name": "BIHAR"
+    },
+    {
+        "State Code": "11",
+        "State Name": "SIKKIM"
+    },
+    {
+        "State Code": "12",
+        "State Name": "ARUNACHAL PRADESH"
+    },
+    {
+        "State Code": "13",
+        "State Name": "NAGALAND"
+    },
+    {
+        "State Code": "14",
+        "State Name": "MANIPUR"
+    },
+    {
+        "State Code": "15",
+        "State Name": "MIZORAM"
+    },
+    {
+        "State Code": "16",
+        "State Name": "TRIPURA"
+    },
+    {
+        "State Code": "17",
+        "State Name": "MEGHALAYA"
+    },
+    {
+        "State Code": "18",
+        "State Name": "ASSAM"
+    },
+    {
+        "State Code": "19",
+        "State Name": "WEST BENGAL"
+    },
+    {
+        "State Code": "20",
+        "State Name": "JHARKHAND"
+    },
+    {
+        "State Code": "21",
+        "State Name": "Odisha"
+    },
+    {
+        "State Code": "22",
+        "State Name": "CHHATTISGARH"
+    },
+    {
+        "State Code": "23",
+        "State Name": "MADHYA PRADESH"
+    },
+    {
+        "State Code": "24",
+        "State Name": "GUJARAT"
+    },
+    {
+        "State Code": "25",
+        "State Name": "DAMAN AND DIU"
+    },
+    {
+        "State Code": "26",
+        "State Name": "DADRA AND NAGAR HAVELI"
+    },
+    {
+        "State Code": "27",
+        "State Name": "MAHARASHTRA"
+    },
+    {
+        "State Code": "29",
+        "State Name": "KARNATAKA"
+    },
+    {
+        "State Code": "30",
+        "State Name": "GOA"
+    },
+    {
+        "State Code": "31",
+        "State Name": "LAKSHADWEEP"
+    },
+    {
+        "State Code": "32",
+        "State Name": "KERALA"
+    },
+    {
+        "State Code": "33",
+        "State Name": "TAMIL NADU"
+    },
+    {
+        "State Code": "34",
+        "State Name": "PUDUCHERRY"
+    },
+    {
+        "State Code": "35",
+        "State Name": "ANDAMAN AND NICOBAR"
+    },
+    {
+        "State Code": "36",
+        "State Name": "TELANGANA"
+    },
+    {
+        "State Code": "37",
+        "State Name": "ANDHRA PRADESH"
+    },
+    {
+        "State Code": "38",
+        "State Name": "Ladakh"
+    },
+    {
+        "State Code": "97",
+        "State Name": "OTHER TERRITORY"
+    },
+    {
+        "State Code": "96",
+        "State Name": "OTHER COUNTRY"
+    }
+]
