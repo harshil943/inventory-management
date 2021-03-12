@@ -47,8 +47,8 @@
                 <td>{{$item->bank_IFSC_code}}</td>
                 <td>{{$item->salary}}</td>
                 <td>{{$item->designation}}</td>
-                <td><a href="{{route('employee.edit',$item->id)}}" class="btn btn-warning">Edit</a></td>
-                <td><form action="{{route('employee.destroy',$item->id)}}" method="POST">
+                <td><a href="{{route('employee.edit',$item->id)}}" class="btn btn-success rounded">Edit</a></td>
+                <td><form action="{{route('employee.destroy',$item->email_id)}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -57,7 +57,7 @@
                 <td>
                   @if ($item->admin == 1)
                       <a href="{{url('removeadmin',$item->email_id)}}">
-                        <button class="btn btn-danger">Remove Admin</button>
+                        <button class="btn btn-dark">Remove Admin</button>
                       </a>
                   @else
                       <!-- Button trigger modal -->

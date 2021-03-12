@@ -60,10 +60,15 @@ class employeeRepository implements employeeInterface
             return true;
     }
 
-    public function delete($id)
+    public function delete($email_id)
     {
-        $employee = EmployeeDetails::findorfail($id);
-        $employee->delete();
+        $emp = EmployeeDetails::where('email_id',$email_id)->first();
+        // dd($emp->email_id);
+        if($emp->admin == '1')
+        {
+            User::where('email',$email_id)->forcedelete();
+        }
+        $emp->forcedelete();
 
         return true;
     }
@@ -82,7 +87,7 @@ class employeeRepository implements employeeInterface
         $user->mobile = $emp->mobile_number;
         $user->password = Hash::make($request->password);
         $user->address = $emp->residence_address;
-
+        $user->password_change = '1';
         $user->save();
         $newadmin = User::where('email',$emp->email_id)->first();
         $newadmin->assignRole('admin');

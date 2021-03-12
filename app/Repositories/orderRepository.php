@@ -17,7 +17,7 @@ class orderRepository implements OrderInterface
         if($user->hasRole('super-admin') || $user->hasRole('admin'))
         {   
             $data = DB::table('order_details')
-                    ->select('id','user_id','product_id','quantity','order_status','payment_staus')
+                    ->select('id','user_id','product_id','quantity','order_status','payment_status')
                     ->get();
             foreach($data as $item)
             {

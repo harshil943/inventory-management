@@ -13,6 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('name');
@@ -25,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('comp_logo')->nullable();
             $table->string('testimonial')->default('null');
             $table->string('gst_number')->nullable();
+            $table->boolean('password_change')->default('0');
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
