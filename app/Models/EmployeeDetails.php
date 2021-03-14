@@ -13,6 +13,7 @@ class EmployeeDetails extends Model
     protected $table = 'employee_details';
 
     protected $fillable =[
+        'id',
         'employee_name',
         'email_id',
         'mobile_number',
@@ -21,6 +22,7 @@ class EmployeeDetails extends Model
         'bank_account_number',
         'bank_IFSC_code',
         'salary',
-        'designation',
+        'designation_id',
+        'admin',
     ];
 }

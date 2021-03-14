@@ -13,10 +13,11 @@ class ExpenseDetails extends Model
     protected $table = 'expense_details';
 
     protected $fillable =[
+        'id',
         'expense_details',
         'quantity',
         'cost_per_quantity',
-        
+
 
     ];
 }

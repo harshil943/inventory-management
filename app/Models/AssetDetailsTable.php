@@ -13,6 +13,7 @@ class AssetDetailsTable extends Model
     protected $table = 'asset_details';
 
     protected $fillable =[
+        'id',
         'asset_name',
         'purchase_date',
         'selling_date',

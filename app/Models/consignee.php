@@ -6,17 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class InventoryDetails extends Model
+class consignee extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $table = 'inventory_details';
+    protected $table = 'consignee_details';
 
-    protected $fillable =[
+    protected $fillable = [
         'id',
-        'product_id',
-        'quantity',
-        'cost_per_product',
+        'name',
+        'email',
+        'number',
+        'gst_number',
+        'state_code',
+        'address',
     ];
 }
-

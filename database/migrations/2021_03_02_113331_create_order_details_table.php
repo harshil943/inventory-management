@@ -15,18 +15,20 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->unsignedInteger('user_id');
+            $table->string('e_way_bill_number')->nullable();
+            $table->date('due_date')->nullable();
+            $table->string('buyer_order_number');
             $table->json('product_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->json('hsn_code');
             $table->json('quantity');
+            $table->json('unit');
             $table->json('price_per_piece');
             $table->json('name_of_extra_cost')->nullable();
+            $table->json('extra_hsn_code')->nullable();
             $table->json('extra_cost_price')->nullable();
-            $table->string('order_status');
-            $table->string('payment_link');
-            $table->string('payment_status');
-            $table->date('order_date');
-            $table->date('due_date');
+            $table->boolean('igst_applicable');
+            $table->string('gst_percentage');
+            $table->string('payment_link')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

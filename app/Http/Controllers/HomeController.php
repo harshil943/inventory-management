@@ -28,11 +28,10 @@ class HomeController extends Controller
     {
         if(Auth::user()->password_change == '1')
         {   
-            return url('setpassword');
+            return redirect()->route('setpassword');
         }
         else
         {
-
             if(Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
             {
                 return view('admin.dashboard');

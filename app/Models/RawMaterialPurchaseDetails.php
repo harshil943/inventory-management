@@ -13,9 +13,9 @@ class RawMaterialPurchaseDetails extends Model
     protected $table = 'raw_material_purchase_details';
 
     protected $fillable =[
+        'id',
         'material_name',
         'quantity',
         'cost_per_quantity',
-        
     ];
 }

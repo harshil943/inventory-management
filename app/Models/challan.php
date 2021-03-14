@@ -6,17 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class InventoryDetails extends Model
+class challan extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $table = 'inventory_details';
+    protected $table = 'challan_details';
 
-    protected $fillable =[
+    protected $fillable = [
         'id',
+        'total_no_packages',
         'product_id',
-        'quantity',
-        'cost_per_product',
+        'other',
+        'bundle',
+        'pack_size',
+        'extra_note',
     ];
 }
-

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDesignationTable extends Migration
+class CreateConsigneeDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,14 @@ class CreateDesignationTable extends Migration
      */
     public function up()
     {
-        Schema::create('designation', function (Blueprint $table) {
+        Schema::create('consignee_details', function (Blueprint $table) {
             $table->id();
-            $table->string('designation_name');
-            $table->string('access')->default('third-party-user');
+            $table->string('name');
+            $table->string('email')->nullable();
+            $table->string('number');
+            $table->string('gst_number');
+            $table->string('state_code');
+            $table->string('address');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -29,6 +33,6 @@ class CreateDesignationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('designation');
+        Schema::dropIfExists('consignee_details');
     }
 }

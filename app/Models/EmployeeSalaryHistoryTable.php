@@ -13,6 +13,7 @@ class EmployeeSalaryHistoryTable extends Model
     protected $table = 'employee_salary_history';
 
     protected $fillable =[
+        'id',
         'salary_paid',
         'payment_status',
     ];

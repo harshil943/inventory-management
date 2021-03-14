@@ -21,9 +21,10 @@ class CreateEmployeeDetailsTable extends Migration
             $table->text('residence_address');
             $table->text('bank_name')->nullable();
             $table->text('bank_account_number')->nullable();
-            $table->text('bank_IFSC_code')->nullable();
+            $table->text('bank_ISFC_code')->nullable();
             $table->integer('salary');
-            $table->string('designation');
+            $table->unsignedInteger('designation_id');
+            $table->foreign('designation_id')->references('id')->on('designation');
             $table->boolean('admin')->default(0);
             $table->softDeletes();
             $table->timestamps();

@@ -12,10 +12,13 @@ class brightContainersDetails extends Model
     protected $table = 'bright_containers_details';
 
     protected $fillable = [
+        'id',
         'name',
         'email',
         'head_office_address',
         'gst_number',
+        'pan_number',
+        'state_code',
         'contact_number',
         'alternative_contact_number',
         'facebook_link',
