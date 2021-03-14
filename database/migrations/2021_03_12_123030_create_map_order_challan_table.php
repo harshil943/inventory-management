@@ -22,13 +22,14 @@ class CreateMapOrderChallanTable extends Migration
             $table->unsignedInteger('buyer_id');
             $table->unsignedInteger('seller_id');
             $table->boolean('consignee_available');
-            $table->unsignedInteger('consignee_id');
+            $table->unsignedInteger('consignee_id')->nullable();
             $table->foreign('buyer_id')->references('id')->on('users');
             $table->foreign('seller_id')->references('id')->on('bright_containers_details');
             $table->string('vehical_number')->nullable();
             $table->string('order_status');
             $table->string('payment_status');
             $table->date('shipping_date')->nullable();
+            $table->string('dispatch_method')->nullable();
             $table->string('dispatch_document_number')->nullable();
             $table->string('lr_number')->nullable();
             $table->date('order_date');

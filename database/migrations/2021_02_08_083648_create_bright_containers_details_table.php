@@ -22,7 +22,7 @@ class CreateBrightContainersDetailsTable extends Migration
             $table->string('pan_number');
             $table->string('state_code');
             $table->string('contact_number');
-            $table->string('alternative_contact_number');
+            $table->string('alternate_contact_number')->nullable();
             $table->string('facebook_link')->nullable();
             $table->string('instagram_link')->nullable();
             $table->string('whatsapp_link')->nullable();
@@ -30,7 +30,7 @@ class CreateBrightContainersDetailsTable extends Migration
             $table->string('google_maps_link_factory')->nullable();
             $table->string('google_maps_link_office')->nullable();
             $table->string('youtube_link')->nullable();
-            $table->string('gst_percentage')->nullable();
+            $table->string('gst_percentage');
             $table->string('logo_name');
             $table->softDeletes();
             $table->timestamps();

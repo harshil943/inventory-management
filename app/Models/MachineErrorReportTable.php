@@ -13,6 +13,8 @@ class MachineErrorReportTable extends Model
     protected $table = 'machine_error_report';
 
     protected $fillable =[
+        'id',
+        'asset_id',
         'error_detail',
         'error_issue_date',
         'error_solve_date',

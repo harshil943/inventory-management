@@ -13,6 +13,7 @@ class map_order_challan extends Model
     protected $table = 'map_order_challan';
 
     protected $fillable = [
+        'id',
         'order_id',
         'challan_id',
         'buyer_id',
@@ -23,6 +24,7 @@ class map_order_challan extends Model
         'order_status',
         'payment_status',
         'shipping_date',
+        'dipatch_method',
         'dispatch_document_number',
         'lr_number',
         'order_date',

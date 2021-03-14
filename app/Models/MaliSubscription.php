@@ -13,6 +13,7 @@ class MaliSubscription extends Model
     protected $table = 'mail_subscription';
 
     protected $fillable =[
+        'id',
         'subscriber_mail',
     ];
 }

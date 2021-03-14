@@ -12,6 +12,7 @@ class quoteDetails extends Model
     protected $table = 'quote_details';
 
     protected $fillable = [
+        'id',
         'company_name',
         'email',
         'contact_number',

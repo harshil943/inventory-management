@@ -13,9 +13,12 @@ class challan extends Model
     protected $table = 'challan_details';
 
     protected $fillable = [
+        'id',
         'total_no_packages',
-        'item_details',
+        'product_id',
+        'other',
         'bundle',
         'pack_size',
+        'extra_note',
     ];
 }

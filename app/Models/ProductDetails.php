@@ -13,6 +13,8 @@ class ProductDetails extends Model
     protected $table = 'product_details';
 
     protected $fillable =[
+        'id',
+        'category_id',
         'product_name',
         'product_image_name',
         'product_filter_type',

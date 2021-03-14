@@ -16,9 +16,11 @@ class CreateChallanDetailsTable extends Migration
         Schema::create('challan_details', function (Blueprint $table) {
             $table->increments('id');
             $table->bigInteger('total_no_packages');
-            $table->json('item_details');
+            $table->json('product_id');
+            $table->json('other');
             $table->json('bundle');
             $table->json('pack_size');
+            $table->string('extra_note')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -13,10 +13,10 @@ class OrderDetails extends Model
     protected $table = 'order_details';
 
     protected $fillable =[
+        'id',
         'e_way_bill_number',
         'due_date',
         'buyer_order_number',
-        'dipatch_method',
         'product_id',
         'hsn_code',
         'quantity',

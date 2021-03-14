@@ -15,7 +15,6 @@ class CreateConsigneeDetailsTable extends Migration
     {
         Schema::create('consignee_details', function (Blueprint $table) {
             $table->id();
-            // name gst statecode address
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('number');

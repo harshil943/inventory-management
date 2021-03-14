@@ -13,6 +13,7 @@ class consignee extends Model
     protected $table = 'consignee_details';
 
     protected $fillable = [
+        'id',
         'name',
         'email',
         'number',

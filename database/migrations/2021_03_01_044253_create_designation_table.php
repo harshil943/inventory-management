@@ -14,7 +14,7 @@ class CreateDesignationTable extends Migration
     public function up()
     {
         Schema::create('designation', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
             $table->string('designation_name');
             $table->string('access')->default('third-party-user');
             $table->softDeletes();

@@ -24,7 +24,7 @@ class roleManagement extends Seeder
         $permission = Permission::create(['guard_name' => 'web', 'name' => 'allAccess']);
 
         $permission->assignRole($super);
-        
+
         //admin
         $role = Role::create(['guard_name' => 'web', 'name' => 'admin']);
         $permission = Permission::create(['guard_name' => 'web', 'name' => 'access']);
