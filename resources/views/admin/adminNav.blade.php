@@ -11,7 +11,7 @@
                              Owner
                          @else
                              Admin
-                         @endif <b class="caret"></b></span> </span> 
+                         @endif <b class="caret"></b></span> </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="profile.html">Profile</a></li>
@@ -25,10 +25,10 @@
                     BC
                 </div>
             </li>
-            <li class="active">
+            <li class="dashboard">
                 <a href="{{url('dashboard')}}" style="text-decoration:none"><i class="fa fa-user"></i> <span class="nav-label">Admin Dashboard</span> </a>
             </li>
-            <li>
+            <li class="employee">
                 <a href="" style="text-decoration:none"><i class="fa fa-users"></i> <span class="nav-label">Employee</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('employee.index')}}"" style="text-decoration:none;">Add Employee</a></li>
@@ -38,7 +38,7 @@
                     <li><a href="dashboard_5.html" style="text-decoration:none;">Dashboard v.5 </a></li>
                 </ul>
             </li>
-            <li>
+            <li class="orders">
                 <a href="" style="text-decoration:none"><i class="fa fa-users"></i> <span class="nav-label">Orders</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('orders.index')}}" style="text-decoration:none;">Add Order</a></li>

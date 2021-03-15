@@ -6,9 +6,9 @@
 
 @section('content')
 {{-- <body class="fixed-navigation"> --}}
-    <div id="wrapper">
+    {{-- <div id="wrapper">
         @include('admin.adminNav')
-    </div>
+    </div> --}}
             <div class="sidebar-panel">
                 <div>
                     <h4>Messages <span class="badge badge-info pull-right">16</span></h4>
@@ -744,14 +744,18 @@
         </div>
     </div>
 
-  
+
 
 {{-- </body> --}}
-     
+
 @endsection
 
 @push('script')
-   
+    <script>
+        $(function() {
+            $('.dashboard').addClass('active');
+        });
+    </script>
 
     {{-- <script>
         $(document).ready(function() {

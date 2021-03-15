@@ -9,16 +9,11 @@
 @endsection
 
 @push('css')
-
     {{-- Select 2 CSS --}}
     <link href="{{ asset('css/plugins/select2/select2.min.css') }}" rel="stylesheet">
-
 @endpush
 
 @section('content')
-
-@include('admin.adminNav')
-
 <div class="gray-bg container">
     <div class="text-center loginscreen animated fadeInDown">
         <div>
@@ -114,6 +109,11 @@
                 placeholder: "Select Designation",
                 allowClear: true
             });
+        });
+    </script>
+    <script>
+        $(function() {
+            $('.employee').addClass('active');
         });
     </script>
 @endpush

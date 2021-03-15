@@ -6,8 +6,6 @@
 
 
 @section('content')
-    @include('admin.adminNav')
-
     <div class="gray-bg container">
         <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#designationForm">
             Add Designation
@@ -76,3 +74,10 @@
     </div>
 @endsection
 
+@push('script')
+    <script>
+        $(function() {
+            $('.employee').addClass('active');
+        });
+    </script>
+@endpush

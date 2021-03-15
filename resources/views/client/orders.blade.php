@@ -6,9 +6,9 @@
 
 @push('css')
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  
-  <link href="{{asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">  
-  
+
+  <link href="{{asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
+
   {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/> --}}
   {{-- <link href="https://cdn/.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet"> --}}
   <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -27,9 +27,9 @@
           <th>Quantity</th>
           <th>
             @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
-              Buyer Name    
+              Buyer Name
             @else
-              Seller
+              Seller Or Consignee
             @endif
           </th>
           <th>Order Date</th>
@@ -46,22 +46,22 @@
 
             <td class="text-left ml-5 p-3">
               @php
-                $count = 0;    
+                $count = 0;
               @endphp
               @foreach ($order[$i]->order->product_id as $name)
-                {{$name}} 
+                {{$name}}
                 @if(count($order[$i]->order->product_id) != ++$count)
                   <hr>
                 @endif
               @endforeach
             </td>
-            
+
             <td class="ml-5 p-3">
               @php
-                $count = 0;    
+                $count = 0;
               @endphp
               @foreach ($order[$i]->order->quantity as $quantity)
-                {{$quantity}} 
+                {{$quantity}}
                 @if(count($order[$i]->order->quantity) != ++$count)
                   <hr>
                 @endif
@@ -84,19 +84,19 @@
             <td class="justify-content-center align-middle">
               @switch($order[$i]->order_status)
                   @case('pending')
-                    <center><span class="label label-warning" style="display:block;width:55%;padding:6px;">Pending</span></center>
+                    <center><span class="label label-warning" style="display:block;width:75%;padding:6px;">Pending</span></center>
                     @break
                   @case('shipped')
-                    <center><span class="label label-success" style="display:block;width:55%;padding:6px;">Shipped</span></center>
+                    <center><span class="label label-success" style="display:block;width:75%;padding:6px;">Shipped</span></center>
                     @break
                   @case('canceled')
-                    <center><span class="label label-danger" style="display:block;width:55%;padding:6px;">Canceled</span></center>
+                    <center><span class="label label-danger" style="display:block;width:75%;padding:6px;">Canceled</span></center>
                     @break
                   @case('completed')
-                    <center><span class="label label-primary" style="display:block;width:55%;padding:6px;">Completed</span></center>
+                    <center><span class="label label-primary" style="display:block;width:75%;padding:6px;">Completed</span></center>
                     @break
                   @default
-                    <center><span class="label label-block" style="display:block;width:55%;padding:6px;">Unknown</span></center>
+                    <center><span class="label label-block" style="display:block;width:75%;padding:6px;">Unknown</span></center>
                     @break
               @endswitch
             </td>
@@ -104,16 +104,16 @@
             <td class="justify-content-center align-middle">
               @switch($order[$i]->payment_status)
                   @case('pending')
-                    <center><span class="label label-warning" style="display:block;width:55%;padding:6px;">Pending</span></center>
+                    <center><span class="label label-warning" style="display:block;width:75%;padding:6px;">Pending</span></center>
                     @break
                   @case('canceled')
-                    <center><span class="label label-danger" style="display:block;width:55%;padding:6px;">Canceled</span></center>
+                    <center><span class="label label-danger" style="display:block;width:75%;padding:6px;">Canceled</span></center>
                     @break
                   @case('completed')
-                    <center><span class="label label-primary" style="display:block;width:55%;padding:6px;">Completed</span></center>
+                    <center><span class="label label-primary" style="display:block;width:75%;padding:6px;">Completed</span></center>
                     @break
                   @default
-                    <center><span class="label label-block" style="display:block;width:55%;padding:6px;">Unknown</span></center>
+                    <center><span class="label label-block" style="display:block;width:75%;padding:6px;">Unknown</span></center>
                     @break
               @endswitch
             </td>
@@ -153,11 +153,11 @@
           <th>Payment Status</th>
           <th></th>
         </tr>
-      </thead>  
+      </thead>
       <tbody>
       </tbody>
     </table> --}}
-    
+
   </div>
 </div>
 @endsection
@@ -197,6 +197,11 @@
       } ).draw();
     });
   </script>
+    <script>
+        $(function() {
+            $('.orders').addClass('active');
+        });
+    </script>
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>   --}}
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script> --}}
@@ -210,7 +215,7 @@
         processing: true,
         serverSide: true,
         ajax: "{{ route('orders.list') }}",
-        columns: [    
+        columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'product_id', name: 'name'},
             {data: 'quantity', name: 'email'},
@@ -219,8 +224,8 @@
             {data: 'action', name: 'action', orderable: true, searchable: true}
         ]
     });
-    
+
   });
 </script> --}}
 
-@endpush 
+@endpush
