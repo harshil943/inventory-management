@@ -5,12 +5,10 @@
 @endsection
 
 @section('content')
-<body class="fixed-navigation">
+{{-- <body class="fixed-navigation"> --}}
     <div id="wrapper">
         @include('admin.adminNav')
-
-
-        </div>
+    </div>
             <div class="sidebar-panel">
                 <div>
                     <h4>Messages <span class="badge badge-info pull-right">16</span></h4>
@@ -748,7 +746,7 @@
 
   
 
-</body>
+{{-- </body> --}}
      
 @endsection
 

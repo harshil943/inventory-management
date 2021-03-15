@@ -46,7 +46,7 @@ Route::group(['middleware' => ['role:super-admin|admin']], function () {
 Route::post('donepassword',[setPassController::class,'changepass'])->name('donepassword');
 Route::middleware(['setpass'])->group(function () {  
     Route::get('/setpassword',[setPassController::class,'index'])->name('setpassword');
-    Route::get('orders',[ordersController::class,'index']);
+    Route::get('orders',[ordersController::class,'index'])->name('orders.index');
     Route::post('orderDetails/{data}',[ordersController::class,'details']);
 
    

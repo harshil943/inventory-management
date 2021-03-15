@@ -27,10 +27,10 @@
                             Product Category
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            @foreach ($category as $item)
+                            {{-- @foreach ($category as $item)
                             <a class="dropdown-item" href="{{url('productCategory',['categoryData'=>$item])}}">{{$item['category_name']}}</a>
                                 
-                            @endforeach
+                            @endforeach --}}
                             <a class="dropdown-item" href="#">Another action</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
