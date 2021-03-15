@@ -63,15 +63,15 @@
 
 <body >
     <div id="app">
-        @if (Auth::user())
-            @if (!(auth()->user()->hasRole('super-admin')) && !(auth()->user()->hasRole('admin')))
-                @include('layouts.nav')
+        @if(Auth::user())
+            @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+                @include('admin.adminNav')      
+            @else
+                @include('layouts.nav')    
             @endif
         @else
-            @include('layouts.nav')    
+            @include('layouts.nav')
         @endif
-
-        
         <main class="">
             @yield('content')
         </main>

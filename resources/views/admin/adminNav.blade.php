@@ -5,13 +5,14 @@
                 <div class="dropdown profile-element"> <span>
                         <img alt="image" class="img-circle" src="img/profile_small.jpg" />
                          </span>
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="text-decoration:none;">
                         <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{auth()->user()->name}}</strong>
-                         </span> <span class="text-muted text-xs block">@if (auth()->user()->hasRole('super-admin'))
+                         </span> <span class="text-muted text-xs block" >@if (auth()->user()->hasRole('super-admin'))
                              Owner
                          @else
                              Admin
-                         @endif <b class="caret"></b></span> </span> </a>
+                         @endif <b class="caret"></b></span> </span> 
+                    </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="profile.html">Profile</a></li>
                         <li><a href="contacts.html">Contacts</a></li>
@@ -21,24 +22,30 @@
                     </ul>
                 </div>
                 <div class="logo-element">
-                    IN+
+                    BC
                 </div>
             </li>
             <li class="active">
-                <a href="{{url('dashboard')}}"><i class="fa fa-user"></i> <span class="nav-label">Admin Dashboard</span> </a>
+                <a href="{{url('dashboard')}}" style="text-decoration:none"><i class="fa fa-user"></i> <span class="nav-label">Admin Dashboard</span> </a>
             </li>
             <li>
-                <a href=""><i class="fa fa-users"></i> <span class="nav-label">Employee</span> <span class="fa arrow"></span></a>
+                <a href="" style="text-decoration:none"><i class="fa fa-users"></i> <span class="nav-label">Employee</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="{{route('employee.index')}}">Add Employee</a></li>
-                    <li><a href="{{route('employee.create')}}">Manage Employee</a></li>
-                    <li><a href="{{route('designation.index')}}">Designation</a></li>
-                    <li><a href="dashboard_4_1.html">Dashboard v.4</a></li>
-                    <li><a href="dashboard_5.html">Dashboard v.5 </a></li>
+                    <li><a href="{{route('employee.index')}}"" style="text-decoration:none;">Add Employee</a></li>
+                    <li><a href="{{route('employee.create')}}" style="text-decoration:none;">Manage Employee</a></li>
+                    <li><a href="{{route('designation.index')}}" style="text-decoration:none;">Designation</a></li>
+                    <li><a href="dashboard_4_1.html" style="text-decoration:none;">Dashboard v.4</a></li>
+                    <li><a href="dashboard_5.html" style="text-decoration:none;">Dashboard v.5 </a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="" style="text-decoration:none"><i class="fa fa-users"></i> <span class="nav-label">Orders</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('orders.index')}}" style="text-decoration:none;">Add Order</a></li>
+                    <li><a href="{{route('orders.index')}}" style="text-decoration:none;">Manage Order</a></li>
                 </ul>
             </li>
         </ul>
-
     </div>
 </nav>
 <div id="page-wrapper" class="gray-bg sidebar-content">
@@ -53,13 +60,13 @@
         </form>
     </div>
         <ul class="nav navbar-top-links navbar-right">
-            <li>
+            {{-- <li>
                 <span class="m-r-sm text-muted welcome-message">Welcome to Bright Containers</span>
-            </li>
+            </li> --}}
             <li class="dropdown">
-                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                {{-- <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
-                </a>
+                </a> --}}
                 <ul class="dropdown-menu dropdown-messages">
                     <li>
                         <div class="dropdown-messages-box">
@@ -109,7 +116,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
+            {{-- <li class="dropdown">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
                 </a>
@@ -150,7 +157,7 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
 
             <li>
@@ -158,11 +165,11 @@
                     <i class="fa fa-sign-out"></i> Logout
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a class="right-sidebar-toggle">
                     <i class="fa fa-tasks"></i>
                 </a>
-            </li>
+            </li> --}}
         </ul>
 
     </nav>

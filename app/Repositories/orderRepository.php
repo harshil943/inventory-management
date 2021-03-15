@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\OrderDetails;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\map_order_challan;
 
 use App\Repositories\Interfaces\OrderInterface;
 
@@ -16,50 +17,45 @@ class orderRepository implements OrderInterface
         $user_id = Auth::user()->id;
         if($user->hasRole('super-admin') || $user->hasRole('admin'))
         {   
-            $data = DB::table('order_details')
-                    ->select('id','user_id','product_id','quantity','order_status','payment_status')
-                    ->get();
-            foreach($data as $item)
+            $data = map_order_challan::select('id','order_date', 'order_id','challan_id','buyer_id','seller_id','consignee_id','order_status','payment_status','consignee_available')->get();
+            for($i = 0; $i < sizeof($data); $i++)
             {
-                $pi = json_decode($item->product_id,true);
-                $q = json_decode($item->quantity,true);
+                $pi = json_decode($data[$i]->order->product_id,true);
+                $q = json_decode($data[$i]->order->quantity,true);
                 $arr = array();
                 foreach($pi as $id)
                 {
                     $data2 = DB::table('product_details')
-                    ->select('product_name')
-                    ->where('id',$id)
-                    ->get();
-                    
+                            ->select('product_name')
+                            ->where('id',$id)
+                            ->get();
+
                     array_push($arr,$data2[0]->product_name);
                 }
-                $item->product_id = $arr;
-                $item->quantity = $q;
+                $data[$i]->order->product_id = $arr;
+                $data[$i]->order->quantity = $q;
             }
             return $data;    
         }
         else
         {
-            $data = DB::table('order_details')
-                    ->select('id','user_id','product_id','quantity','order_status','payment_status')        
-                    ->where('order_details.user_id',$user_id)
-                    ->get();
-            foreach($data as $item)
+            $data = map_order_challan::where('buyer_id',$user_id)->select('id','order_date','order_id','challan_id','buyer_id','seller_id','consignee_id','order_status','payment_status','consignee_available')->get();
+            for($i = 0; $i < sizeof($data); $i++)
             {
-                $pi = json_decode($item->product_id,true);
-                $q = json_decode($item->quantity,true);
+                $pi = json_decode($data[$i]->order->product_id,true);
+                $q = json_decode($data[$i]->order->quantity,true);
                 $arr = array();
                 foreach($pi as $id)
                 {
                     $data2 = DB::table('product_details')
-                    ->select('product_name')
-                    ->where('id',$id)
-                    ->get();
-                    
+                            ->select('product_name')
+                            ->where('id',$id)
+                            ->get();
+
                     array_push($arr,$data2[0]->product_name);
                 }
-                $item->product_id = $arr;
-                $item->quantity = $q;
+                $data[$i]->order->product_id = $arr;
+                $data[$i]->order->quantity = $q;
             }
             return $data;
         }

@@ -29,4 +29,25 @@ class map_order_challan extends Model
         'lr_number',
         'order_date',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo('App\Models\OrderDetails');
+    }
+    public function challan()
+    {
+        return $this->belongsTo('App\Models\challan');
+    }
+    public function buyer()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+    public function seller()
+    {
+        return $this->belongsTo('App\Models\brightContainersDetails');
+    }
+    public function consignee()
+    {
+        return $this->belongsTo('App\Models\consignee');
+    }
 }

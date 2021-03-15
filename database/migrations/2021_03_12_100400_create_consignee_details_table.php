@@ -14,7 +14,7 @@ class CreateConsigneeDetailsTable extends Migration
     public function up()
     {
         Schema::create('consignee_details', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id')->unique();
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('number');

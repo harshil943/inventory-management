@@ -14,7 +14,7 @@ class CreateChallanDetailsTable extends Migration
     public function up()
     {
         Schema::create('challan_details', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unique();
             $table->bigInteger('total_no_packages');
             $table->json('product_id');
             $table->json('other');
