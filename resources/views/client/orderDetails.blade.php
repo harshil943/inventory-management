@@ -4,14 +4,14 @@
     Order Details | Bright Containers
 @endsection
 
-@section('content')    
+@section('content')
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="ibox-content p-xl">
             <div class="row">
                 <div class="col-sm-12">
                     <h4 class="text-right">Invoice No. - {{$order->id}}</h4>
                 </div>
-                
+
                 <div class="col-sm-6">
                     <br>
                     <h5>From: </h5>
@@ -74,7 +74,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for($i = 0; $i < sizeof($order->product_id); $i++)    
+                        @for($i = 0; $i < sizeof($order->product_id); $i++)
                             <tr>
                                 <td>
                                     <strong>{{$order->product_id[$i]}}</strong>
@@ -89,10 +89,10 @@
                                     <i class="fa fa-inr">{{($order->price_per_piece[$i] * $bright->gst_percentage)/100}}</i>
                                 </td>
                                 <td>
-                                    <i class="fa fa-inr">{{($order->price_per_piece[$i] + ($order->price_per_piece[$i] * $bright->gst_percentage)/100) * $order->quantity[$i]}}</i> 
+                                    <i class="fa fa-inr">{{($order->price_per_piece[$i] + ($order->price_per_piece[$i] * $bright->gst_percentage)/100) * $order->quantity[$i]}}</i>
                                     @php
                                         $subtotal1 += ($order->price_per_piece[$i] + ($order->price_per_piece[$i] * $bright->gst_percentage)/100) * $order->quantity[$i];
-                                    @endphp 
+                                    @endphp
                                 </td>
                             </tr>
                         @endfor
@@ -104,7 +104,7 @@
                         <tr>
                             <td><strong>Sub Total :</strong></td>
                             <td>
-                                <i class="fa fa-inr">{{$subtotal1}}</i> 
+                                <i class="fa fa-inr">{{$subtotal1}}</i>
                             </td>
                         </tr>
                     </tbody>
@@ -120,17 +120,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @for($i = 0; $i < sizeof($order->name_of_extra_cost); $i++)    
+                            @for($i = 0; $i < sizeof($order->name_of_extra_cost); $i++)
                                 <tr>
                                     <td>
                                         <strong>{{$order->name_of_extra_cost[$i]}}</strong>
                                     </td>
                                     <td>
-                                        <i class="fa fa-inr">{{$order->extra_cost_price[$i]}}</i> 
+                                        <i class="fa fa-inr">{{$order->extra_cost_price[$i]}}</i>
                                         @php
                                             $subtotal2 += $order->extra_cost_price[$i];
                                         @endphp
-                                        
+
                                     </td>
                                 </tr>
                             @endfor
@@ -142,7 +142,7 @@
                         <tr>
                             <td><strong>Sub Total :</strong></td>
                             <td>
-                                <i class="fa fa-inr">{{$subtotal2}}</i> 
+                                <i class="fa fa-inr">{{$subtotal2}}</i>
                             </td>
                         </tr>
                     </tbody>
@@ -153,7 +153,7 @@
                     <tr>
                         <td><strong>Total :</strong></td>
                         <td>
-                            <i class="fa fa-inr">{{$subtotal1+ $subtotal2}}</i> 
+                            <i class="fa fa-inr">{{$subtotal1+ $subtotal2}}</i>
                         </td>
                     </tr>
                 </tbody>
@@ -164,7 +164,7 @@
                     @if ($order->payment_status != 'completed')
                         <form action="{{$order->payment_link}}" method="get">
                             <button type="submit" class="btn btn-primary">Make Payment</button>
-                        </form>    
+                        </form>
                     @endif
                 </div>
                 <div class="text-right col-sm-6">
@@ -179,3 +179,11 @@
 </div>
 
 @endsection
+
+@push('script')
+    <script>
+        $(function() {
+            $('.employee').addClass('active');
+        });
+    </script>
+@endpush
