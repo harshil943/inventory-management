@@ -21,7 +21,7 @@ class OrderSeeder extends Seeder
         $order1->buyer_order_number = 'PO/JUL/10';
         $order1->product_id = '[1,2,3]';
         $order1->hsn_code = '[32233233,7664646,323243131]';
-        $order1->quantity = '[1000,2500,3500]';
+        $order1->quantity = '[1234,5432,9876]';
         $order1->unit = '["UNT","UNT","UNT"]';
         $order1->price_per_piece = '[12.40,20.2,32.4]';
         $order1->name_of_extra_cost = '["Delivery Cost","Man Cost"]';
