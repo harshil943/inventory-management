@@ -5,6 +5,62 @@
 @endsection
 
 @section('breadcrumb')
+    @php
+        function getIndianCurrency(float $number)
+        {
+            $no = floor($number);
+            $decimal = round($number - $no, 2) * 100;
+            $decimal_part = $decimal;
+            $hundred = null;
+            $hundreds = null;
+            $digits_length = strlen($no);
+            $decimal_length = strlen($decimal);
+            $i = 0;
+            $str = array();
+            $str2 = array();
+            $words = array(0 => '', 1 => 'One', 2 => 'Two',
+                3 => 'Three', 4 => 'Four', 5 => 'Five', 6 => 'Six',
+                7 => 'Seven', 8 => 'Eight', 9 => 'Nine',
+                10 => 'Ten', 11 => 'Eleven', 12 => 'Twelve',
+                13 => 'Thirteen', 14 => 'Fourteen', 15 => 'Fifteen',
+                16 => 'Sixteen', 17 => 'Seventeen', 18 => 'Eighteen',
+                19 => 'Nineteen', 20 => 'Twenty', 30 => 'Thirty',
+                40 => 'Forty', 50 => 'Fifty', 60 => 'Sixty',
+                70 => 'Seventy', 80 => 'Eighty', 90 => 'Ninety');
+            $digits = array('', 'Hundred','Thousand','Lakh', 'Crore');
+
+            while( $i < $digits_length ) {
+                $divider = ($i == 2) ? 10 : 100;
+                $number = floor($no % $divider);
+                $no = floor($no / $divider);
+                $i += $divider == 10 ? 1 : 2;
+                if ($number) {
+                    $plural = (($counter = count($str)) && $number > 9) ? null : null;
+                    $hundred = ($counter == 1 && $str[0]) ? ' and ' : null;
+                    $str [] = ($number < 21) ? $words[$number].' '. $digits[$counter]. $plural.' '.$hundred:$words[floor($number / 10) * 10].' '.$words[$number % 10]. ' '.$digits[$counter].$plural.' '.$hundred;
+                } else $str[] = null;
+            }
+
+            $d = 0;
+            while( $d < $decimal_length ) {
+                $divider = ($d == 2) ? 10 : 100;
+                $decimal_number = floor($decimal % $divider);
+                $decimal = floor($decimal / $divider);
+                $d += $divider == 10 ? 1 : 2;
+                if ($decimal_number) {
+                    $plurals = (($counter = count($str2)) && $decimal_number > 9) ? 's' : null;
+                    $hundreds = ($counter == 1 && $str2[0]) ? ' and ' : null;
+                    @$str2 [] = ($decimal_number < 21) ? $words[$decimal_number].' '. $digits[$decimal_number]. $plural.' '.$hundred:$words[floor($decimal_number / 10) * 10].' '.$words[$decimal_number % 10]. ' '.$digits[$counter].$plural.' '.$hundred;
+                } else $str2[] = null;
+            }
+
+            $Rupees = implode('', array_reverse($str));
+            $paise = implode('', array_reverse($str2));
+            $paise = ($decimal_part > 0) ? ' And ' . $paise . ' Paise' : '';
+            return ($Rupees ? $Rupees . 'Indian Rupees ' : '') . $paise;
+        }
+    @endphp
+
   @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
     @section('breadcrumb-title')
       &nbsp; Invoice Details
@@ -21,7 +77,7 @@
       </li>
     @endsection
   @else
-    <h1>Orders page</h1>  
+    <h1>Orders page</h1>
   @endif
 @endsection
 
@@ -58,14 +114,6 @@
                 <address>
                     <strong style="font-size: 24px;">{{$order->buyer->name}}</strong>
                     <br>
-                    {{-- @php
-                        $add_arr = explode(",",$order->address);
-                    @endphp
-                    @foreach ($add_arr as $element)
-                        {{$element}},
-                        <br>
-                    @endforeach
-                    <br><br> --}}
                     {{$order->buyer->address}}
                     <br>
                     Contact No:  {{$order->buyer->mobile}}
@@ -84,8 +132,8 @@
             </div>
         </div>
         @php
-            $subtotal1 = 0;
-            $subtotal2 = 0;
+            $subtotal = 0;
+            $taxtotal = 0;
         @endphp
         <div class="table-responsive m-t">
             <table class="table table-bordered invoice-table">
@@ -126,10 +174,11 @@
                             </td>
                             <td>
                                 <i class="fa fa-inr">&nbsp;{{($order->order->price_per_piece[$i] + ($order->order->price_per_piece[$i] * $order->order->gst_percentage)/100) * $order->order->quantity[$i]}}</i>
-                                @php
-                                    $subtotal1 += ($order->order->price_per_piece[$i] + ($order->order->price_per_piece[$i] * $order->order->gst_percentage)/100) * $order->order->quantity[$i];
-                                @endphp
                             </td>
+                            @php
+                                $subtotal += $order->order->price_per_piece[$i] * $order->order->quantity[$i];
+                                $taxtotal += (($order->order->price_per_piece[$i] * $order->order->gst_percentage)/100) * $order->order->quantity[$i];
+                            @endphp
                         </tr>
                     @endfor
                     @if($order->order->name_of_extra_cost)
@@ -155,82 +204,69 @@
                                 </td>
                                 <td>
                                     <i class="fa fa-inr">&nbsp;{{$order->order->extra_cost_price[$i] + ($order->order->extra_cost_price[$i] * $order->order->gst_percentage)/100}}</i>
-                                    @php
-                                        $subtotal2 += $order->order->extra_cost_price[$i] + ($order->order->extra_cost_price[$i] * $order->order->gst_percentage)/100;
-                                    @endphp
                                 </td>
                             </tr>
+                            @php
+                                $subtotal += $order->order->extra_cost_price[$i];
+                                $taxtotal += ($order->order->extra_cost_price[$i] * $order->order->gst_percentage)/100;
+                            @endphp
                         @endfor
-                        {{-- <tr>
-                            <td colspan="6" class="text-right" ><strong>Sub Total :</strong></td>
-                            <td>
-                                <i class="fa fa-inr">&nbsp;{{$subtotal2}}</i>
-                            </td>
-                        </tr> --}}
                     @endif
                     </tbody>
                 </table>
             </div>
-            {{-- <table class="table invoice-total">
-                <tbody>
-                    <tr>
-                        <td><strong>Sub Total :</strong></td>
-                        <td>
-                            <i class="fa fa-inr">&nbsp;{{$subtotal1}}</i>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> --}}
-        <br>
-        {{-- @if($order->order->name_of_extra_cost)
-            <div class="table-responsive m-t">
-                <table class="table invoice-table">
-                    <thead>
-                        <tr>
-                            <th>Extra Cost List</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for($i = 0; $i < sizeof($order->order->name_of_extra_cost); $i++)
-                            <tr>
-                                <td>
-                                    <strong>{{$order->order->name_of_extra_cost[$i]}}</strong>
-                                </td>
-                                <td>
-                                    <i class="fa fa-inr">&nbsp;{{$order->order->extra_cost_price[$i]}}</i>
-                                    @php
-                                        $subtotal2 += $order->order->extra_cost_price[$i];
-                                    @endphp
-
-                                </td>
-                            </tr>
-                        @endfor
-                    </tbody>
-                </table>
-            </div>
-            <table class="table invoice-total">
-                <tbody>
-                    <tr>
-                        <td><strong>Sub Total :</strong></td>
-                        <td>
-                            <i class="fa fa-inr">&nbsp;{{$subtotal2}}</i>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        @endif --}}
-        <table class="table invoice-total">
+        @php
+            $subtotal = round($subtotal,2);
+            $taxtotal = round($taxtotal,2);
+        @endphp
+        <table class="table invoice-total ">
             <tbody>
                 <tr>
-                    <td><strong>Grand Total :</strong></td>
                     <td>
-                        <i class="fa fa-inr">&nbsp;{{$subtotal1+ $subtotal2}}</i>
+                        <strong>Sub Total :</strong>
+                    </td>
+                    <td style="width:60%;">
+                        <i class="fa fa-inr">&nbsp;{{$subtotal}}</i>
+                        ( <strong>{{getIndianCurrency($subtotal)}}</strong>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>IGST Tax :</strong>
+                    </td>
+                    <td>
+                        <i class="fa fa-inr">&nbsp;{{$taxtotal}}</i>
+                        ( <strong>{{getIndianCurrency($taxtotal)}}</strong>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Sales Round Off :</strong>
+                    </td>
+                    <td>
+                        <i class="fa fa-inr">&nbsp;{{round(round($subtotal + $taxtotal) - ($subtotal + $taxtotal),2)}}</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>Grand Total :</strong>
+                    </td>
+                    <td>
+                        <i class="fa fa-inr">&nbsp;{{round($subtotal + $taxtotal)}}</i>
+                        ( <strong>{{getIndianCurrency(round($subtotal + $taxtotal))}}</strong>)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <strong>E. & O.E</strong>
                     </td>
                 </tr>
             </tbody>
         </table>
+
         <br><br>
+
+
         <div class="row">
             <div class="col-sm-6">
                 @if ($order->payment_status != 'completed')
@@ -248,7 +284,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 @endsection
 
