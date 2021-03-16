@@ -15,7 +15,6 @@ class OrderDetails extends Model
     protected $fillable =[
         'id',
         'e_way_bill_number',
-        'due_date',
         'buyer_order_number',
         'product_id',
         'hsn_code',

@@ -47,7 +47,7 @@ Route::post('donepassword',[setPassController::class,'changepass'])->name('donep
 Route::middleware(['setpass'])->group(function () {  
     Route::get('/setpassword',[setPassController::class,'index'])->name('setpassword');
     Route::get('orders',[ordersController::class,'index'])->name('orders.index');
-    Route::post('orderDetails/{data}',[ordersController::class,'details']);
+    Route::post('orderDetails/{data}',[ordersController::class,'orderDetails']);
 
    
 
@@ -60,11 +60,8 @@ Route::middleware(['setpass'])->group(function () {
     // Export To PDF
     Route::get('/create-pdf/{id}', [ordersController::class, 'exportPDF']);
 
-    // Ajax Request for Orders
-    Route::get('orders/list', [ordersController::class, 'getOrders'])->name('orders.list');
-
-
 });
+
 Route::get('/country', function () {
     $country = Storage::get('public/country.json');
     return json_decode($country, true);

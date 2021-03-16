@@ -18,7 +18,6 @@ class OrderSeeder extends Seeder
         $order1 = new OrderDetails();
         $order1->id = '1';
         $order1->e_way_bill_number = '601214991724';
-        $order1->due_date = '2021-03-14';
         $order1->buyer_order_number = 'PO/JUL/10';
         $order1->product_id = '[1,2,3]';
         $order1->hsn_code = '[32233233,7664646,323243131]';
@@ -36,7 +35,6 @@ class OrderSeeder extends Seeder
         $order2 = new OrderDetails();
         $order2->id = '2';
         $order2->e_way_bill_number = '601214991725';
-        $order2->due_date = '2021-03-14';
         $order2->buyer_order_number = 'Verbal';
         $order2->product_id = '[1]';
         $order2->hsn_code = '[39566556]';
@@ -54,7 +52,6 @@ class OrderSeeder extends Seeder
         $order3 = new OrderDetails();
         $order3->id = '3';
         $order3->e_way_bill_number = '601214991726';
-        $order3->due_date = '2021-03-14';
         $order3->buyer_order_number = 'PO/JUL/11';
         $order3->product_id = '[1,2]';
         $order3->hsn_code = '[39985669,45544884]';

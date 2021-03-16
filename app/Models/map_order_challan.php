@@ -28,6 +28,7 @@ class map_order_challan extends Model
         'dispatch_document_number',
         'lr_number',
         'order_date',
+        'due_date',
     ];
 
     public function order()

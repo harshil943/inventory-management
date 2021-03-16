@@ -31,6 +31,7 @@ class MapOrderChallanSeeder extends Seeder
         $map1->dispatch_document_number = NULL;
         $map1->lr_number = '1987 dt. 2-Sep-2020';
         $map1->order_date = '2021-03-14';
+        $map1->due_date = '2021-03-14';
 
         //Map Order Details 1
         $map2 = new map_order_challan();
@@ -49,6 +50,7 @@ class MapOrderChallanSeeder extends Seeder
         $map2->dispatch_document_number = 'Balaji Transport Company';
         $map2->lr_number = NULL;
         $map2->order_date = '2021-03-14';
+        $map2->due_date = '2021-03-14';
 
         //Map Order Details 1
         $map3 = new map_order_challan();
@@ -67,6 +69,7 @@ class MapOrderChallanSeeder extends Seeder
         $map3->dispatch_document_number = NULL;
         $map3->lr_number = NULL;
         $map3->order_date = '2021-03-14';
+        $map3->due_date = '2021-03-14';
 
         $map1->save();
         $map2->save();

@@ -145,6 +145,8 @@
     <script>
         $(function() {
             $('.employee').addClass('active');
+            $('.employee ul').addClass('in');
+            $('.employee ul li:nth-child(2)').addClass('active');
         });
     </script>
 @endpush

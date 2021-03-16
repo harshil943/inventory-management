@@ -18,29 +18,13 @@ class ordersController extends Controller
     }
 
     public function index(){
-        
         $data = $this->orderRepository->all();
         return view('client.orders')->with('order',$data);
     }
 
-    public function getOrders(Request $request)
-    {
-        if ($request->ajax()) {
-            $data = $this->orderRepository->all();
-            return Datatables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-    }
-
-    public function details($id){
-        [$details,$bright_details] = $this->orderRepository->details($id);
-        return view('client.orderDetails')->with('bright',$bright_details)->with('order',$details);
+    public function orderDetails($id){
+        $data = $this->orderRepository->orderDetails($id);
+        return view('client.orderDetails')->with('order',$data);
     }
 
     public function exportPDF() {        
@@ -55,14 +39,7 @@ class ordersController extends Controller
         //     'date' => date('m/d/Y')
 
         // ];
-
-          
-        
         $pdf = PDF::loadView('client.exportPdf', $data);
-
-    
-
-        return $pdf->download('itsolutionstuff.pdf');
-        // return $pdf_doc->download('invoice.pdf');
+        return $pdf->download('invoice.pdf');
     }    
 }

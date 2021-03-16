@@ -30,12 +30,10 @@
             </li>
             <li class="employee">
                 <a href="" style="text-decoration:none"><i class="fa fa-users"></i> <span class="nav-label">Employee</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
+                <ul class="nav nav-second-level collapse">
                     <li><a href="{{route('employee.index')}}"" style="text-decoration:none;">Add Employee</a></li>
                     <li><a href="{{route('employee.create')}}" style="text-decoration:none;">Manage Employee</a></li>
                     <li><a href="{{route('designation.index')}}" style="text-decoration:none;">Designation</a></li>
-                    <li><a href="dashboard_4_1.html" style="text-decoration:none;">Dashboard v.4</a></li>
-                    <li><a href="dashboard_5.html" style="text-decoration:none;">Dashboard v.5 </a></li>
                 </ul>
             </li>
             <li class="orders">
@@ -50,7 +48,7 @@
 </nav>
 <div id="page-wrapper" class="gray-bg sidebar-content">
     <div class="row border-bottom">
-    <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+    <nav class="navbar navbar-static-top gray-bg" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
         <form role="search" class="navbar-form-custom" action="search_results.html">

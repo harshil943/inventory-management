@@ -30,6 +30,7 @@ class CreateMapOrderChallanTable extends Migration
             $table->string('dispatch_document_number')->nullable();
             $table->string('lr_number')->nullable();
             $table->date('order_date');
+            $table->date('due_date');
             $table->foreign('order_id')->references('id')->on('order_details');
             $table->foreign('challan_id')->references('id')->on('challan_details');
             $table->foreign('seller_id')->references('id')->on('bright_containers_details');

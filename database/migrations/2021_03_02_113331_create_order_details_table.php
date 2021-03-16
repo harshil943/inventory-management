@@ -16,7 +16,6 @@ class CreateOrderDetailsTable extends Migration
         Schema::create('order_details', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('e_way_bill_number')->nullable();
-            $table->date('due_date')->nullable();
             $table->string('buyer_order_number');
             $table->json('product_id');
             $table->json('hsn_code');
