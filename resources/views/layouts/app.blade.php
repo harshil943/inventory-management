@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    
+
     <title>@yield('title')</title>
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="{{asset('css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    
+
     <style type="text/css">
         .jqstooltip {
             position: absolute;
@@ -42,36 +42,36 @@
             text-align: left;
         }
     </style>
-    
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    
+
     {{-- CSS Styles --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
     @stack('css')
-    
+
 </head>
 
 <body >
     <div id="wrapper">
         @if(Auth::user())
             @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
-                @include('layouts.adminNav')      
+                @include('layouts.adminNav')
             @else
-                @include('layouts.nav')    
+                @include('layouts.nav')
             @endif
         @else
             @include('layouts.nav')
         @endif
         <div id="wrapper">
             @include('layouts.breadcrumb')
-            @yield('content')  
+            @yield('content')
         </div>
     </div>
-    
-    
+
+
     {{-- Java Script Section --}}
     <script src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
@@ -79,12 +79,12 @@
     {{-- <script src="{{asset('js/bootstrap.min.js')}}"></script> --}}
     <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="{{asset('js/plugins/slimscroll/jquery.slimscroll.min.js')}}"></script>
-    <script src="{{asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script> 
-    
+    <script src="{{asset('js/plugins/metisMenu/jquery.metisMenu.js')}}"></script>
+
     <!-- Custom and plugin javascript -->
     <script src="{{asset('js/inspinia.js')}}"></script>
     <script src="{{asset('js/plugins/pace/pace.min.js')}}"></script>
-    
+
     <!-- Flot -->
     {{-- <script src="{{asset('js/plugins/flot/jquery.flot.js')}}"></script> --}}
     {{-- <script src="{{asset('js/plugins/flot/jquery.flot.tooltip.min.js')}}"></script> --}}
@@ -93,7 +93,7 @@
     {{-- <script src="{{asset('js/plugins/flot/jquery.flot.pie.js')}}"></script> --}}
     {{-- <script src="{{asset('js/plugins/flot/jquery.flot.symbol.js')}}"></script> --}}
     {{-- <script src="{{asset('js/plugins/flot/curvedLines.js')}}"></script> --}}
-    
+
     <!-- Peity -->
     {{-- <script src="{{asset('js/plugins/peity/jquery.peity.min.js')}}"></script> --}}
     {{-- <script src="{{asset('js/demo/peity-demo.js')}}"></script> --}}
@@ -114,7 +114,7 @@
 
     <!-- ChartJS-->
     {{-- <script src="{{asset('js/plugins/chartJs/Chart.min.js')}}"></script>  --}}
-    
+
     @stack('script')
 
 </body>

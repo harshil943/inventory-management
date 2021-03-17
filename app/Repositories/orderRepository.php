@@ -16,7 +16,7 @@ class orderRepository implements OrderInterface
         $user = Auth::user();
         $user_id = Auth::user()->id;
         if($user->hasRole('super-admin') || $user->hasRole('admin'))
-        {   
+        {
             $data = map_order_challan::select('id','order_date', 'order_id','challan_id','buyer_id','seller_id','consignee_id','order_status','payment_status')->get();
         }
         else
@@ -46,7 +46,7 @@ class orderRepository implements OrderInterface
     public function orderDetails($id)
     {
         $data = map_order_challan::where('order_id',$id)->first();
-        
+
         $pi = json_decode($data->order->product_id,true);
         $hsn = json_decode($data->order->hsn_code,true);
         $q = json_decode($data->order->quantity,true);
