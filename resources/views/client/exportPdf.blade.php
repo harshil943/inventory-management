@@ -50,10 +50,10 @@
 </head>
 
 <body >
-
-
-
-    <h1>Orders page</h1>
+  @php
+      dd($order);
+  @endphp  
+  <h1>Orders page</h1>
 
     <div class="ibox-content">
       <div class="table-responsive">
@@ -146,22 +146,6 @@
       </div>
     </div>
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     {{-- Java Script Section --}}
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
@@ -185,6 +169,22 @@
                 } ],
                 "order": [[ 1, 'asc' ]],
                 pageLength: 10,
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
                 responsive: true,
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [

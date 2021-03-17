@@ -23,6 +23,10 @@ class CreateBrightContainersDetailsTable extends Migration
             $table->string('state_code');
             $table->string('contact_number');
             $table->string('alternate_contact_number')->nullable();
+            $table->string('bank_name')->nullable();
+            $table->string('acc_no')->nullable();
+            $table->string('branch_name')->nullable();
+            $table->string('IFSC_code')->nullable();
             $table->string('facebook_link')->nullable();
             $table->string('instagram_link')->nullable();
             $table->string('whatsapp_link')->nullable();
