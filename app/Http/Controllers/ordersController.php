@@ -24,25 +24,13 @@ class ordersController extends Controller
 
     public function orderDetails($id){
         $data = $this->orderRepository->orderDetails($id);
-        return view('client.orderDetails')->with('order',$data);
+        return view('client.orderDetails')->with('orders',$data);
     }
 
-    public function exportPDF($id) {        
+    public function exportPDF($id) {
         $data = $this->orderRepository->orderDetails($id);
-        // return view('client.exportPdf')->with('order',$data);
-        // dd($data);
-        view()->share('order', $data);
-        // $pdf_doc = PDF::loadView('client.exportPdf',$data);
-        // $data = [
-
-        //     'title' => 'Welcome to HDTuto.com',
-
-        //     'date' => date('m/d/Y')
-
-        // ];
-        // dd($data);
-        // $order = $data;
+        view()->share('orders', $data);
         $pdf = PDF::loadView('client.exportPdf', $data);
         return $pdf->download('invoice.pdf');
-    }    
+    }
 }

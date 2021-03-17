@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Invoice - {{$order->id}} | Bright Containers
+    Invoice - {{$orders->id}} | Bright Containers
 @endsection
 
 @php
@@ -78,18 +78,18 @@
     @endsection
   @else
     <h1>Orders page</h1>
-  @endif 
+  @endif
 @endsection
 
 @section('content')
-<div class="page-wrapper wrapper-content animated fadeInRight" style="height:595px;width:842px;">
+<div class="page-wrapper wrapper-content animated fadeInRight">
     <div class="ibox-content p-xl">
         <div class="row">
             <div class="col-sm-6 border-right">
                 <h6>Seller: </h6>
-                <strong style="font-size: 24px;">{{$order->seller->name}}</strong>
+                <strong style="font-size: 24px;">{{$orders->seller->name}}</strong>
                 <br>
-                <strong>{{$order->seller->head_office_address}}</strong>
+                <strong>{{$orders->seller->head_office_address}}</strong>
                 <div class="row">
                     <div class="col-sm-4">
                         State Code
@@ -99,18 +99,18 @@
                         PAN Number
                     </div>
                     <div class="col-sm-8">
-                        : <strong>{{$order->seller->state_code}}</strong>
+                        : <strong>{{$orders->seller->state_code}}</strong>
                         <br>
-                        : <strong>{{$order->seller->gst_number}}</strong>
+                        : <strong>{{$orders->seller->gst_number}}</strong>
                         <br>
-                        : <strong>{{$order->seller->pan_number}}</strong>
+                        : <strong>{{$orders->seller->pan_number}}</strong>
                     </div>
                 </div>
                 <hr>
                 <h6>Buyer: </h6>
-                <strong style="font-size: 24px;">{{$order->buyer->name}}</strong>
+                <strong style="font-size: 24px;">{{$orders->buyer->name}}</strong>
                 <br>
-                <strong>{{$order->buyer->address}}</strong>
+                <strong>{{$orders->buyer->address}}</strong>
                 <div class="row">
                     <div class="col-sm-4">
                         State Code
@@ -118,18 +118,18 @@
                         GST Number
                     </div>
                     <div class="col-sm-8">
-                        : <strong>{{$order->buyer->state_code}}</strong>
+                        : <strong>{{$orders->buyer->state_code}}</strong>
                         <br>
-                        : <strong>{{$order->buyer->gst_number}}</strong>
+                        : <strong>{{$orders->buyer->gst_number}}</strong>
                     </div>
                 </div>
-                
+
                 <hr>
                 <h6>Consignee: </h6>
-                @if ($order->consignee)
-                    <strong style="font-size: 24px;">{{$order->consignee->name}}</strong>
+                @if ($orders->consignee)
+                    <strong style="font-size: 24px;">{{$orders->consignee->name}}</strong>
                     <br>
-                    <strong>{{$order->consignee->address}}</strong>
+                    <strong>{{$orders->consignee->address}}</strong>
                     <div class="row">
                         <div class="col-sm-4">
                             State Code
@@ -137,9 +137,9 @@
                             GST Number
                         </div>
                         <div class="col-sm-8">
-                            : <strong>{{$order->consignee->state_code}}</strong>
+                            : <strong>{{$orders->consignee->state_code}}</strong>
                             <br>
-                            : <strong>{{$order->consignee->gst_number}}</strong>
+                            : <strong>{{$orders->consignee->gst_number}}</strong>
                         </div>
                     </div>
                 @else
@@ -147,93 +147,93 @@
                 @endif
             </div>
             <div class="col-sm-6 text-right">
-                <h4 class="text-right">Invoice No. - {{$order->id}}</h4>
+                <h4 class="text-right">Invoice No. - {{$orders->id}}</h4>
                 <div class="row text-left">
                     <div class="col-sm-6 border-right">
                         e-Way Bill No.
                         <br>
-                        @if ($order->order->e_way_bill_number)
-                            <strong>{{$order->order->e_way_bill_number}}</strong>
+                        @if ($orders->order->e_way_bill_number)
+                            <strong>{{$orders->order->e_way_bill_number}}</strong>
                         @else
                             <strong>Not Assigned Yet</strong>
                         @endif
                         <br><br>
                         Order Date
                         <br>
-                            <strong>{{$order->order_date}}</strong>
+                            <strong>{{$orders->order_date}}</strong>
                         <br><br>
                         Shipping Date
                         <br>
-                        @if ($order->shipping_date)
-                            <strong>{{$order->shipping_date}}</strong>
+                        @if ($orders->shipping_date)
+                            <strong>{{$orders->shipping_date}}</strong>
                         @else
                             <strong>Not Assigned Yet</strong>
-                        @endif    
+                        @endif
                         <br><br>
                         Buyer`s Order No.
                         <br>
-                        <strong>{{$order->order->buyer_order_number}}</strong>
+                        <strong>{{$orders->order->buyer_order_number}}</strong>
                         <br><br>
                         Despatch Through
                         <br>
-                        @if ($order->dispatch_method)
-                            <strong>{{$order->dispatch_method}}</strong>
+                        @if ($orders->dispatch_method)
+                            <strong>{{$orders->dispatch_method}}</strong>
                         @else
                             <strong>Not Assigned Yet</strong>
                         @endif
                         <br><br>
                         Order Status
                         <br>
-                        <strong>{{$order->order_status}}</strong>
+                        <strong>{{$orders->order_status}}</strong>
                     </div>
                     <div class="col-sm-6">
                         Package Slip No.
                         <br>
-                        @if ($order->challan)
-                            <strong>{{$order->challan->id}}</strong>
+                        @if ($orders->challan)
+                            <strong>{{$orders->challan->id}}</strong>
                         @else
                             <strong>Not Generated Yet</strong>
                         @endif
                         <br><br>
                         Due Date
                         <br>
-                        @if ($order->due_daye)
-                            <strong>{{$order->due_date}}</strong>
+                        @if ($orders->due_daye)
+                            <strong>{{$orders->due_date}}</strong>
                         @else
                             <strong>Not Assigned Yet</strong>
                         @endif
                         <br><br>
                         Despatch Document No.
                         <br>
-                        @if ($order->dispatch_document_number)
-                            <strong>{{$order->dispatch_document_number}}</strong>
+                        @if ($orders->dispatch_document_number)
+                            <strong>{{$orders->dispatch_document_number}}</strong>
                         @else
                             <strong>Not Assigned Yet</strong>
                         @endif
                         <br><br>
                         Bill of Landing/LR-RR No.
                         <br>
-                        @if ($order->lr_number)
-                            <strong>{{$order->lr_number}}</strong>
+                        @if ($orders->lr_number)
+                            <strong>{{$orders->lr_number}}</strong>
                         @else
                             <strong>Not Assigned Yet</strong>
                         @endif
                         <br><br>
                         Motor Vehicle No
                         <br>
-                        @if ($order->vehical_number)
-                            <strong>{{$order->vehical_number}}</strong>
+                        @if ($orders->vehical_number)
+                            <strong>{{$orders->vehical_number}}</strong>
                         @else
                             <strong>Not Assigned Yet</strong>
                         @endif
                         <br><br>
                         Payment Status
                         <br>
-                        <strong>{{$order->payment_status}}</strong>
+                        <strong>{{$orders->payment_status}}</strong>
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
         <br>
         @php
             $subtotal = 0;
@@ -247,7 +247,7 @@
                         <th class="text-center align-middle" rowspan="2">HSN/SAC</th>
                         <th class="text-center align-middle" rowspan="2" >Quantity</th>
                         <th class="text-center align-middle" rowspan="2">Unit Price</th>
-                        @if (!$order->order->igst_applicable)
+                        @if (!$orders->order->igst_applicable)
                             <th class="text-center align-middle" colspan="2">Integrated Tax (IGST)</th>
                         @else
                             <th class="text-center align-middle" colspan="2">Central Tax (CGST)</th>
@@ -256,7 +256,7 @@
                         <th class="text-center align-middle" rowspan="2">Total Price</th>
                     </tr>
                     <tr>
-                        @if (!$order->order->igst_applicable)
+                        @if (!$orders->order->igst_applicable)
                             <th class="text-center align-middle">Tax Rate</th>
                             <th class="text-center align-middle">Tax Amount</th>
                         @else
@@ -268,93 +268,93 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for($i = 0; $i < sizeof($order->order->product_id); $i++)
+                    @for($i = 0; $i < sizeof($orders->order->product_id); $i++)
                         <tr>
                             <td class="text-left">
-                                <strong>{{$order->order->product_id[$i]}}</strong>
+                                <strong>{{$orders->order->product_id[$i]}}</strong>
                             </td>
                             <td>
-                                {{$order->order->hsn_code[$i]}}
+                                {{$orders->order->hsn_code[$i]}}
                             </td>
                             <td>
-                                <strong>{{$order->order->quantity[$i]}} {{$order->order->unit[$i]}}</strong>
+                                <strong>{{$orders->order->quantity[$i]}} {{$orders->order->unit[$i]}}</strong>
                             </td>
                             <td>
-                                <i class="fa fa-inr">&nbsp;{{$order->order->price_per_piece[$i]}}</i>
+                                <i class="fa fa-inr">&nbsp;{{$orders->order->price_per_piece[$i]}}</i>
                             </td>
-                            @if (!$order->order->igst_applicable)
+                            @if (!$orders->order->igst_applicable)
                                 <td class="text-right">
-                                    {{$order->order->gst_percentage}}%</i>
+                                    {{$orders->order->gst_percentage}}%</i>
                                 </td>
                                 <td class="text-right">
-                                    <i class="fa fa-inr">&nbsp;{{($order->order->price_per_piece[$i] * $order->order->gst_percentage)/100}}</i>
+                                    <i class="fa fa-inr">&nbsp;{{($orders->order->price_per_piece[$i] * $orders->order->gst_percentage)/100}}</i>
                                 </td>
                             @else
                                 <td class="text-right">
-                                    {{$order->order->gst_percentage/2}}%</i>
+                                    {{$orders->order->gst_percentage/2}}%</i>
                                 </td>
                                 <td class="text-right">
-                                    <i class="fa fa-inr">&nbsp;{{($order->order->price_per_piece[$i] * ($order->order->gst_percentage/2))/100}}</i>
+                                    <i class="fa fa-inr">&nbsp;{{($orders->order->price_per_piece[$i] * ($orders->order->gst_percentage/2))/100}}</i>
                                 </td>
                                 <td class="text-right">
-                                    {{$order->order->gst_percentage/2}}%</i>
+                                    {{$orders->order->gst_percentage/2}}%</i>
                                 </td>
                                 <td class="text-right">
-                                    <i class="fa fa-inr">&nbsp;{{($order->order->price_per_piece[$i] * ($order->order->gst_percentage/2))/100}}</i>
+                                    <i class="fa fa-inr">&nbsp;{{($orders->order->price_per_piece[$i] * ($orders->order->gst_percentage/2))/100}}</i>
                                 </td>
                             @endif
                             <td>
-                                <i class="fa fa-inr">&nbsp;{{($order->order->price_per_piece[$i] + ($order->order->price_per_piece[$i] * $order->order->gst_percentage)/100) * $order->order->quantity[$i]}}</i>
+                                <i class="fa fa-inr">&nbsp;{{($orders->order->price_per_piece[$i] + ($orders->order->price_per_piece[$i] * $orders->order->gst_percentage)/100) * $orders->order->quantity[$i]}}</i>
                             </td>
                             @php
-                                $subtotal += $order->order->price_per_piece[$i] * $order->order->quantity[$i];
-                                $taxtotal += (($order->order->price_per_piece[$i] * $order->order->gst_percentage)/100) * $order->order->quantity[$i];
+                                $subtotal += $orders->order->price_per_piece[$i] * $orders->order->quantity[$i];
+                                $taxtotal += (($orders->order->price_per_piece[$i] * $orders->order->gst_percentage)/100) * $orders->order->quantity[$i];
                             @endphp
                         </tr>
                     @endfor
-                    @if($order->order->name_of_extra_cost)
-                        @for($i = 0; $i < sizeof($order->order->name_of_extra_cost); $i++)
+                    @if($orders->order->name_of_extra_cost)
+                        @for($i = 0; $i < sizeof($orders->order->name_of_extra_cost); $i++)
                             <tr>
                                 <td class="text-right">
-                                    <strong>{{$order->order->name_of_extra_cost[$i]}}</strong>
+                                    <strong>{{$orders->order->name_of_extra_cost[$i]}}</strong>
                                 </td>
                                 <td>
-                                    {{$order->order->extra_hsn_code[$i]}}
+                                    {{$orders->order->extra_hsn_code[$i]}}
                                 </td>
                                 <td>
                                     {{-- <strong>1 UNT</strong> --}}
                                 </td>
                                 <td>
-                                    <i class="fa fa-inr">&nbsp;{{$order->order->extra_cost_price[$i]}}</i>
+                                    <i class="fa fa-inr">&nbsp;{{$orders->order->extra_cost_price[$i]}}</i>
                                 </td>
-                                @if (!$order->order->igst_applicable)
+                                @if (!$orders->order->igst_applicable)
                                     <td class="text-right">
-                                        {{$order->order->gst_percentage}}%
+                                        {{$orders->order->gst_percentage}}%
                                     </td>
                                     <td class="text-right">
-                                        <i class="fa fa-inr">&nbsp;{{($order->order->extra_cost_price[$i] * $order->order->gst_percentage)/100}}</i>
+                                        <i class="fa fa-inr">&nbsp;{{($orders->order->extra_cost_price[$i] * $orders->order->gst_percentage)/100}}</i>
                                     </td>
                                 @else
                                     <td class="text-right">
-                                        {{$order->order->gst_percentage/2}}%
+                                        {{$orders->order->gst_percentage/2}}%
                                     </td>
                                     <td class="text-right">
-                                        <i class="fa fa-inr">&nbsp;{{($order->order->extra_cost_price[$i] * ($order->order->gst_percentage/2))/100}}</i>
+                                        <i class="fa fa-inr">&nbsp;{{($orders->order->extra_cost_price[$i] * ($orders->order->gst_percentage/2))/100}}</i>
                                     </td>
                                     <td class="text-right">
-                                        {{$order->order->gst_percentage/2}}%
+                                        {{$orders->order->gst_percentage/2}}%
                                     </td>
                                     <td class="text-right">
-                                        <i class="fa fa-inr">&nbsp;{{($order->order->extra_cost_price[$i] * ($order->order->gst_percentage/2))/100}}</i>
+                                        <i class="fa fa-inr">&nbsp;{{($orders->order->extra_cost_price[$i] * ($orders->order->gst_percentage/2))/100}}</i>
                                     </td>
                                 @endif
                                 <td>
-                                    <i class="fa fa-inr">&nbsp;{{$order->order->extra_cost_price[$i] + ($order->order->extra_cost_price[$i] * $order->order->gst_percentage)/100}}</i>
+                                    <i class="fa fa-inr">&nbsp;{{$orders->order->extra_cost_price[$i] + ($orders->order->extra_cost_price[$i] * $orders->order->gst_percentage)/100}}</i>
                                 </td>
                             </tr>
                             @php
-                                $subtotal += $order->order->extra_cost_price[$i];
-                                $taxtotal += ($order->order->extra_cost_price[$i] * $order->order->gst_percentage)/100;
+                                $subtotal += $orders->order->extra_cost_price[$i];
+                                $taxtotal += ($orders->order->extra_cost_price[$i] * $orders->order->gst_percentage)/100;
                             @endphp
                         @endfor
                     @endif
@@ -376,7 +376,7 @@
                         <strong>{{getIndianCurrency($subtotal)}}</strong>
                     </td>
                 </tr>
-                @if (!$order->order->igst_applicable)
+                @if (!$orders->order->igst_applicable)
                     <tr>
                         <td>
                             <strong>IGST Tax :</strong>
@@ -453,13 +453,13 @@
                         IFSC Code:
                     </div>
                     <div class="col-sm-8">
-                        : <strong>{{$order->seller->bank_name}}</strong>
+                        : <strong>{{$orders->seller->bank_name}}</strong>
                         <br>
-                        : <strong>{{$order->seller->branch_name}}</strong>
+                        : <strong>{{$orders->seller->branch_name}}</strong>
                         <br>
-                        : <strong>{{$order->seller->acc_no}}</strong>
+                        : <strong>{{$orders->seller->acc_no}}</strong>
                         <br>
-                        : <strong>{{$order->seller->IFSC_code}}</strong>
+                        : <strong>{{$orders->seller->IFSC_code}}</strong>
                     </div>
                 </div>
             </div>
@@ -471,14 +471,14 @@
                 <br><br><br><br>
                 <strong>
                     Stamp & Signature <br>
-                    To {{$order->buyer->name}},
+                    To {{$orders->buyer->name}},
                 </strong>
             </div>
             <div class="col-sm-6 text-right">
                 <br><br><br><br>
                 <strong>
                     Stamp & Signature <br>
-                    From {{$order->seller->name}},
+                    From {{$orders->seller->name}},
                 </strong>
             </div>
         </div>
@@ -486,14 +486,14 @@
         <br><br>
         <div class="row">
             <div class="col-sm-6 text-right">
-                @if ($order->payment_status != 'completed')
-                    <form action="{{$order->payment_link}}" method="get">
+                @if ($orders->payment_status != 'completed')
+                    <form action="{{$orders->payment_link}}" method="get">
                         <button type="submit" class="btn btn-primary">Make Payment</button>
                     </form>
                 @endif
             </div>
             <div class="col-sm-6">
-                <form action="{{URL::to('/create-pdf/'.$order->id)}}" method="get">
+                <form action="{{URL::to('/create-pdf/'.$orders->id)}}" method="get">
                     <button type="submit" class="btn btn-warning">
                         Download/Print Invoice
                     </button>
@@ -509,9 +509,9 @@
     @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
         <script>
             $(function() {
-            $('.orders').addClass('active');
-            $('.orders ul').addClass('in');
-            $('.orders ul li:nth-child(2)').addClass('active');
+                $('.orders').addClass('active');
+                $('.orders ul').addClass('in');
+                $('.orders ul li:nth-child(2)').addClass('active');
             });
         </script>
     @endif
