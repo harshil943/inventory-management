@@ -25,6 +25,10 @@ class BrightSeeder extends Seeder
         $bright->state_code = 'Gujarat - 24';
         $bright->contact_number = '1234567890';
         $bright->alternate_contact_number = NULL;
+        $bright->bank_name = 'UCO Bank';
+        $bright->acc_no = '01560510000779';
+        $bright->branch_name = 'Nadiad';
+        $bright->IFSC_code = 'UCBA0000156';
         $bright->facebook_link = 'https://github.com/harshil943/inventory-management';
         $bright->instagram_link = 'https://github.com/harshil943/inventory-management';
         $bright->whatsapp_link = 'https://github.com/harshil943/inventory-management';

@@ -27,9 +27,10 @@ class ordersController extends Controller
         return view('client.orderDetails')->with('order',$data);
     }
 
-    public function exportPDF() {        
-        $data = $this->orderRepository->all();
+    public function exportPDF($id) {        
+        $data = $this->orderRepository->orderDetails($id);
         // return view('client.exportPdf')->with('order',$data);
+        // dd($data);
         view()->share('order', $data);
         // $pdf_doc = PDF::loadView('client.exportPdf',$data);
         // $data = [
@@ -39,6 +40,8 @@ class ordersController extends Controller
         //     'date' => date('m/d/Y')
 
         // ];
+        // dd($data);
+        // $order = $data;
         $pdf = PDF::loadView('client.exportPdf', $data);
         return $pdf->download('invoice.pdf');
     }    

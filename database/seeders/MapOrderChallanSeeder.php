@@ -21,7 +21,6 @@ class MapOrderChallanSeeder extends Seeder
         $map1->challan_id = '1';
         $map1->buyer_id = '2';
         $map1->seller_id = '1';
-        $map1->consignee_available = '0';
         $map1->consignee_id = NULL;
         $map1->vehical_number = 'GJ 04 CP 1115';
         $map1->order_status = 'completed';
@@ -40,7 +39,6 @@ class MapOrderChallanSeeder extends Seeder
         $map2->challan_id = '2';
         $map2->buyer_id = '3';
         $map2->seller_id = '1';
-        $map2->consignee_available = '1';
         $map2->consignee_id = '1';
         $map2->vehical_number = 'MH 04 CP 1115';
         $map2->order_status = 'pending';
@@ -59,7 +57,6 @@ class MapOrderChallanSeeder extends Seeder
         $map3->challan_id = NULL;
         $map3->buyer_id = '2';
         $map3->seller_id = '1';
-        $map3->consignee_available = '1';
         $map3->consignee_id = '2';
         $map3->vehical_number = 'HR 04 CP 1115';
         $map3->order_status = 'shipped';

@@ -19,7 +19,6 @@ class CreateMapOrderChallanTable extends Migration
             $table->unsignedInteger('challan_id')->nullable();
             $table->unsignedInteger('buyer_id');
             $table->unsignedInteger('seller_id');
-            $table->boolean('consignee_available');
             $table->unsignedInteger('consignee_id')->nullable();
             $table->foreign('buyer_id')->references('id')->on('users');
             $table->string('vehical_number')->nullable();
@@ -30,7 +29,7 @@ class CreateMapOrderChallanTable extends Migration
             $table->string('dispatch_document_number')->nullable();
             $table->string('lr_number')->nullable();
             $table->date('order_date');
-            $table->date('due_date');
+            $table->date('due_date')->nullable();
             $table->foreign('order_id')->references('id')->on('order_details');
             $table->foreign('challan_id')->references('id')->on('challan_details');
             $table->foreign('seller_id')->references('id')->on('bright_containers_details');

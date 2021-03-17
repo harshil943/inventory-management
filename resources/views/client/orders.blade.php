@@ -86,7 +86,7 @@
               @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
                 {{$order[$i]->buyer->name}}
               @else
-                @if ($order[$i]->consignee_available == '1')
+                @if ($order[$i]->consignee)
                   {{$order[$i]->consignee->name}}
                 @else
                   {{$order[$i]->seller->name}}

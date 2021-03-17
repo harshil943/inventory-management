@@ -18,7 +18,6 @@ class map_order_challan extends Model
         'challan_id',
         'buyer_id',
         'seller_id',
-        'consignee_available',
         'consignee_id',
         'vehical_number',
         'order_status',
