@@ -14,6 +14,6 @@ class productDetailsController extends Controller
     public function productDetails($id)
     {
         $data = $this->productRepository->productById($id);
-        return view('client.productDetails')->with('product',$data);
+        return view('productDetails.productDetails')->with('product',$data);
     }
 }

@@ -18,11 +18,11 @@ class brochureController extends Controller
     public function brochure()
     {
         $categoryBrochure = $this->productRepository->productsCategoryAll();
-        return view('client.brochure')->with('brochure',$categoryBrochure);
+        return view('brochure.brochure')->with('brochure',$categoryBrochure);
     }
 
     public function brochureDetails($id)
     {
-        return view('client.brochureDetails')->with('id',$id);
+        return view('brochure.brochureDetails')->with('id',$id);
     }
 }

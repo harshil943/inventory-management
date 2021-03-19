@@ -17,6 +17,6 @@ class productCategoryController extends Controller
     public function productCategory($categoryId)
     {
         $categoryData = $this->productRepository->productsByCategory($categoryId);
-        return view('client.productCategory')->with('data',$categoryData);
+        return view('productCategory.productCategory')->with('data',$categoryData);
     }
 }

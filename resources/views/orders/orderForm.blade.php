@@ -17,16 +17,16 @@
             <h3>Add Order to <br>Bright Containers</h3>
                 <form class="m-t mt-3" role="form"  action="{{ route('orders.orderCreate') }}" method="POST">
                     @csrf
-                    <div class="row">
+                    <div class="row text-left">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="form-label" for="buyer_id">Buyer Id</label>
+                                        <label class="form-label" for="buyer_id">Buyer</label>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="form-control" id="buyer_id" name="buyer_id" required>
-                                            <option value=""></option>
+                                            <option></option>
                                         </select>
                                     </div>
                                 </div>
@@ -34,23 +34,11 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="form-label" for="seller_id">Seller Id</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <select class="form-control" id="seller_id" name="seller_id" required>
-                                            <option value=""></option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <label class="form-label" for="consignee_id">Consignee Id</label>
+                                        <label class="form-label" for="consignee_id">Consignee</label>
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="form-control" id="consignee_id" name="consignee_id">
-                                            <option value=""></option>
+                                            <option></option>
                                         </select>
                                     </div>
                                 </div>
@@ -105,6 +93,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label for="shipping_date">IGST Applicable</label>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="checkbox" name="igst" class="mr-3 p-2" id="igst">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -114,6 +112,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="form-control" id="order_status" name="order_status" required>
+                                            <option></option>
                                             <option value="pending">Pending</option>
                                             <option value="shipped">Shipped</option>
                                             <option value="completed">Completed</option>
@@ -129,6 +128,7 @@
                                     </div>
                                     <div class="col-sm-8">
                                         <select class="form-control" id="payment_status" name="payment_status" required>
+                                            <option></option>
                                             <option value="pending">Pending</option>
                                             <option value="completed">Completed</option>
                                             <option value="canceled">Canceled</option>
@@ -186,12 +186,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group mt-2">
-                                <div>
-                                    <input type="checkbox" name="igst" class="mr-3 p-2" id="igst">
-                                    <label for="igst">IGST Applicable</label>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <hr>
@@ -200,69 +194,6 @@
                             Add Products
                         </span>
                     <div class="add-product-area mt-5">
-                        {{-- <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="product_id">Product Id</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <select class="form-control product_id" id="product_id[]" name="product_id" required>
-                                                <option value=""></option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row mt-4">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="unit">Unit</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <select class="form-control unit" id="unit[]" name="unit" required>
-                                                <option value=""></option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row mt-4">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="hsn_code">HSN Code</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <select class="form-control hsn_code" id="hsn_code[]" name="hsn_code" required>
-                                                <option value=""></option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="quantity">Quantity</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="quantity" id="quantity[]"class="form-control" placeholder="Quantity" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="price">Price</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="price" id="price[]"class="form-control" placeholder="Price" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                        </div> --}}
                     </div>
                     <hr>
                     <div class="mb-5">
@@ -292,15 +223,11 @@
      <script>
          $(document).ready(function(){
              $("#buyer_id").select2({
-                 placeholder: "Select Buyer Id",
-                 allowClear: true
-             });
-             $("#seller_id").select2({
-                 placeholder: "Select Seller Id",
+                 placeholder: "Select Buyer",
                  allowClear: true
              });
              $("#consignee_id").select2({
-                 placeholder: "Select Consignee Id",
+                 placeholder: "Select Consignee",
                  allowClear: true
              });
              $("#order_status").select2({
@@ -311,22 +238,57 @@
                  placeholder: "Select Payment Status",
                  allowClear: true
              });
-             
-         });
+        });
+     </script>
+     <script>
+            const url = '/country';
+                window.onload = async function() {
+                const response = await fetch(url);
+                window.data = await response.json();
+                conData = data;
+                for (var i = 0; i < conData.length; i++) {
+                    var newOption = new Option(conData[i]['Iso']+" - "+conData[i]['name'],conData[i]['Iso'], false, false);
+                    // var newOption = new Option(conData[i]["State Code"]+" - "+conData[i]["State Name"],conData[i]["State Code"], false, false);
+                    $('#buyer_id').append(newOption);
+                }
+                $('#buyer_id').trigger('change');
+            }
+            // const url = '/hsn';
+            //     window.onload = async function() {
+            //     const response = await fetch(url);
+            //     window.data = await response.json();
+            //     conData = data;
+            //     for (var i = 0; i < conData.length; i++) {
+            //         var newOption = new Option(conData[i]["HSC Code"]+" - "+conData[i]["HSC Description"],conData[i]["HSC Code"], false, false);
+            //         $('#hsn').append(newOption);
+            //     }
+            //     $('#hsn').trigger('change');
+            // }
+            // const url = '/unit';
+            //     window.onload = async function() {
+            //     const response = await fetch(url);
+            //     window.data = await response.json();
+            //     conData = data;
+            //     for (var i = 0; i < conData.length; i++) {
+            //         var newOption = new Option(conData[i]["Unit Code"]+" - "+conData[i]["Unit Description"],conData[i]["Unit Code"], false, false);
+            //         $('#buyer_id').append(newOption);
+            //     }
+            //     $('#buyer_id').trigger('change');
+            // }
      </script>
     <script>
         
             $('#add_product').click(function(){
-                $('.add-product-area').append(`<hr><div class="row">
+                $('.add-product-area').append(`<hr><div class="row text-left">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="form-label" for="product_id">Product Id</label>
+                                            <label class="form-label" for="product_id">Product Name</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <select class="form-control product_id" id="product_id[]" name="product_id" required>
-                                                <option value=""></option>
+                                            <select class="form-control product_id" id="product_id" name="product_id" required>
+                                                <option></option>
                                             </select>
                                         </div>
                                     </div>
@@ -337,8 +299,8 @@
                                             <label class="form-label" for="unit">Unit</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <select class="form-control unit" id="unit[]" name="unit" required>
-                                                <option value=""></option>
+                                            <select class="form-control unit" id="unit" name="unit" required>
+                                                <option></option>
                                             </select>
                                         </div>
                                     </div>
@@ -349,8 +311,8 @@
                                             <label class="form-label" for="hsn_code">HSN Code</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <select class="form-control hsn_code" id="hsn_code[]" name="hsn_code" required>
-                                                <option value=""></option>
+                                            <select class="form-control hsn_code" id="hsn" name="hsn" required>
+                                                <option></option>
                                             </select>
                                         </div>
                                     </div>
@@ -364,7 +326,7 @@
                                             <label class="form-label" for="quantity">Quantity</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <input type="text" name="quantity" id="quantity[]"class="form-control" placeholder="Quantity" required>
+                                            <input type="text" name="quantity" id="quantity" class="form-control" placeholder="Quantity" required>
                                         </div>
                                     </div>
                                 </div>
@@ -374,14 +336,14 @@
                                             <label class="form-label" for="price">Price</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <input type="text" name="price" id="price[]"class="form-control" placeholder="Price" required>
+                                            <input type="text" name="price" id="price"class="form-control" placeholder="Price" required>
                                         </div>
                                     </div>
                                     </div>
                                     <a href="" class="btn btn-danger remove_product fa fa-minus"> Remove</a>
                         </div>`)
             $(".product_id").select2({
-                placeholder: "Select Product Id",
+                placeholder: "Select Product",
                 allowClear: true
              });
              $(".unit").select2({
@@ -394,39 +356,41 @@
              });
             });
             $('#add-extras').click(function(){
-                $('.add-extra-area').append(`<hr><div class="row">
-                            <div class="col-sm-6">
+                $('.add-extra-area').append(`<div class="row text-left">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <label class="form-label" for="name_of_extra_cost">Name Of Extra Cost</label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="name_of_extra_cost" id="name_of_extra_cost[]" placeholder="Name Of Extra Cost">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-5">
                                             <label class="form-label" for="extra_hsn_code">Extra HSN Code</label>
                                         </div>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-7">
                                             <select class="form-control extra_hsn_code" id="extra_hsn_code[]" name="extra_hsn_code" >
-                                                <option value=""></option>
+                                                <option></option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-sm-4">
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-5">
                                             <label class="form-label" for="extra_cost">Extra Cost</label>
                                         </div>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-7">
                                             <input type="text" name="extra_cost" id="extra_cost[]"class="form-control" placeholder="Extra Cost">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="name_of_extra_cost">Name Of Extra Cost</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" name="name_of_extra_cost" id="name_of_extra_cost[]" placeholder="Name Of Extra Cost">
                                         </div>
                                     </div>
                                 </div>
@@ -440,8 +404,21 @@
             });
             $('.remove_product').click(function(){
                 $(this).parent('div').fadeOut();
-            })
-        
+            });
+        </script>
+        <script>
+            const url = '/country';
+                    window.onload = async function() {
+                    const response = await fetch(url);
+                    window.data = await response.json();
+                    conData = data;
+                    for (var i = 0; i < conData.length; i++) {
+                        var newOption = new Option(conData[i]['Iso']+" - "+conData[i]['name'],conData[i]['Iso'], false, false);
+                        // var newOption = new Option(conData[i]["State Code"]+" - "+conData[i]["State Name"],conData[i]["State Code"], false, false);
+                        $('#hsn').append(newOption);
+                    }
+                    $('#hsn').trigger('change');
+                }
     </script>
 @endpush
 
