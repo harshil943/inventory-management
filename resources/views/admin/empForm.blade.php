@@ -79,7 +79,7 @@
                         </div>
                         <select class="form-control" id="designation" name="designation" @if (isset($employeeDetails->id)) value="{{$employeeDetails->designation}}" @endif required>
                             @foreach ($designation as $item)
-                                <option value="{{$item->designation_name}}">{{$item->designation_name}}</option>
+                                <option value="{{$item->id}}">{{$item->designation_name}}</option>
                             @endforeach
                         </select>
                     </div>
