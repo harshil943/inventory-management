@@ -1,13 +1,23 @@
-<!doctype html>
 <html>
-<head>
-    {{-- <link href="/css/bootstrap.min.css" rel="stylesheet"> --}}
-    {{-- <link href="/font-awesome/css/font-awesome.css" rel="stylesheet"> --}}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    {{-- <link href="/css/animate.css" rel="stylesheet"> --}}
-    {{-- <link href="/css/style.css" rel="stylesheet"> --}}
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        {{-- <link rel="stylesheet" href="https
+        
+        ://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> --}}
 
-    {{-- <style type="text/css">
+        <!-- Optional theme -->
+        {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> --}}
+
+        <!-- Latest compiled and minified JavaScript -->
+        {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> --}}
+        {{-- http://127.0.0.1:8000 --}}
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="/css/animate.css" rel="stylesheet">
+        <link href="/css/style.css" rel="stylesheet">
+        
+        {{-- <style type="text/css">
         .jqstooltip {
             position: absolute;
             left: 0px;
@@ -31,19 +41,27 @@
             font: 10px arial, san serif;
             text-align: left;
         }
-    </style> --}}
-    <!-- Scripts -->
+        </style> --}}
 
-    {{-- CSS Styles --}}
-
-    <!-- Fonts -->
-    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> --}}
-    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> --}}
-
-    <!-- Styles -->
-    {{-- <link href="/css/app.css" rel="stylesheet"> --}}
-
-</head>
+        {{-- CSS Styles --}}
+        
+        <!-- Fonts -->
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        
+        <!-- Styles -->
+        <link href="/css/app.css" rel="stylesheet">
+        
+        {{-- Java Script Section --}}
+        <script src="/js/jquery-3.1.1.min.js"></script> 
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+        <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        
+        <!-- Custom and plugin javascript -->
+        <script src="/js/inspinia.js"></script>
+        <script src="/js/plugins/pace/pace.min.js"></script>
+    </head>
 
 @php
     function getIndianCurrency(float $number)
@@ -55,7 +73,7 @@
         $hundreds = null;
         $digits_length = strlen($no);
         $decimal_length = strlen($decimal);
-        $i = 0;
+        $i = 0; 
         $str = array();
         $str2 = array();
         $words = array(0 => '', 1 => 'One', 2 => 'Two',
@@ -100,8 +118,8 @@
     }
 @endphp
 <body>
-<div class="page-wrapper wrapper-content animated fadeInRight">
-    <div class="ibox-content p-xl">
+{{-- <div class="page-wrapper wrapper-content"> --}}
+    {{-- <div class="ibox-content p-xl"> --}}
         <div class="row">
             <div class="col-sm-6 border-right">
                 <h6>Seller: </h6>
@@ -116,13 +134,13 @@
                         <br>
                         PAN Number
                     </div>
-                    {{-- <div class="col-sm-8">
+                    <div class="col-sm-8">
                         : <strong>{{$orders->seller->state_code}}</strong>
                         <br>
                         : <strong>{{$orders->seller->gst_number}}</strong>
                         <br>
                         : <strong>{{$orders->seller->pan_number}}</strong>
-                    </div> --}}
+                    </div>
                 </div>
                 <hr>
                 <h6>Buyer: </h6>
@@ -135,11 +153,11 @@
                         <br>
                         GST Number
                     </div>
-                    {{-- <div class="col-sm-8">
+                    <div class="col-sm-8">
                         : <strong>{{$orders->buyer->state_code}}</strong>
                         <br>
                         : <strong>{{$orders->buyer->gst_number}}</strong>
-                    </div> --}}
+                    </div>
                 </div>
 
                 <hr>
@@ -154,17 +172,17 @@
                             <br>
                             GST Number
                         </div>
-                        {{-- <div class="col-sm-8">
+                        <div class="col-sm-8">
                             : <strong>{{$orders->consignee->state_code}}</strong>
                             <br>
                             : <strong>{{$orders->consignee->gst_number}}</strong>
-                        </div> --}}
+                        </div>
                     </div>
                 @else
                     <strong>There Are No Consignee In This Order.</strong>
                 @endif
             </div>
-            {{-- <div class="col-sm-6 text-right">
+            <div class="col-sm-6 text-right">
                 <h4 class="text-right">Invoice No. - {{$orders->id}}</h4>
                 <div class="row text-left">
                     <div class="col-sm-6 border-right">
@@ -250,7 +268,7 @@
                         <strong>{{$orders->payment_status}}</strong>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
         <br>
         @php
@@ -389,7 +407,7 @@
                     <td>
                         <strong>Sub Total :</strong>
                     </td>
-                    <td style="width:80%;">
+                    <td style="width:65%;">
                         <i class="fa fa-inr">&nbsp;{{$subtotal}}</i><br>
                         <strong>{{getIndianCurrency($subtotal)}}</strong>
                     </td>
@@ -500,18 +518,8 @@
                 </strong>
             </div>
         </div>
-    </div>
-</div>
+    {{-- </div> --}}
+{{-- </div> --}}
 
-    {{-- Java Script Section --}}
-    <script src="/js/jquery-3.1.1.min.js"></script>
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <!-- Custom and plugin javascript -->
-    <script src="/js/inspinia.js"></script>
-    <script src="/js/plugins/pace/pace.min.js"></script>
 </body>
 </html>
