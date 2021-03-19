@@ -48,6 +48,8 @@ Route::middleware(['setpass'])->group(function () {
     Route::get('/setpassword',[setPassController::class,'index'])->name('setpassword');
     Route::get('orders',[ordersController::class,'index'])->name('orders.index');
     Route::post('orderDetails/{data}',[ordersController::class,'orderDetails']);
+    Route::get('orderForm',[ordersController::class,'orderForm'])->name('orders.orderForm');
+    Route::post('orderCreate',[ordersController::class,'orderCreate'])->name('orders.orderCreate');
 
    
 

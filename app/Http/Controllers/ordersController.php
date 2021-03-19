@@ -41,4 +41,15 @@ class ordersController extends Controller
         // $contents = $view->render();
         // return PDF::loadHTML($contents)->setWarnings(false)->stream('invoice.pdf');
     }
+
+    public function orderForm()
+    {
+        
+        return view('admin.orderForm');
+    }
+
+    public function orderCreate(Request $request)
+    {
+        dd($request);
+    }
 }
