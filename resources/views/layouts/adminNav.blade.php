@@ -39,7 +39,7 @@
             <li class="orders">
                 <a href="" style="text-decoration:none"><i class="fa fa-users"></i> <span class="nav-label">Orders</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li><a href="{{route('orders.index')}}" style="text-decoration:none;">Add Order</a></li>
+                    <li><a href="{{route('orders.orderForm')}}" style="text-decoration:none;">Add Order</a></li>
                     <li><a href="{{route('orders.index')}}" style="text-decoration:none;">Manage Order</a></li>
                 </ul>
             </li>
