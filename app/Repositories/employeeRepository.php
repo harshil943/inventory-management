@@ -36,7 +36,7 @@ class employeeRepository implements employeeInterface
         $emp->bank_account_number = $request->bank_account_number;
         $emp->bank_IFSC_code = $request->bank_IFSC_code;
         $emp->salary = $request->salary;
-        $emp->designation = $request->designation;
+        $emp->designation_id = $request->designation;
 
         $emp->save();
         return true;
