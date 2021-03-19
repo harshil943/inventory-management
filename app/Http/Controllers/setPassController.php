@@ -15,15 +15,11 @@ class setPassController extends Controller
     }
     public function index()
     {
-        return view('admin.setpassword');
+        return view('employee.setpassword');
     }
 
     public function changepass(Request $request)
     {
-        // auth()->user()->password = Hash::make($request->password);
-        // auth()->user()->password = $request->password;
-        // auth()->user()->password_change = '0';
-        // dd(auth()->user()->password_change);
         $this->userRepository->changepass($request);
         return redirect()->route('dashboard');
     }

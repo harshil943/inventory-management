@@ -25,7 +25,7 @@ class employeeController extends Controller
     public function index()
     {
         $designation = $this->designationRepository->all();
-        return view('admin.empForm')->with('designation',$designation);
+        return view('employee.empForm')->with('designation',$designation);
     }
 
     /**
@@ -37,7 +37,7 @@ class employeeController extends Controller
     {
         $employees = $this->employeeRepository->all();
         $admins = $this->employeeRepository->findAdmins();
-        return view('admin.empDetails')->with('employees',$employees)->with('admins',$admins);
+        return view('employee.empDetails')->with('employees',$employees)->with('admins',$admins);
     }
 
     /**
@@ -55,17 +55,6 @@ class employeeController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\EmployeeDetails  $employeeDetails
-     * @return \Illuminate\Http\Response
-     */
-    public function show(EmployeeDetails $employeeDetails)
-    {
-
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\EmployeeDetails  $employeeDetails
@@ -75,9 +64,9 @@ class employeeController extends Controller
     {
         $designation = $this->designationRepository->all();
         $employeeDetails = $this->employeeRepository->empById($id);
-        return view('admin.empForm',compact(['employeeDetails','designation']));
+        return view('employee.empForm',compact(['employeeDetails','designation']));
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -90,7 +79,7 @@ class employeeController extends Controller
         $this->employeeRepository->updateEmp($id,$request);
         return redirect()->route('employee.create');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -100,20 +89,31 @@ class employeeController extends Controller
     public function destroy($email_id)
     {
         $this->employeeRepository->delete($email_id);
-
+        
         return back();
     }
-
+    
     public function makeAdmin($id,Request $request)
     {
         
         $this->employeeRepository->makeAdmin($id,$request);
         return redirect()->route('employee.create');
     }
-
+    
     public function removeAdmin($email)
     {
         $this->employeeRepository->removeAdmin($email);
         return redirect()->route('employee.create');
     }
+
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  \App\Models\EmployeeDetails  $employeeDetails
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function show(EmployeeDetails $employeeDetails)
+    // {
+    
+    // }
 }

@@ -34,7 +34,7 @@ class HomeController extends Controller
         {
             if(Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
             {
-                return view('admin.dashboard');
+                return view('dashboard.dashboard');
             }
             else
             {

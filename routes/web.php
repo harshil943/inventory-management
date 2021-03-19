@@ -25,49 +25,52 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () { return view('home');});
 
-route::get('/login',function(){ return view('login');});
+Route::get('/login',function(){ return view('login');});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('brochureDetails/{id}',[brochureController::class,'brochureDetails']);
+Route::get('brochure',[brochureController::class,'brochure']);
+Route::get('productCategory/{categoryData}',[productCategoryController::class,'productCategory']);
+Route::get('productDetails/{id}',[productDetailsController::class,'productDetails']);
 
-route::get('logout',[logoutController::class,'out']);
-
-
-Route::group(['middleware' => ['role:super-admin|admin']], function () {
-    Route::get('dashboard',[dashboardController::class,'index'])->name('dashboard');
-    Route::resource('employee',employeeController::class);
-    Route::resource('designation',designationController::class);
-    Route::post('makeAdmin/{id}',[employeeController::class,'makeAdmin']);
-    Route::get('removeadmin/{id}',[employeeController::class,'removeAdmin']);
-
-});
+Route::get('logout',[logoutController::class,'out']);
 
 Route::post('donepassword',[setPassController::class,'changepass'])->name('donepassword');
+
 Route::middleware(['setpass'])->group(function () {  
+    Route::group(['middleware' => ['role:super-admin|admin']], function () {
+        Route::get('dashboard',[dashboardController::class,'index'])->name('dashboard');
+        Route::resource('employee',employeeController::class);
+        Route::resource('designation',designationController::class);
+        Route::post('makeAdmin/{id}',[employeeController::class,'makeAdmin']);
+        Route::get('removeadmin/{id}',[employeeController::class,'removeAdmin']);
+    });
     Route::get('/setpassword',[setPassController::class,'index'])->name('setpassword');
     Route::get('orders',[ordersController::class,'index'])->name('orders.index');
     Route::post('orderDetails/{data}',[ordersController::class,'orderDetails']);
     Route::get('orderForm',[ordersController::class,'orderForm'])->name('orders.orderForm');
     Route::post('orderCreate',[ordersController::class,'orderCreate'])->name('orders.orderCreate');
-
-   
-
-    route::get('brochure',[brochureController::class,'brochure']);
-    route::get('brochureDetails/{id}',[brochureController::class,'brochureDetails']);
-
-    route::get('productCategory/{categoryData}',[productCategoryController::class,'productCategory']);
-    route::get('productDetails/{id}',[productDetailsController::class,'productDetails']);
-
-    // Export To PDF
     Route::get('/create-pdf/{id}', [ordersController::class, 'exportPDF']);
-
 });
 
 Route::get('/country', function () {
     $country = Storage::get('public/country.json');
     return json_decode($country, true);
-    });
+});
 
+Route::get('/hsn', function () {
+    $hsn = Storage::get('public/hsn.json');
+    return json_decode($hsn, true);
+});
 
+Route::get('/state', function () {
+    $state = Storage::get('public/state.json');
+    return json_decode($state, true);
+});
 
+Route::get('/unit', function () {
+    $unit = Storage::get('public/unit.json');
+    return json_decode($unit, true);
+});

@@ -19,25 +19,25 @@ class ordersController extends Controller
 
     public function index(){
         $data = $this->orderRepository->all();
-        return view('client.orders')->with('order',$data);
+        return view('orders.orders')->with('order',$data);
     }
 
     public function orderDetails($id){
         $data = $this->orderRepository->orderDetails($id);
-        return view('client.orderDetails')->with('orders',$data);
+        return view('orders.orderDetails')->with('orders',$data);
     }
 
     public function exportPDF($id) {
         $data = $this->orderRepository->orderDetails($id);
-        return view('client.exportPdf')->with('orders', $data);
+        return view('orders.exportPdf')->with('orders', $data);
         
         // view()->share('orders', $data);
-        // return PDF::loadView('client.exportPdf')->setWarnings(false)->stream('invoice.pdf');
+        // return PDF::loadView('orders.exportPdf')->setWarnings(false)->stream('invoice.pdf');
         
-        // $new = view('client.exportPdf')->with('orders', $data);
+        // $new = view('orders.exportPdf')->with('orders', $data);
         // return PDF::loadHTML($new)->setWarnings(false)->stream('invoice.pdf');
 
-        // $view = view('client.exportPdf')->with('orders', $data);
+        // $view = view('orders.exportPdf')->with('orders', $data);
         // $contents = $view->render();
         // return PDF::loadHTML($contents)->setWarnings(false)->stream('invoice.pdf');
     }
@@ -45,7 +45,7 @@ class ordersController extends Controller
     public function orderForm()
     {
         $data = $this->orderRepository->orderFormDetails();
-        return view('admin.orderForm');
+        return view('orders.orderForm');
     }
 
     public function orderCreate(Request $request)
