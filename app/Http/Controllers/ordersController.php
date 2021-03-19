@@ -29,8 +29,16 @@ class ordersController extends Controller
 
     public function exportPDF($id) {
         $data = $this->orderRepository->orderDetails($id);
-        view()->share('orders', $data);
-        $pdf = PDF::loadView('client.exportPdf', $data);
-        return $pdf->download('invoice.pdf');
+        return view('client.exportPdf')->with('orders', $data);
+        
+        // view()->share('orders', $data);
+        // return PDF::loadView('client.exportPdf')->setWarnings(false)->stream('invoice.pdf');
+        
+        // $new = view('client.exportPdf')->with('orders', $data);
+        // return PDF::loadHTML($new)->setWarnings(false)->stream('invoice.pdf');
+
+        // $view = view('client.exportPdf')->with('orders', $data);
+        // $contents = $view->render();
+        // return PDF::loadHTML($contents)->setWarnings(false)->stream('invoice.pdf');
     }
 }
