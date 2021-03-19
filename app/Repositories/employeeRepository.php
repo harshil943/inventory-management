@@ -88,6 +88,7 @@ class employeeRepository implements employeeInterface
         $user->password = Hash::make($request->password);
         $user->address = $emp->residence_address;
         $user->password_change = '1';
+        $user->is_company = '0';
         $user->save();
         $newadmin = User::where('email',$emp->email_id)->first();
         $newadmin->assignRole('admin');

@@ -44,7 +44,7 @@ class ordersController extends Controller
 
     public function orderForm()
     {
-        
+        $data = $this->orderRepository->orderFormDetails();
         return view('admin.orderForm');
     }
 

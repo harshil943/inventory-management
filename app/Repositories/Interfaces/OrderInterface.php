@@ -8,4 +8,6 @@ interface OrderInterface
 {
     public function all();
 
+    public function orderFormDetails();
+
 }
