@@ -83,7 +83,7 @@
   <h1>₹ Request Quotation</h1>
 </div>
 <div class="container mt-5">
-  <form class="m-t mt-3" role="form"  action="{{ route('orders.orderCreate') }}" method="POST">
+  <form class="m-t mt-3" role="form"  action="{{ route('quotation') }}" method="POST">
     @csrf
     <div class="row text-left">
         <div class="col-sm-6">
@@ -125,7 +125,7 @@
                         <label class="form-label fa fa-product-hunt" for="product size">  Product Size</label>
                     </div>
                     <div class="col-sm-8">
-                        <select class="form-control" id="order_status" name="order_status" required>
+                        <select class="form-control" id="size" name="size" required>
                             <option></option>
                             @foreach ($table_header as $item)
                             <option value="{{$item}}">{{$item}}</option>
@@ -163,7 +163,7 @@
     
      <script>
          $(document).ready(function(){
-             $("#order_status").select2({
+             $("#size").select2({
                  placeholder: "Select Size",
                  allowClear: true
              });
