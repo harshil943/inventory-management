@@ -27,12 +27,12 @@
                     Product Category
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {{-- @foreach ($category as $item)
+                    @foreach ($category as $item)
                       <a class="dropdown-item" href="{{url('productCategory',['categoryData'=>$item])}}">{{$item['category_name']}}</a>
-                    @endforeach --}}
-                    <a class="dropdown-item" href="#">Another action</a>
+                    @endforeach
+                    {{-- <a class="dropdown-item" href="#">Another action</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Something else here</a> --}}
                   </div>
                 </li>
                 <li class="nav-item">
@@ -69,22 +69,15 @@
                 @endif
                 @else
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle btn text-light px-3 font-weight-bold" style="background-color: #007c89 " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a href="{{ url('/orders') }}" class="dropdown-item">Oreder Details</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                        <a class="dropdown-item" href="{{ route('logout') }}">
+                            {{ __('Log out') }}
                         </a>
-
-                        <form id="logout-form" action="{{ route('log out') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                        {{-- <li> --}}
-                        {{-- </li> --}}
                     </div>
                 </li>
                 @endguest

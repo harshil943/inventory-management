@@ -1,91 +1,173 @@
 @extends('layouts.app')
 
+@section('title')
+    Product Details | Bright Containers
+@endsection
+
+@push('css')
+    {{-- Select 2 CSS --}}
+    <link href="{{ asset('css/plugins/select2/select2.min.css') }}" rel="stylesheet">
+@endpush
+
 @section('content')
-
 <div class="ibox-content">
-
     <div class="row">
         <div class="col-md-5">
-
-
-            <div id="productCarosuel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{asset('img/a1.jpg')}}" alt="First slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="{{asset('img/a2.jpg')}}" alt="Second slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="{{asset('img/a3.jpg')}}" alt="Third slide">
-                  </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-
+          <img src="{{asset('img/'.$product->product_image_name)}}" alt="Product Image">
         </div>
         <div class="col-md-7">
-
-            <h2 class="font-bold m-b-xs">
-                 
+            <h2 class="font-bold m-b-xs" style="color:#007c89">       
                 {{$product->product_name}}
             </h2>
-            <small>Many desktop publishing packages and web page editors now.</small>
-            <div class="m-t-md">
-                <h2 class="product-main-price">$406,602 <small class="text-muted">Exclude Tax</small> </h2>
-            </div>
             <hr>
-
-            <h4>Product description</h4>
-
-            <div class="small text-muted">
-                It is a long established fact that a reader will be distracted by the readable
-                content of a page when looking at its layout. The point of using Lorem Ipsum is
-
-                <br/>
-                <br/>
-                There are many variations of passages of Lorem Ipsum available, but the majority
-                have suffered alteration in some form, by injected humour, or randomised words
-                which don't look even slightly believable.
-            </div>
-            <dl class="small m-t-md">
-                <dt>Description lists</dt>
-                <dd>A description list is perfect for defining terms.</dd>
-                <dt>Euismod</dt>
-                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-                <dt>Malesuada porta</dt>
-                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-            </dl>
-            <hr>
-
             <div>
-                <div class="btn-group">
-                    <button class="btn btn-primary btn-sm"><i class="fa fa-cart-plus"></i> Add to cart</button>
-                    <button class="btn btn-white btn-sm"><i class="fa fa-star"></i> Add to wishlist </button>
-                    <button class="btn btn-white btn-sm"><i class="fa fa-envelope"></i> Contact with author </button>
+              <ul class="p-2">
+                <li class="my-2">{{$product->product_info_1}}</li>
+                <li> <span class="text-danger my-2"> Available Sizes : </span> {{$product->available_sizes}}</li>
+                <li> <span class="text-danger my-2"> Available Colors : </span> {{$product->available_color_bottle}}</li>
+                <li> <span class="text-danger my-2"> Available Cap Colors : </span> {{$product->available_color_cap}}</li>
+              </ul>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="mt-5 container-fluid">
+  <h1 class="mb-3" style="color:#007c89">Dimentions Table</h1>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Shape/Size</th>
+        <th scope="col">Brimful Capacity (ml)</th>
+        <th scope="col">Height with Cap (mm)</th>
+        <th scope="col">Length / Diameter (mm)</th>
+        <th scope="col">Thickness (mm)</th>
+        <th scope="col">Label Height (mm)</th>
+        <th scope="col">Neck Id (mm)</th>
+        <th scope="col">Standard Weight (gms)</th>
+        <th scope="col">MOQ <span style="color:red;">*</span> (Pcs)</th>
+        <th scope="col">Cap Name</th>
+      </tr>
+    </thead>
+    @php
+        $table_header = json_decode($product->table_header);
+        $brimful = json_decode($product->brimful_capacity);
+        $height = json_decode($product->height);
+        $lenght = json_decode($product->length);
+        $thickness = json_decode($product->thickness);
+        $label_height = json_decode($product->label_height);
+        $neck_id = json_decode($product->neck_id);
+        $standard_weight = json_decode($product->standard_weight);
+        $moq = json_decode($product->MOQ);
+        $cap_name = json_decode($product->cap_name);
+    @endphp
+    <tbody>
+      @for ($i = 0; $i < count($table_header); $i++)    
+      <tr>
+        <th scope="row">{{$table_header[$i]}}</th>
+        <td>{{$brimful[$i]}}</td>
+        <td>{{$height[$i]}}</td>
+        <td>{{$lenght[$i]}}</td>
+        <td>{{$thickness[$i]}}</td>
+        <td>{{$label_height[$i]}}</td>
+        <td>{{$neck_id[$i]}}</td>
+        <td>{{$standard_weight[$i]}}</td>
+        <td>{{$moq[$i]}}</td>
+        <td>{{$cap_name[$i]}}</td>
+      </tr>
+      @endfor
+    </tbody>
+  </table>
+  <h5><span class="text-danger">MOQ - Minimum Order Quantity</span></h5>
+</div>
+<div class="text-center" style="color:#007c89">
+  <h1>₹ Request Quotation</h1>
+</div>
+<div class="container mt-5">
+  <form class="m-t mt-3" role="form"  action="{{ route('orders.orderCreate') }}" method="POST">
+    @csrf
+    <div class="row text-left">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label class="form-label fa fa-id-card" for="comapny name">  Company Name</label>
+                    </div>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" name="company_name" placeholder="Comapny Name" required>
+                    </div>
                 </div>
             </div>
-
-
-
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label class="form-label fa fa-envelope" for="comapny name">  Email Address</label>
+                    </div>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" name="email" placeholder="Email Address" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label class="form-label fa fa-phone" for="comapny name">  Contact Number</label>
+                    </div>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" name="number" placeholder="Contact Number" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label class="form-label fa fa-product-hunt" for="product size">  Product Size</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="order_status" name="order_status" required>
+                            <option></option>
+                            @foreach ($table_header as $item)
+                            <option value="{{$item}}">{{$item}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                  <div class="col-sm-4">
+                      <label class="form-label fa fa-tasks" for="comapny name">  Quantity</label>
+                  </div>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" name="quantity" placeholder="Quantity" required>
+                  </div>
+              </div>
+          </div>
         </div>
     </div>
-
-</div>
     
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary m-b">Get Quoatation</button>
+    </div>
+    
+</form>
+</div>
 @endsection
 
 
+@push('script')
+     {{-- Select 2 JS --}}
+     <script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script>
+
+    
+     <script>
+         $(document).ready(function(){
+             $("#order_status").select2({
+                 placeholder: "Select Size",
+                 allowClear: true
+             });
+         });
+        </script>
+         
+@endpush
