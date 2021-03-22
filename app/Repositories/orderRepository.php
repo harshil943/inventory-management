@@ -2,11 +2,13 @@
 
 namespace App\Repositories;
 
+use App\Models\consignee;
 use App\Models\OrderDetails;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\map_order_challan;
-
+use App\Models\ProductDetails;
+use App\Models\User;
 use App\Repositories\Interfaces\OrderInterface;
 
 class orderRepository implements OrderInterface
@@ -76,8 +78,48 @@ class orderRepository implements OrderInterface
         return $data;
     }
 
-    public function orderFormDetails()
+    public function buyerDetails()
+    {
+        $buyer = User::where('is_company','1')->get(['id','name']);
+        
+        return $buyer;
+    }
+    public function consigneeDetails()
     {
         
+        $consinee = consignee::get(['id','name']);
+        return $consinee;
+    }
+    public function productDetails()
+    {
+        
+        $product = ProductDetails::get(['id','product_name']);
+        
+        return $product;
+    }
+
+    public function orderCreate($requset)
+    {
+        // dd($requset);
+        $order= new OrderDetails;
+        
+        $order->e_way_bill_number = $requset->e_way_bill_number;
+        $order->buyer_order_number = $requset->buyer_order_number;
+        $order->product_id = json_encode($requset->product_id);
+        $order->hsn_code = json_encode($requset->hsn);
+        $order->quantity = json_encode($requset->quantity);
+        $order->unit = json_encode($requset->unit);
+        $order->price_per_piece = json_encode($requset->price);
+        $order->name_of_extra_cost = json_encode($requset->name_of_extra_cost);
+        $order->extra_hsn_code = json_encode($requset->extra_hsn_code);
+        $order->extra_cost_price = json_encode($requset->extra_cost);
+        $order->payment_link = $requset->payment_link;
+        if ($requset->igst == null) {
+            $order->igst_applicable = '0';
+        } else {
+            $order->igst_applicable = '1';
+        }
+        $order->save();
+        return true;
     }
 }
