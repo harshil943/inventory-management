@@ -146,7 +146,7 @@
                     <strong>There Are No Consignee In This Order.</strong>
                 @endif
             </div>
-            <div class="col-sm-6 text-right">
+            <div class="col-sm-6">
                 <h4 class="text-right">Invoice No. - {{$orders->id}}</h4>
                 <div class="row text-left">
                     <div class="col-sm-6 border-right">
@@ -284,20 +284,20 @@
                             </td>
                             @if (!$orders->order->igst_applicable)
                                 <td class="text-right">
-                                    {{$orders->order->gst_percentage}}%</i>
+                                    {{$orders->order->gst_percentage}}%
                                 </td>
                                 <td class="text-right">
                                     <i class="fa fa-inr">&nbsp;{{($orders->order->price_per_piece[$i] * $orders->order->gst_percentage)/100}}</i>
                                 </td>
                             @else
                                 <td class="text-right">
-                                    {{$orders->order->gst_percentage/2}}%</i>
+                                    {{$orders->order->gst_percentage/2}}%
                                 </td>
                                 <td class="text-right">
                                     <i class="fa fa-inr">&nbsp;{{($orders->order->price_per_piece[$i] * ($orders->order->gst_percentage/2))/100}}</i>
                                 </td>
                                 <td class="text-right">
-                                    {{$orders->order->gst_percentage/2}}%</i>
+                                    {{$orders->order->gst_percentage/2}}%
                                 </td>
                                 <td class="text-right">
                                     <i class="fa fa-inr">&nbsp;{{($orders->order->price_per_piece[$i] * ($orders->order->gst_percentage/2))/100}}</i>
