@@ -66,7 +66,11 @@
             @include('layouts.nav')
         @endif
         <div id="wrapper">
-            @include('layouts.breadcrumb')
+            @if(Auth::user())
+                @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+                    @include('layouts.breadcrumb')
+                @endif
+            @endif
             @yield('content')
         </div>
     </div>

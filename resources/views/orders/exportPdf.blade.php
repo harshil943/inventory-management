@@ -1,66 +1,46 @@
 <html>
     <head>
-        <!-- Latest compiled and minified CSS -->
-        {{-- <link rel="stylesheet" href="https
-        
-        ://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> --}}
+        {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> --}}
+        {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+        {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 
-        <!-- Optional theme -->
-        {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> --}}
 
-        <!-- Latest compiled and minified JavaScript -->
-        {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> --}}
-        {{-- http://127.0.0.1:8000 --}}
-        <link href="/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link href="/css/animate.css" rel="stylesheet">
-        <link href="/css/style.css" rel="stylesheet">
-        
-        {{-- <style type="text/css">
-        .jqstooltip {
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            visibility: hidden;
-            background: rgb(0, 0, 0) transparent;
-            background-color: rgba(0, 0, 0, 0.6);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
-            color: white;
-            font: 10px arial, san serif;
-            text-align: left;
-            white-space: nowrap;
-            padding: 5px;
-            border: 1px solid white;
-            z-index: 10000;
-        }
+        {{-- <link href="/css/bootstrap.min.css" rel="stylesheet"> --}}
+        {{-- <link href="/font-awesome/css/font-awesome.css" rel="stylesheet"> --}}
+        {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> --}}
+        {{-- <link href="/css/animate.css" rel="stylesheet"> --}}
+        {{-- <link href="/css/style.css" rel="stylesheet"> --}}
+        {{-- <link href="/css/app.css" rel="stylesheet"> --}}
 
-        .jqsfield {
-            color: white;
-            font: 10px arial, san serif;
-            text-align: left;
-        }
-        </style> --}}
-
-        {{-- CSS Styles --}}
-        
-        <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-        
-        <!-- Styles -->
-        <link href="/css/app.css" rel="stylesheet">
-        
         {{-- Java Script Section --}}
-        <script src="/js/jquery-3.1.1.min.js"></script> 
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-        <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-        
+        {{-- <script src="/js/jquery-3.1.1.min.js"></script> --}}
+        {{-- <script src="/js/bootstrap.min.js"></script> --}}
+        {{-- <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script> --}}
+        {{-- <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script> --}}
+
         <!-- Custom and plugin javascript -->
-        <script src="/js/inspinia.js"></script>
-        <script src="/js/plugins/pace/pace.min.js"></script>
+        {{-- <script src="/js/inspinia.js"></script> --}}
+        {{-- <script src="/js/plugins/pace/pace.min.js"></script> --}}
+
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            .col-6 {
+                float: left;
+                width: 50%;
+            }
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+
+            }
+
+        </style>
+
     </head>
 
 @php
@@ -73,7 +53,7 @@
         $hundreds = null;
         $digits_length = strlen($no);
         $decimal_length = strlen($decimal);
-        $i = 0; 
+        $i = 0;
         $str = array();
         $str2 = array();
         $words = array(0 => '', 1 => 'One', 2 => 'Two',
@@ -117,75 +97,95 @@
         return ($Rupees ? $Rupees . 'Indian Rupees ' : '') . $paise;
     }
 @endphp
-<body>
-{{-- <div class="page-wrapper wrapper-content"> --}}
-    {{-- <div class="ibox-content p-xl"> --}}
-        <div class="row">
-            <div class="col-sm-6 border-right">
-                <h6>Seller: </h6>
-                <strong style="font-size: 24px;">{{$orders->seller->name}}</strong>
-                <br>
-                <strong>{{$orders->seller->head_office_address}}</strong>
-                <div class="row">
-                    <div class="col-sm-4">
+<body style="border:1px solid #b5babd;padding:10px;">
+    <div class="row">
+        <div class="col-6" style="border-right:1px solid #b5babd;">
+            <h6>Seller: </h6>
+            <strong style="font-size:24px;">{{$orders->seller->name}}</strong>
+            <br>
+            <strong>{{$orders->seller->head_office_address}}</strong>
+            <table>
+                <tr>
+                    <td style="width:50%;">
                         State Code
-                        <br>
-                        GST Number
-                        <br>
-                        PAN Number
-                    </div>
-                    <div class="col-sm-8">
+                    </td>
+                    <td style="width:50%;">
                         : <strong>{{$orders->seller->state_code}}</strong>
-                        <br>
-                        : <strong>{{$orders->seller->gst_number}}</strong>
-                        <br>
-                        : <strong>{{$orders->seller->pan_number}}</strong>
-                    </div>
-                </div>
-                <hr>
-                <h6>Buyer: </h6>
-                <strong style="font-size: 24px;">{{$orders->buyer->name}}</strong>
-                <br>
-                <strong>{{$orders->buyer->address}}</strong>
-                <div class="row">
-                    <div class="col-sm-4">
-                        State Code
-                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%;">
                         GST Number
-                    </div>
-                    <div class="col-sm-8">
+                    </td>
+                    <td style="width:50%;">
+                        : <strong>{{$orders->seller->gst_number}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%;">
+                        PAN Number
+                    </td>
+                    <td style="width:50%;">
+                        : <strong>{{$orders->seller->pan_number}}</strong>
+                    </td>
+                </tr>
+            </table>
+            <hr style="color:#b5babd;">
+            <h6>Buyer: </h6>
+            <strong style="font-size: 24px;">{{$orders->buyer->name}}</strong>
+            <br>
+            <strong>{{$orders->buyer->address}}</strong>
+            <table>
+                <tr>
+                    <td style="width:50%;">
+                        State Code
+                    </td>
+                    <td style="width:50%;">
                         : <strong>{{$orders->buyer->state_code}}</strong>
-                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%;">
+                        GST Number
+                    </td>
+                    <td style="width:50%;">
                         : <strong>{{$orders->buyer->gst_number}}</strong>
-                    </div>
-                </div>
-
-                <hr>
-                <h6>Consignee: </h6>
-                @if ($orders->consignee)
-                    <strong style="font-size: 24px;">{{$orders->consignee->name}}</strong>
-                    <br>
-                    <strong>{{$orders->consignee->address}}</strong>
-                    <div class="row">
-                        <div class="col-sm-4">
+                    </td>
+                </tr>
+            </table>
+            <hr style="color:#b5babd;">
+            <h6>Consignee: </h6>
+            @if ($orders->consignee)
+                <strong style="font-size: 24px;">{{$orders->consignee->name}}</strong>
+                <br>
+                <strong>{{$orders->consignee->address}}</strong>
+                <table>
+                    <tr>
+                        <td style="width:50%;">
                             State Code
-                            <br>
-                            GST Number
-                        </div>
-                        <div class="col-sm-8">
+                        </td>
+                        <td style="width:50%;">
                             : <strong>{{$orders->consignee->state_code}}</strong>
-                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width:50%;">
+                            GST Number
+                        </td>
+                        <td style="width:50%;">
                             : <strong>{{$orders->consignee->gst_number}}</strong>
-                        </div>
-                    </div>
-                @else
-                    <strong>There Are No Consignee In This Order.</strong>
-                @endif
-            </div>
-            <div class="col-sm-6 text-right">
-                <h4 class="text-right">Invoice No. - {{$orders->id}}</h4>
-                <div class="row text-left">
-                    <div class="col-sm-6 border-right">
+                        </td>
+                    </tr>
+                </table>
+            @else
+                <strong>There Are No Consignee In This Order.</strong>
+            @endif
+        </div>
+        <div class="col-6">
+            <h4 style="text-align:right">Invoice No. - {{$orders->id}}</h4>
+            <table>
+                <tr>
+                    <td style="width:50%;border-right:1px solid #b5babd;">
                         e-Way Bill No.
                         <br>
                         @if ($orders->order->e_way_bill_number)
@@ -221,8 +221,8 @@
                         Order Status
                         <br>
                         <strong>{{$orders->order_status}}</strong>
-                    </div>
-                    <div class="col-sm-6">
+                    </td>
+                    <td style="width:50%;">
                         Package Slip No.
                         <br>
                         @if ($orders->challan)
@@ -247,7 +247,7 @@
                             <strong>Not Assigned Yet</strong>
                         @endif
                         <br><br>
-                        Bill of Landing/LR-RR No.
+                        Landing/LR-RR No.
                         <br>
                         @if ($orders->lr_number)
                             <strong>{{$orders->lr_number}}</strong>
@@ -266,260 +266,305 @@
                         Payment Status
                         <br>
                         <strong>{{$orders->payment_status}}</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        @php
-            $subtotal = 0;
-            $taxtotal = 0;
-        @endphp
-        <div class="table-responsive m-t">
-            <table class="table table-bordered invoice-table">
-                <thead>
-                    <tr>
-                        <th class="text-center align-middle" rowspan="2">Item List</th>
-                        <th class="text-center align-middle" rowspan="2">HSN/SAC</th>
-                        <th class="text-center align-middle" rowspan="2" >Quantity</th>
-                        <th class="text-center align-middle" rowspan="2">Unit Price</th>
-                        @if (!$orders->order->igst_applicable)
-                            <th class="text-center align-middle" colspan="2">Integrated Tax (IGST)</th>
-                        @else
-                            <th class="text-center align-middle" colspan="2">Central Tax (CGST)</th>
-                            <th class="text-center align-middle" colspan="2">State Tax (SGST)</th>
-                        @endif
-                        <th class="text-center align-middle" rowspan="2">Total Price</th>
-                    </tr>
-                    <tr>
-                        @if (!$orders->order->igst_applicable)
-                            <th class="text-center align-middle">Tax Rate</th>
-                            <th class="text-center align-middle">Tax Amount</th>
-                        @else
-                            <th class="text-center align-middle">Tax Rate</th>
-                            <th class="text-center align-middle">Tax Amount</th>
-                            <th class="text-center align-middle">Tax Rate</th>
-                            <th class="text-center align-middle">Tax Amount</th>
-                        @endif
-                    </tr>
-                </thead>
-                <tbody>
-                    @for($i = 0; $i < sizeof($orders->order->product_id); $i++)
-                        <tr>
-                            <td class="text-left">
-                                <strong>{{$orders->order->product_id[$i]}}</strong>
-                            </td>
-                            <td>
-                                {{$orders->order->hsn_code[$i]}}
-                            </td>
-                            <td>
-                                <strong>{{$orders->order->quantity[$i]}} {{$orders->order->unit[$i]}}</strong>
-                            </td>
-                            <td>
-                                <i class="fa fa-inr">&nbsp;{{$orders->order->price_per_piece[$i]}}</i>
-                            </td>
-                            @if (!$orders->order->igst_applicable)
-                                <td class="text-right">
-                                    {{$orders->order->gst_percentage}}%</i>
-                                </td>
-                                <td class="text-right">
-                                    <i class="fa fa-inr">&nbsp;{{($orders->order->price_per_piece[$i] * $orders->order->gst_percentage)/100}}</i>
-                                </td>
-                            @else
-                                <td class="text-right">
-                                    {{$orders->order->gst_percentage/2}}%</i>
-                                </td>
-                                <td class="text-right">
-                                    <i class="fa fa-inr">&nbsp;{{($orders->order->price_per_piece[$i] * ($orders->order->gst_percentage/2))/100}}</i>
-                                </td>
-                                <td class="text-right">
-                                    {{$orders->order->gst_percentage/2}}%</i>
-                                </td>
-                                <td class="text-right">
-                                    <i class="fa fa-inr">&nbsp;{{($orders->order->price_per_piece[$i] * ($orders->order->gst_percentage/2))/100}}</i>
-                                </td>
-                            @endif
-                            <td>
-                                <i class="fa fa-inr">&nbsp;{{($orders->order->price_per_piece[$i] + ($orders->order->price_per_piece[$i] * $orders->order->gst_percentage)/100) * $orders->order->quantity[$i]}}</i>
-                            </td>
-                            @php
-                                $subtotal += $orders->order->price_per_piece[$i] * $orders->order->quantity[$i];
-                                $taxtotal += (($orders->order->price_per_piece[$i] * $orders->order->gst_percentage)/100) * $orders->order->quantity[$i];
-                            @endphp
-                        </tr>
-                    @endfor
-                    @if($orders->order->name_of_extra_cost)
-                        @for($i = 0; $i < sizeof($orders->order->name_of_extra_cost); $i++)
-                            <tr>
-                                <td class="text-right">
-                                    <strong>{{$orders->order->name_of_extra_cost[$i]}}</strong>
-                                </td>
-                                <td>
-                                    {{$orders->order->extra_hsn_code[$i]}}
-                                </td>
-                                <td>
-                                    {{-- <strong>1 UNT</strong> --}}
-                                </td>
-                                <td>
-                                    <i class="fa fa-inr">&nbsp;{{$orders->order->extra_cost_price[$i]}}</i>
-                                </td>
-                                @if (!$orders->order->igst_applicable)
-                                    <td class="text-right">
-                                        {{$orders->order->gst_percentage}}%
-                                    </td>
-                                    <td class="text-right">
-                                        <i class="fa fa-inr">&nbsp;{{($orders->order->extra_cost_price[$i] * $orders->order->gst_percentage)/100}}</i>
-                                    </td>
-                                @else
-                                    <td class="text-right">
-                                        {{$orders->order->gst_percentage/2}}%
-                                    </td>
-                                    <td class="text-right">
-                                        <i class="fa fa-inr">&nbsp;{{($orders->order->extra_cost_price[$i] * ($orders->order->gst_percentage/2))/100}}</i>
-                                    </td>
-                                    <td class="text-right">
-                                        {{$orders->order->gst_percentage/2}}%
-                                    </td>
-                                    <td class="text-right">
-                                        <i class="fa fa-inr">&nbsp;{{($orders->order->extra_cost_price[$i] * ($orders->order->gst_percentage/2))/100}}</i>
-                                    </td>
-                                @endif
-                                <td>
-                                    <i class="fa fa-inr">&nbsp;{{$orders->order->extra_cost_price[$i] + ($orders->order->extra_cost_price[$i] * $orders->order->gst_percentage)/100}}</i>
-                                </td>
-                            </tr>
-                            @php
-                                $subtotal += $orders->order->extra_cost_price[$i];
-                                $taxtotal += ($orders->order->extra_cost_price[$i] * $orders->order->gst_percentage)/100;
-                            @endphp
-                        @endfor
-                    @endif
-                    </tbody>
-                </table>
-            </div>
-        @php
-            $subtotal = round($subtotal,2);
-            $taxtotal = round($taxtotal,2);
-        @endphp
-        <table class="table invoice-total ">
-            <tbody>
-                <tr>
-                    <td>
-                        <strong>Sub Total :</strong>
-                    </td>
-                    <td style="width:65%;">
-                        <i class="fa fa-inr">&nbsp;{{$subtotal}}</i><br>
-                        <strong>{{getIndianCurrency($subtotal)}}</strong>
                     </td>
                 </tr>
+            </table>
+        </div>
+    </div>
+    @php
+        $subtotal = 0;
+        $taxtotal = 0;
+    @endphp
+    <br>
+    <table>
+        <thead style="text-align:center;">
+            <tr>
+                <th style="border-top:1px solid #b5babd;border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;"  rowspan="2">
+                    Item List
+                </th>
+                <th style="border-top:1px solid #b5babd;border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;" rowspan="2">
+                    HSN/SAC
+                </th>
+                <th style="border-top:1px solid #b5babd;border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;" rowspan="2" >
+                    Quantity
+                </th>
+                <th style="border-top:1px solid #b5babd;border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;" rowspan="2">
+                    Unit Price
+                </th>
                 @if (!$orders->order->igst_applicable)
-                    <tr>
-                        <td>
-                            <strong>IGST Tax :</strong>
-                        </td>
-                        <td>
-                            <i class="fa fa-inr">&nbsp;{{$taxtotal}}</i><br>
-                            <strong>{{getIndianCurrency($taxtotal)}}</strong>
-                        </td>
-                    </tr>
+                    <th style="border-top:1px solid #b5babd;border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;" colspan="2">
+                        Integrated Tax (IGST)
+                    </th>
                 @else
-                    <tr>
-                        <td>
-                            <strong>CGST Tax :</strong>
-                        </td>
-                        <td>
-                            <i class="fa fa-inr">&nbsp;{{round($taxtotal/2,2)}}</i><br>
-                            <strong>{{getIndianCurrency(round($taxtotal/2,2))}}</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <strong>SGST Tax :</strong>
-                        </td>
-                        <td>
-                            <i class="fa fa-inr">&nbsp;{{round($taxtotal/2,2)}}</i><br>
-                            <strong>{{getIndianCurrency(round($taxtotal/2,2))}}</strong>
-                        </td>
-                    </tr>
+                    <th style="border-top:1px solid #b5babd;border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;" colspan="2">
+                        Central Tax (CGST)
+                    </th>
+                    <th style="border-top:1px solid #b5babd;border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;" colspan="2">
+                        State Tax (SGST)
+                    </th>
                 @endif
-                <tr>
-                    <td>
-                        <strong>Sales Round Off :</strong>
+                <th style="border-top:1px solid #b5babd;border-bottom:1px solid #b5babd;" rowspan="2">
+                    Total Price
+                </th>
+            </tr>
+            <tr>
+                @if (!$orders->order->igst_applicable)
+                    <th style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                        Tax Rate
+                    </th>
+                    <th style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                        Tax Amount
+                    </th>
+                @else
+                    <th style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                        Tax Rate
+                    </th>
+                    <th style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                        Tax Amount
+                    </th>
+                    <th style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                        Tax Rate
+                    </th>
+                    <th style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                        Tax Amount
+                    </th>
+                @endif
+            </tr>
+        </thead>
+        <tbody>
+            @for($i = 0; $i < sizeof($orders->order->product_id); $i++)
+                <tr style="text-align:right;">
+                    <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;text-align:left;">
+                        <strong>{{$orders->order->product_id[$i]}}</strong>
                     </td>
-                    <td>
-                        <i class="fa fa-inr">&nbsp;{{round(round($subtotal + $taxtotal) - ($subtotal + $taxtotal),2)}}</i><br>
-                        <strong>Zero Indian Rupees {{getIndianCurrency(abs(round(round($subtotal + $taxtotal) - ($subtotal + $taxtotal),2)))}}</strong>
+                    <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                        {{$orders->order->hsn_code[$i]}}&nbsp;
                     </td>
+                    <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                        <strong>
+                            {{$orders->order->quantity[$i]}} {{$orders->order->unit[$i]}}&nbsp;
+                        </strong>
+                    </td>
+                    <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                        {{$orders->order->price_per_piece[$i]}}&nbsp;
+                    </td>
+                    @if (!$orders->order->igst_applicable)
+                        <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                            {{$orders->order->gst_percentage}}%&nbsp;
+                        </td>
+                        <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                            {{($orders->order->price_per_piece[$i] * $orders->order->gst_percentage)/100}}&nbsp;
+                        </td>
+                    @else
+                        <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                            {{$orders->order->gst_percentage/2}}%&nbsp;
+                        </td>
+                        <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                            {{($orders->order->price_per_piece[$i] * ($orders->order->gst_percentage/2))/100}}&nbsp;
+                        </td>
+                        <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                            {{$orders->order->gst_percentage/2}}%&nbsp;
+                        </td>
+                        <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                            {{($orders->order->price_per_piece[$i] * ($orders->order->gst_percentage/2))/100}}&nbsp;
+                        </td>
+                    @endif
+                    <td style="border-bottom:1px solid #b5babd;">
+                        {{($orders->order->price_per_piece[$i] + ($orders->order->price_per_piece[$i] * $orders->order->gst_percentage)/100) * $orders->order->quantity[$i]}}&nbsp;
+                    </td>
+                    @php
+                        $subtotal += $orders->order->price_per_piece[$i] * $orders->order->quantity[$i];
+                        $taxtotal += (($orders->order->price_per_piece[$i] * $orders->order->gst_percentage)/100) * $orders->order->quantity[$i];
+                    @endphp
                 </tr>
+            @endfor
+            @if($orders->order->name_of_extra_cost)
+                @for($i = 0; $i < sizeof($orders->order->name_of_extra_cost); $i++)
+                    <tr style="text-align:right;">
+                        <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                            <i>{{$orders->order->name_of_extra_cost[$i]}}&nbsp;</i>
+                        </td>
+                        <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                            {{$orders->order->extra_hsn_code[$i]}}&nbsp;
+                        </td>
+                        <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+
+                        </td>
+                        <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                            {{$orders->order->extra_cost_price[$i]}}&nbsp;
+                        </td>
+                        @if (!$orders->order->igst_applicable)
+                            <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                                {{$orders->order->gst_percentage}}%&nbsp;
+                            </td>
+                            <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                                {{($orders->order->extra_cost_price[$i] * $orders->order->gst_percentage)/100}}&nbsp;
+                            </td>
+                        @else
+                            <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                                {{$orders->order->gst_percentage/2}}%&nbsp;
+                            </td>
+                            <td style="border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;">
+                                {{($orders->order->extra_cost_price[$i] * ($orders->order->gst_percentage/2))/100}}&nbsp;
+                            </td>
+                            <td>
+                                {{$orders->order->gst_percentage/2}}%&nbsp;
+                            </td>
+                            <td>
+                                {{($orders->order->extra_cost_price[$i] * ($orders->order->gst_percentage/2))/100}}&nbsp;
+                            </td>
+                        @endif
+                        <td style="border-bottom:1px solid #b5babd;">
+                            {{$orders->order->extra_cost_price[$i] + ($orders->order->extra_cost_price[$i] * $orders->order->gst_percentage)/100}}&nbsp;
+                        </td>
+                    </tr>
+                    @php
+                        $subtotal += $orders->order->extra_cost_price[$i];
+                        $taxtotal += ($orders->order->extra_cost_price[$i] * $orders->order->gst_percentage)/100;
+                    @endphp
+                @endfor
+            @endif
+        </tbody>
+    </table>
+    @php
+        $subtotal = round($subtotal,2);
+        $taxtotal = round($taxtotal,2);
+    @endphp
+    <table style="text-align: right;">
+        <tr>
+            <td style="width:25%;">
+                <strong>Sub Total :</strong>
+            </td>
+            <td>
+                {{$subtotal}}&nbsp;<br>
+                <strong>{{getIndianCurrency($subtotal)}}</strong>
+                <hr style="color:#b5babd;">
+            </td>
+        </tr>
+        @if (!$orders->order->igst_applicable)
+            <tr>
+                <td>
+                    <strong>IGST Tax :</strong>
+                </td>
+                <td>
+                    <i class="fa fa-inr">&nbsp;{{$taxtotal}}</i><br>
+                    <strong>{{getIndianCurrency($taxtotal)}}</strong>
+                    <hr style="color:#b5babd;">
+                </td>
+            </tr>
+        @else
+            <tr>
+                <td>
+                    <strong>CGST Tax :</strong>
+                </td>
+                <td>
+                    {{round($taxtotal/2,2)}}&nbsp;<br>
+                    <strong>{{getIndianCurrency(round($taxtotal/2,2))}}</strong>
+                    <hr style="color:#b5babd;">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>SGST Tax :</strong>
+                </td>
+                <td>
+                    {{round($taxtotal/2,2)}}&nbsp;<br>
+                    <strong>{{getIndianCurrency(round($taxtotal/2,2))}}</strong>
+                    <hr style="color:#b5babd;">
+                </td>
+            </tr>
+        @endif
+        <tr>
+            <td>
+                <strong>Sales Round Off :</strong>
+            </td>
+            <td>
+                {{round(round($subtotal + $taxtotal) - ($subtotal + $taxtotal),2)}}&nbsp;<br>
+                <strong>Zero Indian Rupees {{getIndianCurrency(abs(round(round($subtotal + $taxtotal) - ($subtotal + $taxtotal),2)))}}</strong>
+                <hr style="color:#b5babd;">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Grand Total :</strong>
+            </td>
+            <td>
+                {{round($subtotal + $taxtotal)}}&nbsp;<br>
+                <strong>{{getIndianCurrency(round($subtotal + $taxtotal))}}</strong>
+                <hr style="color:#b5babd;">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <strong>E. & O.E&nbsp;</strong>
+            </td>
+        </tr>
+    </table>
+
+    <div class="row">
+        <div class="col-6" style="border-right:1px solid #b5babd;padding-right:10px;">
+            <strong>Declaration</strong>
+            <br><br>
+            1. We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.
+            <br>
+            2. Interest @ 24% levied if this invoice payment not paid as per terms of payment.
+        </div>
+        <div class="col-6" style="padding-left:20px;">
+            <strong>Company's Bank Details</strong>
+            <br><br>
+            <table>
                 <tr>
-                    <td>
-                        <strong>Grand Total :</strong>
-                    </td>
-                    <td>
-                        <i class="fa fa-inr">&nbsp;{{round($subtotal + $taxtotal)}}</i><br>
-                        <strong>{{getIndianCurrency(round($subtotal + $taxtotal))}}</strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3" style="border:none;">
-                        <strong>E. & O.E</strong>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="row">
-            <div class="col-sm-6 border-right">
-                <strong>Declaration</strong>
-                <br><br>
-                1. We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.
-                <br>
-                2. Interest @ 24% levied if this invoice payment not paid as per terms of payment.
-            </div>
-            <div class="col-sm-6">
-                <strong>Company's Bank Details</strong>
-                <br><br>
-                <div class="row">
-                    <div class="col-sm-4">
+                    <td style="width:50%;">
                         Bank Name :
-                        <br>
-                        Branch Name:
-                        <br>
-                        A/c No.:
-                        <br>
-                        IFSC Code:
-                    </div>
-                    <div class="col-sm-8">
+                    </td>
+                    <td style="width:50%;">
                         : <strong>{{$orders->seller->bank_name}}</strong>
-                        <br>
-                        : <strong>{{$orders->seller->branch_name}}</strong>
-                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%;">
+                        Branch Name:
+                    </td>
+                    <td style="width:50%;">
+                        : <strong>{{$orders->buyer->gst_number}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%;">
+                        A/c No.:
+                    </td>
+                    <td style="width:50%;">
                         : <strong>{{$orders->seller->acc_no}}</strong>
-                        <br>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%;">
+                        IFSC Code:
+                    </td>
+                    <td style="width:50%;">
                         : <strong>{{$orders->seller->IFSC_code}}</strong>
-                    </div>
-                </div>
-            </div>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <hr>
+    </div>
+    <hr style="color:#b5babd;">
 
-        <div class="row">
-            <div class="col-sm-6 border-right">
-                <br><br><br><br>
-                <strong>
-                    Stamp & Signature <br>
-                    To {{$orders->buyer->name}},
-                </strong>
-            </div>
-            <div class="col-sm-6 text-right">
-                <br><br><br><br>
-                <strong>
-                    Stamp & Signature <br>
-                    From {{$orders->seller->name}},
-                </strong>
-            </div>
+    <div class="row">
+        <div class="col-sm-6 border-right">
+            <br><br><br><br>
+            <strong>
+                Stamp & Signature <br>
+                To {{$orders->buyer->name}},
+            </strong>
         </div>
-    {{-- </div> --}}
-{{-- </div> --}}
-
+        <div class="col-sm-6 text-right">
+            <br><br><br><br>
+            <strong>
+                Stamp & Signature <br>
+                From {{$orders->seller->name}},
+            </strong>
+        </div>
+    </div>
 </body>
 </html>
