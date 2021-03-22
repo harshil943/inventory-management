@@ -9,6 +9,7 @@ use App\Http\Controllers\designationController;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\productCategoryController;
 use App\Http\Controllers\productDetailsController;
+use App\Http\Controllers\quotationController;
 use App\Http\Controllers\setPassController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +56,7 @@ Route::middleware(['setpass'])->group(function () {
     Route::get('/create-pdf/{id}', [ordersController::class, 'exportPDF']);
 });
 
+Route::post('Quotation',[quotationController::class,'quotationCreate'])->name('quotation');
 Route::get('/country', function () {
     $country = Storage::get('public/country.json');
     return json_decode($country, true);
