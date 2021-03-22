@@ -26,7 +26,7 @@ class CreateOrderDetailsTable extends Migration
             $table->json('extra_hsn_code')->nullable();
             $table->json('extra_cost_price')->nullable();
             $table->boolean('igst_applicable');
-            $table->string('gst_percentage');
+            $table->string('gst_percentage')->default('18');
             $table->string('payment_link')->nullable();
             $table->softDeletes();
             $table->timestamps();

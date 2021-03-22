@@ -8,6 +8,12 @@ interface OrderInterface
 {
     public function all();
 
-    public function orderFormDetails();
+    public function buyerDetails();
+
+    public function consigneeDetails();
+
+    public function productDetails();
+
+    public function orderCreate($requset);
 
 }

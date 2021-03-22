@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
         $user1->comp_logo = 'bright_containers.jpg';
         $user1->testimonial = 'We are writing this letter for excellent service of M/s Bright Containers, Nadiad has been associated with our organization to supply HDPE bottle for our products packing for more then one decade.';
         $user1->state_code = 'Gujarat - 24';
+        $user1->is_company = '0';
         $user1->gst_number = '123456789321654';
 
         // Creating a General User
@@ -41,6 +42,7 @@ class UserSeeder extends Seeder
         $user2->comp_logo = 'bright_containers.jpg';
         $user2->testimonial = 'We are writing this letter for excellent service of M/s Bright Containers, Nadiad has been associated with our organization to supply HDPE bottle for our products packing for more then one decade.';
         $user2->state_code = 'Gujarat - 24';
+        $user2->is_company = '0';
         $user2->gst_number = '123456789321654';
 
         // Creating a General User
@@ -55,6 +57,7 @@ class UserSeeder extends Seeder
         $user3->comp_logo = 'bright_containers.jpg';
         $user3->testimonial = 'We are writing this letter for excellent service of M/s Bright Containers, Nadiad has been associated with our organization to supply HDPE bottle for our products packing for more then one decade.';
         $user3->state_code = 'Gujarat - 24';
+        $user3->is_company = '0';
         $user3->gst_number = '123456789321654';
 
         $user1->save();

@@ -27,6 +27,9 @@
                                     <div class="col-sm-8">
                                         <select class="form-control" id="buyer_id" name="buyer_id" required>
                                             <option></option>
+                                            @foreach ($buyer as $item)
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -39,6 +42,9 @@
                                     <div class="col-sm-8">
                                         <select class="form-control" id="consignee_id" name="consignee_id">
                                             <option></option>
+                                            @foreach ($consignee as $item)
+                                                <option value="{{$item->id}}">{{$item->name}}</option>    
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -69,7 +75,7 @@
                                         <label for="e_way_bill_number">E-way Bill Number</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="e_way_bill_number" type="text" class="form-control" placeholder="E-way Bill Number">
+                                        <input id="e_way_bill_number" type="text" name="e_way_bill_number" class="form-control" placeholder="E-way Bill Number">
                                     </div>
                                 </div>
                             </div>
@@ -79,7 +85,7 @@
                                         <label for="order_date">Order Date</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="order_date" type="date" class="form-control" placeholder="Order Date" required>
+                                        <input id="order_date" type="date" name="order_date" class="form-control" placeholder="Order Date" required>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +95,7 @@
                                         <label for="shipping_date">Shipping Date</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="shipping_date" type="date" class="form-control" placeholder="Shipping Date">
+                                        <input id="shipping_date" type="date" name="shipping_date" class="form-control" placeholder="Shipping Date">
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +148,7 @@
                                         <label for="dispatch_mathod">Dispatch Method</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="dispatch_mathod" type="text" class="form-control" placeholder="Dispatch Method">
+                                        <input id="dispatch_mathod" type="text" name="dispatch_method" class="form-control" placeholder="Dispatch Method">
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +168,7 @@
                                         <label for="dispatch_document_number">Dispatch Document Number</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="dispatch_document_number" type="text" class="form-control" placeholder="Dispatch Document Number">
+                                        <input id="dispatch_document_number" type="text" name="dispatch_document_number" class="form-control" placeholder="Dispatch Document Number">
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +178,7 @@
                                         <label for="paymnet_link">Payment Link</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="paymnet_link" type="text" class="form-control" placeholder="Payment Link">
+                                        <input id="paymnet_link" type="text" class="form-control" name="payment_link" placeholder="Payment Link">
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +188,7 @@
                                         <label for="due_date">Due Date</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="due_date" type="date" class="form-control" placeholder="Due Date">
+                                        <input id="due_date" type="date" class="form-control" name="due_date" placeholder="Due Date">
                                     </div>
                                 </div>
                             </div>
@@ -193,13 +199,16 @@
                         <span class="fa fa-plus btn btn-success" id="add_product">
                             Add Products
                         </span>
+                        <span class="btn btn-danger remove_product fa fa-minus"> Remove</span>
                     <div class="add-product-area mt-5">
+                       
                     </div>
                     <hr>
                     <div class="mb-5">
                         <span class="fa fa-plus btn btn-success" id="add-extras">
                             Add Extra Details
                         </span>
+                        <span class="btn btn-danger remove_extra fa fa-minus"> Remove</span>
                     </div>
                     <div class="add-extra-area mt-5">
                         
@@ -208,7 +217,6 @@
                     <div>
                         <button type="submit" class="btn btn-primary m-b">Done Order</button>
                     </div>
-                    
             </form>
         </div>
     </div>
@@ -241,17 +249,17 @@
         });
      </script>
      <script>
-            const url = '/country';
-                window.onload = async function() {
-                const response = await fetch(url);
-                window.data = await response.json();
-                conData = data;
-                for (var i = 0; i < conData.length; i++) {
-                    var newOption = new Option(conData[i]['Iso']+" - "+conData[i]['name'],conData[i]['Iso'], false, false);
-                    // var newOption = new Option(conData[i]["State Code"]+" - "+conData[i]["State Name"],conData[i]["State Code"], false, false);
-                    $('#buyer_id').append(newOption);
-                }
-                $('#buyer_id').trigger('change');
+            // const url = '/country';
+            //     window.onload = async function() {
+            //     const response = await fetch(url);
+            //     window.data = await response.json();
+            //     conData = data;
+            //     for (var i = 0; i < conData.length; i++) {
+            //         var newOption = new Option(conData[i]['Iso']+" - "+conData[i]['name'],conData[i]['Iso'], false, false);
+            //         // var newOption = new Option(conData[i]["State Code"]+" - "+conData[i]["State Name"],conData[i]["State Code"], false, false);
+            //         $('#buyer_id').append(newOption);
+            //     }
+            //     $('#buyer_id').trigger('change');
             }
             // const url = '/hsn';
             //     window.onload = async function() {
@@ -279,7 +287,7 @@
     <script>
         
             $('#add_product').click(function(){
-                $('.add-product-area').append(`<hr><div class="row text-left">
+                $('.add-product-area').append(`<div id="product"><hr><div class="row text-left">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="row">
@@ -287,8 +295,11 @@
                                             <label class="form-label" for="product_id">Product Name</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <select class="form-control product_id" id="product_id" name="product_id" required>
+                                            <select class="form-control product_id" id="product_id" name="product_id[]" required>
                                                 <option></option>
+                                                @foreach ($product as $item)
+                                                <option value="{{$item->id}}">{{$item->product_name}}</option>    
+                                            @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -299,8 +310,9 @@
                                             <label class="form-label" for="unit">Unit</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <select class="form-control unit" id="unit" name="unit" required>
+                                            <select class="form-control unit" id="unit" name="unit[]" required>
                                                 <option></option>
+                                                <option value="UNT">UNT</option>
                                             </select>
                                         </div>
                                     </div>
@@ -311,8 +323,10 @@
                                             <label class="form-label" for="hsn_code">HSN Code</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <select class="form-control hsn_code" id="hsn" name="hsn" required>
+                                            <select class="form-control hsn_code" id="hsn" name="hsn[]" required>
                                                 <option></option>
+                                                <option value="32233233">32233233</option>
+                                                <option value="7664646">7664646</option>
                                             </select>
                                         </div>
                                     </div>
@@ -326,7 +340,7 @@
                                             <label class="form-label" for="quantity">Quantity</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <input type="text" name="quantity" id="quantity" class="form-control" placeholder="Quantity" required>
+                                            <input type="text" name="quantity[]" id="quantity" class="form-control" placeholder="Quantity" required>
                                         </div>
                                     </div>
                                 </div>
@@ -336,11 +350,10 @@
                                             <label class="form-label" for="price">Price</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <input type="text" name="price" id="price"class="form-control" placeholder="Price" required>
+                                            <input type="text" name="price[]" id="price"class="form-control" placeholder="Price" required>
                                         </div>
                                     </div>
-                                    </div>
-                                    <a href="" class="btn btn-danger remove_product fa fa-minus"> Remove</a>
+                                </div></div>
                         </div>`)
             $(".product_id").select2({
                 placeholder: "Select Product",
@@ -356,7 +369,7 @@
              });
             });
             $('#add-extras').click(function(){
-                $('.add-extra-area').append(`<div class="row text-left">
+                $('.add-extra-area').append(`<div id="extra"><div class="row text-left">
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <div class="row">
@@ -364,7 +377,7 @@
                                         <label class="form-label" for="name_of_extra_cost">Name Of Extra Cost</label>
                                     </div>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" name="name_of_extra_cost" id="name_of_extra_cost[]" placeholder="Name Of Extra Cost">
+                                        <input type="text" class="form-control" name="name_of_extra_cost[]" id="name_of_extra_cost" placeholder="Name Of Extra Cost">
                                     </div>
                                 </div>
                             </div>
@@ -376,8 +389,10 @@
                                             <label class="form-label" for="extra_hsn_code">Extra HSN Code</label>
                                         </div>
                                         <div class="col-sm-7">
-                                            <select class="form-control extra_hsn_code" id="extra_hsn_code[]" name="extra_hsn_code" >
+                                            <select class="form-control extra_hsn_code" id="extra_hsn_code" name="extra_hsn_code[]" >
                                                 <option></option>
+                                                <option value="32233233">32233233</option>
+                                                <option value="7664646">7664646</option>
                                             </select>
                                         </div>
                                     </div>
@@ -390,10 +405,11 @@
                                             <label class="form-label" for="extra_cost">Extra Cost</label>
                                         </div>
                                         <div class="col-sm-7">
-                                            <input type="text" name="extra_cost" id="extra_cost[]"class="form-control" placeholder="Extra Cost">
+                                            <input type="text" name="extra_cost[]" id="extra_cost"class="form-control" placeholder="Extra Cost">
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                         </div>`)
             
@@ -403,7 +419,10 @@
              });
             });
             $('.remove_product').click(function(){
-                $(this).parent('div').fadeOut();
+                $('#product').remove();
+            });
+            $('.remove_extra').click(function(){
+                $('#extra').remove();
             });
         </script>
         <script>

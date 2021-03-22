@@ -44,12 +44,16 @@ class ordersController extends Controller
 
     public function orderForm()
     {
-        $data = $this->orderRepository->orderFormDetails();
-        return view('orders.orderForm');
+        $buyer = $this->orderRepository->buyerDetails();
+        $consignee = $this->orderRepository->consigneeDetails();
+        $product = $this->orderRepository->productDetails();
+        return view('orders.orderForm')->with('buyer',$buyer)->with('consignee',$consignee)->with('product',$product);
     }
 
     public function orderCreate(Request $request)
     {
-        dd($request);
+        $this->orderRepository->orderCreate($request);
+        // dd($request);
+        return back();
     }
 }
