@@ -15,7 +15,7 @@ class CreateMapOrderChallanTable extends Migration
     {
         Schema::create('map_order_challan', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->unsignedInteger('order_id')->nullable();
+            $table->unsignedInteger('order_id');
             $table->unsignedInteger('challan_id')->nullable();
             $table->unsignedInteger('buyer_id');
             $table->unsignedInteger('seller_id');

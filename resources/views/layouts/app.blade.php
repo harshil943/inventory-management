@@ -10,7 +10,6 @@
 
 
     <title>@yield('title')</title>
-    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -65,7 +64,7 @@
         @else
             @include('layouts.nav')
         @endif
-        <div id="wrapper">
+        <div id="wrapper" style="background:lightgrey;">
             @if(Auth::user())
                 @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
                     @include('layouts.breadcrumb')

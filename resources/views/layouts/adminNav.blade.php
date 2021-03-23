@@ -31,24 +31,33 @@
             <li class="employee">
                 <a href="" style="text-decoration:none"><i class="fa fa-users"></i> <span class="nav-label">Employee</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="{{route('employee.index')}}"" style="text-decoration:none;">Add Employee</a></li>
-                    <li><a href="{{route('employee.create')}}" style="text-decoration:none;">Manage Employee</a></li>
+                    <li><a href="{{route('employee.create')}}" style="text-decoration:none;">Add Employee</a></li>
+                    <li><a href="{{route('employee.index')}}" style="text-decoration:none;">Manage Employee</a></li>
                     <li><a href="{{route('designation.index')}}" style="text-decoration:none;">Designation</a></li>
                 </ul>
             </li>
             <li class="orders">
-                <a href="" style="text-decoration:none"><i class="fa fa-users"></i> <span class="nav-label">Orders</span> <span class="fa arrow"></span></a>
+                <a href="" style="text-decoration:none"><i class="fa fa-list"></i> <span class="nav-label">Orders</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('orders.orderForm')}}" style="text-decoration:none;">Add Order</a></li>
                     <li><a href="{{route('orders.index')}}" style="text-decoration:none;">Manage Order</a></li>
                 </ul>
             </li>
+            <li class="product">
+                <a href="" style="text-decoration:none"><i class="fa fa-product-hunt"></i> <span class="nav-label">Products</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('product.create')}}" style="text-decoration:none;">Add Product</a></li>
+                    <li><a href="{{route('product.index')}}" style="text-decoration:none;">Manage Product</a></li>
+                    <li><a href="{{route('category.create')}}" style="text-decoration:none;">Add category</a></li>
+                    <li><a href="{{route('category.index')}}" style="text-decoration:none;">Manage category</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>
-<div id="page-wrapper" class="gray-bg sidebar-content">
-    <div class="row border-bottom">
-    <nav class="navbar navbar-static-top gray-bg" role="navigation" style="margin-bottom: 0">
+<div id="page-wrapper" class="sidebar-content" style="background:lightgrey;">
+    <div class="row border-bottom" >
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom:0px;background:lightgrey;">
     <div class="navbar-header">
         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
         <form role="search" class="navbar-form-custom" action="search_results.html">

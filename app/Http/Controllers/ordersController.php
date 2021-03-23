@@ -23,23 +23,15 @@ class ordersController extends Controller
     }
 
     public function orderDetails($id){
-        $data = $this->orderRepository->orderDetails($id);
+        $data = $this->orderRepository->orderDetails($id,null);
         return view('orders.orderDetails')->with('orders',$data);
     }
 
-    public function exportPDF($id) {
-        $data = $this->orderRepository->orderDetails($id);
+    public function exportPDF($id,$type) {
+        $data = $this->orderRepository->orderDetails($id,$type);
         // return view('orders.exportPdf')->with('orders', $data);
-
         view()->share('orders', $data);
         return PDF::loadView('orders.exportPdf')->setWarnings(false)->stream('invoice.pdf');
-
-        // $new = view('orders.exportPdf')->with('orders', $data);
-        // return PDF::loadHTML($new)->setWarnings(false)->stream('invoice.pdf');
-
-        // $view = view('orders.exportPdf')->with('orders', $data);
-        // $contents = $view->render();
-        // return PDF::loadHTML($contents)->setWarnings(false)->stream('invoice.pdf');
     }
 
     public function orderForm()
@@ -53,7 +45,6 @@ class ordersController extends Controller
     public function orderCreate(Request $request)
     {
         $this->orderRepository->orderCreate($request);
-        // dd($request);
         return back();
     }
 }

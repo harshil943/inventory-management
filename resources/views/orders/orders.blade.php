@@ -27,12 +27,19 @@
       </li>
     @endsection
   @else
-    <h1>Orders page</h1>  
+    <h1>Orders page</h1>
   @endif
 @endsection
 
 @section('content')
   <div class="table-responsive">
+      <br>
+      <form action="{{URL('orderForm')}}" method="get" style="padding-left:20px;">
+        <button type="submit" class="btn btn-primary" style="display:block;width:15%;">
+            <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
+            Add New Order
+        </button>
+    </form>
     <br>
     <table class="table text-center table-bordered table-hover" id="ordersTable" >
       <thead>
@@ -47,7 +54,6 @@
               Seller Or Consignee
             @endif
           </th>
-          <th>Order Date</th>
           <th>Order Status</th>
           <th>Payment Status</th>
           <th>Invoice Slip</th>
@@ -93,7 +99,6 @@
                 @endif
               @endif
             </td>
-            <td style="vertical-align:middle;">{{$order[$i]->order_date}}</td>
             <td class="align-middle">
               @switch($order[$i]->order_status)
                   @case('pending')
@@ -130,39 +135,82 @@
                     @break
               @endswitch
             </td>
+
+
             <td style="vertical-align:middle;">
-              <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
-                @csrf
                 <center>
-                  <button type="submit" class="btn-rounded btn-primary" style="display:block;width:50%;padding:1px;">
-                    <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
-                    Show
-                  </button>
+                    <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn-rounded btn-primary" style="display:block;width:70%;padding:5px;">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                            Show
+                        </button>
+                    </form>
+                    @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+                        <br>
+                        <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn-rounded btn-secondary" style="display:block;width:70%;padding:5px;">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                Edit
+                            </button>
+                        </form>
+                        <br>
+                        <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn-rounded btn-danger" style="display:block;width:70%;padding:5px;">
+                                <i class="fa fa-trash
+                                " aria-hidden="true"></i>
+                                Delete
+                            </button>
+                        </form>
+                    @endif
                 </center>
-              </form>
             </td>
+
+
             <td style="vertical-align:middle;">
-              @if (!$order[$i]->challan_id)
-                <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
-                  @csrf
-                  <center>
-                    <button type="submit" class="btn-rounded btn-primary" style="display:block;width:50%;padding:1px;">
-                      <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
-                      Create
-                    </button>
-                  </center>
-                </form>
-              @else
-                <form action="{{URL('orderDetails',[$order[$i]->challan->id])}}" method="post">
-                  @csrf
-                  <center>
-                    <button type="submit" class="btn-rounded btn-primary" style="display:block;width:50%;padding:1px;">
-                      <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
-                      Show
-                    </button>
-                  </center>
-                </form>
-              @endif
+                <center>
+                    @if (!$order[$i]->challan_id)
+                        <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn-rounded btn-primary" style="display:block;width:70%;padding:5px;">
+                                <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
+                                Show
+                            </button>
+                        </form>
+                        @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+                            <br>
+                            <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                                @csrf
+                                <button type="submit" class="btn-rounded btn-secondary" style="display:block;width:70%;padding:5px;">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    Edit
+                                </button>
+                            </form>
+                            <br>
+                            <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                                @csrf
+                                <button type="submit" class="btn-rounded btn-danger" style="display:block;width:70%;padding:5px;">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                    Delete
+                                </button>
+                            </form>
+                        @endif
+                    @else
+                        @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+                            <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                                @csrf
+                                <button type="submit" class="btn-rounded btn-primary" style="display:block;width:70%;padding:5px;">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
+                                    Create
+                                </button>
+                            </form>
+                        @else
+                            No Generated Yet
+                        @endif
+                    @endif
+                </center>
             </td>
           </tr>
         @endfor
