@@ -33,13 +33,13 @@
 
 @section('content')
   <div class="table-responsive">
-      <br>
-      <form action="{{URL('orderForm')}}" method="get" style="padding-left:20px;">
-        <button type="submit" class="btn btn-primary" style="display:block;width:15%;">
-            <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
-            Add New Order
-        </button>
-    </form>
+        <br>
+        <form action="{{URL('orderForm')}}" method="get" style="padding-left:20px;">
+            <button type="submit" class="btn btn-primary" style="display:block;width:15%;">
+                <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
+                Add New Order
+            </button>
+        </form>
     <br>
     <table class="table text-center table-bordered table-hover" id="ordersTable" >
       <thead>
@@ -139,7 +139,7 @@
 
             <td style="vertical-align:middle;">
                 <center>
-                    <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                    <form action="{{URL('orderDetails',[$order[$i]->order_id])}}" method="post">
                         @csrf
                         <button type="submit" class="btn-rounded btn-primary" style="display:block;width:70%;padding:5px;">
                             <i class="fa fa-eye" aria-hidden="true"></i>
@@ -148,7 +148,7 @@
                     </form>
                     @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
                         <br>
-                        <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                        <form action="{{URL('orderDetails',[$order[$i]->order_id])}}" method="post">
                             @csrf
                             <button type="submit" class="btn-rounded btn-secondary" style="display:block;width:70%;padding:5px;">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -156,7 +156,7 @@
                             </button>
                         </form>
                         <br>
-                        <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                        <form action="{{URL('orderDetails',[$order[$i]->order_id])}}" method="post">
                             @csrf
                             <button type="submit" class="btn-rounded btn-danger" style="display:block;width:70%;padding:5px;">
                                 <i class="fa fa-trash
@@ -171,8 +171,8 @@
 
             <td style="vertical-align:middle;">
                 <center>
-                    @if (!$order[$i]->challan_id)
-                        <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                    @if ($order[$i]->challan_id)
+                        <form action="{{URL('challanDetails',[$order[$i]->challan_id])}}" method="post">
                             @csrf
                             <button type="submit" class="btn-rounded btn-primary" style="display:block;width:70%;padding:5px;">
                                 <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
@@ -199,7 +199,7 @@
                         @endif
                     @else
                         @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
-                            <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                            <form action="{{URL('challanForm',[$order[$i]->id])}}" method="post">
                                 @csrf
                                 <button type="submit" class="btn-rounded btn-primary" style="display:block;width:70%;padding:5px;">
                                     <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
@@ -207,7 +207,7 @@
                                 </button>
                             </form>
                         @else
-                            No Generated Yet
+                            <strong>Not Yet Generated</strong>
                         @endif
                     @endif
                 </center>

@@ -27,11 +27,21 @@ class ordersController extends Controller
         return view('orders.orderDetails')->with('orders',$data);
     }
 
-    public function exportPDF($id,$type) {
+    public function challanDetails($id){
+        $data = $this->orderRepository->challanDetails($id);
+        return view('orders.challanDetails')->with('orders',$data);
+    }
+
+    public function printInvoice($id,$type) {
         $data = $this->orderRepository->orderDetails($id,$type);
-        // return view('orders.exportPdf')->with('orders', $data);
         view()->share('orders', $data);
-        return PDF::loadView('orders.exportPdf')->setWarnings(false)->stream('invoice.pdf');
+        return PDF::loadView('orders.printInvoice')->setWarnings(false)->stream('invoice - '. $data->id .'pdf');
+    }
+
+    public function printChallan($id) {
+        $data = $this->orderRepository->challanDetails($id);
+        view()->share('orders', $data);
+        return PDF::loadView('orders.printChallan')->setWarnings(false)->stream('challan.pdf');
     }
 
     public function orderForm()
@@ -45,6 +55,20 @@ class ordersController extends Controller
     public function orderCreate(Request $request)
     {
         $this->orderRepository->orderCreate($request);
+        return back();
+    }
+
+    public function challanForm($id)
+    {
+        $buyer = $this->orderRepository->buyerDetails();
+        $consignee = $this->orderRepository->consigneeDetails();
+        $product = $this->orderRepository->productDetails();
+        return view('orders.challanForm')->with('buyer',$buyer)->with('consignee',$consignee)->with('product',$product)->with('map',$id);
+    }
+
+    public function challanCreate($id,Request $request)
+    {
+        $this->orderRepository->challanCreate($id,$request);
         return back();
     }
 }

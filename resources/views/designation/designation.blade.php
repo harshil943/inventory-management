@@ -4,13 +4,30 @@
     Designation | Bright Containers
 @endsection
 
+@section('breadcrumb')
+  @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+    @section('breadcrumb-title')
+      &nbsp; Designations
+    @endsection
+    @section('breadcrumb-item')
+      <li class="breadcrumb-item">
+        <a href="{{ route('dashboard') }}">Home</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <strong>Desinations</strong>
+      </li>
+    @endsection
+  @endif
+@endsection
 
 @section('content')
-    <div class="gray-bg container">
+
+    <form action="{{URL('orderForm')}}" method="get" style="padding-left:20px;">
         <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#designationForm">
-            Add Designation
+            <i class="fa fa-plus"></i> Add New Designation
         </button>
-        <div class="text-center loginscreen animated fadeInDown">
+    </form>
+        <div class="text-center animated fadeInDown">
                 <div class="modal fade" id="designationForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -41,9 +58,9 @@
                 </div>
             </div>
         </div>
-        <div class="ibox-content mt-5 mb-5">
-            <div class="table-responsive">
-              <table class="table text-center table-bordered table-hover" id="ordersTable" >
+        <div class="ibox-content mt-5 mb-5" style="background: lightgrey;">
+            <big>
+            <table class="table text-center table-bordered table-hover" >
                 <thead>
                   <tr>
                     <th>Designation Name</th>
@@ -68,8 +85,7 @@
                     @endforeach
                 </tbody>
               </table>
-
-            </div>
+            </big>
           </div>
     </div>
 @endsection
@@ -77,9 +93,7 @@
 @push('script')
     <script>
         $(function() {
-            $('.employee').addClass('active');
-            $('.employee ul').addClass('in');
-            $('.employee ul li:nth-child(3)').addClass('active');
+            $('.designation').addClass('active');
         });
     </script>
 @endpush

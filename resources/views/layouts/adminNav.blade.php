@@ -33,8 +33,10 @@
                 <ul class="nav nav-second-level collapse">
                     <li><a href="{{route('employee.create')}}" style="text-decoration:none;">Add Employee</a></li>
                     <li><a href="{{route('employee.index')}}" style="text-decoration:none;">Manage Employee</a></li>
-                    <li><a href="{{route('designation.index')}}" style="text-decoration:none;">Designation</a></li>
                 </ul>
+            </li>
+            <li class="designation">
+                <a href="{{route('designation.index')}}" style="text-decoration:none;"><i class="fa fa-user"></i> <span class="nav-label">Designation</span></a>
             </li>
             <li class="orders">
                 <a href="" style="text-decoration:none"><i class="fa fa-list"></i> <span class="nav-label">Orders</span> <span class="fa arrow"></span></a>

@@ -25,4 +25,9 @@ class EmployeeDetails extends Model
         'designation_id',
         'admin',
     ];
+
+    public function designation()
+    {
+        return $this->belongsTo('App\Models\Designation');
+    }
 }

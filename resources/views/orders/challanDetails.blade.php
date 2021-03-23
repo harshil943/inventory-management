@@ -63,7 +63,7 @@
 @section('breadcrumb')
   @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
     @section('breadcrumb-title')
-      &nbsp; Invoice Details
+      &nbsp; Challan Details
     @endsection
     @section('breadcrumb-item')
       <li class="breadcrumb-item">
@@ -73,7 +73,7 @@
         <a href="{{ route('orders.index') }}">Orders</a>
       </li>
       <li class="breadcrumb-item active">
-        <strong>Order Details</strong>
+        <strong>Challan Details</strong>
       </li>
     @endsection
   @endif
@@ -145,7 +145,7 @@
                 @endif
             </div>
             <div class="col-sm-6">
-                <h4 class="text-right">Invoice No. - {{$orders->id}}</h4>
+                <h4 class="text-right">Challan No. - {{$orders->challan_id}}</h4>
                 <div class="row text-left">
                     <div class="col-sm-6 border-right">
                         e-Way Bill No.
@@ -484,10 +484,10 @@
         <br><br>
         @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
             <center>
-                <form action="{{URL('printinvoice',[$orders->id,2])}}" method="post">
+                <form action="{{URL('printchallan',[$orders->id])}}" method="post">
                     @csrf
                     <button type="submit" class="btn btn-warning">
-                        <i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Download/Print Invoice</i>
+                        Download/Print Invoice
                     </button>
                 </form>
             </center>
@@ -502,10 +502,10 @@
                     @endif
                 </div>
                 <div class="col-sm-6">
-                    <form action="{{URL('printinvoice',[$orders->id,0])}}" method="post">
+                    <form action="{{URL('printchallan',[$orders->id])}}" method="post">
                         @csrf
                         <button type="submit" class="btn btn-warning">
-                            <i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;Download/Print Invoice</i>
+                            Download/Print Invoice
                         </button>
                     </form>
                 </div>
