@@ -31,7 +31,8 @@
           </div>
     </div>
 </div>
-@if (isset($product->table_header))
+
+@if (!($product->table_header == "null"))
     
 <div class="mt-5 container-fluid">
   <h1 class="mb-3" style="color:#007c89">Dimentions Table</h1>
