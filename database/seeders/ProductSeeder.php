@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
         $detail1->id = '1';
         $detail1->category_id = '1';
         $detail1->product_name = 'Bio pesticide Bottle';
-        $detail1->product_image_name = 'pesticide_bottle.jpg';
+        $detail1->product_image_name = 'pesticide_bottle.png';
         $detail1->product_filter_type = '1';
         $detail1->product_info_1 = 'We are engaging in Blow molding manufacturing since 2005. We have the latest machinery & well-trained staff which gives excellent quality bottles to pack your precious product.';
         $detail1->product_info_2 = 'We introduce a new range of HDPE bottles that are useful to pack Liquid Humic & Liquid PGR.';
@@ -42,7 +42,7 @@ class ProductSeeder extends Seeder
         $detail2->id = '2';
         $detail2->category_id = '1';
         $detail2->product_name = 'Imida Bottles';
-        $detail2->product_image_name = 'imida_bottle.jpg';
+        $detail2->product_image_name = 'imida_bottle.png';
         $detail2->product_filter_type = '1';
         $detail2->product_info_1 = 'We are engaging in Blow molding manufacturing since 2005. We have the latest machinery & well-trained staff which gives excellent quality bottles to pack your precious product.';
         $detail2->product_info_2 = 'We introduce a new range of HDPE bottles that are useful to pack Liquid Humic & Liquid PGR.';
@@ -65,7 +65,7 @@ class ProductSeeder extends Seeder
         $detail3->id = '3';
         $detail3->category_id = '1';
         $detail3->product_name = '3 Strip Bottle';
-        $detail3->product_image_name = '3_strip_bottle.jpg';
+        $detail3->product_image_name = '3_strip_bottle.png';
         $detail3->product_filter_type = '1';
         $detail3->product_info_1 = 'We are engaging in Blow molding manufacturing since 2005. We have the latest machinery & well-trained staff which gives excellent quality bottles to pack your precious product.';
         $detail3->product_info_2 = 'We introduce a new range of HDPE bottles that are useful to pack Liquid Humic & Liquid PGR.';

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\logoutController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\ordersController;
@@ -30,7 +31,7 @@ Route::get('/login',function(){ return view('login');});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('brochureDetails/{id}',[brochureController::class,'brochureDetails']);
 Route::get('brochure',[brochureController::class,'brochure']);
 Route::get('productCategory/{categoryData}',[productCategoryController::class,'productCategory']);
@@ -47,13 +48,15 @@ Route::middleware(['setpass'])->group(function () {
         Route::resource('designation',designationController::class);
         Route::post('makeAdmin/{id}',[employeeController::class,'makeAdmin']);
         Route::get('removeadmin/{id}',[employeeController::class,'removeAdmin']);
+        Route::resource('product', productDetailsController::class);
+        Route::resource('category', productCategoryController::class);
     });
     Route::get('/setpassword',[setPassController::class,'index'])->name('setpassword');
     Route::get('orders',[ordersController::class,'index'])->name('orders.index');
     Route::post('orderDetails/{data}',[ordersController::class,'orderDetails']);
     Route::get('orderForm',[ordersController::class,'orderForm'])->name('orders.orderForm');
     Route::post('orderCreate',[ordersController::class,'orderCreate'])->name('orders.orderCreate');
-    Route::get('/create-pdf/{id}', [ordersController::class, 'exportPDF']);
+    Route::post('createPdf/{id}/{type}', [ordersController::class, 'exportPDF']);
 });
 
 Route::post('Quotation',[quotationController::class,'quotationCreate'])->name('quotation');
