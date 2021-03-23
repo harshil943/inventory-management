@@ -16,16 +16,22 @@ class setPassMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Route::is('setpassword') && (auth()->user()->password_change == '0'))
+        if(!auth()->user())
         {
-            return redirect()->route('dashboard');
+            return redirect()->route('login');
         }
-        if(!Route::is('setpassword') && (auth()->user()->password_change == '1'))
-        {
-            return redirect()->route('setpassword');
+        else{
+            if(Route::is('setpassword') && (auth()->user()->password_change == '0'))
+            {
+                return redirect()->route('dashboard');
+            }
+            if(!Route::is('setpassword') && (auth()->user()->password_change == '1'))
+            {
+                return redirect()->route('setpassword');
+            }
         }
 
-        
+
         return $next($request);
     }
 }

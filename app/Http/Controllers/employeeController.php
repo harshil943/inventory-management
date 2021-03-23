@@ -24,8 +24,11 @@ class employeeController extends Controller
      */
     public function index()
     {
-        $designation = $this->designationRepository->all();
-        return view('employee.empForm')->with('designation',$designation);
+        $employees = $this->employeeRepository->all();
+        $admins = $this->employeeRepository->findAdmins();
+        return view('employee.empDetails')->with('employees',$employees)->with('admins',$admins);
+        // $designation = $this->designationRepository->all();
+        // return view('employee.empForm')->with('designation',$designation);
     }
 
     /**
@@ -35,9 +38,11 @@ class employeeController extends Controller
      */
     public function create()
     {
-        $employees = $this->employeeRepository->all();
-        $admins = $this->employeeRepository->findAdmins();
-        return view('employee.empDetails')->with('employees',$employees)->with('admins',$admins);
+        $designation = $this->designationRepository->all();
+        return view('employee.empForm')->with('designation',$designation);
+        // $employees = $this->employeeRepository->all();
+        // $admins = $this->employeeRepository->findAdmins();
+        // return view('employee.empDetails')->with('employees',$employees)->with('admins',$admins);
     }
 
     /**
@@ -66,7 +71,7 @@ class employeeController extends Controller
         $employeeDetails = $this->employeeRepository->empById($id);
         return view('employee.empForm',compact(['employeeDetails','designation']));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -79,7 +84,7 @@ class employeeController extends Controller
         $this->employeeRepository->updateEmp($id,$request);
         return redirect()->route('employee.create');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -89,17 +94,17 @@ class employeeController extends Controller
     public function destroy($email_id)
     {
         $this->employeeRepository->delete($email_id);
-        
+
         return back();
     }
-    
+
     public function makeAdmin($id,Request $request)
     {
-        
+
         $this->employeeRepository->makeAdmin($id,$request);
         return redirect()->route('employee.create');
     }
-    
+
     public function removeAdmin($email)
     {
         $this->employeeRepository->removeAdmin($email);
@@ -114,6 +119,6 @@ class employeeController extends Controller
     //  */
     // public function show(EmployeeDetails $employeeDetails)
     // {
-    
+
     // }
 }

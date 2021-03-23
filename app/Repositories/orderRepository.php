@@ -23,7 +23,7 @@ class orderRepository implements OrderInterface
         }
         else
         {
-            $data = map_order_challan::where('buyer_id',$user_id)->select('id','order_date','order_id','challan_id','buyer_id','seller_id','consignee_id','order_status','payment_status')->get();
+            $data = map_order_challan::where('buyer_id',$user_id)->select('id','order_id','challan_id','buyer_id','seller_id','consignee_id','order_status','payment_status')->get();
         }
         for($i = 0; $i < sizeof($data); $i++)
         {
@@ -45,7 +45,7 @@ class orderRepository implements OrderInterface
         return $data;
     }
 
-    public function orderDetails($id)
+    public function orderDetails($id,$type)
     {
         $data = map_order_challan::where('order_id',$id)->first();
 
@@ -75,34 +75,61 @@ class orderRepository implements OrderInterface
         $data->order->name_of_extra_cost = $ex;
         $data->order->extra_hsn_code = $ehc;
         $data->order->extra_cost_price = $cp;
+        if($type)
+        {
+            switch($type)
+            {
+                case(0):
+                    $data['type_of_copy'] = '';
+                    break;
+
+                case(1):
+                    $data['type_of_copy'] = 'Original for Buyer';
+                    break;
+
+                case(2):
+                    $data['type_of_copy'] = 'Duplicate for Transporter';
+                    break;
+
+                case(3):
+                    $data['type_of_copy'] = 'Triplicate for Supplier';
+                    break;
+
+                case(4):
+                    $data['type_of_copy'] = 'Extra Copy';
+                    break;
+            }
+        }
+        else
+        {
+            $data['type_of_copy'] = null;
+        }
         return $data;
     }
 
     public function buyerDetails()
     {
         $buyer = User::where('is_company','1')->get(['id','name']);
-        
         return $buyer;
     }
     public function consigneeDetails()
     {
-        
+
         $consinee = consignee::get(['id','name']);
         return $consinee;
     }
     public function productDetails()
     {
-        
+
         $product = ProductDetails::get(['id','product_name']);
-        
+
         return $product;
     }
 
     public function orderCreate($requset)
     {
-        // dd($requset);
-        $order= new OrderDetails;
-        
+        $map = new map_order_challan;
+        $order = new OrderDetails;
         $order->e_way_bill_number = $requset->e_way_bill_number;
         $order->buyer_order_number = $requset->buyer_order_number;
         $order->product_id = json_encode($requset->product_id);
@@ -120,6 +147,20 @@ class orderRepository implements OrderInterface
             $order->igst_applicable = '1';
         }
         $order->save();
+        $map->order_id = $order->id;
+        $map->buyer_id = $requset->buyer_id;
+        $map->seller_id = '1';
+        $map->consignee_id  = $requset->consignee_id;
+        $map->vehical_number = $requset->vehical_number;
+        $map->order_status = $requset->order_status;
+        $map->payment_status = $requset->payment_status;
+        $map->dispatch_method = $requset->dispatch_mathod;
+        $map->dispatch_document_number = $requset->dispatch_document_number;
+        $map->lr_number = $requset->LR_number;
+        $map->shipping_date = $requset->shipping_date;
+        $map->order_date = $requset->order_date;
+        $map->due_date = $requset->due_date;
+        $map->save();
         return true;
     }
 }

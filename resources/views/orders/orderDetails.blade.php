@@ -316,7 +316,7 @@
                         @for($i = 0; $i < sizeof($orders->order->name_of_extra_cost); $i++)
                             <tr>
                                 <td class="text-right">
-                                    <strong>{{$orders->order->name_of_extra_cost[$i]}}</strong>
+                                    <i><strong>{{$orders->order->name_of_extra_cost[$i]}}</strong></i>
                                 </td>
                                 <td>
                                     {{$orders->order->extra_hsn_code[$i]}}
@@ -484,22 +484,35 @@
         </div>
 
         <br><br>
-        <div class="row">
-            <div class="col-sm-6 text-right">
-                @if ($orders->payment_status != 'completed')
-                    <form action="{{$orders->payment_link}}" method="get">
-                        <button type="submit" class="btn btn-primary">Make Payment</button>
-                    </form>
-                @endif
-            </div>
-            <div class="col-sm-6">
-                <form action="{{URL::to('/create-pdf/'.$orders->id)}}" method="get">
+        @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+            <center>
+                <form action="{{URL('createPdf',[$orders->id,2])}}" method="post">
+                    @csrf
                     <button type="submit" class="btn btn-warning">
                         Download/Print Invoice
                     </button>
                 </form>
+            </center>
+        @else
+            <div class="row">
+                <div class="col-sm-6 text-right">
+                    @if ($orders->payment_status != 'completed')
+                        <form action="{{$orders->payment_link}}" method="get">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Make Payment</button>
+                        </form>
+                    @endif
+                </div>
+                <div class="col-sm-6">
+                    <form action="{{URL('createPdf',[$orders->id,0])}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-warning">
+                            Download/Print Invoice
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 </div>
 

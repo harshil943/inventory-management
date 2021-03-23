@@ -19,7 +19,7 @@ class BrightSeeder extends Seeder
         $bright->id = '1';
         $bright->name = 'Bright Containers';
         $bright->email = 'brightcontainers@gmail.com';
-        $bright->head_office_address = '1st Floor, \r\nTribhuvan, Station Rd,\r\nNadiad, Gujarat 387001';
+        $bright->head_office_address = '1st Floor, Tribhuvan, Station Rd, Nadiad, Gujarat 387001';
         $bright->gst_number = '123456755444444';
         $bright->pan_number = '1234567890';
         $bright->state_code = 'Gujarat - 24';
