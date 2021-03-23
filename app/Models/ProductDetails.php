@@ -38,4 +38,8 @@ class ProductDetails extends Model
         'MOQ',
         'cap_name',
     ];
+    public function category()
+    {
+        return $this->belongsTo('App\Models\ProductCategory');
+    }
 }

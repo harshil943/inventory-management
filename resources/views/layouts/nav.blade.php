@@ -27,7 +27,7 @@
                     Product Category
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    @foreach ($category as $item)
+                    @foreach ($navCategory as $item)
                       <a class="dropdown-item" href="{{url('productCategory',['categoryData'=>$item])}}">{{$item['category_name']}}</a>
                     @endforeach
                     {{-- <a class="dropdown-item" href="#">Another action</a>

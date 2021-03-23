@@ -28,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         $category = ProductCategory::all();
-        view()->share('category', $category);
+        view()->share('navCategory', $category);
     }
 }
