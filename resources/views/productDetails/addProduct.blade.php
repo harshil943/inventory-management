@@ -42,7 +42,15 @@ Add Product | Bright Containers
                                         <select class="form-control" id="category" name="category" @if(isset($product->category)) value="{{$product->category}}" @endif required>
                                             <option></option>
                                             @foreach ($category as $item)
+                                             @if (isset($product))
+                                                 @if ($item->id == $product->category_id) 
+                                                    <option value="{{$item->id}}" selected>{{$item->category_name}}</option>
+                                                 @else
+                                                    <option value="{{$item->id}}">{{$item->category_name}}</option>
+                                                 @endif
+                                             @else
                                                 <option value="{{$item->id}}">{{$item->category_name}}</option>
+                                             @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -108,8 +116,21 @@ Add Product | Bright Containers
                                     <div class="col-sm-8">
                                         <select class="form-control" id="filter_type" name="filter_type" @if(isset($product->filter_type)) value="{{$product->filter_type}}" @endif required>
                                             <option></option>
-                                            <option value="0">0</option>
-                                            <option value="1">1</option>
+                                            @if (isset($product))
+                                                @if ($product->product_filter_type == '0') 
+                                                    
+                                                    <option value="0" selected>0</option>
+                                                    <option value="1">1</option>
+                                                @else
+                                                   
+                                                    <option value="0">0</option>
+                                                    <option value="1" selected>1</option>
+                                                @endif
+                                            @else
+                                                
+                                                <option value="0">0</option>
+                                                <option value="1" >1</option>
+                                            @endif
                                         </select>
                                     </div>
                                 </div>
