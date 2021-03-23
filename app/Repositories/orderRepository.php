@@ -107,6 +107,39 @@ class orderRepository implements OrderInterface
         return $data;
     }
 
+    public function challanDetails($id)
+    {
+        $data = map_order_challan::where('order_id',$id)->first();
+
+        $pi = json_decode($data->order->product_id,true);
+        $hsn = json_decode($data->order->hsn_code,true);
+        $q = json_decode($data->order->quantity,true);
+        $unit = json_decode($data->order->unit,true);
+        $ppp = json_decode($data->order->price_per_piece,true);
+        $ex = json_decode($data->order->name_of_extra_cost,true);
+        $ehc = json_decode($data->order->extra_hsn_code,true);
+        $cp = json_decode($data->order->extra_cost_price,true);
+        $arr = array();
+        foreach($pi as $id)
+        {
+            $data2 = DB::table('product_details')
+                    ->select('product_name')
+                    ->where('id',$id)
+                    ->get();
+
+            array_push($arr,$data2[0]->product_name);
+        }
+        $data->order->product_id = $arr;
+        $data->order->hsn_code = $hsn;
+        $data->order->quantity = $q;
+        $data->order->unit = $unit;
+        $data->order->price_per_piece = $ppp;
+        $data->order->name_of_extra_cost = $ex;
+        $data->order->extra_hsn_code = $ehc;
+        $data->order->extra_cost_price = $cp;
+        return $data;
+    }
+
     public function buyerDetails()
     {
         $buyer = User::where('is_company','1')->get(['id','name']);
@@ -128,6 +161,45 @@ class orderRepository implements OrderInterface
 
     public function orderCreate($requset)
     {
+        $map = new map_order_challan;
+        $order = new OrderDetails;
+        $order->e_way_bill_number = $requset->e_way_bill_number;
+        $order->buyer_order_number = $requset->buyer_order_number;
+        $order->product_id = json_encode($requset->product_id);
+        $order->hsn_code = json_encode($requset->hsn);
+        $order->quantity = json_encode($requset->quantity);
+        $order->unit = json_encode($requset->unit);
+        $order->price_per_piece = json_encode($requset->price);
+        $order->name_of_extra_cost = json_encode($requset->name_of_extra_cost);
+        $order->extra_hsn_code = json_encode($requset->extra_hsn_code);
+        $order->extra_cost_price = json_encode($requset->extra_cost);
+        $order->payment_link = $requset->payment_link;
+        if ($requset->igst == null) {
+            $order->igst_applicable = '0';
+        } else {
+            $order->igst_applicable = '1';
+        }
+        $order->save();
+        $map->order_id = $order->id;
+        $map->buyer_id = $requset->buyer_id;
+        $map->seller_id = '1';
+        $map->consignee_id  = $requset->consignee_id;
+        $map->vehical_number = $requset->vehical_number;
+        $map->order_status = $requset->order_status;
+        $map->payment_status = $requset->payment_status;
+        $map->dispatch_method = $requset->dispatch_mathod;
+        $map->dispatch_document_number = $requset->dispatch_document_number;
+        $map->lr_number = $requset->LR_number;
+        $map->shipping_date = $requset->shipping_date;
+        $map->order_date = $requset->order_date;
+        $map->due_date = $requset->due_date;
+        $map->save();
+        return true;
+    }
+
+    public function challanCreate($id,$requset)
+    {
+        dd($id);
         $map = new map_order_challan;
         $order = new OrderDetails;
         $order->e_way_bill_number = $requset->e_way_bill_number;

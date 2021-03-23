@@ -41,7 +41,7 @@ Route::get('logout',[logoutController::class,'out']);
 
 Route::post('donepassword',[setPassController::class,'changepass'])->name('donepassword');
 
-Route::middleware(['setpass'])->group(function () {  
+Route::middleware(['setpass'])->group(function () {
     Route::group(['middleware' => ['role:super-admin|admin']], function () {
         Route::get('dashboard',[dashboardController::class,'index'])->name('dashboard');
         Route::resource('employee',employeeController::class);
@@ -53,10 +53,14 @@ Route::middleware(['setpass'])->group(function () {
     });
     Route::get('/setpassword',[setPassController::class,'index'])->name('setpassword');
     Route::get('orders',[ordersController::class,'index'])->name('orders.index');
-    Route::post('orderDetails/{data}',[ordersController::class,'orderDetails']);
     Route::get('orderForm',[ordersController::class,'orderForm'])->name('orders.orderForm');
     Route::post('orderCreate',[ordersController::class,'orderCreate'])->name('orders.orderCreate');
-    Route::post('createPdf/{id}/{type}', [ordersController::class, 'exportPDF']);
+    Route::post('challanForm/{id}',[ordersController::class,'challanForm'])->name('orders.challanForm');
+    Route::post('challanCreate/{id}',[ordersController::class,'challanCreate'])->name('orders.challanCreate');
+    Route::post('orderDetails/{id}',[ordersController::class,'orderDetails']);
+    Route::post('challanDetails/{id}',[ordersController::class,'challanDetails']);
+    Route::post('printinvoice/{id}/{type}', [ordersController::class, 'printInvoice']);
+    Route::post('printchallan/{id}', [ordersController::class, 'printChallan']);
 });
 
 Route::post('Quotation',[quotationController::class,'quotationCreate'])->name('quotation');

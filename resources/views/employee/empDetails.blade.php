@@ -8,8 +8,24 @@
   <link href="{{asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
 @endpush
 
+@section('breadcrumb')
+  @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+    @section('breadcrumb-title')
+      &nbsp; Employee Details
+    @endsection
+    @section('breadcrumb-item')
+      <li class="breadcrumb-item">
+        <a href="{{ route('dashboard') }}">Home</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <strong>Employee Details</strong>
+      </li>
+    @endsection
+    @endif
+@endsection
+
 @section('content')
-<div class="ibox-content">
+<br><br>
     <div class="table-responsive">
       <table class="table text-center table-bordered table-hover" id="ordersTable" >
         <thead>
@@ -21,12 +37,10 @@
             <th>Residence Address</th>
             <th>Bank Name</th>
             <th>Bank Account Number</th>
-            <th>Bank ISFC Code</th>
+            <th>Bank IFS Code</th>
             <th>Salary</th>
             <th>Designation</th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th colspan="3"></th>
           </tr>
         </thead>
         <tbody>
@@ -42,14 +56,17 @@
                 <td>{{$item->residence_address}}</td>
                 <td>{{$item->bank_name}}</td>
                 <td>{{$item->bank_account_number}}</td>
-                <td>{{$item->bank_ISFC_code}}</td>
+                <td>{{$item->bank_IFSC_code}}</td>
                 <td>{{$item->salary}}</td>
-                <td>{{$item->designation_id}}</td>
-                <td><a href="{{route('employee.edit',$item->id)}}" class="btn btn-success rounded">Edit</a></td>
-                <td><form action="{{route('employee.destroy',$item->email_id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                <td>{{$item->designation->designation_name}}</td>
+                <td>
+                    <a href="{{route('employee.edit',$item->id)}}" class="btn btn-success rounded">Edit</a>
+                </td>
+                <td>
+                    <form action="{{route('employee.destroy',$item->email_id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
                 <td>
@@ -94,10 +111,7 @@
             @endforeach
         </tbody>
       </table>
-
-
     </div>
-</div>
 @endsection
 
 @push('script')
@@ -112,22 +126,22 @@
                     "targets": 0
                 } ],
                 pageLength: 5,
-                responsive: true,
-                dom: '<"html5buttons"B>lTfgitp',
-                buttons: [
-                    {extend: 'excel', title: 'ExampleFile'},
-                    {extend: 'pdf', title: 'ExampleFile'},
+                responsive: true
+                // dom: '<"html5buttons"B>lTfgitp',
+                // buttons: [
+                //     {extend: 'excel', title: 'ExampleFile'},
+                //     {extend: 'pdf', title: 'ExampleFile'},
 
-                    {extend: 'print',
-                        customize: function (win){
-                            $(win.document.body).addClass('white-bg');
-                            $(win.document.body).css('font-size', '10px');
-                            $(win.document.body).find('table')
-                            .addClass('compact')
-                            .css('font-size', 'inherit');
-                        }
-                    }
-                ]
+                //     {extend: 'print',
+                //         customize: function (win){
+                //             $(win.document.body).addClass('white-bg');
+                //             $(win.document.body).css('font-size', '10px');
+                //             $(win.document.body).find('table')
+                //             .addClass('compact')
+                //             .css('font-size', 'inherit');
+                //         }
+                //     }
+                // ]
             });
             t.on( 'order.dt search.dt', function () {
                 t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
