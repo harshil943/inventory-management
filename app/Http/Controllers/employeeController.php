@@ -27,8 +27,6 @@ class employeeController extends Controller
         $employees = $this->employeeRepository->all();
         $admins = $this->employeeRepository->findAdmins();
         return view('employee.empDetails')->with('employees',$employees)->with('admins',$admins);
-        // $designation = $this->designationRepository->all();
-        // return view('employee.empForm')->with('designation',$designation);
     }
 
     /**
@@ -40,9 +38,6 @@ class employeeController extends Controller
     {
         $designation = $this->designationRepository->all();
         return view('employee.empForm')->with('designation',$designation);
-        // $employees = $this->employeeRepository->all();
-        // $admins = $this->employeeRepository->findAdmins();
-        // return view('employee.empDetails')->with('employees',$employees)->with('admins',$admins);
     }
 
     /**
@@ -53,9 +48,7 @@ class employeeController extends Controller
      */
     public function store(Request $request)
     {
-
         $this->employeeRepository->storeEmp($request);
-
         return redirect()->route('employee.create');
     }
 
@@ -100,15 +93,14 @@ class employeeController extends Controller
 
     public function makeAdmin($id,Request $request)
     {
-
         $this->employeeRepository->makeAdmin($id,$request);
-        return redirect()->route('employee.create');
+        return redirect()->route('employee.index');
     }
 
     public function removeAdmin($email)
     {
         $this->employeeRepository->removeAdmin($email);
-        return redirect()->route('employee.create');
+        return redirect()->route('employee.index');
     }
 
     // /**

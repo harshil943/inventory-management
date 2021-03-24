@@ -4,10 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="HDPE Plastic Bottle Manufacturing Company." name="description">
+    <meta content="Jainam Shah" name="author">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" href="{{asset("img/bright_logo_small.png")}}" type="image/x-icon">
 
     <title>@yield('title')</title>
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -31,7 +34,7 @@
             text-align: left;
             white-space: nowrap;
             padding: 5px;
-            border: 1px solid white;
+            border: 1px solid black;
             z-index: 10000;
         }
 
@@ -53,8 +56,8 @@
 
 </head>
 
-<body >
-    <div id="wrapper">
+<body>
+    <div id="wrapper" >
         @if(Auth::user())
             @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
                 @include('layouts.adminNav')
@@ -64,16 +67,25 @@
         @else
             @include('layouts.nav')
         @endif
-        <div id="wrapper" style="background:lightgrey;">
-            @if(Auth::user())
-                @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+        @if(Auth::user())
+            @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+                <div id="wrapper" style="margin-top:0px;">
                     @include('layouts.breadcrumb')
-                @endif
+            @else
+                <div id="wrapper" style="margin-top:104px;">
             @endif
+        @else
+            <div id="wrapper" style="margin-top:104px;">
+        @endif
             @yield('content')
         </div>
     </div>
 
+    {{-- <div class="footer fixed">
+        <div>
+            <strong>Copyright</strong> Example Company © 2014-2018
+        </div>
+    </div> --}}
 
     {{-- Java Script Section --}}
     <script src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
@@ -103,7 +115,7 @@
     {{-- <script src="{{asset('js/demo/chartjs-demo.js')}}"></script>     --}}
 
     <!-- jQuery UI -->
-    {{-- <script src="{{asset('js/plugins/jquery-ui/jqu ery-ui.min.js')}}"></script> --}}
+    {{-- <script src="{{asset('js/plugins/jquery-ui/jquery-ui.min.js')}}"></script> --}}
 
     <!-- Jvectormap -->
     {{-- <script src="{{asset('js/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js')}}"></script> --}}

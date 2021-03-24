@@ -27,7 +27,7 @@
 @section('content')
 <br><br>
     <div class="table-responsive">
-      <table class="table text-center table-bordered table-hover" id="ordersTable" >
+      <table class="table text-center table-bordered table-hover" id="employeeTable" >
         <thead>
           <tr>
             <th>Sr. No.</th>
@@ -119,7 +119,7 @@
     <script src="{{asset('js/plugins/dataTables/dataTables.bootstrap4.min.js')}}"></script>
     <script>
         $(document).ready(function(){
-            var t = $('#ordersTable').DataTable({
+            var t = $('#employeeTable').DataTable({
                 "columnDefs": [ {
                     "searchable": false,
                     "orderable": false,

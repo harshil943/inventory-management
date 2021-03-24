@@ -5,9 +5,7 @@
 @endsection
 
 @section('content')
-{{-- Temp --}}
-    {{$id}}
-{{-- EndTemp --}}
+<br>
     <div class="text-center pdf-toolbar">
         <div class="btn-group">
             <button id="prev" class="btn btn-white"><i class="fa fa-long-arrow-left"></i> <span class="hidden-xs">Previous</span></button>
@@ -19,7 +17,7 @@
             <div class="input-group">
                 <input type="text" class="form-control" id="page_num">
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-white" id="page_count">/ 22</button>
+                    <button type="button" class="btn btn-white" id="page_count"></button>
                 </div>
             </div>
         </div>
@@ -32,7 +30,7 @@
 @push('script')
 <script src="{{asset('js/plugins/pdfjs/pdf.js')}}"></script>
 <script>
-    
+
     var url = "{{asset('brochures/example.pdf')}}";
 
     var pdfDoc = null,

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Set Password | Bright Containers    
+    Set Password | Bright Containers
 @endsection
 
 
@@ -14,7 +14,7 @@
             <h1 class="logo-name">Logo</h1>
 
         </div>
-        
+
         <p>Set Your New Password</p>
         <form class="m-t" role="form" method="POST" action="{{ route('donepassword') }}">
             @csrf
@@ -26,7 +26,7 @@
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">Change Password</button>
         </form>
-        
+
     </div>
 </div>
 @endsection
