@@ -54,6 +54,23 @@
                     <li><a href="{{route('category.index')}}" style="text-decoration:none;">Manage category</a></li>
                 </ul>
             </li>
+            <li class="quotation">
+                <a href="{{route('quotation.index')}}" style="text-decoration:none;"><i class="fa fa-paperclip"></i> <span class="nav-label">Quotation</span></a>
+            </li>
+            <li class="consignee">
+                <a href="" style="text-decoration:none"><i class="fa fa-user-plus"></i> <span class="nav-label">Consignee</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('consignee.create')}}" style="text-decoration:none;">Add Consignee</a></li>
+                    <li><a href="{{route('consignee.index')}}" style="text-decoration:none;">Manage Consignee</a></li>
+                </ul>
+            </li>
+            <li class="inventory">
+                <a href="" style="text-decoration:none"><i class="fa fa-archive"></i> <span class="nav-label">Inventory</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('inventory.create')}}" style="text-decoration:none;">Add Inventory</a></li>
+                    <li><a href="{{route('inventory.index')}}" style="text-decoration:none;">Manage Inventory</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>

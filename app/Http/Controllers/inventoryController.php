@@ -3,15 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\Interfaces\quotationInterface;
-class quotationController extends Controller
-{
-    private $quotationRepository;
 
-    public function __construct(quotationInterface $quotationRepository)
-    {
-        $this->quotationRepository = $quotationRepository;
-    }
+class inventoryController extends Controller
+{
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +13,7 @@ class quotationController extends Controller
      */
     public function index()
     {
-        $quotes = $this->quotationRepository->allQuotation();
-        return view('quotation.allQuotation')->with('quotes',$quotes);
+        $this->
     }
 
     /**
@@ -41,8 +34,7 @@ class quotationController extends Controller
      */
     public function store(Request $request)
     {
-        $this->quotationRepository->Create($request);
-        return back();
+        //
     }
 
     /**
@@ -87,7 +79,6 @@ class quotationController extends Controller
      */
     public function destroy($id)
     {
-        $this->quotationRepository->deleteQuote($id);
-        return redirect()->route('quotation.index');
+        //
     }
 }

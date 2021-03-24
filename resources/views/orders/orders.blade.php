@@ -189,7 +189,7 @@
                                 </button>
                             </form>
                             <br>
-                            <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                            <form action="{{URL('challanDelete',[$order[$i]->order->id])}}" method="post">
                                 @csrf
                                 <button type="submit" class="btn-rounded btn-danger" style="display:block;width:70%;padding:5px;">
                                     <i class="fa fa-trash" aria-hidden="true"></i>

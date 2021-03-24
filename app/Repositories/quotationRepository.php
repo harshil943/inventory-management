@@ -17,6 +17,18 @@ class quotationRepository implements quotationInterface
         $quote->contact_number = $request->number;
         $quote->select_product_size = $request->size;
         $quote->quantity_needed = $request->quantity;
+        $quote->product_id = $request->product_id;
         $quote->save();
+    }
+
+    public function allQuotation()
+    {
+        return quoteDetails::all();
+    }
+
+    public function deleteQuote($id)
+    {
+        quoteDetails::where('id',$id)->delete();
+        return true;
     }
 }

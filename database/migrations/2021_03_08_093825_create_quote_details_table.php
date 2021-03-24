@@ -20,6 +20,8 @@ class CreateQuoteDetailsTable extends Migration
             $table->string('contact_number');
             $table->string('select_product_size')->nullable();
             $table->integer('quantity_needed');
+            $table->unsignedInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('product_details');
             $table->softDeletes();
             $table->timestamps();
         });
