@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm font-weight-bold bg-white">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm font-weight-bold bg-white " >
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{asset("img/bright_logo_big.png")}}" alt="Bright Containers" class="img-responsive img-preview-sm h-100">
@@ -9,8 +9,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{url('/home')}}">
+                <li class="nav-item btn-rounded active" style="background: #0997a7">
+                  <a class="nav-link " href="{{url('/home')}}">
                     Home
                     <span class="sr-only">(current)</span>
                     </a>

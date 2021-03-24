@@ -56,6 +56,7 @@
 
 </head>
 
+{{-- <body style="background-image: linear-gradient(to top,#0997a7,#fff 80%);"> --}}
 <body>
     <div id="wrapper" >
         @if(Auth::user())
