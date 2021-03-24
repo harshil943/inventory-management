@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\Interfaces\inventoryInterface;
+use App\Repositories\Interfaces\productInterface;
 
 class inventoryController extends Controller
 {
+    protected $inventoryrepository;
+    protected $productRepository;
+
+    public function __construct(inventoryInterface $inventoryrepository,productInterface $productRepository)
+    {
+        $this->inventoryrepository = $inventoryrepository;
+        $this->productRepository = $productRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +23,8 @@ class inventoryController extends Controller
      */
     public function index()
     {
-        $this->
+        $inventory = $this->inventoryrepository->inventoryDetails();
+        return view('inventory.manageInventory')->with('inventory',$inventory);
     }
 
     /**
@@ -23,7 +34,8 @@ class inventoryController extends Controller
      */
     public function create()
     {
-        //
+        $product = $this->productRepository->allProducts();
+        return view('inventory.inventoryForm')->with('product',$product);
     }
 
     /**
@@ -34,7 +46,8 @@ class inventoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->inventoryrepository->addInventory($request);
+        return redirect()->route('inventory.index');
     }
 
     /**
@@ -56,7 +69,9 @@ class inventoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = $this->productRepository->allProducts();
+        $inventory = $this->inventoryrepository->inventoryById($id);
+        return view('inventory.inventoryForm')->with('inventory',$inventory)->with('product',$product);
     }
 
     /**
@@ -68,7 +83,8 @@ class inventoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->inventoryrepository->updateInventory($request,$id);
+        return redirect()->route('inventory.index');
     }
 
     /**
@@ -79,6 +95,7 @@ class inventoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->inventoryrepository->deleteInventory($id);
+        return back();
     }
 }

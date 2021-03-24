@@ -20,6 +20,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\Interfaces\userInterface','App\Repositories\userRepository');
         $this->app->bind('App\Repositories\Interfaces\quotationInterface','App\Repositories\quotationRepository');
         $this->app->bind('App\Repositories\Interfaces\consigneeInterface','App\Repositories\consigneeRepository');
+        $this->app->bind('App\Repositories\Interfaces\inventoryInterface','App\Repositories\inventoryRepository');
     }
 
     /**

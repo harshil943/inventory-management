@@ -18,5 +18,10 @@ class InventoryDetails extends Model
         'quantity',
         'cost_per_product',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo('App\Models\ProductDetails');
+    }
 }
 
