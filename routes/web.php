@@ -13,6 +13,7 @@ use App\Http\Controllers\productDetailsController;
 use App\Http\Controllers\quotationController;
 use App\Http\Controllers\setPassController;
 use App\Http\Controllers\consigneeController;
+use App\Http\Controllers\inventoryController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 /*

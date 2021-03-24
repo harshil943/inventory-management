@@ -26,7 +26,7 @@
                 </div>
             </li>
             <li class="dashboard">
-                <a href="{{url('dashboard')}}" style="text-decoration:none"><i class="fa fa-user"></i> <span class="nav-label">Admin Dashboard</span> </a>
+                <a href="{{url('dashboard')}}" style="text-decoration:none"><i class="fa fa-tachometer"></i> <span class="nav-label">Admin Dashboard</span> </a>
             </li>
             <li class="employee">
                 <a href="" style="text-decoration:none"><i class="fa fa-users"></i> <span class="nav-label">Employee</span> <span class="fa arrow"></span></a>
@@ -55,7 +55,7 @@
                 </ul>
             </li>
             <li class="quotation">
-                <a href="{{route('quotation.index')}}" style="text-decoration:none;"><i class="fa fa-paperclip"></i> <span class="nav-label">Quotation</span></a>
+                <a href="{{route('quotation.index')}}" style="text-decoration:none;"><i class="fa fa-inr"></i> <span class="nav-label">Quotation</span></a>
             </li>
             <li class="consignee">
                 <a href="" style="text-decoration:none"><i class="fa fa-user-plus"></i> <span class="nav-label">Consignee</span> <span class="fa arrow"></span></a>
