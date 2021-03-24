@@ -31,7 +31,7 @@ class productCategoryController extends Controller
      */
     public function create()
     {
-        return view('productCategory.categoryForm'); 
+        return view('productCategory.categoryForm');
     }
 
     /**

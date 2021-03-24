@@ -27,20 +27,17 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () { return view('home');});
-
-Route::get('/login',function(){ return view('login');});
-
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', function () { return redirect('home');});
+Route::get('/home', [HomeController::class, 'index']);
+Route::get('/about-us', [HomeController::class, 'aboutus']);
+Route::get('/contact-us', [HomeController::class, 'contactus']);
+Route::get('/quality', [HomeController::class, 'quality']);
 Route::get('brochureDetails/{id}',[brochureController::class,'brochureDetails']);
 Route::get('brochure',[brochureController::class,'brochure']);
 Route::get('productCategory/{categoryData}',[productCategoryController::class,'productCategory']);
 Route::get('productDetails/{id}',[productDetailsController::class,'productDetails']);
-
+Auth::routes();
 Route::get('logout',[logoutController::class,'out']);
-
 Route::post('donepassword',[setPassController::class,'changepass'])->name('donepassword');
 
 Route::middleware(['setpass'])->group(function () {
@@ -67,9 +64,9 @@ Route::middleware(['setpass'])->group(function () {
     Route::post('printchallan/{id}', [ordersController::class, 'printChallan']);
     Route::resource('consignee', consigneeController::class);
     Route::resource('inventory', inventoryController::class);
+    Route::resource('quotation',quotationController::class);
 });
 
-Route::resource('quotation',quotationController::class);
 Route::get('/country', function () {
     $country = Storage::get('public/country.json');
     return json_decode($country, true);

@@ -15,12 +15,12 @@ class setPassController extends Controller
     }
     public function index()
     {
-        return view('employee.setpassword');
+        return view('auth.passwords.setpassword');
     }
 
     public function changepass(Request $request)
     {
         $this->userRepository->changepass($request);
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
     }
 }
