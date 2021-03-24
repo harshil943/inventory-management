@@ -58,6 +58,7 @@ Route::middleware(['setpass'])->group(function () {
     Route::post('challanForm/{id}',[ordersController::class,'challanForm'])->name('orders.challanForm');
     Route::post('challanCreate/{id}',[ordersController::class,'challanCreate'])->name('orders.challanCreate');
     Route::post('orderDetails/{id}',[ordersController::class,'orderDetails']);
+    Route::post('orderDelete/{id}',[ordersController::class,'orderDelete']);
     Route::post('challanDetails/{id}',[ordersController::class,'challanDetails']);
     Route::post('printinvoice/{id}/{type}', [ordersController::class, 'printInvoice']);
     Route::post('printchallan/{id}', [ordersController::class, 'printChallan']);

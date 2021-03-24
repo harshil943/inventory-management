@@ -71,4 +71,10 @@ class ordersController extends Controller
         $this->orderRepository->challanCreate($id,$request);
         return back();
     }
+
+    public function orderDelete($id)
+    {
+        $this->orderRepository->orderDelete($id);
+        return redirect()->route('orders.index');
+    }
 }

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\map_order_challan;
 use App\Models\ProductDetails;
 use App\Models\User;
+use App\Models\challan;
 use App\Repositories\Interfaces\OrderInterface;
 
 class orderRepository implements OrderInterface
@@ -233,6 +234,16 @@ class orderRepository implements OrderInterface
         $map->order_date = $requset->order_date;
         $map->due_date = $requset->due_date;
         $map->save();
+        return true;
+    }
+
+    public function orderDelete($id)
+    {
+        $order = map_order_challan::where('id',$id)->first();
+        
+        map_order_challan::where('id',$order->id)->forcedelete();
+        challan::where('id',$order->challan_id)->forcedelete();
+        OrderDetails::where('id',$order->order_id)->forcedelete();
         return true;
     }
 }

@@ -4,6 +4,21 @@
     Dashboard | Bright Containers
 @endsection
 
+@section('breadcrumb')
+  @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+    @section('breadcrumb-title')
+      &nbsp; Dashboard
+    @endsection
+    @section('breadcrumb-item')
+      <li class="breadcrumb-item">
+        <a href="{{ route('dashboard') }}">Home</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <strong>Dashboard</strong>
+      </li>
+    @endsection
+  @endif
+@endsection
 @section('content')
 {{-- <body class="fixed-navigation"> --}}
     {{-- <div id="wrapper">

@@ -16,4 +16,6 @@ interface OrderInterface
 
     public function orderCreate($requset);
 
+    public function orderDelete($id);
+
 }
