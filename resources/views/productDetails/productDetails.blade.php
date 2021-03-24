@@ -89,7 +89,7 @@
       <h1>₹ Request Quotation</h1>
     </div>
     <div class="container mt-5">
-      <form class="m-t mt-3" role="form"  action="{{ route('quotation') }}" method="POST">
+      <form class="m-t mt-3" role="form"  action="{{ route('quotation.store') }}" method="POST">
         @csrf
         <div class="row text-left">
             <div class="col-sm-6">
@@ -151,6 +151,7 @@
                   </div>
               </div>
             </div>
+            <input type="text" name="product_id" value='{{$product->id}}' hidden>
         </div>
         
         <div class="text-center mt-3">

@@ -18,5 +18,11 @@ class quoteDetails extends Model
         'contact_number',
         'select_product_size',
         'quantity_needed',
+        'product_id',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo('App\Models\ProductDetails');
+    }
 }

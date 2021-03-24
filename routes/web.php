@@ -12,6 +12,7 @@ use App\Http\Controllers\productCategoryController;
 use App\Http\Controllers\productDetailsController;
 use App\Http\Controllers\quotationController;
 use App\Http\Controllers\setPassController;
+use App\Http\Controllers\consigneeController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -59,12 +60,15 @@ Route::middleware(['setpass'])->group(function () {
     Route::post('challanCreate/{id}',[ordersController::class,'challanCreate'])->name('orders.challanCreate');
     Route::post('orderDetails/{id}',[ordersController::class,'orderDetails']);
     Route::post('orderDelete/{id}',[ordersController::class,'orderDelete']);
+    Route::post('challanDelete/{id}',[ordersController::class,'challanDelete']);
     Route::post('challanDetails/{id}',[ordersController::class,'challanDetails']);
     Route::post('printinvoice/{id}/{type}', [ordersController::class, 'printInvoice']);
     Route::post('printchallan/{id}', [ordersController::class, 'printChallan']);
+    Route::resource('consignee', consigneeController::class);
+    Route::resource('inventory', inventoryController::class);
 });
 
-Route::post('Quotation',[quotationController::class,'quotationCreate'])->name('quotation');
+Route::resource('quotation',quotationController::class);
 Route::get('/country', function () {
     $country = Storage::get('public/country.json');
     return json_decode($country, true);

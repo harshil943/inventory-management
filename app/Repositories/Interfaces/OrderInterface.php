@@ -18,4 +18,6 @@ interface OrderInterface
 
     public function orderDelete($id);
 
+    public function challanDelete($id);
+
 }

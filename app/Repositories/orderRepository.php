@@ -246,4 +246,11 @@ class orderRepository implements OrderInterface
         OrderDetails::where('id',$order->order_id)->forcedelete();
         return true;
     }
+
+    public function challanDelete($id)
+    {
+        map_order_challan::where('challan_id',$id)->update(array('challan_id' => null));
+        challan::where('id',$id)->forcedelete();
+        return true;
+    }
 }

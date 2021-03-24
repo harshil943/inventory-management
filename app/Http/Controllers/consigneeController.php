@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\consigneeRepository;
 use Illuminate\Http\Request;
-use App\Repositories\Interfaces\quotationInterface;
-class quotationController extends Controller
-{
-    private $quotationRepository;
+use App\Repositories\Interfaces\consigneeInterface;
 
-    public function __construct(quotationInterface $quotationRepository)
+class consigneeController extends Controller
+{
+    protected $consigneeRepository;
+
+    public function __construct(consigneeInterface $consigneeRepository)
     {
-        $this->quotationRepository = $quotationRepository;
+        $this->consigneeRepository = $consigneeRepository;        
     }
     /**
      * Display a listing of the resource.
@@ -19,8 +21,8 @@ class quotationController extends Controller
      */
     public function index()
     {
-        $quotes = $this->quotationRepository->allQuotation();
-        return view('quotation.allQuotation')->with('quotes',$quotes);
+        $consignees = $this->consigneeRepository->allConsignee();
+        return view('consignee.consigneeDetails')->with('consignees',$consignees);
     }
 
     /**
@@ -30,7 +32,7 @@ class quotationController extends Controller
      */
     public function create()
     {
-        //
+        return view('consignee.consigneeForm');
     }
 
     /**
@@ -41,8 +43,8 @@ class quotationController extends Controller
      */
     public function store(Request $request)
     {
-        $this->quotationRepository->Create($request);
-        return back();
+        $this->consigneeRepository->addConsignee($request);
+        return redirect()->route('consignee.index');
     }
 
     /**
@@ -64,7 +66,8 @@ class quotationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $consignee = $this->consigneeRepository->consigneeById($id);
+        return view('consignee.consigneeForm')->with('consignee',$consignee);
     }
 
     /**
@@ -76,7 +79,8 @@ class quotationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->consigneeRepository->updateConsignee($request,$id);
+        return redirect()->route('consignee.index');
     }
 
     /**
@@ -87,7 +91,7 @@ class quotationController extends Controller
      */
     public function destroy($id)
     {
-        $this->quotationRepository->deleteQuote($id);
-        return redirect()->route('quotation.index');
+        $this->consigneeRepository->deleteConsignee($id);
+        return redirect()->route('consignee.index');
     }
 }
