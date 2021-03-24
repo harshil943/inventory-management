@@ -6,9 +6,9 @@
 
 @section('content')
 
-<div class="container-fluid hero-image" style="background-image: linear-gradient(to top,#fff,#0997a7 100%);">
+<div class="container-fluid hero-image" style="background-image: linear-gradient(to top,#0997a7,#fff 90%);">
     <div class="row">
-        <div class="explore-more fade_effect animated fadeInUpBig col-sm-4 my-auto" style="font-family: URW Chancery L, cursive">
+        <div class="explore-more fade_effect animated fadeInUpBig col-sm-4 my-auto">
             <h2>
                 <span>Our Strengths</span>
                 <br><br>
