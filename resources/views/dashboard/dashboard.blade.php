@@ -147,26 +147,26 @@
                     <div class="col-lg-4">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <span class="label label-primary pull-right">Today</span>
-                                <h5>visits</h5>
+                                {{-- <span class="label label-primary pull-right">Today</span> --}}
+                                <h5>Pending Orders</h5>
                             </div>
                             <div class="ibox-content">
-                                <h1 class="no-margins">22 285,400</h1>
-                                <div class="stat-percent font-bold text-navy">20% <i class="fa fa-level-up"></i></div>
-                                <small>New orders</small>
+                                <h1 class="no-margins">{{$pedingOrders}}</h1>
+                                {{-- <div class="stat-percent font-bold text-navy">20% <i class="fa fa-level-up"></i></div> --}}
+                                {{-- <small>New orders</small> --}}
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <span class="label label-info pull-right">Monthly</span>
-                                <h5>Orders</h5>
+                                {{-- <span class="label label-info pull-right">Monthly</span> --}}
+                                <h5>Completed Orders</h5>
                             </div>
                             <div class="ibox-content">
-                                <h1 class="no-margins">60 420,600</h1>
-                                <div class="stat-percent font-bold text-info">40% <i class="fa fa-level-up"></i></div>
-                                <small>New orders</small>
+                                <h1 class="no-margins">{{$completedOrders}}</h1>
+                                {{-- <div class="stat-percent font-bold text-info">40% <i class="fa fa-level-up"></i></div>
+                                <small>New orders</small> --}}
                             </div>
                         </div>
                     </div>
