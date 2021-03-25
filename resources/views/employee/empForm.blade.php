@@ -21,6 +21,9 @@
       <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Home</a>
       </li>
+      <li class="breadcrumb-item">
+        <a href="{{ route('employee.index') }}">Employee</a>
+      </li>
       <li class="breadcrumb-item active">
         <strong>Add Employee</strong>
       </li>

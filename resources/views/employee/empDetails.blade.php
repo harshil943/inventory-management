@@ -25,7 +25,14 @@
 @endsection
 
 @section('content')
-<br><br>
+<br>
+<form action="{{URL('orderForm')}}" method="get" style="padding-left:20px;">
+    <button type="submit" class="btn btn-primary" style="display:block;width:15%;">
+        <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
+        Add New Employee
+    </button>
+</form>
+<br>
     <div class="table-responsive">
       <table class="table text-center table-bordered table-hover" id="employeeTable" >
         <thead>

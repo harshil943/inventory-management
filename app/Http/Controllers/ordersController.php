@@ -55,7 +55,7 @@ class ordersController extends Controller
     public function orderCreate(Request $request)
     {
         $this->orderRepository->orderCreate($request);
-        return back();
+        return view('orders.orders')->with('order',$data);
     }
 
     public function challanForm($id)
