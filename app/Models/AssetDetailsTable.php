@@ -10,7 +10,7 @@ class AssetDetailsTable extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $table = 'asset_details';
+    protected $table = 'assets_details';
 
     protected $fillable =[
         'id',

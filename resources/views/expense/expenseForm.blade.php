@@ -1,33 +1,33 @@
 @extends('layouts.app')
 
 @section('title')
-@if (isset($inventory))
+@if (isset($expense))
     
-Edit Inventory | Bright Containers
+Edit Expense | Bright Containers
 @else
     
-Add Inventory | Bright Containers
+Add Expense | Bright Containers
 @endif
 @endsection
 
 @push('css')
     {{-- Select 2 CSS --}}
     <link href="{{ asset('css/plugins/select2/select2.min.css') }}" rel="stylesheet">
+    
 @endpush
-
 @section('content')
 <div class="gray-bg container">
     <div class="text-center loginscreen animated fadeInDown">
         <div class="mt-3">
-            @if (isset($inventory))
+            @if (isset($expense))
                 
-            <h3>Edit Inventory to <br>Bright Containers</h3>
-            <form class="m-t mt-3" role="form"  action="{{ route('inventory.update',$inventory->id) }}" method="post" >
+            <h3>Edit Expense to <br>Bright Containers</h3>
+            <form class="m-t mt-3" role="form"  action="{{ route('expense.update',$expense->id) }}" method="post">
                 @csrf
                 @method('PATCH')
             @else
-            <h3>Add Inventory to <br>Bright Containers</h3>
-            <form class="m-t mt-3" role="form"  action="{{ route('inventory.store') }}" method="POST" >
+            <h3>Add Expense to <br>Bright Containers</h3>
+            <form class="m-t mt-3" role="form"  action="{{ route('expense.store') }}" method="POST">
                 @csrf
             @endif
                     <div class="row text-left">
@@ -35,30 +35,23 @@ Add Inventory | Bright Containers
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="form-label ml-3" for="product">Product</label>
+                                        <Label class="form-label">Expense Detail</Label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <select class="form-control" id="product" name="product" required>
-                                            <option></option>
-                                            @foreach ($product as $item)
-                                            @if (isset($inventory))
-                                            <option value="{{$item->id}}" selected>{{$item->product_name}}</option>
-                                            @else
-                                            <option value="{{$item->id}}">{{$item->product_name}}</option>
-                                            @endif
-                                            @endforeach
-                                        </select>
+                                        <input type="text" class="form-control" name="expense_details" @if (isset($expense->expense_details))
+                                            value="{{$expense->expense_details}}"
+                                        @endif required>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <Label style="padding:10px;">Quantity</Label>
+                                        <Label class="form-label" >Quantity</Label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="quantity" @if (isset($inventory->quantity))
-                                            value="{{$inventory->quantity}}"
+                                        <input type="text" class="form-control" name="quantity" @if (isset($expense->quantity))
+                                            value="{{$expense->quantity}}"
                                         @endif required>
                                     </div>
                                 </div>
@@ -68,23 +61,23 @@ Add Inventory | Bright Containers
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <Label style="padding:10px;">Cost Per Product</Label>
+                                        <Label style="padding:10px;">Cost Per Quantity</Label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="cost" @if (isset($inventory->cost_per_product))
-                                            value="{{$inventory->cost_per_product}}"
+                                        <input type="text" class="form-control" name="cost" @if (isset($expense->cost_per_quantity))
+                                            value="{{$expense->cost_per_quantity}}"
                                         @endif required>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @if (isset($inventory))
+                    @if (isset($expense))
                         
-                    <button type="submit" class="btn btn-primary">Edit Inventory</button>
+                    <button type="submit" class="btn btn-primary">Edit Expense</button>
                     @else
                         
-                    <button type="submit" class="btn btn-primary">Add Inventory</button>
+                    <button type="submit" class="btn btn-primary">Add Expense</button>
                     @endif
             </form>
         </div>
@@ -107,9 +100,9 @@ Add Inventory | Bright Containers
     </script>
 <script>
     $(function() {
-        $('.inventory').addClass('active');
-        $('.inventory ul').addClass('in');
-        $('.inventory ul li:nth-child(1)').addClass('active');
+        $('.expense').addClass('active');
+        $('.expense ul').addClass('in');
+        $('.expense ul li:nth-child(1)').addClass('active');
     });
 </script>
 @endpush

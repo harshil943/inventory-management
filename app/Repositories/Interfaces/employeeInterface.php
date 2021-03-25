@@ -19,4 +19,10 @@ interface employeeInterface
     public function findAdmins();
 
     public function removeAdmin($email);
+
+    public function showSalary();
+
+    public function storeSalary($request);
+
+    public function deleteSalary($id);
 }

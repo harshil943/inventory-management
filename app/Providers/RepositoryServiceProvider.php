@@ -22,6 +22,9 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\Interfaces\consigneeInterface','App\Repositories\consigneeRepository');
         $this->app->bind('App\Repositories\Interfaces\inventoryInterface','App\Repositories\inventoryRepository');
         $this->app->bind('App\Repositories\Interfaces\dashboardInterface','App\Repositories\dashboardRepository');
+        $this->app->bind('App\Repositories\Interfaces\rawmaterialInterface','App\Repositories\rawmaterialRepository');
+        $this->app->bind('App\Repositories\Interfaces\expenseInterface','App\Repositories\expenseRepository');
+        $this->app->bind('App\Repositories\Interfaces\assetInterface','App\Repositories\assetRepository');
     }
 
     /**

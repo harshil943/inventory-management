@@ -14,7 +14,13 @@ class EmployeeSalaryHistoryTable extends Model
 
     protected $fillable =[
         'id',
+        'employee_id',
         'salary_paid',
         'payment_status',
     ];
+
+    public function employee()
+    {
+        return $this->belongsTo('App\Models\EmployeeDetails');
+    }
 }
