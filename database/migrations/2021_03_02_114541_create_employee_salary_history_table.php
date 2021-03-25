@@ -15,8 +15,10 @@ class CreateEmployeeSalaryHistoryTable extends Migration
     {
         Schema::create('employee_salary_history', function (Blueprint $table) {
             $table->increments('id')->unique();
+            $table->unsignedInteger('employee_id');
+            $table->foreign('employee_id')->references('id')->on('employee_details');
             $table->float('salary_paid');
-            $table->string('payment_status');
+            $table->string('payment_status')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

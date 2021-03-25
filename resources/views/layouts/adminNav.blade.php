@@ -38,6 +38,8 @@
                 <ul class="nav nav-second-level collapse">
                     <li><a href="{{route('employee.create')}}" style="text-decoration:none;">Add Employee</a></li>
                     <li><a href="{{route('employee.index')}}" style="text-decoration:none;">Manage Employee</a></li>
+                    <li><a href="{{route('empsalary.create')}}" style="text-decoration:none;">Add Employee Salary</a></li>
+                    <li><a href="{{route('empsalary.index')}}" style="text-decoration:none;">Manage Employee Salary</a></li>
                 </ul>
             </li>
             <li class="designation">
@@ -81,15 +83,36 @@
                     <li><a href="{{route('inventory.index')}}" style="text-decoration:none;">Manage Inventory</a></li>
                 </ul>
             </li>
-            <li class="quotation">
+            <li class="raw">
+                <a href="" style="text-decoration:none"><i class="fa fa-cubes"></i> <span class="nav-label">Raw Material</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('rawmaterial.create')}}" style="text-decoration:none;">Add Material</a></li>
+                    <li><a href="{{route('rawmaterial.index')}}" style="text-decoration:none;">Manage Material</a></li>
+                </ul>
+            </li>
+            <li class="expense">
+                <a href="" style="text-decoration:none"><i class="fa fa-money"></i> <span class="nav-label">Expenses</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('expense.create')}}" style="text-decoration:none;">Add Expance</a></li>
+                    <li><a href="{{route('expense.index')}}" style="text-decoration:none;">Manage Expance</a></li>
+                </ul>
+            </li>
+            <li class="asset">
+                <a href="" style="text-decoration:none"><i class="fa fa-square"></i> <span class="nav-label">Asset</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('asset.create')}}" style="text-decoration:none;">Add Asset</a></li>
+                    <li><a href="{{route('asset.index')}}" style="text-decoration:none;">Manage Asset</a></li>
+                </ul>
+            </li>
+            <li class="logout">
                 <a href="{{route('logout')}}" style="text-decoration:none;"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
             </li>
         </ul>
     </div>
 </nav>
-<div id="page-wrapper" class="sidebar-content overflow-hidden" >
+<div id="page-wrapper" class="sidebar-content overflow-hidden" style="background:lightgray">
     <div class="row border-bottom" >
-    <nav class="navbar navbar-static-top" role="navigation" >
+    <nav class="navbar navbar-static-top" role="navigation" style="background:lightgray">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-success " href="#"><i class="fa fa-bars"></i> </a>
         </div>

@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 use App\Models\Designation;
 use App\Models\EmployeeDetails;
+use App\Models\EmployeeSalaryHistoryTable;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -122,5 +123,28 @@ class employeeRepository implements employeeInterface
         ]);
         return true;
 
+    }
+
+    public function showSalary()
+    {
+        return EmployeeSalaryHistoryTable::all();
+    }
+
+    public function storeSalary($request)
+    {
+        $salary = new EmployeeSalaryHistoryTable;
+
+        $salary->employee_id = $request->employee_name;
+        $salary->salary_paid = $request->salary;
+
+        $salary->save();
+
+        return true;
+    }
+
+    public function deleteSalary($id)
+    {
+        EmployeeSalaryHistoryTable::where('id',$id)->forcedelete();
+        return true;
     }
 }

@@ -13,7 +13,11 @@ use App\Http\Controllers\productDetailsController;
 use App\Http\Controllers\quotationController;
 use App\Http\Controllers\setPassController;
 use App\Http\Controllers\consigneeController;
+use App\Http\Controllers\expenseController;
 use App\Http\Controllers\inventoryController;
+use App\Http\Controllers\rawmaterialController;
+use App\Http\Controllers\employeeSalaryController;
+use App\Http\Controllers\assetController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -65,6 +69,10 @@ Route::middleware(['setpass'])->group(function () {
     Route::resource('consignee', consigneeController::class);
     Route::resource('inventory', inventoryController::class);
     Route::resource('quotation',quotationController::class);
+    Route::resource('rawmaterial',rawmaterialController::class);
+    Route::resource('expense', expenseController::class);
+    Route::resource('empsalary', employeeSalaryController::class);
+    Route::resource('asset', assetController::class);
 });
 
 Route::get('/country', function () {
