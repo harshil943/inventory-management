@@ -11,6 +11,7 @@ use App\Models\ProductDetails;
 use App\Models\User;
 use App\Models\challan;
 use App\Repositories\Interfaces\OrderInterface;
+use Illuminate\Support\Facades\Mail;
 
 class orderRepository implements OrderInterface
 {
@@ -192,7 +193,7 @@ class orderRepository implements OrderInterface
 
     public function challanCreate($id,$requset)
     {
-        dd($id);
+        // dd($id);
         $map = new map_order_challan;
         $order = new OrderDetails;
         $order->e_way_bill_number = $requset->e_way_bill_number;
@@ -226,6 +227,20 @@ class orderRepository implements OrderInterface
         $map->order_date = $requset->order_date;
         $map->due_date = $requset->due_date;
         $map->save();
+
+
+        $user = User::where('id',$requset->buyer_id)->first('email','name');
+        // dd($user->email);
+            $details = [
+                'name' => $user->name,
+                'title' => 'Mail from Bright Containers',
+                'body' => 'Your order is placed successfully, You will get product as soon as possible.'
+            ];
+
+            // Mail::to($user->email)->send(new \App\Mail\orderMail($details));
+            Mail::to('harshilamreliya7@gmail.com')->send(new \App\Mail\orderMail($details));
+
+            // dd("Email is Sent.");
         return true;
     }
 
