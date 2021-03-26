@@ -21,7 +21,7 @@ class QuoteRequest
      */
     public function __construct()
     {
-        //
+        $this->message  = "jainam liked your status";
     }
 
     /**
@@ -31,6 +31,7 @@ class QuoteRequest
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        // return ['status-liked'];
+        return new PrivateChannel('status-liked');
     }
 }
