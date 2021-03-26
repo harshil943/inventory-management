@@ -40,7 +40,14 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" @if (isset($employeeDetails->id)) value="{{$employeeDetails->employee_name}}" @endif value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="name">Employee Name</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" @if (isset($employeeDetails->id)) value="{{$employeeDetails->employee_name}}" @endif value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>
+                        </div>
+                    </div>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -48,7 +55,14 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" @if (isset($employeeDetails->id)) value="{{$employeeDetails->email_id}}" @endif value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" @if (isset($employeeDetails->id)) value="{{$employeeDetails->email_id}}" @endif value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+                        </div>
+                    </div>
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -57,30 +71,80 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <input id="mobile" type="text" class="form-control" name="mobile" @if (isset($employeeDetails->id)) value="{{$employeeDetails->employee_name}}" @endif required placeholder="Mobile Number">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="number">Mobile No.</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="mobile" type="text" class="form-control" name="mobile" @if (isset($employeeDetails->id)) value="{{$employeeDetails->employee_name}}" @endif required placeholder="Mobile Number">
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <textarea id="residence_add" name="residence_add" rows="3" class="form-control" placeholder="Recidence Address" required></textarea>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="address">Recidance Address</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <textarea id="residence_add" name="residence_add" rows="3" class="form-control" placeholder="Recidence Address" required></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
-                    <input id="bank_name" type="text" class="form-control" name="bank_name" @if (isset($employeeDetails->id)) value="{{$employeeDetails->bank_name}}" @endif placeholder="Bank Name">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            Bank Name
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="bank_name" type="text" class="form-control" name="bank_name" @if (isset($employeeDetails->id)) value="{{$employeeDetails->bank_name}}" @endif placeholder="Bank Name">
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input id="bank_account_number" type="text" class="form-control" name="bank_account_number" @if (isset($employeeDetails->id)) value="{{$employeeDetails->bank_account_number}}" @endif placeholder="Bank Account Number">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="account_number">Account Number</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="bank_account_number" type="text" class="form-control" name="bank_account_number" @if (isset($employeeDetails->id)) value="{{$employeeDetails->bank_account_number}}" @endif placeholder="Bank Account Number">
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input id="bank_IFSC_code" type="text" class="form-control" name="bank_IFSC_code" @if (isset($employeeDetails->id)) value="{{$employeeDetails->bank_IFSC_code}}" @endif placeholder="Bank IFS code">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="ifsc">IFSC Code</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="bank_IFSC_code" type="text" class="form-control" name="bank_IFSC_code" @if (isset($employeeDetails->id)) value="{{$employeeDetails->bank_IFSC_code}}" @endif placeholder="Bank IFS code">
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input id="salary" type="text" class="form-control" name="salary" @if (isset($employeeDetails->id)) value="{{$employeeDetails->salary}}" @endif placeholder="Salary">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="salary">Salary</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="salary" type="text" class="form-control" name="salary" @if (isset($employeeDetails->id)) value="{{$employeeDetails->salary}}" @endif placeholder="Salary">
+                        </div>
+                    </div>
                 </div>
-                <select class="form-control" id="designation" name="designation" @if (isset($employeeDetails->id)) value="{{$employeeDetails->designation}}" @endif required>
-                    @foreach ($designation as $item)
-                        <option value="{{$item->id}}">{{$item->designation_name}}</option>
-                    @endforeach
-                </select>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label for="designation">Designation</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="designation" name="designation" @if (isset($employeeDetails->id)) value="{{$employeeDetails->designation}}" @endif required>
+                            <option></option>
+                            @foreach ($designation as $item)
+                                <option value="{{$item->id}}">{{$item->designation_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
         @if (isset($employeeDetails))
