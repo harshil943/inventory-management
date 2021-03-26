@@ -13,7 +13,7 @@
             @yield('breadcrumb-item')
         </ol>
     </div>
-    <div class="col-sm-1 align-self-center align-right">
+    {{-- <div class="col-sm-1 align-self-center align-right">
         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary" href="#"><i class="fa fa-bars"></i> </a>
-    </div>
+    </div> --}}
 </div>
