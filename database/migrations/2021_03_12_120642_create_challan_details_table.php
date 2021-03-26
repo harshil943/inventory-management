@@ -17,7 +17,8 @@ class CreateChallanDetailsTable extends Migration
             $table->increments('id')->unique();
             $table->bigInteger('total_no_packages');
             $table->json('product_id');
-            $table->json('other');
+            $table->json('is_cap');
+            $table->json('color');
             $table->json('bundle');
             $table->json('pack_size');
             $table->string('extra_note')->nullable();

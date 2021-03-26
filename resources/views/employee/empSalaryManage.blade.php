@@ -45,9 +45,9 @@
 <script src="{{asset('js/plugins/dataTables/dataTables.bootstrap4.min.js')}}"></script>
 <script>
     $(function() {
-        $('.employee').addClass('active');
-        $('.employee ul').addClass('in');
-        $('.employee ul li:nth-child(4)').addClass('active');
+        $('.employee-salary').addClass('active');
+        $('.employee-salary ul').addClass('in');
+        $('.employee-salary ul li:nth-child(2)').addClass('active');
     });
 </script>
 <script>
@@ -60,7 +60,7 @@
             } ],
             pageLength: 5,
             responsive: true
-            
+
         });
         t.on( 'order.dt search.dt', function () {
             t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {

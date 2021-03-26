@@ -29,19 +29,19 @@ class ordersController extends Controller
 
     public function challanDetails($id){
         $data = $this->orderRepository->challanDetails($id);
-        return view('orders.challanDetails')->with('orders',$data);
+        return view('orders.challanDetails')->with('challan',$data);
     }
 
     public function printInvoice($id,$type) {
         $data = $this->orderRepository->orderDetails($id,$type);
         view()->share('orders', $data);
-        return PDF::loadView('orders.printInvoice')->setWarnings(false)->stream('invoice - '. $data->id .'pdf');
+        return PDF::loadView('orders.printInvoice')->setWarnings(false)->stream('invoice - '. $data->id .'.pdf');
     }
 
     public function printChallan($id) {
         $data = $this->orderRepository->challanDetails($id);
-        view()->share('orders', $data);
-        return PDF::loadView('orders.printChallan')->setWarnings(false)->stream('challan.pdf');
+        view()->share('challan', $data);
+        return PDF::loadView('orders.printChallan')->setWarnings(false)->stream('challan - '. $data->id .'.pdf');
     }
 
     public function orderForm()

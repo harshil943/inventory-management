@@ -33,13 +33,15 @@
 
 @section('content')
   <div class="table-responsive">
-        <br>
-        <form action="{{URL('orderForm')}}" method="get" style="padding-left:20px;">
-            <button type="submit" class="btn btn-primary" style="display:block;width:15%;">
-                <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
-                Add New Order
-            </button>
-        </form>
+        @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+            <br>
+            <form action="{{URL('orderForm')}}" method="get" style="padding-left:20px;">
+                <button type="submit" class="btn btn-primary" style="display:block;width:15%;">
+                    <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
+                    Add New Order
+                </button>
+            </form>
+        @endif
     <br>
     <table class="table text-center table-bordered table-hover" id="ordersTable" >
       <thead>

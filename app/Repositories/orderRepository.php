@@ -112,7 +112,8 @@ class orderRepository implements OrderInterface
         $data = map_order_challan::where('challan_id',$id)->first();
 
         $pi = json_decode($data->challan->product_id,true);
-        $other = json_decode($data->challan->other,true);
+        $cap = json_decode($data->challan->is_cap,true);
+        $color = json_decode($data->challan->color,true);
         $bundle = json_decode($data->challan->bundle,true);
         $pack_size = json_decode($data->challan->pack_size,true);
         $arr = array();
@@ -125,10 +126,10 @@ class orderRepository implements OrderInterface
             array_push($arr,$data2->product_name);
         }
         $data->challan->product_id = $arr;
-        $data->challan->other = $other;
+        $data->challan->is_cap = $cap;
+        $data->challan->color = $color;
         $data->challan->bundle = $bundle;
         $data->challan->pack_size = $pack_size;
-        dd($data->challan);
         return $data;
     }
 

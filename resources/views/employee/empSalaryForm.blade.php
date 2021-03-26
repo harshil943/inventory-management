@@ -2,10 +2,10 @@
 
 @section('title')
 @if (isset($expense))
-    
+
 Edit Expense | Bright Containers
 @else
-    
+
 Add Expense | Bright Containers
 @endif
 @endsection
@@ -13,12 +13,12 @@ Add Expense | Bright Containers
 @push('css')
     {{-- Select 2 CSS --}}
     <link href="{{ asset('css/plugins/select2/select2.min.css') }}" rel="stylesheet">
-    
+
 @endpush
 @section('content')
 <div class="gray-bg container">
     <div class="text-center loginscreen animated fadeInDown">
-        <div class="mt-3">            
+        <div class="mt-3">
             <h3>Add Salary to <br>Bright Container's Employee </h3>
             <form class="m-t mt-3" role="form"  action="{{ route('empsalary.store') }}" method="POST">
                 @csrf
@@ -75,9 +75,9 @@ Add Expense | Bright Containers
     </script>
 <script>
     $(function() {
-        $('.employee').addClass('active');
-        $('.employee ul').addClass('in');
-        $('.employee ul li:nth-child(3)').addClass('active');
+        $('.employee-salary').addClass('active');
+        $('.employee-salary ul').addClass('in');
+        $('.employee-salary ul li:nth-child(1)').addClass('active');
     });
 </script>
 @endpush
