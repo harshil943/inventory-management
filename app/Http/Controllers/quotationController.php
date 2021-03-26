@@ -43,8 +43,7 @@ class quotationController extends Controller
      */
     public function store(Request $request)
     {
-        $this->quotationRepository->Create($request);
-        return back();
+        //
     }
 
     /**
@@ -93,8 +92,9 @@ class quotationController extends Controller
         return redirect()->route('quotation.index');
     }
 
-    public function notification()
+    public function generateQuotation(Request $request)
     {
+        $this->quotationRepository->Create($request);
         $options = array(
             'cluster' => env('PUSHER_APP_CLUSTER'),
             'encrypted' => true
@@ -105,9 +105,8 @@ class quotationController extends Controller
             env('PUSHER_APP_ID'),
             $options
         );
-
-        $data['message'] = 'Hello XpertPhp';
-        $pusher->trigger('notify-channel', 'App\\Events\\QuoteRequest', $data);
-
+        $data['message'] = 'New Quote Request Generated.';
+        $pusher->trigger('quote-request', 'App\\Events\\QuoteRequest', $data);
+        return back();
     }
 }

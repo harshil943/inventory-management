@@ -16,7 +16,7 @@
           <img src="{{asset('img/'.$product->product_image_name)}}" alt="Product Image">
         </div>
         <div class="col-md-7">
-            <h2 class="font-bold m-b-xs" style="color:#007c89">       
+            <h2 class="font-bold m-b-xs" style="color:#007c89">
                 {{$product->product_name}}
             </h2>
             <hr>
@@ -33,7 +33,7 @@
 </div>
 
 @if (!($product->table_header == "null"))
-    
+
 <div class="mt-5 container-fluid">
   <h1 class="mb-3" style="color:#007c89">Dimentions Table</h1>
   <table class="table table-striped table-bordered">
@@ -64,7 +64,7 @@
         $cap_name = json_decode($product->cap_name);
         @endphp
     <tbody>
-      @for ($i = 0; $i < count($table_header); $i++)    
+      @for ($i = 0; $i < count($table_header); $i++)
       <tr>
         <th scope="row">{{$table_header[$i]}}</th>
         <td>{{$brimful[$i]}}</td>
@@ -89,7 +89,7 @@
       <h1>₹ Request Quotation</h1>
     </div>
     <div class="container mt-5">
-      <form class="m-t mt-3" role="form"  action="{{ route('quotation.store') }}" method="POST">
+      <form class="m-t mt-3" role="form"  action="{{ route('generate-quotation') }}" method="POST">
         @csrf
         <div class="row text-left">
             <div class="col-sm-6">
@@ -153,11 +153,11 @@
             </div>
             <input type="text" name="product_id" value='{{$product->id}}' hidden>
         </div>
-        
+
         <div class="text-center mt-3">
             <button type="submit" class="btn btn-primary m-b">Get Quoatation</button>
         </div>
-        
+
     </form>
   @endunlessrole
 @endunlessrole
@@ -171,7 +171,7 @@
      {{-- Select 2 JS --}}
      <script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script>
 
-    
+
      <script>
          $(document).ready(function(){
              $("#size").select2({
@@ -180,5 +180,5 @@
              });
          });
         </script>
-         
+
 @endpush
