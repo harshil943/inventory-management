@@ -1,3 +1,4 @@
+{{-- {{dd($products)}} --}}
 @extends('layouts.app')
 
 @section('title')
@@ -28,10 +29,12 @@
 <div class="container-fluid mt-5">
 
     <div class="row">
+        @foreach ($products as $item)
+            
         <div class="col-md-3">
             <div class="ibox">
                 <div class="ibox-content product-box">
-                        <img src="{{asset("img/grid1.png")}}" alt="Product Image" class="img-thumbnail img-fluid">
+                    <img src="{{ asset('storage/product/'.$item->product_image_name) }}" alt="Product Image" class="img-thumbnail img-fluid">
                     <div class="product-desc">
                         <span class="product-price">
                             $10
@@ -48,66 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="ibox">
-                <div class="ibox-content product-box">
-                        <img src="{{asset("img/grid2.png")}}" alt="Product Image" class="img-thumbnail img-fluid">
-                    <div class="product-desc">
-                        <span class="product-price">
-                            $10
-                        </span>
-                        <small class="text-muted">Category</small>
-                        <a href="#" class="product-name"> Product</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="ibox">
-                <div class="ibox-content product-box">
-                        <img src="{{asset("img/grid3.png")}}" alt="Product Image" class="img-thumbnail img-fluid">
-                    <div class="product-desc">
-                        <span class="product-price">
-                            $10
-                        </span>
-                        <small class="text-muted">Category</small>
-                        <a href="#" class="product-name"> Product</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="ibox">
-                <div class="ibox-content product-box">
-                        <img src="{{asset("img/grid4.png")}}" alt="Product Image" class="img-thumbnail img-fluid">
-                    <div class="product-desc">
-                        <span class="product-price">
-                            $10
-                        </span>
-                        <small class="text-muted">Category</small>
-                        <a href="#" class="product-name"> Product</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection

@@ -20,6 +20,8 @@ use App\Http\Controllers\employeeSalaryController;
 use App\Http\Controllers\assetController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -93,4 +95,21 @@ Route::get('/state', function () {
 Route::get('/unit', function () {
     $unit = Storage::get('public/unit.json');
     return json_decode($unit, true);
+});
+
+Route::get('storage/{filename}', function ($filename)
+{
+    $path = storage_path('public/' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
 });
