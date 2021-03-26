@@ -46,12 +46,7 @@ Route::get('productDetails/{id}',[productDetailsController::class,'productDetail
 Auth::routes();
 Route::get('logout',[logoutController::class,'out']);
 Route::post('donepassword',[setPassController::class,'changepass'])->name('donepassword');
-
-Route::get('welcome', function () {
-    return view('welcome');
-});
-
-Route::get('send',[quotationController::class, 'notification']);
+Route::post('generate-quotation',[quotationController::class,'generateQuotation'])->name('generate-quotation');
 
 Route::middleware(['setpass'])->group(function () {
     Route::group(['middleware' => ['role:super-admin|admin']], function () {
