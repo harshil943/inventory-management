@@ -241,7 +241,7 @@
             <table class="table table-bordered invoice-table">
                 <thead>
                     <tr>
-                        <th class="text-center align-middle" rowspan="2">Item List</th>
+                        <th class="text-center align-middle" rowspan="2">Item Name</th>
                         <th class="text-center align-middle" rowspan="2">HSN/SAC</th>
                         <th class="text-center align-middle" rowspan="2" >Quantity</th>
                         <th class="text-center align-middle" rowspan="2">Unit Price</th>

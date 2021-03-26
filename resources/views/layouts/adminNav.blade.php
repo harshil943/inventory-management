@@ -38,6 +38,11 @@
                 <ul class="nav nav-second-level collapse">
                     <li><a href="{{route('employee.create')}}" style="text-decoration:none;">Add Employee</a></li>
                     <li><a href="{{route('employee.index')}}" style="text-decoration:none;">Manage Employee</a></li>
+                </ul>
+            </li>
+            <li class="employee-salary">
+                <a href="" style="text-decoration:none"><i class="fa fa-address-card-o"></i> <span class="nav-label">Employee Salary</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
                     <li><a href="{{route('empsalary.create')}}" style="text-decoration:none;">Add Employee Salary</a></li>
                     <li><a href="{{route('empsalary.index')}}" style="text-decoration:none;">Manage Employee Salary</a></li>
                 </ul>
@@ -60,7 +65,7 @@
                 </ul>
             </li>
             <li class="products">
-                <a href="" style="text-decoration:none"><i class="fa fa-podcast"></i> <span class="nav-label">Products</span> <span class="fa arrow"></span></a>
+                <a href="" style="text-decoration:none"><i class="fa fa-podcast"></i> <span class="nav-label">Product</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('product.create')}}" style="text-decoration:none;">Add Product</a></li>
                     <li><a href="{{route('product.index')}}" style="text-decoration:none;">Manage Product</a></li>
@@ -114,7 +119,7 @@
     <div class="row border-bottom" >
     <nav class="navbar navbar-static-top" role="navigation" style="background:lightgray">
         <div class="navbar-header">
-            <a class="navbar-minimalize minimalize-styl-2 btn btn-success " href="#"><i class="fa fa-bars"></i> </a>
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary" href="#"><i class="fa fa-bars"></i> </a>
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>

@@ -7,6 +7,16 @@
 @push('css')
     {{-- Select 2 CSS --}}
     <link href="{{ asset('css/plugins/select2/select2.min.css') }}" rel="stylesheet">
+
+    <style>
+        .onoffswitch-inner::before {
+            content: "Yes";
+        }
+
+        .onoffswitch-inner::after {
+            content: "No";
+        }
+    </style>
 @endpush
 
 @section('breadcrumb')
@@ -116,7 +126,13 @@
                                     <label for="igst">IGST Applicable</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="checkbox" name="igst" class="mr-3 p-2" id="igst">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="igst" class="onoffswitch-checkbox" id="igst">
+                                        <label class="onoffswitch-label" for="igst">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

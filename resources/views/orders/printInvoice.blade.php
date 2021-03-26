@@ -296,7 +296,7 @@
         <thead style="text-align:center;">
             <tr>
                 <th style="border-top:1px solid #b5babd;border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;"  rowspan="2">
-                    Item List
+                    Item Name
                 </th>
                 <th style="border-top:1px solid #b5babd;border-right:1px solid #b5babd;border-bottom:1px solid #b5babd;" rowspan="2">
                     HSN/SAC

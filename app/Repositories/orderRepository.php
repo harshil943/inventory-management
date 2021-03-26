@@ -64,9 +64,8 @@ class orderRepository implements OrderInterface
             $data2 = DB::table('product_details')
                     ->select('product_name')
                     ->where('id',$id)
-                    ->get();
-
-            array_push($arr,$data2[0]->product_name);
+                    ->first();
+            array_push($arr,$data2->product_name);
         }
         $data->order->product_id = $arr;
         $data->order->hsn_code = $hsn;
@@ -110,34 +109,27 @@ class orderRepository implements OrderInterface
 
     public function challanDetails($id)
     {
-        $data = map_order_challan::where('order_id',$id)->first();
+        $data = map_order_challan::where('challan_id',$id)->first();
 
-        $pi = json_decode($data->order->product_id,true);
-        $hsn = json_decode($data->order->hsn_code,true);
-        $q = json_decode($data->order->quantity,true);
-        $unit = json_decode($data->order->unit,true);
-        $ppp = json_decode($data->order->price_per_piece,true);
-        $ex = json_decode($data->order->name_of_extra_cost,true);
-        $ehc = json_decode($data->order->extra_hsn_code,true);
-        $cp = json_decode($data->order->extra_cost_price,true);
+        $pi = json_decode($data->challan->product_id,true);
+        $cap = json_decode($data->challan->is_cap,true);
+        $color = json_decode($data->challan->color,true);
+        $bundle = json_decode($data->challan->bundle,true);
+        $pack_size = json_decode($data->challan->pack_size,true);
         $arr = array();
         foreach($pi as $id)
         {
             $data2 = DB::table('product_details')
                     ->select('product_name')
                     ->where('id',$id)
-                    ->get();
-
-            array_push($arr,$data2[0]->product_name);
+                    ->first();
+            array_push($arr,$data2->product_name);
         }
-        $data->order->product_id = $arr;
-        $data->order->hsn_code = $hsn;
-        $data->order->quantity = $q;
-        $data->order->unit = $unit;
-        $data->order->price_per_piece = $ppp;
-        $data->order->name_of_extra_cost = $ex;
-        $data->order->extra_hsn_code = $ehc;
-        $data->order->extra_cost_price = $cp;
+        $data->challan->product_id = $arr;
+        $data->challan->is_cap = $cap;
+        $data->challan->color = $color;
+        $data->challan->bundle = $bundle;
+        $data->challan->pack_size = $pack_size;
         return $data;
     }
 
@@ -240,7 +232,7 @@ class orderRepository implements OrderInterface
     public function orderDelete($id)
     {
         $order = map_order_challan::where('id',$id)->first();
-        
+
         map_order_challan::where('id',$order->id)->forcedelete();
         challan::where('id',$order->challan_id)->forcedelete();
         OrderDetails::where('id',$order->order_id)->forcedelete();
