@@ -6,10 +6,16 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use illuminate\Support\Facades\Auth;
+use App\Repositories\Interfaces\productInterface;
 
 class HomeController extends Controller
 {
+    protected $productRepository;
 
+    public function __construct(productInterface $productRepository)
+    {
+        $this->productRepository = $productRepository;
+    }
     /**
      * Show the application dashboard.
      *
@@ -23,7 +29,8 @@ class HomeController extends Controller
         }
         else
         {
-            return view('home.home');
+            $products = $this->productRepository->allProducts();
+            return view('home.home')->with('products',$products);
         }
     }
     public function aboutus()
