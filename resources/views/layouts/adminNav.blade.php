@@ -108,6 +108,12 @@
                     <li><a href="{{route('asset.create')}}" style="text-decoration:none;">Add Asset</a></li>
                     <li><a href="{{route('asset.index')}}" style="text-decoration:none;">Manage Asset</a></li>
                 </ul>
+            </li> <li class="machine">
+                <a href="" style="text-decoration:none"><i class="fa fa-hdd-o"></i> <span class="nav-label">Machine Error</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{route('machine.create')}}" style="text-decoration:none;">Add Machine Error</a></li>
+                    <li><a href="{{route('machine.index')}}" style="text-decoration:none;">Manage Machine Error</a></li>
+                </ul>
             </li>
             <li class="logout">
                 <a href="{{route('logout')}}" style="text-decoration:none;"><i class="fa fa-sign-out"></i> <span class="nav-label">Logout</span></a>
