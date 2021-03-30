@@ -18,6 +18,7 @@ use App\Http\Controllers\inventoryController;
 use App\Http\Controllers\rawmaterialController;
 use App\Http\Controllers\employeeSalaryController;
 use App\Http\Controllers\assetController;
+use App\Http\Controllers\machineController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -57,6 +58,7 @@ Route::middleware(['setpass'])->group(function () {
         Route::get('removeadmin/{id}',[employeeController::class,'removeAdmin']);
         Route::resource('product', productDetailsController::class);
         Route::resource('category', productCategoryController::class);
+        Route::resource('machine',machineController::class);
     });
     Route::get('/setpassword',[setPassController::class,'index'])->name('setpassword');
     Route::get('orders',[ordersController::class,'index'])->name('orders.index');

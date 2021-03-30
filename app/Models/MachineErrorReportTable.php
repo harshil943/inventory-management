@@ -21,4 +21,9 @@ class MachineErrorReportTable extends Model
         'error_status',
         'cost',
     ];
+
+    public function asset()
+    {
+        return $this->belongsTo('App\Models\AssetDetailsTable');
+    }
 }
