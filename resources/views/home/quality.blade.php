@@ -111,3 +111,13 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+    <script>
+        $(function() {
+            $('.quality').addClass('active');
+            $('.quality').addClass('btn-rounded');
+            $(".quality").css("background","#0997a7");
+        });
+    </script>
+@endpush

@@ -105,8 +105,7 @@ class quotationController extends Controller
             env('PUSHER_APP_ID'),
             $options
         );
-        $data['message'] = 'New Quote Request Generated.';
-        $pusher->trigger('quote-request', 'App\\Events\\QuoteRequest', $data);
+        $pusher->trigger('quote-request', 'App\\Events\\QuoteRequest',null);
         return back();
     }
 }

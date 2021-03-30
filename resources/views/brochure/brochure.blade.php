@@ -9,14 +9,14 @@
         .contact-box {
             margin:10px;
         }
-    </style>    
+    </style>
 @endsection
 
 @section('content')
     <div class="container wrapper wrapper-content animated fadeInRight">
         <div class="row">
             @foreach ($brochure as $item)
-                
+
             <div class="contact-box center-version col-sm-3">
                 <a href="{{url('brochureDetails',[$item->id])}}" style="text-decoration: none">
                     <img alt="image" class="img" src="{{asset('img/a2.jpg')}}">
@@ -25,10 +25,20 @@
                             <h3>{{$item->category_name}}</h3>
                         </div>
                     </div>
-                </a> 
+                </a>
             </div>
             @endforeach
 
         </div>
     </div>
-@endsection 
+@endsection
+
+@push('script')
+    <script>
+        $(function() {
+            $('.brochure').addClass('active');
+            $('.brochure').addClass('btn-rounded');
+            $(".brochure").css("background","#0997a7");
+        });
+    </script>
+@endpush

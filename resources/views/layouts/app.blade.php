@@ -16,6 +16,8 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
     <link href="{{asset('css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
@@ -43,7 +45,7 @@
             font: 10px arial, san serif;
             text-align: left;
         }
-    </style>
+        </style>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -51,6 +53,9 @@
 
     {{-- CSS Styles --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="{{asset('css/plugins/toastr/toastr.min.css')}}" rel="stylesheet">
 
     @stack('css')
 
@@ -101,6 +106,49 @@
     <script src="{{asset('js/inspinia.js')}}"></script>
     <script src="{{asset('js/plugins/pace/pace.min.js')}}"></script>
 
+    <!-- Toastr script -->
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+    <script type="text/javascript">
+        function genToast(type,msg,title,link) {
+            if(link == null)
+            {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: 'toast-top-right',
+                    onclick: null,
+                    showDuration: 400,
+                    hideDuration: 1000,
+                    timeOut: 7000,
+                    extendedTimeOut: 1000,
+                    showEasing: 'swing',
+                    hideEasing: 'linear',
+                    showMethod: 'fadeIn',
+                    hideMethod: 'fadeOut',
+                };
+            }
+            else
+            {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    positionClass: 'toast-top-right',
+                    onclick: function () {window.location.href = link;},
+                    showDuration: 400,
+                    hideDuration: 1000,
+                    timeOut: 7000,
+                    extendedTimeOut: 1000,
+                    showEasing: 'swing',
+                    hideEasing: 'linear',
+                    showMethod: 'fadeIn',
+                    hideMethod: 'fadeOut',
+                };
+            }
+            toastr[type](msg, title);
+        };
+
+    </script>
+
     @if(Auth::user())
         @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
             <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
@@ -110,8 +158,8 @@
                     encrypted: true
                 });
                 var channel = pusher.subscribe('quote-request');
-                channel.bind('App\\Events\\QuoteRequest', function(data) {
-                    alert(data.message);
+                channel.bind('App\\Events\\QuoteRequest', function() {
+                    genToast('info','New Quotation Request Generated','Quote Request','/quotation');
                 });
             </script>
         @endif
