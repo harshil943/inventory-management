@@ -30,7 +30,7 @@
 
     <div class="row">
         @foreach ($products as $item)
-            
+
         <div class="col-md-3">
             <div class="ibox">
                 <div class="ibox-content product-box">

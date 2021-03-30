@@ -7,7 +7,7 @@
 @push('css')
 
     <!-- Ladda style -->
-    <link href="{{ asset('css/plugins/ladda/ladda-themeless.min.css')}}" rel="stylesheet">    
+    <link href="{{ asset('css/plugins/ladda/ladda-themeless.min.css')}}" rel="stylesheet">
 
     {{-- Select 2 CSS --}}
     <link href="{{ asset('css/plugins/select2/select2.min.css') }}" rel="stylesheet">
@@ -32,7 +32,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Company Name" autofocus>
-        
+
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-group">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Company Email Id">
-        
+
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -58,7 +58,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
-        
+
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="form-group">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
-                        </div>          
+                        </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -92,13 +92,13 @@
                 </div>
                 <div class="form-group">
                     <div class="checkbox ">
-                        <label> 
+                        <label>
                             <input type="checkbox" required>
                             <i></i> Agree the <a href="#"> terms and conditions  </a>
                         </label>
                     </div>
                 </div>
-                <button type="submit" class="ladda-button btn btn-primary m-b" data-style="expand-right">Register</button>    
+                <button type="submit" class="ladda-button btn btn-primary m-b" data-style="expand-right">Register</button>
                 <p class="text-muted text-center">
                     <small>Already have an account?</small>
                     <center><a class="btn btn-white btn-block" style="width:200px;" href="login">Login</a></center>
@@ -113,7 +113,7 @@
 
     {{-- Select 2 JS --}}
     <script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script>
-    
+
     <!-- iCheck -->
     <script src="{{asset('js/plugins/iCheck/icheck.min.js')}}"></script>
 
