@@ -16,5 +16,12 @@ class userRepository implements userInterface
             'password'=>$request->password,
             'change_password'=>'0'
         ]);
+
+        return true;
+    }
+
+    public function user($id)
+    {
+        return User::where('id',$id)->first();
     }
 }

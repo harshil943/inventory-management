@@ -19,6 +19,7 @@ use App\Http\Controllers\rawmaterialController;
 use App\Http\Controllers\employeeSalaryController;
 use App\Http\Controllers\assetController;
 use App\Http\Controllers\machineController;
+use App\Http\Controllers\profileController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -48,6 +49,7 @@ Auth::routes();
 Route::get('logout',[logoutController::class,'out']);
 Route::post('donepassword',[setPassController::class,'changepass'])->name('donepassword');
 Route::post('generate-quotation',[quotationController::class,'generateQuotation'])->name('generate-quotation');
+Route::get('Profile',[profileController::class,'userProfile'])->name('UserProfile');
 
 Route::middleware(['setpass'])->group(function () {
     Route::group(['middleware' => ['role:super-admin|admin']], function () {
