@@ -101,6 +101,22 @@
     <script src="{{asset('js/inspinia.js')}}"></script>
     <script src="{{asset('js/plugins/pace/pace.min.js')}}"></script>
 
+    @if(Auth::user())
+        @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+            <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+            <script>
+                var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
+                    cluster: '{{env("PUSHER_APP_CLUSTER")}}',
+                    encrypted: true
+                });
+                var channel = pusher.subscribe('quote-request');
+                channel.bind('App\\Events\\QuoteRequest', function(data) {
+                    alert(data.message);
+                });
+            </script>
+        @endif
+    @endif
+
     <!-- Flot -->
     {{-- <script src="{{asset('js/plugins/flot/jquery.flot.js')}}"></script> --}}
     {{-- <script src="{{asset('js/plugins/flot/jquery.flot.tooltip.min.js')}}"></script> --}}
