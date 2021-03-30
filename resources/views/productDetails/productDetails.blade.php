@@ -86,12 +86,45 @@
 @unlessrole('super-admin')
   @unlessrole('admin')
     <div class="text-center" style="color:#007c89">
-      <h1>₹ Request Quotation</h1>
+      <h1><i class="fa fa-inr"></i> Request Quotation</h1>
     </div>
     <div class="container mt-5">
-      <form class="m-t mt-3" role="form"  action="{{ route('generate-quotation') }}" method="POST">
+      <form class="m-t mt-3" role="form"  action="{{route('generate-quotation')}}" method="POST">
         @csrf
         <div class="row text-left">
+            @if (Auth::user())
+                <input type="hidden" class="form-control" name="company_name" placeholder="Comapny Name" value="{{Auth::user()->name}}">
+                <input type="hidden" class="form-control" name="email" placeholder="Email Address" value="{{Auth::user()->email}}">
+                <input type="hidden" class="form-control" name="number" placeholder="Contact Number" value="{{Auth::user()->mobile}}">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label class="form-label fa fa-product-hunt" for="product size"> Product Shape/Size</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="size" name="size" required>
+                                    <option></option>
+                                    @foreach ($table_header as $item)
+                                        <option value="{{$item}}">{{$item}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label class="form-label fa fa-tasks" for="comapny name"> Quantity</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="quantity" placeholder="Quantity" required>
+                        </div>
+                    </div>
+                </div>
+            @else
             <div class="col-sm-6">
                 <div class="form-group">
                     <div class="row">
@@ -99,9 +132,7 @@
                             <label class="form-label fa fa-id-card" for="comapny name">  Company Name</label>
                         </div>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="company_name" placeholder="Comapny Name" @if (Auth::user())
-                                value="{{Auth::user()->name}}"
-                          @endif required>
+                          <input type="text" class="form-control" name="company_name" placeholder="Comapny Name" required>
                         </div>
                     </div>
                 </div>
@@ -111,9 +142,7 @@
                             <label class="form-label fa fa-envelope" for="comapny name">  Email Address</label>
                         </div>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="email" placeholder="Email Address" @if (Auth::user())
-                          value="{{Auth::user()->email}}"
-                    @endif required>
+                          <input type="text" class="form-control" name="email" placeholder="Email Address" required>
                         </div>
                     </div>
                 </div>
@@ -123,9 +152,7 @@
                             <label class="form-label fa fa-phone" for="comapny name">  Contact Number</label>
                         </div>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="number" placeholder="Contact Number" @if (Auth::user())
-                          value="{{Auth::user()->mobile}}"
-                    @endif required>
+                          <input type="text" class="form-control" name="number" placeholder="Contact Number" required>
                         </div>
                     </div>
                 </div>
@@ -134,7 +161,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-4">
-                            <label class="form-label fa fa-product-hunt" for="product size">  Product Size</label>
+                            <label class="form-label fa fa-product-hunt" for="product size">  Product Shape/Size</label>
                         </div>
                         <div class="col-sm-8">
                             <select class="form-control" id="size" name="size" required>
@@ -149,13 +176,14 @@
                 <div class="form-group">
                   <div class="row">
                       <div class="col-sm-4">
-                          <label class="form-label fa fa-tasks" for="comapny name">  Quantity</label>
+                          <label class="form-label fa fa-tasks" for="comapny name"> Quantity</label>
                       </div>
                       <div class="col-sm-8">
                         <input type="text" class="form-control" name="quantity" placeholder="Quantity" required>
                       </div>
                   </div>
               </div>
+            @endif
             </div>
             <input type="text" name="product_id" value='{{$product->id}}' hidden>
         </div>
@@ -176,13 +204,11 @@
 @push('script')
      {{-- Select 2 JS --}}
      <script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script>
-
-
      <script>
          $(document).ready(function(){
              $("#size").select2({
-                 placeholder: "Select Size",
-                 allowClear: true
+                placeholder: "Select Shape / Size",
+                allowClear: true
              });
          });
         </script>
