@@ -111,3 +111,13 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+    <script>
+        $(function() {
+            $('.about-us').addClass('active');
+            $('.about-us').addClass('btn-rounded');
+            $(".about-us").css("background","#0997a7");
+        });
+    </script>
+@endpush

@@ -175,4 +175,11 @@
         renderPage(pageNum, scale);
     });
 </script>
+    <script>
+        $(function() {
+            $('.brochure').addClass('active');
+            $('.brochure').addClass('btn-rounded');
+            $(".brochure").css("background","#0997a7");
+        });
+    </script>
 @endpush

@@ -180,5 +180,12 @@
              });
          });
         </script>
+    <script>
+        $(function() {
+            $('.product').addClass('active');
+            $('.product').addClass('btn-rounded');
+            $(".product").css("background","#0997a7");
+        });
+    </script>
 
 @endpush

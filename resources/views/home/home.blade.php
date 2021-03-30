@@ -30,7 +30,6 @@
 
     <div class="row">
         @foreach ($products as $item)
-            
         <div class="col-md-3">
             <div class="ibox">
                 <div class="ibox-content product-box">
@@ -55,3 +54,13 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+    <script>
+        $(function() {
+            $('.home').addClass('active');
+            $('.home').addClass('btn-rounded');
+            $(".home").css("background","#0997a7");
+        });
+    </script>
+@endpush

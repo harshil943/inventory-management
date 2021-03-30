@@ -9,19 +9,18 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item btn-rounded active" style="background: #0997a7">
-                  <a class="nav-link " href="{{url('/home')}}">
+                <li class="nav-item home">
+                  <a class="nav-link" href="{{url('/home')}}">
                     Home
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>
-
-                <li class="nav-item">
+                <li class="nav-item about-us">
                   <a class="nav-link" href="/about-us">
                     About us
                   </a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown product">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Product Category
                   </a>
@@ -31,17 +30,17 @@
                     @endforeach
                   </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item quality">
                     <a class="nav-link" href="/quality">
                       Quality
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item brochure">
                     <a class="nav-link" href="{{ url('brochure')}}">
                       Brochure
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item contact-us">
                     <a class="nav-link" href="/contact-us">
                       Contact Us
                     </a>
