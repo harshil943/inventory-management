@@ -13,7 +13,7 @@
 <div class="ibox-content">
     <div class="row">
         <div class="col-md-5">
-          <img src="{{asset('img/'.$product->product_image_name)}}" alt="Product Image">
+          <img src="{{asset('storage/product/'.$product->product_image_name)}}" alt="Product Image" height="250px">
         </div>
         <div class="col-md-7">
             <h2 class="font-bold m-b-xs" style="color:#007c89">
@@ -99,7 +99,9 @@
                             <label class="form-label fa fa-id-card" for="comapny name">  Company Name</label>
                         </div>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="company_name" placeholder="Comapny Name" required>
+                          <input type="text" class="form-control" name="company_name" placeholder="Comapny Name" @if (Auth::user())
+                                value="{{Auth::user()->name}}"
+                          @endif required>
                         </div>
                     </div>
                 </div>
@@ -109,7 +111,9 @@
                             <label class="form-label fa fa-envelope" for="comapny name">  Email Address</label>
                         </div>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="email" placeholder="Email Address" required>
+                          <input type="text" class="form-control" name="email" placeholder="Email Address" @if (Auth::user())
+                          value="{{Auth::user()->email}}"
+                    @endif required>
                         </div>
                     </div>
                 </div>
@@ -119,7 +123,9 @@
                             <label class="form-label fa fa-phone" for="comapny name">  Contact Number</label>
                         </div>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="number" placeholder="Contact Number" required>
+                          <input type="text" class="form-control" name="number" placeholder="Contact Number" @if (Auth::user())
+                          value="{{Auth::user()->mobile}}"
+                    @endif required>
                         </div>
                     </div>
                 </div>

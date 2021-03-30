@@ -7,4 +7,6 @@ use App\User;
 interface userInterface
 {
     public function changepass($request);
+
+    public function user($id);
 }

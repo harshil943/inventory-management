@@ -63,10 +63,11 @@
                 @else
                 <li class="nav-item dropdown"><a id="navbarDropdown" class="nav-link dropdown-toggle btn text-dark px-3 font-weight-bold"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{-- {{ Auth::user()->name }} --}}
-                        <img src="{{asset('storage/Logo/'.Auth::user()->comp_logo)}}" alt="Company Logo" style="height: 40px;weight:auto; border-radius:100px">
+                        <img src="{{asset('storage/Logo/'.Auth::user()->comp_logo)}}" alt="Company Logo" class="img-circle circle-border m-b-md" height="45px">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a href="{{ url('/orders') }}" class="dropdown-item">Oreder Details</a>
+                        <a href="{{route('UserProfile')}}" class="dropdown-item">Profile</a>
+                        <a href="{{ url('/orders') }}" class="dropdown-item">Oreder Details</a>
                         <a class="dropdown-item" href="{{ route('logout') }}">
                             {{ __('Log out') }}
                         </a>

@@ -11,7 +11,7 @@
 
 <div class="contact-box center-version  mx-auto col-sm-3 border border-dark rounded-0">
   <a href="{{url('productDetails',[$item->id])}}" style="text-decoration: none">
-    <img alt="image" class="img w-100" style="height: auto" src="{{asset('img/'.$item->product_image_name)}}">
+    <img alt="image" class="img w-100" style="height: 250px" src="{{asset('storage/product/'.$item->product_image_name)}}">
     <div class="contact-box-footer">
       <div class="m-t-xs btn-group">
         <h3>{{$item->product_name}}</h3>
