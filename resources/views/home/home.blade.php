@@ -33,18 +33,16 @@
         <div class="col-md-3">
             <div class="ibox">
                 <div class="ibox-content product-box">
-                    <img src="{{ asset('storage/product/'.$item->product_image_name) }}" alt="Product Image" class="img-thumbnail img-fluid">
+                    <img src="{{ asset('storage/product/'.$item->product_image_name) }}" alt="Product Image" class="img-thumbnail img-fluid" style="height: 300px">
                     <div class="product-desc">
                         <span class="product-price">
                             $10
                         </span>
-                        <small class="text-muted">Category</small>
-                        <a href="#" class="product-name"> Product</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                        <small class="text-muted">{{$item->category->category_name}}</small>
+                        <span class="product-name">{{$item->product_name}}</a>
+                       
+                        <div class="m-t text-right">
+                            <a href="{{route('productdetails',$item->id)}}" class="btn  btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
                         </div>
                     </div>
                 </div>

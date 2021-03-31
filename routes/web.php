@@ -45,7 +45,7 @@ Route::get('/quality', [HomeController::class, 'quality']);
 Route::get('brochureDetails/{id}',[brochureController::class,'brochureDetails']);
 Route::get('brochure',[brochureController::class,'brochure']);
 Route::get('productCategory/{categoryData}',[productCategoryController::class,'productCategory']);
-Route::get('productDetails/{id}',[productDetailsController::class,'productDetails']);
+Route::get('productDetails/{id}',[productDetailsController::class,'productDetails'])->name('productdetails');
 Auth::routes();
 Route::get('logout',[logoutController::class,'out']);
 Route::post('donepassword',[setPassController::class,'changepass'])->name('donepassword');

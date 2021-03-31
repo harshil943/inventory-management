@@ -20,10 +20,6 @@
   @endif
 @endsection
 @section('content')
-{{-- <body class="fixed-navigation"> --}}
-    {{-- <div id="wrapper">
-        @include('admin.adminNav')
-    </div> --}}
             <div class="sidebar-panel">
                 <div>
                     <h4>Messages <span class="badge badge-info pull-right">16</span></h4>
@@ -142,139 +138,209 @@
                 </div>
 
 
+                <h2 style="font-weight:bold">Orders & Payments</h2>
                 <div class="row">
-
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                {{-- <span class="label label-primary pull-right">Today</span> --}}
                                 <h5>Pending Orders</h5>
                             </div>
                             <div class="ibox-content">
                                 <h1 class="no-margins">{{$pedingOrders}}</h1>
-                                {{-- <div class="stat-percent font-bold text-navy">20% <i class="fa fa-level-up"></i></div> --}}
-                                {{-- <small>New orders</small> --}}
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                {{-- <span class="label label-info pull-right">Monthly</span> --}}
                                 <h5>Completed Orders</h5>
                             </div>
                             <div class="ibox-content">
                                 <h1 class="no-margins">{{$completedOrders}}</h1>
-                                {{-- <div class="stat-percent font-bold text-info">40% <i class="fa fa-level-up"></i></div>
-                                <small>New orders</small> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Pending Payments</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{$pendingPayments}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Canceled Payments</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{$canceledPayments}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="font-weight:bold">Employee Details</h2>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>No. Of Admins</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{$noOfAdmins}}</h1>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <span class="label label-warning pull-right">Annual</span>
-                                <h5>Income</h5>
+                                <h5>NO. Of Employees</h5>
                             </div>
                             <div class="ibox-content">
-                                <h1 class="no-margins">$ 120 430,800</h1>
-                                <div class="stat-percent font-bold text-warning">16% <i class="fa fa-level-up"></i></div>
-                                <small>New orders</small>
+                                <h1 class="no-margins">{{$employees}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Total Salary Expanse</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{$totalSalary}}</h1>
                             </div>
                         </div>
                     </div>
                 </div>
 
+
+                <h2 style="font-weight:bold">Inventory</h2>
                 <div class="row">
-                <div class="col-lg-6">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>New data for the report</h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-wrench"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#">Config option 1</a>
-                                    </li>
-                                    <li><a href="#">Config option 2</a>
-                                    </li>
-                                </ul>
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
+                    <div class="col-lg-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>No. Of Products</h5>
                             </div>
-                        </div>
-                        <div class="ibox-content ibox-heading">
-                        <h3>Stock price up
-                            <div class="stat-percent text-navy">34% <i class="fa fa-level-up"></i></div>
-                        </h3>
-                        <small><i class="fa fa-stack-exchange"></i> New economic data from the previous quarter.</small>
-                    </div>
-                        <div class="ibox-content">
-                            <div>
-
-                                <div class="pull-right text-right">
-
-                                    <span class="bar_dashboard">5,3,9,6,5,9,7,3,5,2,4,7,3,2,7,9,6,4,5,7,3,2,1,0,9,5,6,8,3,2,1</span>
-                                    <br/>
-                                    <small class="font-bold">$ 20 054.43</small>
-                                </div>
-                                <h4>NYS report new data!
-                                    <br/>
-                                    <small class="m-r"><a href="graph_flot.html"> Check the stock price! </a> </small>
-                                </h4>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{$totalProducts}}</h1>
                             </div>
                         </div>
                     </div>
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Read below comments and tweets</h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-wrench"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#">Config option 1</a>
-                                    </li>
-                                    <li><a href="#">Config option 2</a>
-                                    </li>
-                                </ul>
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
+                    <div class="col-lg-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Quantity In Inventory</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{$inventoryQuantity}}</h1>
                             </div>
                         </div>
-                        <div class="ibox-content no-padding">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <p><a class="text-info" href="#">@Alan Marry</a> I belive that. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                    <small class="block text-muted"><i class="fa fa-clock-o"></i> 1 minuts ago</small>
-                                </li>
-                                <li class="list-group-item">
-                                    <p><a class="text-info" href="#">@Stock Man</a> Check this stock chart. This price is crazy! </p>
-                                    <small class="block text-muted"><i class="fa fa-clock-o"></i> 2 hours ago</small>
-                                </li>
-                                <li class="list-group-item">
-                                    <p><a class="text-info" href="#">@Kevin Smith</a> Lorem ipsum unknown printer took a galley </p>
-                                    <small class="block text-muted"><i class="fa fa-clock-o"></i> 2 minuts ago</small>
-                                </li>
-                                <li class="list-group-item ">
-                                    <p><a class="text-info" href="#">@Jonathan Febrick</a> The standard chunk of Lorem Ipsum</p>
-                                    <small class="block text-muted"><i class="fa fa-clock-o"></i> 1 hour ago</small>
-                                </li>
-                            </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Total Cost In Inventory</h5>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{$inventoryCost[0]->total}}</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-6">
+                {{-- <div class="row">
+                    <div class="col-lg-6">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>New data for the report</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-wrench"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-user">
+                                        <li><a href="#">Config option 1</a>
+                                        </li>
+                                        <li><a href="#">Config option 2</a>
+                                        </li>
+                                    </ul>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content ibox-heading">
+                            <h3>Stock price up
+                                <div class="stat-percent text-navy">34% <i class="fa fa-level-up"></i></div>
+                            </h3>
+                            <small><i class="fa fa-stack-exchange"></i> New economic data from the previous quarter.</small>
+                        </div>
+                            <div class="ibox-content">
+                                <div>
+
+                                    <div class="pull-right text-right">
+
+                                        <span class="bar_dashboard">5,3,9,6,5,9,7,3,5,2,4,7,3,2,7,9,6,4,5,7,3,2,1,0,9,5,6,8,3,2,1</span>
+                                        <br/>
+                                        <small class="font-bold">$ 20 054.43</small>
+                                    </div>
+                                    <h4>NYS report new data!
+                                        <br/>
+                                        <small class="m-r"><a href="graph_flot.html"> Check the stock price! </a> </small>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Read below comments and tweets</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-wrench"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-user">
+                                        <li><a href="#">Config option 1</a>
+                                        </li>
+                                        <li><a href="#">Config option 2</a>
+                                        </li>
+                                    </ul>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content no-padding">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <p><a class="text-info" href="#">@Alan Marry</a> I belive that. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                        <small class="block text-muted"><i class="fa fa-clock-o"></i> 1 minuts ago</small>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <p><a class="text-info" href="#">@Stock Man</a> Check this stock chart. This price is crazy! </p>
+                                        <small class="block text-muted"><i class="fa fa-clock-o"></i> 2 hours ago</small>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <p><a class="text-info" href="#">@Kevin Smith</a> Lorem ipsum unknown printer took a galley </p>
+                                        <small class="block text-muted"><i class="fa fa-clock-o"></i> 2 minuts ago</small>
+                                    </li>
+                                    <li class="list-group-item ">
+                                        <p><a class="text-info" href="#">@Jonathan Febrick</a> The standard chunk of Lorem Ipsum</p>
+                                        <small class="block text-muted"><i class="fa fa-clock-o"></i> 1 hour ago</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Timeline</h5>
@@ -364,7 +430,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 </div>
 
