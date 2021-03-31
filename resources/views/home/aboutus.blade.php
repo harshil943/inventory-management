@@ -1,114 +1,128 @@
 @extends('layouts.app')
 
 @section('title')
-    Home | Bright Containers
+    About Us | Bright Containers
 @endsection
 
 @section('content')
-
-<div class="container-fluid hero-image" style="background-image: linear-gradient(to bottom right,#0997a7,white 85%);">
-    <div class="row">
-        <div class="explore-more fade_effect animated fadeInUpBig col-sm-4 my-auto" style="font-family: URW Chancery L, cursive">
-            <h2>
-                <span>Our Strengths</span>
-                <br><br>
-                <ul>
-                    <li> Center, Off Center &amp; Angle Neck Production Facility. </li>
-                    <br>
-                    <li> 25ml bottle to 5ltr Jerry Can </li>
-                </ul>
-            </h2>
-
+<div class="wrapper mt-3 wrapper-content animated fadeInRight">
+    <div class="row " style="font-size: 23px">
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <figure>
+                        <iframe width="850" height="500" src="https://www.youtube.com/embed/1VKERrDp63o?autoplay=1&amp;rel=0" frameborder="0" allowfullscreen></iframe>
+                    </figure>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-8 home_image">
-            <img src="{{ asset('img/Home_Page.png')}}" class="w-100" alt="Mixed Bottles Image">
+        <div class="col-lg-6">
+                <p style="text-indent: 40px;">
+                <big><strong>Bright Containers </strong></big> was established in 2008 for the manufacturing of Blow &amp; Injection molding articles, the company continues to grow year over year.
+                </p>
+                <p style="text-indent: 40px;margin-top: 25px;">
+                    The company has developed in depth knowledge with latest manufacturing methods to manufacture HDPE Bottles, Jerry can &amp; Containers.
+                </p><ul style="margin-top: 25px;">
+                        <li>
+                            Different Shapes &amp; Sizes available from 25ml to 5ltr.
+                        </li>
+                        <li>
+                            Design and Manufacture custom made and industry standard Bottles, Caps, Closures and Measuring cups of Agro Chemical Products.
+                        </li>
+                        <li>
+                            Design and Manufacture custom shape Jerry can for Lubricating Oil Industries.
+                        </li>
+                        <li>
+                            Manufacturing facility for Injection Molding Articles for various material grade &amp; sizes.
+                        </li>
+                        <li>
+                            Our Products are useful to pack Liquid, Semi Liquid, Powder, Capsule &amp; Tablets.
+                        </li>
+                    </ul> 
+                <p></p>
         </div>
     </div>
-</div>
-<div class="container-fluid mt-5">
+    <section id="about">
+        <h3 style="text-align: center;color: #000000;">
+            <strong>Different Indusries Where Our Products Used</strong>
+        </h3>
+        <br>
+        <div class="card-deck" style="margin-left: 10px;margin-right: 10px;">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Pesticides</h2>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Agro Chemicals</h2>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Lubricating Oil</h2>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Ayurvedic Product Packing</h2>
+                    </div>
+                </div>
+                
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Paint Chemical Industries</h2>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Bio-nutrients</h2>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Fungicides</h2>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Coolant Water Packing</h2>
+                    </div>
+                </div>
 
-    <div class="row">
-        <div class="col-md-3">
-            <div class="ibox">
-                <div class="ibox-content product-box">
-                        <img src="{{asset("img/grid1.png")}}" alt="Product Image" class="img-thumbnail img-fluid">
-                    <div class="product-desc">
-                        <span class="product-price">
-                            $10
-                        </span>
-                        <small class="text-muted">Category</small>
-                        <a href="#" class="product-name"> Product</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Aloevera Product Packing</h2>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Water Proofing Chemicals</h2>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Plant Growth Promoter</h2>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="widget style1 lazur-bg">
+                        <h2 class="font-bold">Bio-Pesticides</h2>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="ibox">
-                <div class="ibox-content product-box">
-                        <img src="{{asset("img/grid2.png")}}" alt="Product Image" class="img-thumbnail img-fluid">
-                    <div class="product-desc">
-                        <span class="product-price">
-                            $10
-                        </span>
-                        <small class="text-muted">Category</small>
-                        <a href="#" class="product-name"> Product</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <br>
+        <div>
+            <h1 style="color: #0997a7;font-weight:bold">Our Mission</h1>
+            <ul>
+                <li>ACCOMPLISH CUSTOMER’S QUALITY REQUIREMENT WITH IN-TIME SERVICES</li>
+                <li>AMPLE CARE TAKEN AT EACH STAGE OF PRODUCTION</li>
+                <li>SYSTEMATIC OPERATING PROCEDURE FOLLOWS AT EACH STAGE OF PRODUCTION</li>
+            </ul>
         </div>
-        <div class="col-md-3">
-            <div class="ibox">
-                <div class="ibox-content product-box">
-                        <img src="{{asset("img/grid3.png")}}" alt="Product Image" class="img-thumbnail img-fluid">
-                    <div class="product-desc">
-                        <span class="product-price">
-                            $10
-                        </span>
-                        <small class="text-muted">Category</small>
-                        <a href="#" class="product-name"> Product</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="ibox">
-                <div class="ibox-content product-box">
-                        <img src="{{asset("img/grid4.png")}}" alt="Product Image" class="img-thumbnail img-fluid">
-                    <div class="product-desc">
-                        <span class="product-price">
-                            $10
-                        </span>
-                        <small class="text-muted">Category</small>
-                        <a href="#" class="product-name"> Product</a>
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 </div>
 @endsection
 
