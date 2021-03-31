@@ -141,7 +141,7 @@
 
             <td style="vertical-align:middle;">
                 <center>
-                    <form action="{{URL('orderDetails',[$order[$i]->order_id])}}" method="post">
+                    <form action="{{route('Orderdetails',[$order[$i]->order_id])}}" method="post">
                         @csrf
                         <button type="submit" class="btn-rounded btn-primary" style="display:block;width:70%;padding:5px;">
                             <i class="fa fa-eye" aria-hidden="true"></i>
@@ -150,7 +150,7 @@
                     </form>
                     @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
                         <br>
-                        <form action="{{URL('orderDetails',[$order[$i]->order_id])}}" method="post">
+                        <form action="{{route('Orderdetails',[$order[$i]->order_id])}}" method="post">
                             @csrf
                             <button type="submit" class="btn-rounded btn-secondary" style="display:block;width:70%;padding:5px;">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -158,7 +158,7 @@
                             </button>
                         </form>
                         <br>
-                        <form action="{{URL('orderDelete',[$order[$i]->order_id])}}" method="post">
+                        <form action="{{route('Orderdelete',[$order[$i]->order_id])}}" method="post">
                             @csrf
                             <button type="submit" class="btn-rounded btn-danger" style="display:block;width:70%;padding:5px;">
                                 <i class="fa fa-trash
@@ -183,7 +183,7 @@
                         </form>
                         @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
                             <br>
-                            <form action="{{URL('orderDetails',[$order[$i]->order->id])}}" method="post">
+                            <form action="{{route('Orderdetails',[$order[$i]->order->id])}}" method="post">
                                 @csrf
                                 <button type="submit" class="btn-rounded btn-secondary" style="display:block;width:70%;padding:5px;">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -191,7 +191,7 @@
                                 </button>
                             </form>
                             <br>
-                            <form action="{{URL('challanDelete',[$order[$i]->order->id])}}" method="post">
+                            <form action="{{route('Challandelete',[$order[$i]->order->id])}}" method="post">
                                 @csrf
                                 <button type="submit" class="btn-rounded btn-danger" style="display:block;width:70%;padding:5px;">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
@@ -201,7 +201,7 @@
                         @endif
                     @else
                         @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
-                            <form action="{{URL('challanForm',[$order[$i]->id])}}" method="post">
+                            <form action="{{route('orders.challanForm',[$order[$i]->id])}}" method="post">
                                 @csrf
                                 <button type="submit" class="btn-rounded btn-primary" style="display:block;width:70%;padding:5px;">
                                     <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
