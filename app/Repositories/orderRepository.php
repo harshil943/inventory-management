@@ -11,6 +11,7 @@ use App\Models\ProductDetails;
 use App\Models\User;
 use App\Models\challan;
 use App\Repositories\Interfaces\OrderInterface;
+use Database\Seeders\MapOrderChallanSeeder;
 use Illuminate\Support\Facades\Mail;
 
 class orderRepository implements OrderInterface
@@ -258,6 +259,14 @@ class orderRepository implements OrderInterface
     {
         map_order_challan::where('challan_id',$id)->update(array('challan_id' => null));
         challan::where('id',$id)->forcedelete();
+        return true;
+    }
+
+    public function paymentComplete($id)
+    {
+        map_order_challan::where('order_id',$id)->update(array(
+            'payment_status' => 'completed'
+        ));
         return true;
     }
 }

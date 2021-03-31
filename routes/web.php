@@ -20,6 +20,7 @@ use App\Http\Controllers\employeeSalaryController;
 use App\Http\Controllers\assetController;
 use App\Http\Controllers\machineController;
 use App\Http\Controllers\profileController;
+use App\Http\Controllers\paymentController;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -81,7 +82,11 @@ Route::middleware(['setpass'])->group(function () {
     Route::resource('expense', expenseController::class);
     Route::resource('empsalary', employeeSalaryController::class);
     Route::resource('asset', assetController::class);
+    Route::get('payment/{amount}{id}', [paymentController::class, 'index'])->name('payment');
+    Route::post('payment/{id}', [paymentController::class, 'store'])->name('payment.store');
+
 });
+
 
 Route::get('/country', function () {
     $country = Storage::get('public/country.json');
