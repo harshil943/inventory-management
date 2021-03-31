@@ -494,11 +494,8 @@
         @else
             <div class="row">
                 <div class="col-sm-6 text-right">
-                    @if ($orders->payment_status != 'completed')
-                        <form action="{{$orders->payment_link}}" method="get">
-                            @csrf
-                            <button type="submit" class="btn btn-primary">Make Payment</button>
-                        </form>
+                    @if ($orders->payment_status != 'completed' && $orders->payment_status != 'canceled')
+                        <a href="{{route('payment',[round($subtotal + $taxtotal),$orders->id])}}" class="btn btn-primary">Make Payment</a>
                     @endif
                 </div>
                 <div class="col-sm-6">
