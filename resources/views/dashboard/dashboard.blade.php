@@ -245,7 +245,7 @@
                                 <h5>Total Cost In Inventory</h5>
                             </div>
                             <div class="ibox-content">
-                                <h1 class="no-margins">{{$inventoryCost[0]->total}}</h1>
+                                <h1 class="no-margins">{{$inventoryCost[0]->total}} </h1>
                             </div>
                         </div>
                     </div>
