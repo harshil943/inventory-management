@@ -68,12 +68,12 @@ Route::middleware(['setpass'])->group(function () {
     Route::post('orderCreate',[ordersController::class,'orderCreate'])->name('orders.orderCreate');
     Route::post('challanForm/{id}',[ordersController::class,'challanForm'])->name('orders.challanForm');
     Route::post('challanCreate/{id}',[ordersController::class,'challanCreate'])->name('orders.challanCreate');
-    Route::post('orderDetails/{id}',[ordersController::class,'orderDetails']);
-    Route::post('orderDelete/{id}',[ordersController::class,'orderDelete']);
-    Route::post('challanDelete/{id}',[ordersController::class,'challanDelete']);
-    Route::post('challanDetails/{id}',[ordersController::class,'challanDetails']);
-    Route::post('printinvoice/{id}/{type}', [ordersController::class, 'printInvoice']);
-    Route::post('printchallan/{id}', [ordersController::class, 'printChallan']);
+    Route::post('orderDetails/{id}',[ordersController::class,'orderDetails'])->name('Orderdetails');
+    Route::post('orderDelete/{id}',[ordersController::class,'orderDelete'])->name('Orderdelete');
+    Route::post('challanDelete/{id}',[ordersController::class,'challanDelete'])->name('Challandelete');
+    Route::post('challanDetails/{id}',[ordersController::class,'challanDetails'])->name('Challandetails');
+    Route::post('printinvoice/{id}/{type}', [ordersController::class, 'printInvoice'])->name('Printinvoice');
+    Route::post('printchallan/{id}', [ordersController::class, 'printChallan'])->name('Printchallan');
     Route::resource('consignee', consigneeController::class);
     Route::resource('inventory', inventoryController::class);
     Route::resource('quotation',quotationController::class);
