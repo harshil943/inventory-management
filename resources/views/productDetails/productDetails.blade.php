@@ -7,15 +7,18 @@
 @push('css')
     {{-- Select 2 CSS --}}
     <link href="{{ asset('css/plugins/select2/select2.min.css') }}" rel="stylesheet">
+    {{-- Sweet Alert --}}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 @endpush
 
 @section('content')
+@include('sweet::alert')
 <div class="ibox-content">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-lg-5">
           <img src="{{asset('storage/product/'.$product->product_image_name)}}" alt="Product Image" height="250px">
         </div>
-        <div class="col-md-7">
+        <div class="col-lg-7">
             <h2 class="font-bold m-b-xs" style="color:#007c89">
                 {{$product->product_name}}
             </h2>
@@ -89,20 +92,20 @@
       <h1><i class="fa fa-inr"></i> Request Quotation</h1>
     </div>
     <div class="container mt-5">
-      <form class="m-t mt-3" role="form"  action="{{route('generate-quotation')}}" method="POST">
+      <form class="m-t mt-3" role="form"  action="{{route('quotation.store')}}" method="POST">
         @csrf
         <div class="row text-left">
             @if (Auth::user())
                 <input type="hidden" class="form-control" name="company_name" placeholder="Comapny Name" value="{{Auth::user()->name}}">
                 <input type="hidden" class="form-control" name="email" placeholder="Email Address" value="{{Auth::user()->email}}">
                 <input type="hidden" class="form-control" name="number" placeholder="Contact Number" value="{{Auth::user()->mobile}}">
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-md-4">
                                 <label class="form-label fa fa-product-hunt" for="product size"> Product Shape/Size</label>
                             </div>
-                            <div class="col-sm-8">
+                            <div class="col-md-8">
                                 <select class="form-control" id="size" name="size" required>
                                     <option></option>
                                     @foreach ($table_header as $item)
@@ -113,13 +116,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-md-6">
                     <div class="form-group">
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-md-4">
                             <label class="form-label fa fa-tasks" for="comapny name"> Quantity</label>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-md-8">
                             <input type="text" class="form-control" name="quantity" placeholder="Quantity" required>
                         </div>
                     </div>

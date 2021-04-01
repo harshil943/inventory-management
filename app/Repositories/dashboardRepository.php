@@ -58,8 +58,6 @@ class dashboardRepository implements dashboardInterface
 
     public function inventoryCost()
     {
-    //     $total = DB::table('inventory_details')->select(DB::raw('sum(quantity*cost_per_product) as total'))->get();
-    //     dd($total);
         return DB::table('inventory_details')->select(DB::raw('sum(quantity*cost_per_product) as total'))->get();
     }
 }

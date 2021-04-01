@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Interfaces\quotationInterface;
+use Illuminate\Support\Facades\Session;
 use Pusher;
+use UxWeb\SweetAlert\SweetAlert;
 
 class quotationController extends Controller
 {
@@ -43,7 +45,20 @@ class quotationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->quotationRepository->Create($request);
+        $options = array(
+            'cluster' => env('PUSHER_APP_CLUSTER'),
+            'encrypted' => true
+        );
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            $options
+        );
+        $pusher->trigger('quote-request', 'App\\Events\\QuoteRequest',null);
+        alert()->success('Done','Your Quotation Registered')->persistent('Close')->autoclose(3000);
+        return back();
     }
 
     /**
@@ -90,22 +105,5 @@ class quotationController extends Controller
     {
         $this->quotationRepository->deleteQuote($id);
         return redirect()->route('quotation.index');
-    }
-
-    public function generateQuotation(Request $request)
-    {
-        $this->quotationRepository->Create($request);
-        $options = array(
-            'cluster' => env('PUSHER_APP_CLUSTER'),
-            'encrypted' => true
-        );
-        $pusher = new Pusher(
-            env('PUSHER_APP_KEY'),
-            env('PUSHER_APP_SECRET'),
-            env('PUSHER_APP_ID'),
-            $options
-        );
-        $pusher->trigger('quote-request', 'App\\Events\\QuoteRequest',null);
-        return back();
     }
 }
