@@ -23,4 +23,16 @@ class setPassController extends Controller
         $this->userRepository->changepass($request);
         return redirect()->route('home');
     }
+
+    public function forgotpassword()
+    {
+        return view('auth.passwords.email');
+    }
+
+    public function resetpassword(Request $request)
+    {
+        $this->userRepository->resetpassword($request);
+        // dd($request);
+        return redirect()->route('home');
+    }
 }
