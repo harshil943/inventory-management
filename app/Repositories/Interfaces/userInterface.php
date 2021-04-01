@@ -9,4 +9,6 @@ interface userInterface
     public function changepass($request);
 
     public function user($id);
+
+    public function resetpassword($request);
 }

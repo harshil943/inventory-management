@@ -38,7 +38,7 @@ use Illuminate\Support\Facades\Response;
 */
 
 Route::get('/', function () { return redirect('home');});
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [HomeController::class, 'aboutus']);
 Route::get('/contact-us', [HomeController::class, 'contactus']);
 Route::get('/quality', [HomeController::class, 'quality']);
@@ -51,6 +51,8 @@ Route::get('logout',[logoutController::class,'out']);
 Route::post('donepassword',[setPassController::class,'changepass'])->name('donepassword');
 // Route::post('generate-quotation',[quotationController::class,'generateQuotation'])->name('generate-quotation');
 Route::get('Profile',[profileController::class,'userProfile'])->name('UserProfile');
+Route::get('forgotpassword',[setPassController::class,'forgotpassword'])->name('forgotpassword');
+Route::post('resetpassword',[setPassController::class,'resetpassword'])->name('resetpassword');
 
 Route::middleware(['setpass'])->group(function () {
     Route::group(['middleware' => ['role:super-admin|admin']], function () {

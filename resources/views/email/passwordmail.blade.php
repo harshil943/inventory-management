@@ -23,6 +23,10 @@
              {{$details['body']}}
             </td>
         </tr>
-      </tbody></table>
+    
+            <a>Reset Password</a>
+        
+      </tbody>
+    </table>
 </body>
 </html>
