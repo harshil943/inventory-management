@@ -1,51 +1,53 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm font-weight-bold bg-white " >
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{asset("img/bright_logo_big.png")}}" alt="Bright Containers" class="img-responsive img-preview-sm h-100">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse font-weight-bold" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item home px-1">
-                  <a class="nav-link" href="{{url('/home')}}">
-                    Home
-                    <span class="sr-only">(current)</span>
+            <big>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item home px-1">
+                    <a class="nav-link" href="{{url('/home')}}">
+                        Home
+                        <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item about-us px-1">
+                    <a class="nav-link" href="/about-us">
+                        About us
                     </a>
-                </li>
-                <li class="nav-item about-us px-1">
-                  <a class="nav-link" href="/about-us">
-                    About us
-                  </a>
-                </li>
-                <li class="nav-item dropdown product px-1">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Product Category
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    @foreach ($navCategory as $item)
-                      <a class="dropdown-item" href="{{url('productCategory',['categoryData'=>$item])}}">{{$item['category_name']}}</a>
-                    @endforeach
-                  </div>
-                </li>
-                <li class="nav-item quality px-1">
-                    <a class="nav-link" href="/quality">
-                      Quality
+                    </li>
+                    <li class="nav-item dropdown product px-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Product Category
                     </a>
-                </li>
-                <li class="nav-item brochure px-1">
-                    <a class="nav-link" href="{{ url('brochure')}}">
-                      Brochure
-                    </a>
-                </li>
-                <li class="nav-item contact-us px-1">
-                    <a class="nav-link" href="/contact-us">
-                      Contact Us
-                    </a>
-                </li>
-              </ul>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @foreach ($navCategory as $item)
+                            <big><a class="dropdown-item" href="{{url('productCategory',['categoryData'=>$item])}}">{{$item['category_name']}}</a></big>
+                        @endforeach
+                    </div>
+                    </li>
+                    <li class="nav-item quality px-1">
+                        <a class="nav-link" href="/quality">
+                        Quality
+                        </a>
+                    </li>
+                    <li class="nav-item brochure px-1">
+                        <a class="nav-link" href="{{ url('brochure')}}">
+                        Brochure
+                        </a>
+                    </li>
+                    <li class="nav-item contact-us px-1">
+                        <a class="nav-link" href="/contact-us">
+                        Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </big>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
@@ -61,16 +63,24 @@
                 </li>
                 @endif
                 @else
-                <li class="nav-item dropdown"><a id="navbarDropdown" class="nav-link dropdown-toggle btn text-dark px-3 font-weight-bold"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{-- {{ Auth::user()->name }} --}}
-                        <img src="{{asset('storage/Logo/'.Auth::user()->comp_logo)}}" alt="Company Logo" class="img-circle circle-border m-b-md" height="45px">
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle btn text-dark px-3 font-weight-bold"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        @if(Auth::user()->comp_logo)
+                            <img src="{{asset('storage/Logo/'.Auth::user()->comp_logo)}}" alt="Company Logo" class="img-responsive" height="60px">
+                        @else
+                            <img src="{{asset('storage/Logo/profile_default.png')}}" alt="Company Logo" class="img-responsive" height="60px">
+                        @endif
+                        &nbsp;&nbsp;
+                        <big><big>{{Auth::user()->name}}</big></big>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a href="{{route('UserProfile')}}" class="dropdown-item">Profile</a>
-                        <a href="{{ url('/orders') }}" class="dropdown-item">Oreder Details</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}">
-                            {{ __('Log out') }}
-                        </a>
+                    <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
+                        <big>
+                            <a href="{{route('UserProfile')}}" class="dropdown-item">Profile</a>
+                            <a href="{{ url('/orders') }}" class="dropdown-item">Oreder Details</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}">
+                                {{ __('Log out') }}
+                            </a>
+                        </big>
                     </div>
                 </li>
                 @endguest

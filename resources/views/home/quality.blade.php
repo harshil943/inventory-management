@@ -33,7 +33,7 @@
                         <li>
                             Drop Test :Drop test from the height of 5 feet done at regular interval.
                         </li>
-                    </ul> 
+                    </ul>
                 <p></p>
         </div>
     </div>
@@ -47,6 +47,7 @@
             $('.quality').addClass('active');
             $('.quality').addClass('btn-rounded');
             $(".quality").css("background","#0997a7");
+            $(".quality a").css("color","#fff");
         });
     </script>
 @endpush

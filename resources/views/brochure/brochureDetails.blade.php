@@ -180,6 +180,7 @@
             $('.brochure').addClass('active');
             $('.brochure').addClass('btn-rounded');
             $(".brochure").css("background","#0997a7");
+            $(".brochure a").css("color","#fff");
         });
     </script>
 @endpush

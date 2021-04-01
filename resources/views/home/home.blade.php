@@ -9,7 +9,7 @@
 
 <div class="container-fluid hero-image" style="background-image: linear-gradient(to top,#0997a7,#fff 90%);">
     <div class="row">
-        <div class="explore-more fade_effect animated fadeInUpBig col-sm-4 my-auto">
+        <div class="explore-more fade_effect  animated fadeInUp col-sm-4 my-auto">
             <h2>
                 <span>Our Strengths</span>
                 <br><br>
@@ -26,31 +26,26 @@
         </div>
     </div>
 </div>
-<div class="container-fluid mt-5">
-
+<div class="container mt-5">
     <div class="row">
         @foreach ($products as $item)
-        <div class="col-md-3">
-            <div class="ibox">
+            <div class="col-sm-4">
+                {{-- <div class="ibox-content product-box animated shake infinite"> --}}
                 <div class="ibox-content product-box">
-                    <img src="{{ asset('storage/product/'.$item->product_image_name) }}" alt="Product Image" class="img-thumbnail img-fluid" style="height: 300px">
+                    <a href="{{route('productdetails',$item->id)}}" style="text-decoration:none;">
+                    <img src="{{ asset('storage/product/'.$item->product_image_name) }}" alt="Product Image" class="img-fluid" style="height: 300px">
                     <div class="product-desc">
-                        <span class="product-price">
-                            $10
-                        </span>
-                        <small class="text-muted">{{$item->category->category_name}}</small>
-                        <span class="product-name">{{$item->product_name}}</a>
-                       
-                        <div class="m-t text-right">
-                            <a href="{{route('productdetails',$item->id)}}" class="btn  btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
+                        <center>
+                            <h2 style="color: #0997a7;">{{$item->product_name}}</h2>
+                        </center>
                     </div>
+                    </a>
                 </div>
             </div>
-        </div>
         @endforeach
     </div>
 </div>
+<br><br><br><br>
 @endsection
 
 @push('script')
@@ -59,6 +54,7 @@
             $('.home').addClass('active');
             $('.home').addClass('btn-rounded');
             $(".home").css("background","#0997a7");
+            $(".home a").css("color","#fff");
         });
     </script>
 @endpush
