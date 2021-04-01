@@ -38,7 +38,7 @@
                         <li>
                             Our Products are useful to pack Liquid, Semi Liquid, Powder, Capsule &amp; Tablets.
                         </li>
-                    </ul> 
+                    </ul>
                 <p></p>
         </div>
     </div>
@@ -69,7 +69,7 @@
                         <h2 class="font-bold">Ayurvedic Product Packing</h2>
                     </div>
                 </div>
-                
+
                 <div class="col-sm-3">
                     <div class="widget style1 lazur-bg">
                         <h2 class="font-bold">Paint Chemical Industries</h2>
@@ -132,6 +132,7 @@
             $('.about-us').addClass('active');
             $('.about-us').addClass('btn-rounded');
             $(".about-us").css("background","#0997a7");
+            $(".about-us a").css("color","#fff");
         });
     </script>
 @endpush

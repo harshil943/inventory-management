@@ -118,6 +118,7 @@
             $('.contact-us').addClass('active');
             $('.contact-us').addClass('btn-rounded');
             $(".contact-us").css("background","#0997a7");
+            $(".contact-us a").css("color","#fff");
         });
     </script>
 @endpush

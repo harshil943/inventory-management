@@ -32,6 +32,7 @@
             $('.product').addClass('active');
             $('.product').addClass('btn-rounded');
             $(".product").css("background","#0997a7");
+            $(".product .nav-link").css("color","#fff");
         });
     </script>
 @endpush

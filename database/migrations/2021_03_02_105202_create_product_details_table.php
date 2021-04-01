@@ -18,10 +18,10 @@ class CreateProductDetailsTable extends Migration
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('id')->on('product_category');
             $table->string('product_name');
-            $table->string('product_image_name');
-            $table->boolean('product_filter_type');
-            $table->string('product_info_1');
-            $table->string('product_info_2');
+            $table->string('product_image_name')->nullable();
+            $table->boolean('product_visible')->default('1');
+            $table->string('product_info_1')->nullable();
+            $table->string('product_info_2')->nullable();
             $table->string('extra_info_1')->nullable();
             $table->string('extra_info_2')->nullable();
             $table->string('extra_info_3')->nullable();

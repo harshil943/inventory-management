@@ -29,7 +29,7 @@ class HomeController extends Controller
         }
         else
         {
-            $products = $this->productRepository->allProducts();
+            $products = $this->productRepository->allVisibleProducts();
             return view('home.home')->with('products',$products);
         }
     }

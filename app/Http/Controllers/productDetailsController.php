@@ -65,7 +65,7 @@ class productDetailsController extends Controller
      */
     public function edit($id)
     {
-        
+
         $product = $this->productRepository->productById($id);
         $category = $this->productRepository->productsCategoryAll();
         return view('productDetails.addProduct')->with('product',$product)->with('category',$category);

@@ -2,10 +2,10 @@
 
 @section('title')
 @if (isset($product))
-    
+
 Edit Product | Bright Containers
 @else
-    
+
 Add Product | Bright Containers
 @endif
 @endsection
@@ -19,18 +19,18 @@ Add Product | Bright Containers
     <div class="text-center loginscreen animated fadeInDown">
         <div class="mt-3">
             @if (isset($product))
-                
+
             <h3>Edit Product to <br>Bright Containers</h3>
             <form class="m-t mt-3" role="form"  action="{{ route('product.update',$product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
             @else
-                
+
             <h3>Add Product to <br>Bright Containers</h3>
             <form class="m-t mt-3" role="form"  action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
             @endif
-            
+
                     <div class="row text-left">
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -43,7 +43,7 @@ Add Product | Bright Containers
                                             <option></option>
                                             @foreach ($category as $item)
                                              @if (isset($product))
-                                                 @if ($item->id == $product->category_id) 
+                                                 @if ($item->id == $product->category_id)
                                                     <option value="{{$item->id}}" selected>{{$item->category_name}}</option>
                                                  @else
                                                     <option value="{{$item->id}}">{{$item->category_name}}</option>
@@ -82,7 +82,7 @@ Add Product | Bright Containers
                                         <label for="product_info_1">Product Info 1</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="product_info_1" type="text" name="product_info_1" class="form-control" @if(isset($product->product_info_1)) value="{{$product->product_info_1}}" @endif placeholder="Product Info" required >
+                                        <input id="product_info_1" type="text" name="product_info_1" class="form-control" @if(isset($product->product_info_1)) value="{{$product->product_info_1}}" @endif placeholder="Product Info"  >
                                     </div>
                                 </div>
                             </div>
@@ -111,30 +111,30 @@ Add Product | Bright Containers
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <label class="form-label" for="filter_type">Filter Type</label>
+                                        <label class="form-label" for="visible">Filter Type</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <select class="form-control" id="filter_type" name="filter_type" @if(isset($product->filter_type)) value="{{$product->filter_type}}" @endif required>
+                                        <select class="form-control" id="visible" name="visible" @if(isset($product->visible)) value="{{$product->visible}}" @endif required>
                                             <option></option>
                                             @if (isset($product))
-                                                @if ($product->product_filter_type == '0') 
-                                                    
+                                                @if ($product->product_visible == '0')
+
                                                     <option value="0" selected>0</option>
                                                     <option value="1">1</option>
                                                 @else
-                                                   
+
                                                     <option value="0">0</option>
                                                     <option value="1" selected>1</option>
                                                 @endif
                                             @else
-                                                
+
                                                 <option value="0">0</option>
                                                 <option value="1" >1</option>
                                             @endif
                                         </select>
                                     </div>
                                 </div>
-                            </div>     
+                            </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -161,7 +161,7 @@ Add Product | Bright Containers
                                         <label for="product_info_2">Product Info 2</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input id="product_info_2" type="text" name="product_info_2" class="form-control" @if(isset($product->product_info_2)) value="{{$product->product_info_2}}" @endif placeholder="Product Info" required >
+                                        <input id="product_info_2" type="text" name="product_info_2" class="form-control" @if(isset($product->product_info_2)) value="{{$product->product_info_2}}" @endif placeholder="Product Info"  >
                                     </div>
                                 </div>
                             </div>
@@ -193,28 +193,28 @@ Add Product | Bright Containers
                                         <Label style="padding:10px;">Product Image</Label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="file" class="form-control" name="product_image" required>
+                                        <input type="file" class="form-control" name="product_image" >
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="mb-5">
                         <span class="fa fa-plus btn btn-success" id="more_details">
                             More Details
                         </span>
                         <span class="btn btn-danger remove_details fa fa-minus"> Remove</span>
                     <div class="more-details-area mt-5">
-                       
+
                     </div>
                     </div>
                     <div>
                         @if (isset($product))
-                            
+
                         <button type="submit" class="btn btn-primary m-b">Edit Product</button>
                         @else
-                            
+
                         <button type="submit" class="btn btn-primary m-b">Add Product</button>
                         @endif
                     </div>
@@ -235,7 +235,7 @@ Add Product | Bright Containers
                  placeholder: "Select Category",
                  allowClear: true
              });
-             $("#filter_type").select2({
+             $("#visible").select2({
                  placeholder: "Select Filter",
                  allowClear: true
              });
@@ -295,7 +295,7 @@ Add Product | Bright Containers
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">  
+                        <div class="col-sm-6">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-4">
