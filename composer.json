@@ -19,6 +19,7 @@
         "pusher/pusher-php-server": "^6.1",
         "razorpay/razorpay": "^2.5",
         "spatie/laravel-permission": "^4.0",
+        "uxweb/sweet-alert": "^2.0",
         "yajra/laravel-datatables-oracle": "^9.15"
     },
     "require-dev": {
