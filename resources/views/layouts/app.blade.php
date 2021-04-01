@@ -58,7 +58,35 @@
     <link href="{{asset('css/plugins/toastr/toastr.min.css')}}" rel="stylesheet">
 
     @stack('css')
+    
+    <style>
+        #back2Top {
+    width: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    z-index: 999;
+    display: none;
+    cursor: pointer;
+    -moz-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+    position: fixed;
+    bottom: 50px;
+    right: 0;
+    background-color: #DDD;
+    color: #555;
+    text-align: center;
+    font-size: 30px;
+    text-decoration: none;
+}
+#back2Top:hover {
+    background-color: #DDF;
+    color: #000;
+}
 
+    </style>
 </head>
 
 {{-- <body style="background-image: linear-gradient(to top,#0997a7,#fff 80%);"> --}}
@@ -86,6 +114,7 @@
             @yield('content')
         </div>
     </div>
+    <a id="back2Top" title="Back to top" href="#">&#10148;</a>
 
     {{-- <div class="footer fixed">
         <div>
@@ -165,6 +194,27 @@
         @endif
     @endif
 
+    <script>
+        /*Scroll to top when arrow up clicked BEGIN*/
+        $(window).scroll(function() {
+            var height = $(window).scrollTop();
+            if (height > 100) {
+                $('#back2Top').fadeIn();
+            } else {
+                $('#back2Top').fadeOut();
+            }
+        });
+        $(document).ready(function() {
+            $("#back2Top").click(function(event) {
+                event.preventDefault();
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
+            });
+
+        });
+        /*Scroll to top when arrow up clicked END*/
+
+    </script>
     <!-- Flot -->
     {{-- <script src="{{asset('js/plugins/flot/jquery.flot.js')}}"></script> --}}
     {{-- <script src="{{asset('js/plugins/flot/jquery.flot.tooltip.min.js')}}"></script> --}}
