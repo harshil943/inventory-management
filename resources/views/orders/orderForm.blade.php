@@ -227,6 +227,75 @@
                         Add Products
                     </span>
                     <span class="btn btn-danger remove_product fa fa-minus"> Remove</span>
+                    <div class="my-5">
+                        <div class="row text-left">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-label" for="product_id">Product Name</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <select class="form-control product_id" id="product_id" name="product_id[]" required>
+                                                <option></option>
+                                                @foreach ($product as $item)
+                                                <option value="{{$item->id}}">{{$item->product_name}}</option>
+                                            @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row mt-4">
+                                        <div class="col-sm-4">
+                                            <label class="form-label" for="unit">Unit</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <select class="form-control unit" id="unit" name="unit[]" required>
+                                                <option></option>
+                                                <option value="UNT">UNT</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row mt-4">
+                                        <div class="col-sm-4">
+                                            <label class="form-label" for="hsn_code">HSN Code</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <select class="form-control hsn_code" id="hsn" name="hsn[]" required>
+                                                <option></option>
+                                                <option value="32233233">32233233</option>
+                                                <option value="7664646">7664646</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-label" for="quantity">Quantity</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="quantity[]" id="quantity" class="form-control" placeholder="Quantity" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-label" for="price">Price</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="price[]" id="price"class="form-control" placeholder="Price" required>
+                                        </div>
+                                    </div>
+                                </div></div>
+                    </div>
                 <div class="add-product-area mt-5">
 
                 </div>

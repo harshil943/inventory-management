@@ -23,9 +23,9 @@
              {{$details['body']}}
             </td>
         </tr>
-    
-            <a>Reset Password</a>
-        
+
+            <a href="{{route('newpass',$details['name'])}}">Reset Password</a>
+
       </tbody>
     </table>
 </body>

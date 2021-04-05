@@ -11,4 +11,8 @@ interface userInterface
     public function user($id);
 
     public function resetpassword($request);
+
+    public function newpass($email);
+
+    public function passwordchanged($request,$email);
 }

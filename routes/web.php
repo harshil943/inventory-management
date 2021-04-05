@@ -52,6 +52,8 @@ Route::post('donepassword',[setPassController::class,'changepass'])->name('donep
 Route::get('Profile',[profileController::class,'userProfile'])->name('UserProfile');
 Route::get('forgotpassword',[setPassController::class,'forgotpassword'])->name('forgotpassword');
 Route::post('resetpassword',[setPassController::class,'resetpassword'])->name('resetpassword');
+Route::get('newpass/{email}',[setPassController::class,'newpass'])->name('newpass');
+Route::post('passwordchanged/{email}',[setPassController::class,'passwordchanged'])->name('passwordchanged');
 
 Route::middleware(['setpass'])->group(function () {
     Route::group(['middleware' => ['role:super-admin|admin']], function () {
