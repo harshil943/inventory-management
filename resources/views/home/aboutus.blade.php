@@ -6,17 +6,17 @@
 
 @section('content')
 <div class="wrapper mt-3 wrapper-content animated fadeInRight">
-    <div class="row " style="font-size: 23px">
-        <div class="col-lg-6">
+    <div class="row" style="font-size: 23px">
+        <div class="col-sm-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <figure>
-                        <iframe width="850" height="500" src="https://www.youtube.com/embed/1VKERrDp63o?autoplay=1&amp;rel=0" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/1VKERrDp63o?autoplay=1&amp;rel=0" frameborder="0" width=100% height=450px allowfullscreen></iframe>
                     </figure>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-sm-6">
                 <p style="text-indent: 40px;">
                 <big><strong>Bright Containers </strong></big> was established in 2008 for the manufacturing of Blow &amp; Injection molding articles, the company continues to grow year over year.
                 </p>
@@ -43,71 +43,71 @@
         </div>
     </div>
     <section id="about">
-        <h3 style="text-align: center;color: #000000;">
-            <strong>Different Indusries Where Our Products Used</strong>
+        <h3 style="color: #000000;">
+            <strong>&nbsp;&nbsp;Different Indusries Where Our Products Used</strong>
         </h3>
         <br>
-        <div class="card-deck" style="margin-left: 10px;margin-right: 10px;">
+        <div class="card-deck" style="margin-left:10px;margin-right: 10px;">
             <div class="row">
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Pesticides</h2>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Agro Chemicals</h2>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Lubricating Oil</h2>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Ayurvedic Product Packing</h2>
                     </div>
                 </div>
 
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Paint Chemical Industries</h2>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Bio-nutrients</h2>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Fungicides</h2>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Coolant Water Packing</h2>
                     </div>
                 </div>
 
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Aloevera Product Packing</h2>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Water Proofing Chemicals</h2>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Plant Growth Promoter</h2>
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="widget style1 lazur-bg">
+                    <div class="widget style1 blue-bg">
                         <h2 class="font-bold">Bio-Pesticides</h2>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
         $(function() {
             $('.about-us').addClass('active');
             $('.about-us').addClass('btn-rounded');
-            $(".about-us").css("background","#0997a7");
+            $('.about-us').addClass('blue-bg');
             $(".about-us a").css("color","#fff");
         });
     </script>

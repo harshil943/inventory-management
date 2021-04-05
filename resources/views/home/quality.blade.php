@@ -7,31 +7,31 @@
 @section('content')
 <div class="wrapper mt-3 wrapper-content animated fadeInRight">
     <div class="row " style="font-size: 23px">
-        <div class="col-lg-6">
+        <div class="col-sm-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-content">
                     <figure>
-                        <iframe width="850" height="500" src="https://www.youtube.com/embed/SfZVujFiFuk?autoplay=1&amp;rel=0" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/SfZVujFiFuk?autoplay=1&amp;rel=0" frameborder="0" width=100% height=450px allowfullscreen></iframe>
                     </figure>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-sm-6">
                 <p style="text-indent: 40px;">
-                <big><strong>Blow Molding </strong></big> is depends on following quality measures, which are strictly followed.
+                <big><strong class="text-primary">Blow Moulding </strong></big> is depends on following quality measures, which are strictly followed.
                 </p>
                 <ul style="margin-top: 25px;">
                         <li>
-                            Article Weight :Weight of Article measured at regular interval during production.
+                            <strong class="text-danger">Article Weight</strong> :Weight of Article measured at regular interval during production.
                         </li>
                         <li>
-                            Uniform Thickness :Uniform thickness of bottle checking done at regular interval (vertically & horizontally).
+                            <strong class="text-danger">Uniform Thickness</strong> :Uniform thickness of bottle checking done at regular interval (vertically & horizontally).
                         </li>
                         <li>
-                            Leakage Testing :Leakage testing check through machine.
+                            <strong class="text-danger">Leakage Testing</strong> :Leakage testing check through machine.
                         </li>
                         <li>
-                            Drop Test :Drop test from the height of 5 feet done at regular interval.
+                            <strong class="text-danger">Drop Test</strong> :Drop test from the height of 5 feet done at regular interval.
                         </li>
                     </ul>
                 <p></p>
@@ -46,7 +46,7 @@
         $(function() {
             $('.quality').addClass('active');
             $('.quality').addClass('btn-rounded');
-            $(".quality").css("background","#0997a7");
+            $('.quality').addClass('blue-bg');
             $(".quality a").css("color","#fff");
         });
     </script>

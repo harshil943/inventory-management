@@ -16,20 +16,8 @@ class brochureController extends Controller
     {
         $this->productRepository = $productRepository;
     }
-    public function brochure()
+    public function brochure($id)
     {
-        if(Auth::user() && (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin')))
-        {
-            return redirect('home');
-        }
-        else
-        {
-            $categoryBrochure = $this->productRepository->productsCategoryAll();
-            return view('brochure.brochure')->with('brochure',$categoryBrochure);
-        }
-    }
-    public function brochureDetails($id)
-    {
-        return view('brochure.brochureDetails')->with('id',$id);
+        return view('brochure.brochure')->with('id',$id);
     }
 }

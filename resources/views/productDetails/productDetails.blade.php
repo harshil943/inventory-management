@@ -15,20 +15,22 @@
 @include('sweet::alert')
 <div class="ibox-content">
     <div class="row">
-        <div class="col-lg-5">
-          <img src="{{asset('storage/product/'.$product->product_image_name)}}" alt="Product Image" height="250px">
+        <div class="col-sm-5">
+          <img src="{{asset('storage/product/'.$product->product_image_name)}}" alt="Product Image" width="100%">
         </div>
-        <div class="col-lg-7">
-            <h2 class="font-bold m-b-xs" style="color:#007c89">
+        <div class="col-sm-7">
+            <h1 class="font-bold m-b-xs text-primary">
                 {{$product->product_name}}
-            </h2>
+            </h1>
             <hr>
             <div>
               <ul class="p-2">
+                <big><big>
                 <li class="my-2">{{$product->product_info_1}}</li>
-                <li> <span class="text-danger my-2"> Available Sizes : </span> {{$product->available_sizes}}</li>
-                <li> <span class="text-danger my-2"> Available Colors : </span> {{$product->available_color_bottle}}</li>
-                <li> <span class="text-danger my-2"> Available Cap Colors : </span> {{$product->available_color_cap}}</li>
+                <li> <strong><span class="text-danger my-2"> Available Sizes : </span></strong> {{$product->available_sizes}}</li>
+                <li> <strong><span class="text-danger my-2"> Available Colors : </span></strong> {{$product->available_color_bottle}}</li>
+                <li> <strong><span class="text-danger my-2"> Available Cap Colors : </span></strong> {{$product->available_color_cap}}</li>
+                </big></big>
               </ul>
             </div>
           </div>
@@ -38,7 +40,7 @@
 @if (!($product->table_header == "null"))
 
 <div class="mt-5 container-fluid">
-  <h1 class="mb-3" style="color:#007c89">Dimentions Table</h1>
+  <h1 class="mb-3 text-primary">Dimentions Table</h1>
   <table class="table table-striped table-bordered">
     <thead>
       <tr>
@@ -50,7 +52,7 @@
         <th scope="col">Label Height (mm)</th>
         <th scope="col">Neck Id (mm)</th>
         <th scope="col">Standard Weight (gms)</th>
-        <th scope="col">MOQ <span style="color:red;">*</span> (Pcs)</th>
+        <th scope="col"><span style="color:red;">*</span>MOQ (UNT)</th>
         <th scope="col">Cap Name</th>
       </tr>
     </thead>
@@ -83,12 +85,12 @@
       @endfor
     </tbody>
   </table>
-  <h5><span class="text-danger">MOQ - Minimum Order Quantity</span></h5>
+  <h5><strong><span class="text-danger">*MOQ - Minimum Order Quantity</span></strong></h5>
 </div>
 @endif
 @unlessrole('super-admin')
   @unlessrole('admin')
-    <div class="text-center" style="color:#007c89">
+    <div class="text-center text-primary">
       <h1><i class="fa fa-inr"></i> Request Quotation</h1>
     </div>
     <div class="container mt-5">
@@ -103,7 +105,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-4">
-                                <label class="form-label fa fa-product-hunt" for="product size"> Product Shape/Size</label>
+                                <span><i class="fa fa-product-hunt"></i> Product Shape/Size</span>
                             </div>
                             <div class="col-md-8">
                                 <select class="form-control" id="size" name="size" required>
@@ -120,7 +122,7 @@
                     <div class="form-group">
                     <div class="row">
                         <div class="col-md-4">
-                            <label class="form-label fa fa-tasks" for="comapny name"> Quantity</label>
+                            <span><i class="fa fa-tasks"></i> Quantity</span>
                         </div>
                         <div class="col-md-8">
                             <input type="text" class="form-control" name="quantity" placeholder="Quantity" required>
@@ -132,7 +134,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-4">
-                            <label class="form-label fa fa-id-card" for="comapny name">  Company Name</label>
+                            <span><i class="fa fa-id-card"></i> Company Name</span>
                         </div>
                         <div class="col-sm-8">
                           <input type="text" class="form-control" name="company_name" placeholder="Comapny Name" required>
@@ -142,7 +144,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-4">
-                            <label class="form-label fa fa-envelope" for="comapny name">  Email Address</label>
+                            <span><i class="fa fa-envelope"></i> Email Id</span>
                         </div>
                         <div class="col-sm-8">
                           <input type="text" class="form-control" name="email" placeholder="Email Address" required>
@@ -152,7 +154,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-4">
-                            <label class="form-label fa fa-phone" for="comapny name">  Contact Number</label>
+                            <span><i class="fa fa-phone"></i> Contact Number</span>
                         </div>
                         <div class="col-sm-8">
                           <input type="text" class="form-control" name="number" placeholder="Contact Number" required>
@@ -164,7 +166,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-4">
-                            <label class="form-label fa fa-product-hunt" for="product size">  Product Shape/Size</label>
+                            <span><i class="fa fa-product-hunt"></i> Product Shape/Size</span>
                         </div>
                         <div class="col-sm-8">
                             <select class="form-control" id="size" name="size" required>
@@ -179,7 +181,7 @@
                 <div class="form-group">
                   <div class="row">
                       <div class="col-sm-4">
-                          <label class="form-label fa fa-tasks" for="comapny name"> Quantity</label>
+                        <span><i class="fa fa-tasks"></i> Quantity</span>
                       </div>
                       <div class="col-sm-8">
                         <input type="text" class="form-control" name="quantity" placeholder="Quantity" required>
@@ -219,7 +221,7 @@
         $(function() {
             $('.product').addClass('active');
             $('.product').addClass('btn-rounded');
-            $(".product").css("background","#0997a7");
+            $('.product').addClass('blue-bg');
             $(".product .nav-link").css("color","#fff");
         });
     </script>

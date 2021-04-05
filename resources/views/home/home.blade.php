@@ -7,7 +7,7 @@
 
 @section('content')
 
-<div class="container-fluid hero-image" style="background-image: linear-gradient(to top,#0997a7,#fff 90%);">
+<div class="container-fluid hero-image" style="background-image: linear-gradient(to top,#3490dc,#fff 90%);">
     <div class="row">
         <div class="explore-more fade_effect  animated fadeInUp col-sm-4 my-auto">
             <h2>
@@ -36,7 +36,7 @@
                     <img src="{{ asset('storage/product/'.$item->product_image_name) }}" alt="Product Image" class="img-fluid" style="height: 300px">
                     <div class="product-desc">
                         <center>
-                            <h2 style="color: #0997a7;">{{$item->product_name}}</h2>
+                            <h2 class="text-primary">{{$item->product_name}}</h2>
                         </center>
                     </div>
                     </a>
@@ -53,7 +53,7 @@
         $(function() {
             $('.home').addClass('active');
             $('.home').addClass('btn-rounded');
-            $(".home").css("background","#0997a7");
+            $('.home').addClass('blue-bg');
             $(".home a").css("color","#fff");
         });
     </script>

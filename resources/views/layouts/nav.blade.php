@@ -36,11 +36,6 @@
                         Quality
                         </a>
                     </li>
-                    <li class="nav-item brochure px-1">
-                        <a class="nav-link" href="{{ url('brochure')}}">
-                        Brochure
-                        </a>
-                    </li>
                     <li class="nav-item contact-us px-1">
                         <a class="nav-link" href="/contact-us">
                         Contact Us

@@ -27,9 +27,11 @@
                 <tr>
                     <td></td>
                     <td>{{$item->category_name}}</td>
-                    <td> <img src="{{asset('img/'.$item->category_image_name)}}" class="w-25" alt="Product image"></td>
-                    <td>{{$item->category_brochure_file_name}}</td>
-                    
+                    <td>
+                        {{-- <img alt="image" class="img-preview-sm" src="{{asset('storage/category/'.$item->category_image_name)}}" alt="{{$item->category_image_name}}"> --}}
+                        <img alt="image" class="img-preview-sm" src="{{asset('storage/category/pesticide_bottle.png')}}" alt="Category Image">
+                    </td>
+                    <td><a href="{{url('brochure',[$item->id])}}">{{$item->category_brochure_file_name}}</a></td>
                     <td colspan="3"><form action="{{route('category.destroy',$item->id)}}" method="post">
                         @csrf
                         @method('DELETE')
@@ -67,7 +69,7 @@
             } ],
             pageLength: 5,
             responsive: true
-            
+
         });
         t.on( 'order.dt search.dt', function () {
             t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
