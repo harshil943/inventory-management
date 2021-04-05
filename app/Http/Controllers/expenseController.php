@@ -43,6 +43,7 @@ class expenseController extends Controller
     public function store(Request $request)
     {
         $this->expenseRepository->addExpense($request);
+        session()->flash('success', 'Expense added successfully');
         return redirect()->route('expense.index');
     }
 
@@ -79,6 +80,7 @@ class expenseController extends Controller
     public function update(Request $request, $id)
     {
         $this->expenseRepository->updateExpense($request,$id);
+        session()->flash('info', 'Expense updated successfully');
         return redirect()->route('expense.index');
     }
 
@@ -91,6 +93,7 @@ class expenseController extends Controller
     public function destroy($id)
     {
         $this->expenseRepository->deleteExpense($id);
+        session()->flash('warning', 'Expense deleted successfully');
         return back();
     }
 }

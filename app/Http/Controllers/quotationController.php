@@ -57,7 +57,8 @@ class quotationController extends Controller
             $options
         );
         $pusher->trigger('quote-request', 'App\\Events\\QuoteRequest',null);
-        alert()->success('Done','Your Quotation Registered')->persistent('Close')->autoclose(3000);
+        // alert()->success('Done','Your Quotation Registered')->persistent('Close')->autoclose(3000);
+        session()->flash('success', 'Quotation added successfully');
         return back();
     }
 
@@ -104,6 +105,7 @@ class quotationController extends Controller
     public function destroy($id)
     {
         $this->quotationRepository->deleteQuote($id);
+        session()->flash('warning', 'Quotation deleted successfully');
         return redirect()->route('quotation.index');
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Events\UserRegistered;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
@@ -85,7 +86,7 @@ class RegisterController extends Controller
                 ]);
 
             event(new UserRegistered($user));
-
+            session()->flash('success', 'Welcome to Bright Containers');
             return  $user;
         }
         else{
@@ -101,7 +102,7 @@ class RegisterController extends Controller
                 ]);
 
             event(new UserRegistered($user));
-
+            session()->flash('success', 'Welcome to Bright Containers');
             return $user;
         }
 

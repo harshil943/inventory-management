@@ -16,7 +16,7 @@
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('font-awesome/css/font-awesome.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
     <link href="{{asset('css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -58,7 +58,7 @@
     <link href="{{asset('css/plugins/toastr/toastr.min.css')}}" rel="stylesheet">
 
     @stack('css')
-    
+
     <style>
         #back2Top {
     width: 40px;
@@ -137,6 +137,31 @@
 
     <!-- Toastr script -->
     <script src="js/plugins/toastr/toastr.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+    <script>
+
+
+        @if(Session::has('success'))
+                toastr.success("{{ Session::get('success') }}");
+        @endif
+
+
+        @if(Session::has('info'))
+                toastr.info("{{ Session::get('info') }}");
+        @endif
+
+
+        @if(Session::has('warning'))
+                toastr.warning("{{ Session::get('warning') }}");
+        @endif
+
+
+        @if(Session::has('error'))
+                toastr.error("{{ Session::get('error') }}");
+        @endif
+
+
+      </script>
     <script type="text/javascript">
         function genToast(type,msg,title,link) {
             if(link == null)

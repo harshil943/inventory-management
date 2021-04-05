@@ -24,7 +24,7 @@ class designationController extends Controller
         $designation = $this->designationRepository->all();
         return view('designation.designation')->with('designation',$designation);
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -33,11 +33,12 @@ class designationController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $this->designationRepository->storeDesignation($request);
+        session()->flash('success', 'Designation added successfully');
         return back();
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -47,7 +48,7 @@ class designationController extends Controller
     public function destroy($id)
     {
         $this->designationRepository->delete($id);
-
+        session()->flash('warning', 'Designation deleted Successfully');
         return back();
     }
 
@@ -60,7 +61,7 @@ class designationController extends Controller
     // {
         //     //
         // }
-        
+
         // /**
         //  * Display the specified resource.
         //  *

@@ -42,6 +42,7 @@ class productDetailsController extends Controller
     public function store(Request $request)
     {
         $this->productRepository->storeProduct($request);
+        session()->flash('success', 'Product added successfully');
         return redirect()->route('product.index');
     }
 
@@ -81,6 +82,7 @@ class productDetailsController extends Controller
     public function update(Request $request, $id)
     {
         $this->productRepository->updateProduct($request,$id);
+        session()->flash('info', 'Product updated successfully');
         return redirect()->route("product.index");
     }
 
@@ -93,6 +95,7 @@ class productDetailsController extends Controller
     public function destroy($id)
     {
         $this->productRepository->deleteProduct($id);
+        session()->flash('warning', 'Product deleted successfully');
         return back();
     }
 

@@ -48,6 +48,7 @@ class machineController extends Controller
     public function store(Request $request)
     {
         $this->machineRepository->addMachine($request);
+        session()->flash('success', 'Machine error noted');
         return redirect()->route('machine.index');
     }
 
@@ -85,6 +86,7 @@ class machineController extends Controller
     public function update(Request $request, $id)
     {
         $this->machineRepository->updateMachine($request,$id);
+        session()->flash('info', 'Machine error updated successfully');
         return redirect()->route('machine.index');
     }
 
@@ -97,6 +99,7 @@ class machineController extends Controller
     public function destroy($id)
     {
         $this->machineRepository->deleteMachine($id);
+        session()->flash('warning', 'Machine error deleted successfully');
         return redirect()->route('machine.index');
     }
 }

@@ -43,6 +43,7 @@ class productCategoryController extends Controller
     public function store(Request $request)
     {
         $this->productRepository->storeCategory($request);
+        session()->flash('success', 'New Product category added');
         return redirect()->route('category.index');
     }
 
@@ -79,6 +80,7 @@ class productCategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->productRepository->updateCategory($request,$id);
+        session()->flash('info', 'Category updated successfully');
         return redirect()->route('category.index');
     }
 
@@ -91,6 +93,7 @@ class productCategoryController extends Controller
     public function destroy($id)
     {
         $this->productRepository->deleteCategory($id);
+        session()->flash('warning', 'Category deleted successfully');
         return back();
     }
 

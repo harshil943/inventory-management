@@ -43,6 +43,7 @@ class assetController extends Controller
     public function store(Request $request)
     {
         $this->assetRepositoy->addAsset($request);
+        session()->flash('success', 'Asset is added successfully');
         return redirect()->route('asset.index');
     }
 
@@ -79,6 +80,7 @@ class assetController extends Controller
     public function update(Request $request, $id)
     {
         $this->assetRepositoy->updateAsset($request,$id);
+        session()->flash('info', 'Asset is updated');
         return redirect()->route('asset.index');
     }
 
@@ -91,6 +93,7 @@ class assetController extends Controller
     public function destroy($id)
     {
         $this->assetRepositoy->deleteAsset($id);
+        session()->flash('warning', 'Asset is deleted');
         return back();
     }
 }
