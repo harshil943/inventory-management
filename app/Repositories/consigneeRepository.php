@@ -37,7 +37,7 @@ class consigneeRepository implements consigneeInterface
 
     public function consigneeById($id)
     {
-        return consignee::where('id',$id)->first();
+        return consignee::where('id',$id)->firstorfail();
     }
 
     public function updateConsignee($request,$id)

@@ -36,7 +36,7 @@ class machineRepository implements machineInterface
 
     public function machineById($id)
     {
-        return MachineErrorReportTable::where('id',$id)->first();
+        return MachineErrorReportTable::where('id',$id)->firstorfail();
     }
 
     public function updateMachine($request,$id)

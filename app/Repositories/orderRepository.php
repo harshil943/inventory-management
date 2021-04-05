@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Events\ordermail;
 use App\Models\consignee;
 use App\Models\OrderDetails;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +40,6 @@ class orderRepository implements OrderInterface
                         ->select('product_name')
                         ->where('id',$id)
                         ->get();
-
                 array_push($arr,$data2[0]->product_name);
             }
             $data[$i]->order->product_id = $arr;
@@ -50,7 +50,7 @@ class orderRepository implements OrderInterface
 
     public function orderDetails($id,$type)
     {
-        $data = map_order_challan::where('order_id',$id)->first();
+        $data = map_order_challan::where('order_id',$id)->firstorfail();
 
         $pi = json_decode($data->order->product_id,true);
         $hsn = json_decode($data->order->hsn_code,true);
@@ -66,7 +66,7 @@ class orderRepository implements OrderInterface
             $data2 = DB::table('product_details')
                     ->select('product_name')
                     ->where('id',$id)
-                    ->first();
+                    ->firstorfail();
             array_push($arr,$data2->product_name);
         }
         $data->order->product_id = $arr;
@@ -124,7 +124,7 @@ class orderRepository implements OrderInterface
             $data2 = DB::table('product_details')
                     ->select('product_name')
                     ->where('id',$id)
-                    ->first();
+                    ->firstorfail();
             array_push($arr,$data2->product_name);
         }
         $data->challan->product_id = $arr;
@@ -230,16 +230,10 @@ class orderRepository implements OrderInterface
         $map->save();
 
 
-        $user = User::where('id',$requset->buyer_id)->first('email','name');
+        $user = User::where('id',$requset->buyer_id)->firstorfail('email','name');
         // dd($user->email);
-            $details = [
-                'name' => $user->name,
-                'title' => 'Mail from Bright Containers',
-                'body' => 'Your order is placed successfully, You will get product as soon as possible.'
-            ];
+        event(new ordermail($user));
 
-            // Mail::to($user->email)->send(new \App\Mail\orderMail($details));
-            Mail::to('harshilamreliya7@gmail.com')->send(new \App\Mail\orderMail($details));
 
             // dd("Email is Sent.");
         return true;
@@ -247,7 +241,7 @@ class orderRepository implements OrderInterface
 
     public function orderDelete($id)
     {
-        $order = map_order_challan::where('id',$id)->first();
+        $order = map_order_challan::where('id',$id)->firstorfail();
 
         map_order_challan::where('id',$order->id)->forcedelete();
         challan::where('id',$order->challan_id)->forcedelete();

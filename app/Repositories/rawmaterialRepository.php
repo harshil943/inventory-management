@@ -26,7 +26,7 @@ class rawmaterialRepository implements rawmaterialInterface
 
     public function materialById($id)
     {
-        return RawMaterialPurchaseDetails::where('id',$id)->first();
+        return RawMaterialPurchaseDetails::where('id',$id)->firstorfail();
     }
 
     public function updateMaterial($request,$id)
