@@ -49,7 +49,9 @@
             <th>Designation</th>
             <th></th>
             <th></th>
+            @role('super-admin')
             <th></th>
+            @endrole
           </tr>
         </thead>
         <tbody>
@@ -75,6 +77,7 @@
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
+                @role('super-admin')
                 <td>
                   @if ($item->admin == 1)
                       <a href="{{url('removeadmin',$item->email_id)}}">
@@ -86,33 +89,33 @@
                         Make Admin
                       </button>
                   @endif
-
-                   {{-- Modal --}}
-                      <div class="modal fade" id="makeAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
+                  {{-- Modal --}}
+                  <div class="modal fade" id="makeAdmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
                           <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Give Temporary Password</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
-                            <form class="setPass m-t" role="form" method="POST" >
-                              @csrf
-                            <div class="modal-body">
-                                    <div class="form-group">
-                                        <input id="password" type="password" class="form-control" name="password"  required placeholder="Make admin password" autofocus>
+                              <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Give Temporary Password</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form class="setPass m-t" role="form" method="POST" >
+                                    @csrf
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <input id="password" type="password" class="form-control" name="password"  required placeholder="Make admin password" autofocus>
+                                        </div>
                                     </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Add Password</button>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              <button type="submit" class="btn btn-primary">Add Password</button>
-                            </form>
-                            </div>
-                          </div>
                         </div>
-                      </div>
+                    </div>
                 </td>
+                @endrole
             </tr>
             @endforeach
         </tbody>
@@ -133,7 +136,7 @@
               } ],
               pageLength: 5,
               responsive: true
-              
+
           });
           t.on( 'order.dt search.dt', function () {
               t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\Interfaces\userInterface;
+use App\Repositories\userRepository;
+
 class setPassController extends Controller
 {
     private $userRepository;
@@ -34,5 +36,17 @@ class setPassController extends Controller
         $this->userRepository->resetpassword($request);
         // dd($request);
         return redirect()->route('home');
+    }
+
+    public function newpass($email)
+    {
+        $this->userRepository->newpass($email);
+        return view('auth.passwords.setpassword')->with('email',$email);
+    }
+
+    public function passwordchanged($email,Request $request)
+    {
+        $this->userRepository->passwordchanged($request,$email);
+        return redirect()->route('login');
     }
 }

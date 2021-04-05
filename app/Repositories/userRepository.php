@@ -7,14 +7,15 @@ namespace App\Repositories;
 use App\Models\User;
 use App\Repositories\Interfaces\userInterface;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 class userRepository implements userInterface
 {
     public function changepass($request)
     {
         // dd(auth()->user()->name);
         User::where('id',auth()->user()->id)->update([
-            'password'=>$request->password,
-            'change_password'=>'0'
+            'password'=>Hash::make($request->password),
+            'password_change'=>'0'
         ]);
 
         return true;
@@ -34,8 +35,24 @@ class userRepository implements userInterface
             'body' => 'If you requested to change password click below button'
         ];
         // dd($request->email);
-        \Mail::to($request->email)->send(new \App\Mail\passwordMail($details));
-        // Mail::to('harshilamreliya7@gmail.com')->send(new \App\Mail\passwordMail($details));
+        Mail::to($request->email)->send(new \App\Mail\passwordMail($details));
+        // \Mail::to('harshilamreliya7@gmail.com')->send(new \App\Mail\passwordMail($details));
+        return true;
+    }
+
+    public function newpass($email)
+    {
+       return User::where('email',$email)->update(array(
+            'password_change' => '1',
+        ));
+    }
+
+    public function passwordchanged($request,$email)
+    {
+        User::where('email',$email)->update(array(
+            'password_change' => '0',
+            'password' => Hash::make($request->password)
+        ));
         return true;
     }
 }
