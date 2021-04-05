@@ -22,7 +22,7 @@ class employeeRepository implements employeeInterface
 
     public function empById($id)
     {
-        $employee = EmployeeDetails::find($id);
+        $employee = EmployeeDetails::findorfail($id);
         return $employee;
     }
 
@@ -63,7 +63,7 @@ class employeeRepository implements employeeInterface
 
     public function delete($email_id)
     {
-        $emp = EmployeeDetails::where('email_id',$email_id)->first();
+        $emp = EmployeeDetails::where('email_id',$email_id)->firstorfail();
         // dd($emp->email_id);
         if($emp->admin == '1')
         {
@@ -76,13 +76,13 @@ class employeeRepository implements employeeInterface
 
     public function makeAdmin($id,$request)
     {
-        $emp = EmployeeDetails::find($id);
+        $emp = EmployeeDetails::findorfail($id);
         EmployeeDetails::where('id',$id)->update([
             'admin'=>'1',
         ]);
-        
+
         $user = new User;
-        
+
         $user->name = $emp->employee_name;
         $user->email = $emp->email_id;
         $user->mobile = $emp->mobile_number;
@@ -91,12 +91,12 @@ class employeeRepository implements employeeInterface
         $user->password_change = '1';
         $user->is_company = '0';
         $user->save();
-        $newadmin = User::where('email',$emp->email_id)->first();
+        $newadmin = User::where('email',$emp->email_id)->firstorfail();
         $newadmin->assignRole('admin');
 
-        
+
         return true;
-        
+
     }
 
     public function findAdmins()
@@ -104,20 +104,20 @@ class employeeRepository implements employeeInterface
         $data = EmployeeDetails::where('admin','1')->get();
         foreach($data as $item)
         {
-            array_push($admins,$item->email_id);    
+            array_push($admins,$item->email_id);
         }
-        // dd($data);  
+        // dd($data);
         return $admins;
     }
 
     public function removeAdmin($email)
     {
-        $emp = User::where('email',$email)->first();
-        
+        $emp = User::where('email',$email)->firstorfail();
+
         $emp->removeRole('admin');
 
         User::where('email',$email)->forcedelete();
-        
+
         EmployeeDetails::where('email_id',$email)->update([
             'admin'=>'0',
         ]);

@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Events\UserRegistered;
 
 class RegisterController extends Controller
 {
@@ -64,16 +65,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        
+
         if($data['comp_logo'] ?? '')
         {
             $logoName = null;
             $logo = $data['comp_logo'];
             $logoName = $data['email'].'.'.$logo->getClientOriginalExtension();
             $path = $data['comp_logo']->storeAs('public/Logo',$logoName);
-            
-            
-            return User::create([
+
+            $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
@@ -83,9 +83,14 @@ class RegisterController extends Controller
                 'gst_number' => $data['gst'],
                 'comp_logo' => $logoName
                 ]);
+
+            event(new UserRegistered($user));
+
+            return  $user;
         }
         else{
-            return User::create([
+
+            $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
@@ -94,9 +99,13 @@ class RegisterController extends Controller
                 'address' => $data['office_add'],
                 'gst_number' => $data['gst'],
                 ]);
-        }
-        
 
-        
+            event(new UserRegistered($user));
+
+            return $user;
+        }
+
+
+
     }
 }

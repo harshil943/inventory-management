@@ -33,7 +33,7 @@ class inventoryRepository implements inventoryInterface
 
     public function inventoryById($id)
     {
-        return InventoryDetails::where('id',$id)->first();
+        return InventoryDetails::where('id',$id)->firstorfail();
     }
 
     public function updateInventory($request,$id)

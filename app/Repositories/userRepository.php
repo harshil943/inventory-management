@@ -22,7 +22,7 @@ class userRepository implements userInterface
 
     public function user($id)
     {
-        return User::where('id',$id)->first();
+        return User::where('id',$id)->firstorfail();
     }
 
     public function resetpassword($request)

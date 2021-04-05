@@ -26,7 +26,7 @@ class expenseRepository implements expenseInterface
 
     public function expenseById($id)
     {
-        return ExpenseDetails::where('id',$id)->first();
+        return ExpenseDetails::where('id',$id)->firstorfail();
     }
 
     public function updateExpense($request,$id)

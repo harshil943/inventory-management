@@ -25,12 +25,12 @@ class productRepository implements productInterface
 
    public function productById($id)
    {
-       return DB::table('product_details')->where('id',$id)->first();
+       return DB::table('product_details')->where('id',$id)->firstorfail();
    }
 
    public function categoryById($id)
    {
-       return ProductCategory::where('id',$id)->first();
+       return ProductCategory::where('id',$id)->firstorfail();
    }
 
    public function productsCategoryAll()

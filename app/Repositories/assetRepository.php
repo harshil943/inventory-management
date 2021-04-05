@@ -33,7 +33,7 @@ class assetRepository implements assetInterface
 
     public function assetById($id)
     {
-        return AssetDetailsTable::where('id',$id)->first();
+        return AssetDetailsTable::where('id',$id)->firstorfail();
     }
 
     public function updateAsset($request,$id)
