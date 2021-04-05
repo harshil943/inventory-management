@@ -5,9 +5,10 @@
 @endsection
 
 @section('content')
-<form action="{{url('brochure',[$data])}}" method="get" style="padding-left:20px;">
+<br>
+<form action="{{url('brochure',[$data[0]->category_id])}}" method="get" style="padding-left:60px;">
     <button type="submit" class="btn btn-primary" style="display:block;width:15%;">
-        <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
+        <i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;
         Show Brochure
     </button>
 </form>
@@ -21,9 +22,6 @@
       <div class="m-t-xs btn-group">
         <h3 class="text-primary">{{$item->product_name}}</h3>
       </div>
-      <form action="{{url('brochure',[$item->id])}}">
-        <button class="btn btn-primary form-group">Show Brochure</button>
-      </form>
     </div>
   </a>
 </div>
