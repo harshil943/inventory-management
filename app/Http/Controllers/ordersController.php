@@ -55,6 +55,7 @@ class ordersController extends Controller
     public function orderCreate(Request $request)
     {
         $this->orderRepository->orderCreate($request);
+        session()->flash('success', 'Order added successfully');
         return redirect('/orders');
     }
 
@@ -69,18 +70,21 @@ class ordersController extends Controller
     public function challanCreate($id,Request $request)
     {
         $this->orderRepository->challanCreate($id,$request);
+        session()->flash('success', 'Challan Created successfully');
         return back();
     }
 
     public function orderDelete($id)
     {
         $this->orderRepository->orderDelete($id);
+        session()->flash('warning', 'Order deleted successfully');
         return redirect()->route('orders.index');
     }
 
     public function challanDelete($id)
     {
         $this->orderRepository->challanDelete($id);
+        session()->flash('warning', 'Challan deleted successfully');
         return redirect()->route('orders.index');
     }
 }

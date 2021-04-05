@@ -49,6 +49,7 @@ class employeeController extends Controller
     public function store(Request $request)
     {
         $this->employeeRepository->storeEmp($request);
+        session()->flash('success', 'Employee added successfully');
         return redirect()->route('employee.create');
     }
 
@@ -75,6 +76,7 @@ class employeeController extends Controller
     public function update(Request $request, $id)
     {
         $this->employeeRepository->updateEmp($id,$request);
+        session()->flash('info', 'Employee updated successfully');
         return redirect()->route('employee.create');
     }
 
@@ -87,19 +89,21 @@ class employeeController extends Controller
     public function destroy($email_id)
     {
         $this->employeeRepository->delete($email_id);
-
+        session()->flash('warning', 'Employee deleted successfully');
         return back();
     }
 
     public function makeAdmin($id,Request $request)
     {
         $this->employeeRepository->makeAdmin($id,$request);
+        session()->flash('success', 'Selected employee is now admin');
         return redirect()->route('employee.index');
     }
 
     public function removeAdmin($email)
     {
         $this->employeeRepository->removeAdmin($email);
+        session()->flash('warning', 'Selected admin is now employee only');
         return redirect()->route('employee.index');
     }
 

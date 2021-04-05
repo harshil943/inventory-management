@@ -43,6 +43,7 @@ class rawmaterialController extends Controller
     public function store(Request $request)
     {
         $this->rawmaterialRepository->addMaterial($request);
+        session()->flash('success', 'Raw material requested');
         return redirect()->route('rawmaterial.index');
     }
 
@@ -79,6 +80,7 @@ class rawmaterialController extends Controller
     public function update(Request $request, $id)
     {
         $this->rawmaterialRepository->updateMaterial($request,$id);
+        session()->flash('info', 'Material request successfully');
         return redirect()->route('rawmaterial.index');
     }
 
@@ -91,6 +93,7 @@ class rawmaterialController extends Controller
     public function destroy($id)
     {
         $this->rawmaterialRepository->deleteMaterial($id);
+        session()->flash('warning', 'Material request deleted successfully');
         return back();
     }
 }

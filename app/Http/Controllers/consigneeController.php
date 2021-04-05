@@ -12,7 +12,7 @@ class consigneeController extends Controller
 
     public function __construct(consigneeInterface $consigneeRepository)
     {
-        $this->consigneeRepository = $consigneeRepository;        
+        $this->consigneeRepository = $consigneeRepository;
     }
     /**
      * Display a listing of the resource.
@@ -44,6 +44,7 @@ class consigneeController extends Controller
     public function store(Request $request)
     {
         $this->consigneeRepository->addConsignee($request);
+        session()->flash('success', 'Consignee is added successfully');
         return redirect()->route('consignee.index');
     }
 
@@ -80,6 +81,7 @@ class consigneeController extends Controller
     public function update(Request $request, $id)
     {
         $this->consigneeRepository->updateConsignee($request,$id);
+        session()->flash('info', 'Consignee is updated successfully');
         return redirect()->route('consignee.index');
     }
 
@@ -92,6 +94,7 @@ class consigneeController extends Controller
     public function destroy($id)
     {
         $this->consigneeRepository->deleteConsignee($id);
+        session()->flash('warning', 'Consignee is deleted successfully');
         return redirect()->route('consignee.index');
     }
 }

@@ -47,6 +47,7 @@ class inventoryController extends Controller
     public function store(Request $request)
     {
         $this->inventoryrepository->addInventory($request);
+        session()->flash('success', 'Inventory added successfully');
         return redirect()->route('inventory.index');
     }
 
@@ -84,6 +85,7 @@ class inventoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->inventoryrepository->updateInventory($request,$id);
+        session()->flash('info', 'Inventory updated successfully');
         return redirect()->route('inventory.index');
     }
 
@@ -96,6 +98,7 @@ class inventoryController extends Controller
     public function destroy($id)
     {
         $this->inventoryrepository->deleteInventory($id);
+        session()->flash('warning', 'Inventory deleted successfully');
         return back();
     }
 }

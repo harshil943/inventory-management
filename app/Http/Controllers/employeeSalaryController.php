@@ -44,6 +44,7 @@ class employeeSalaryController extends Controller
     public function store(Request $request)
     {
         $this->employeeRepository->storeSalary($request);
+        session()->flash('success', 'New employee salary added');
         return redirect()->route('empsalary.index');
     }
 
@@ -90,6 +91,7 @@ class employeeSalaryController extends Controller
     public function destroy($id)
     {
         $this->employeeRepository->deleteSalary($id);
+        session()->flash('warning', 'Salary of employee is deleted');
         return back();
     }
 }
