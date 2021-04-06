@@ -194,46 +194,30 @@ class orderRepository implements OrderInterface
 
     public function challanCreate($id,$requset)
     {
-        // dd($id);
-        $map = new map_order_challan;
-        $order = new OrderDetails;
-        $order->e_way_bill_number = $requset->e_way_bill_number;
-        $order->buyer_order_number = $requset->buyer_order_number;
-        $order->product_id = json_encode($requset->product_id);
-        $order->hsn_code = json_encode($requset->hsn);
-        $order->quantity = json_encode($requset->quantity);
-        $order->unit = json_encode($requset->unit);
-        $order->price_per_piece = json_encode($requset->price);
-        $order->name_of_extra_cost = json_encode($requset->name_of_extra_cost);
-        $order->extra_hsn_code = json_encode($requset->extra_hsn_code);
-        $order->extra_cost_price = json_encode($requset->extra_cost);
-        $order->payment_link = $requset->payment_link;
+        // dd($requset);
+
+        $challan = new challan;
+        $challan->total_no_packages = $requset->total_no_packages;
+        $challan->extra_note = $requset->extra_note;
+        $challan->product_id = json_encode($requset->product_id);
+        $challan->is_cap = json_encode($requset->is_cap);
+        $challan->bundle = json_encode($requset->bundle);
+        $challan->color = json_encode($requset->color);
+        $challan->pack_size = json_encode($requset->pack_size);
+
         if ($requset->igst == null) {
-            $order->igst_applicable = '0';
+            $challan->is_cap = json_encode('0');
         } else {
-            $order->igst_applicable = '1';
+            $challan->is_cap = json_encode('1');
         }
-        $order->save();
-        $map->order_id = $order->id;
-        $map->buyer_id = $requset->buyer_id;
-        $map->seller_id = '1';
-        $map->consignee_id  = $requset->consignee_id;
-        $map->vehical_number = $requset->vehical_number;
-        $map->order_status = $requset->order_status;
-        $map->payment_status = $requset->payment_status;
-        $map->dispatch_method = $requset->dispatch_mathod;
-        $map->dispatch_document_number = $requset->dispatch_document_number;
-        $map->lr_number = $requset->LR_number;
-        $map->shipping_date = $requset->shipping_date;
-        $map->order_date = $requset->order_date;
-        $map->due_date = $requset->due_date;
-        $map->save();
+        $challan->save();
 
-
-        $user = User::where('id',$requset->buyer_id)->firstorfail('email','name');
-        // dd($user->email);
+        map_order_challan::where('id',$id)->update(array(
+            'challan_id' => $challan->id,
+        ));
+        $buyer_id = map_order_challan::where('id',$id)->firstorfail('buyer_id');
+        $user = User::where('id',$buyer_id->buyer_id)->first('email','name');
         event(new ordermail($user));
-
         return true;
     }
 

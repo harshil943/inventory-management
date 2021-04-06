@@ -27,7 +27,7 @@ class orderEmail
     public function handle(ordermail $event)
     {
         $details = [
-            'name' => $event->name,
+            'name' => $event->user->email,
             'title' => 'Mail from Bright Containers',
             'body' => 'Your order is placed successfully, You will get product as soon as possible.'
         ];

@@ -25,4 +25,6 @@ interface OrderInterface
     public function orderDetails($id,$type);
 
     public function orderById($id);
+
+    public function challanCreate($id,$request);
 }

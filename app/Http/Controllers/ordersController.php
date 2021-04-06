@@ -71,7 +71,7 @@ class ordersController extends Controller
     {
         $this->orderRepository->challanCreate($id,$request);
         session()->flash('success', 'Challan Created successfully');
-        return back();
+        return redirect()->route('orders.index');
     }
 
     public function orderDelete($id)
