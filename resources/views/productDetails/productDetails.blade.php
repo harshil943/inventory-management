@@ -37,8 +37,7 @@
     </div>
 </div>
 
-@if (!($product->table_header == "null"))
-
+@if (!($product->table_header == null))
 <div class="mt-5 container-fluid">
   <h1 class="mb-3 text-primary">Dimentions Table</h1>
   <table class="table table-striped table-bordered">
@@ -217,6 +216,15 @@
              });
          });
         </script>
+    @if (auth()->user()->role('super-admin') && auth()->user()->role('admin'))
+        <script>
+            $(function() {
+                $('.product').addClass('active');
+                $('.product ul').addClass('in');
+                $('.product ul li:nth-child(2)').addClass('active');
+            });
+        </script>
+    @else
     <script>
         $(function() {
             $('.product').addClass('active');
@@ -225,5 +233,7 @@
             $(".product .nav-link").css("color","#fff");
         });
     </script>
+    @endif
+
 
 @endpush
