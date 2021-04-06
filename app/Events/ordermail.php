@@ -14,7 +14,7 @@ use Illuminate\Queue\SerializesModels;
 class ordermail
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    public $user;
     /**
      * Create a new event instance.
      *
