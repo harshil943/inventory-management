@@ -64,7 +64,7 @@
                     <li><a href="{{route('category.index')}}" style="text-decoration:none;">Manage category</a></li>
                 </ul>
             </li>
-            <li class="products">
+            <li class="product">
                 <a href="" style="text-decoration:none"><i class="fa fa-podcast"></i> <span class="nav-label">Product</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="{{route('product.create')}}" style="text-decoration:none;">Add Product</a></li>

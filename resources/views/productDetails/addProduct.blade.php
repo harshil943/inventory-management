@@ -1,3 +1,4 @@
+{{-- {{dd($product)}} --}}
 @extends('layouts.app')
 
 @section('title')
@@ -193,7 +194,7 @@ Add Product | Bright Containers
                                         <Label style="padding:10px;">Product Image</Label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input type="file" class="form-control" name="product_image" >
+                                        <input type="file" class="form-control" name="product_image" required>
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +207,134 @@ Add Product | Bright Containers
                         </span>
                         <span class="btn btn-danger remove_details fa fa-minus"> Remove</span>
                     <div class="more-details-area mt-5">
+                        @if (isset($product))
+                        @php
+                            $table_header = json_decode($product->table_header);
+                            $brimful_capacity = json_decode($product->brimful_capacity);
+                            $height = json_decode($product->height);
+                            $length = json_decode($product->length);
+                            $thickness = json_decode($product->thickness);
+                            $label_height = json_decode($product->label_height);
+                            $neck_id = json_decode($product->neck_id);
+                            $standard_weight = json_decode($product->standard_weight);
+                            $MOQ = json_decode($product->MOQ);
+                            $cap_name = json_decode($product->cap_name);
+                        @endphp
+                                @for ($i=0; $i <count($table_header) ; $i++)
 
+
+                                <div id="detail">
+                                <hr>
+                                <div class="row text-left">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="table_header">Table Header</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" placeholder="Table Header" name="table_header[]" id='table_header' value="{{$table_header[$i]}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label for="height">Height</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input id="height" type="text" name="height[]" class="form-control" placeholder="Height" value="{{$height[$i]}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label for="thickness">Thickness</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input id="thickness" type="text" name="thickness[]" class="form-control" placeholder="Thickness" value="{{$thickness[$i]}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label for="neck_id">Neck Id</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input id="neck_id" type="text" name="neck_id[]" class="form-control" placeholder="Neck Id" value="{{$neck_id[$i]}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label for="MOQ">MOQ</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input id="MOQ" type="text" name="MOQ[]" class="form-control" placeholder="Min Order Quantity" value="{{$MOQ[$i]}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label for="brimful_capacity">Brimful Capacity</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input id="brimful_capacity" type="text" name="brimful_capacity[]" class="form-control" placeholder="Brimful Capacity" value="{{$brimful_capacity[$i]}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label for="length">Length</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input id="length" type="text" name="length[]" class="form-control" placeholder="Length" value="{{$length[$i]}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label for="label_height">Label Height</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input id="label_height" type="text" name="label_height[]" class="form-control" placeholder="Label Height" value="{{$label_height[$i]}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label for="standard_weight">Standard Weight</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input id="standard_weight" type="text" name="standard_weight[]" class="form-control" placeholder="Standard Weight" value="{{$standard_weight[$i]}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label for="cap_name">Cap Name</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input id="cap_name" type="text" name="cap_name[]" class="form-control" placeholder="Cap Name" value="{{$cap_name[$i]}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                                @endfor
+
+                        @endif
                     </div>
                     </div>
                     <div>

@@ -36,9 +36,9 @@
                     <td colspan="3"><form action="{{route('product.destroy',$item->id)}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <a href="{{route('product.show',$item->id)}}" class="btn-rounded btn-primary fa fa-eye ml-3 p-2" style="text-decoration:none;:70%;padding:5px;">Show</a>
-                        <a href="{{route('product.edit',$item->id)}}" class="btn-rounded btn-secondary fa fa-pencil ml-3 p-2" style="text-decoration:none;:70%;padding:5px;">Edit</a>
-                        <button type="submit" class="btn-rounded btn-danger fa fa-trash ml-3 p-2" style="text-decoration:none;:70%;padding:5px;">Delete</button>
+                        <a href="{{route('product.show',$item->id)}}" class="btn-rounded btn-primary fa fa-eye  p-2" style="text-decoration:none;:70%;padding:5px;">Show</a>
+                        <a href="{{route('product.edit',$item->id)}}" class="btn-rounded btn-secondary fa fa-pencil  p-2" style="text-decoration:none;:70%;padding:5px;">Edit</a>
+                        <button type="submit" class="btn-rounded btn-danger fa fa-trash  p-2" style="text-decoration:none;:70%;padding:5px;">Delete</button>
                     </form></td>
                 </tr>
             @endforeach
