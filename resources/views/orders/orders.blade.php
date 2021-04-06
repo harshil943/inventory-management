@@ -150,7 +150,7 @@
                     </form>
                     @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
                         <br>
-                        <form action="{{route('Orderdetails',[$order[$i]->order_id])}}" method="post">
+                        <form action="{{route('orderedit',[$order[$i]->order_id])}}" method="post">
                             @csrf
                             <button type="submit" class="btn-rounded btn-secondary" style="display:block;width:70%;padding:5px;">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>

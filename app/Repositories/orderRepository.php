@@ -261,4 +261,11 @@ class orderRepository implements OrderInterface
         ));
         return true;
     }
+
+    public function orderById($id)
+    {
+        return map_order_challan::where('order_id',$id)->firstorfail();
+    }
+
+
 }
