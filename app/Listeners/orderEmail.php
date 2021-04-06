@@ -34,7 +34,7 @@ class orderEmail
 
         // Mail::to($user->email)->send(new \App\Mail\orderMail($details));
         try {
-            Mail::to('harshilamreliya7@gmail.com')->send(new \App\Mail\orderMail($details));
+            Mail::to('harshil.a@simformsolutions.com')->send(new \App\Mail\orderMail($details));
         } finally{
             return true;
         }

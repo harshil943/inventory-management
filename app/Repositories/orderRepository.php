@@ -50,7 +50,7 @@ class orderRepository implements OrderInterface
 
     public function orderDetails($id,$type)
     {
-        $data = map_order_challan::where('order_id',$id)->firstorfail();
+        $data = map_order_challan::where('order_id',$id)->first();
 
         $pi = json_decode($data->order->product_id,true);
         $hsn = json_decode($data->order->hsn_code,true);
@@ -66,7 +66,7 @@ class orderRepository implements OrderInterface
             $data2 = DB::table('product_details')
                     ->select('product_name')
                     ->where('id',$id)
-                    ->firstorfail();
+                    ->first();
             array_push($arr,$data2->product_name);
         }
         $data->order->product_id = $arr;
@@ -124,7 +124,7 @@ class orderRepository implements OrderInterface
             $data2 = DB::table('product_details')
                     ->select('product_name')
                     ->where('id',$id)
-                    ->firstorfail();
+                    ->first();
             array_push($arr,$data2->product_name);
         }
         $data->challan->product_id = $arr;
@@ -234,8 +234,6 @@ class orderRepository implements OrderInterface
         // dd($user->email);
         event(new ordermail($user));
 
-
-            // dd("Email is Sent.");
         return true;
     }
 
