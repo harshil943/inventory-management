@@ -207,7 +207,7 @@ Add Product | Bright Containers
                         </span>
                         <span class="btn btn-danger remove_details fa fa-minus"> Remove</span>
                     <div class="more-details-area mt-5">
-                        @if (isset($product))
+                        @if (isset($product->table_header))
                         @php
                             $table_header = json_decode($product->table_header);
                             $brimful_capacity = json_decode($product->brimful_capacity);
