@@ -1,7 +1,12 @@
+{{-- {{dd($order->order)}} --}}
 @extends('layouts.app')
 
 @section('title')
-    Add Order | Bright Containers
+    @if (isset($order))
+       Edit Order | Bright Containers
+    @else
+        Add Order | Bright Containers
+    @endif
 @endsection
 
 @push('css')
@@ -19,25 +24,49 @@
     </style>
 @endpush
 
-@section('breadcrumb')
+@if (isset($order))
+    @section('breadcrumb')
+        @section('breadcrumb-title')
+            &nbsp; Edit Order
+        @endsection
+        @section('breadcrumb-item')
+            <li class="breadcrumb-item">
+            <a href="{{ route('dashboard') }}">Home</a>
+            </li>
+            <li class="breadcrumb-item active">
+            <strong>Edit Order</strong>
+            </li>
+        @endsection
+    @endsection
+@else
+    @section('breadcrumb')
     @section('breadcrumb-title')
-      &nbsp; Add Order
+        &nbsp; Add Order
     @endsection
     @section('breadcrumb-item')
-      <li class="breadcrumb-item">
+        <li class="breadcrumb-item">
         <a href="{{ route('dashboard') }}">Home</a>
-      </li>
-      <li class="breadcrumb-item active">
+        </li>
+        <li class="breadcrumb-item active">
         <strong>Add Order</strong>
-      </li>
+        </li>
     @endsection
-@endsection
+    @endsection
+
+@endif
+
 
 @section('content')
 <div class="text-center animated fadeInDown" style="padding:10px;">
     <div class="mt-3">
+        @if (isset($order))
+            <form class="m-t mt-3" role="form"  action="{{ route('orderupdate',$order->id) }}">
+            @csrf
+            @method('PATCH')
+        @else
             <form class="m-t mt-3" role="form"  action="{{ route('orders.orderCreate') }}" method="POST">
-                @csrf
+            @csrf
+        @endif
                 <div class="row text-left">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -49,7 +78,16 @@
                                     <select class="form-control" id="buyer_id" name="buyer_id" required>
                                         <option></option>
                                         @foreach ($buyer as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @if (isset($order))
+                                                 @if ($item->id == $order->buyer_id)
+                                                    <option value="{{$item->id}}" selected>{{$item->name}}</option>
+                                                 @else
+                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                 @endif
+                                             @else
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                             @endif
+
                                         @endforeach
                                     </select>
                                 </div>
@@ -64,7 +102,15 @@
                                     <select class="form-control" id="consignee_id" name="consignee_id">
                                         <option></option>
                                         @foreach ($consignee as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            @if (isset($order))
+                                                @if ($item->id == $order->consignee_id)
+                                                    <option value="{{$item->id}}" selected>{{$item->name}}</option>
+                                                @else
+                                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                                @endif
+                                            @else
+                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -76,7 +122,9 @@
                                     <label class="form-label" for="vehical_number">Vehical Number</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="Vehical Number" name="vehical_number" id='vehical_number'>
+                                    <input type="text" class="form-control" placeholder="Vehical Number" name="vehical_number" id='vehical_number' @if (isset($order))
+                                    value="{{$order->vehical_number}}"
+                                @endif>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +134,9 @@
                                     <label class="form-label" for="buyer_order_number">Buyer's Order <br> Number</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="Buyer Order Number" name="buyer_order_number" id='buyer_order_number' required>
+                                    <input type="text" class="form-control" placeholder="Buyer Order Number" name="buyer_order_number" id='buyer_order_number' @if (isset($order))
+                                        value="{{$order->order->buyer_order_number}}"
+                                    @endif required>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +146,9 @@
                                     <label for="e_way_bill_number">E-way Bill Number</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input id="e_way_bill_number" type="text" name="e_way_bill_number" class="form-control" placeholder="E-way Bill Number">
+                                    <input id="e_way_bill_number" type="text" name="e_way_bill_number" class="form-control" placeholder="E-way Bill Number" @if (isset($order))
+                                    value="{{$order->order->e_way_bill_number}}"
+                                @endif>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +158,9 @@
                                     <label for="order_date">Order Date</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input id="order_date" type="date" name="order_date" class="form-control" placeholder="Order Date" required>
+                                    <input id="order_date" type="date" name="order_date" class="form-control" placeholder="Order Date" @if (isset($order))
+                                    value="{{$order->order_date}}"
+                                @endif required>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +170,9 @@
                                     <label for="shipping_date">Shipping Date</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input id="shipping_date" type="date" name="shipping_date" class="form-control" placeholder="Shipping Date">
+                                    <input id="shipping_date" type="date" name="shipping_date" class="form-control" placeholder="Shipping Date" @if (isset($order))
+                                    value="{{$order->shipping_date}}"
+                                @endif>
                                 </div>
                             </div>
                         </div>
@@ -146,10 +202,18 @@
                                 <div class="col-sm-8">
                                     <select class="form-control" id="order_status" name="order_status" required>
                                         <option></option>
-                                        <option value="pending">Pending</option>
-                                        <option value="shipped">Shipped</option>
-                                        <option value="completed">Completed</option>
-                                        <option value="canceled">Canceled</option>
+                                        @if (isset($order))
+                                            <option value="{{$order->order_status}}" selected>{{$order->order_status}}</option>
+                                            <option value="pending">Pending</option>
+                                            <option value="shipped">Shipped</option>
+                                            <option value="completed">Completed</option>
+                                            <option value="canceled">Canceled</option>
+                                        @else
+                                            <option value="pending">Pending</option>
+                                            <option value="shipped">Shipped</option>
+                                            <option value="completed">Completed</option>
+                                            <option value="canceled">Canceled</option>
+                                        @endif
                                     </select>
                                 </div>
                             </div>
@@ -162,9 +226,17 @@
                                 <div class="col-sm-8">
                                     <select class="form-control" id="payment_status" name="payment_status" required>
                                         <option></option>
-                                        <option value="pending">Pending</option>
-                                        <option value="completed">Completed</option>
-                                        <option value="canceled">Canceled</option>
+                                        @if (isset($order))
+                                            <option value="{{$order->payment_status}}" selected>{{$order->payment_status}}</option>
+                                            <option value="pending">Pending</option>
+                                            <option value="completed">Completed</option>
+                                            <option value="canceled">Canceled</option>
+                                        @else
+                                            <option value="pending">Pending</option>
+                                            <option value="completed">Completed</option>
+                                            <option value="canceled">Canceled</option>
+                                         @endif
+
                                     </select>
                                 </div>
                             </div>
@@ -175,7 +247,9 @@
                                     <label for="dispatch_mathod">Dispatch Method</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input id="dispatch_mathod" type="text" name="dispatch_method" class="form-control" placeholder="Dispatch Method">
+                                    <input id="dispatch_mathod" type="text" name="dispatch_method" class="form-control" placeholder="Dispatch Method" @if (isset($order))
+                                    value="{{$order->dispatch_method}}"
+                                @endif>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +259,9 @@
                                     <label class="form-label" for="LR_number">LR Number</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="LR Number" name="LR_number" id='LR_number'>
+                                    <input type="text" class="form-control" placeholder="LR Number" name="LR_number" id='LR_number' @if (isset($order))
+                                    value="{{$order->lr_number}}"
+                                @endif>
                                 </div>
                             </div>
                         </div>
@@ -195,7 +271,9 @@
                                     <label for="dispatch_document_number">Dispatch Document Number</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input id="dispatch_document_number" type="text" name="dispatch_document_number" class="form-control" placeholder="Dispatch Document Number">
+                                    <input id="dispatch_document_number" type="text" name="dispatch_document_number" class="form-control" placeholder="Dispatch Document Number" @if (isset($order))
+                                    value="{{$order->dispatch_document_number}}"
+                                @endif>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +283,9 @@
                                     <label for="paymnet_link">Payment Link</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input id="paymnet_link" type="text" class="form-control" name="payment_link" placeholder="Payment Link">
+                                    <input id="paymnet_link" type="text" class="form-control" name="payment_link" placeholder="Payment Link" @if (isset($order))
+                                    value="{{$order->order->payment_link}}"
+                                @endif>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +295,9 @@
                                     <label for="due_date">Due Date</label>
                                 </div>
                                 <div class="col-sm-8">
-                                    <input id="due_date" type="date" class="form-control" name="due_date" placeholder="Due Date">
+                                    <input id="due_date" type="date" class="form-control" name="due_date" placeholder="Due Date" @if (isset($order))
+                                    value="{{$order->due_date}}"
+                                @endif>
                                 </div>
                             </div>
                         </div>
@@ -306,9 +388,53 @@
                     </span>
                     <span class="btn btn-danger remove_extra fa fa-minus"> Remove</span>
                 </div>
-                <div class="add-extra-area mt-5">
+                <div class="my-5">
+                    <div class="row text-left">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <label class="form-label" for="name_of_extra_cost">Name Of Extra Cost</label>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control" name="name_of_extra_cost[]" id="name_of_extra_cost" placeholder="Name Of Extra Cost">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <label class="form-label" for="extra_hsn_code">Extra HSN Code</label>
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <select class="form-control extra_hsn_code" id="extra_hsn_code" name="extra_hsn_code[]" >
+                                                <option></option>
+                                                <option value="32233233">32233233</option>
+                                                <option value="7664646">7664646</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <label class="form-label" for="extra_cost">Extra Cost</label>
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="extra_cost[]" id="extra_cost"class="form-control" placeholder="Extra Cost">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-extra-area mt-5">
 
-                </div>
+                    </div>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary m-b">Done Order</button>

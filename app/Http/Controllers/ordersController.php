@@ -87,4 +87,19 @@ class ordersController extends Controller
         session()->flash('warning', 'Challan deleted successfully');
         return redirect()->route('orders.index');
     }
+
+    public function orderedit($id)
+    {
+        $order = $this->orderRepository->orderById($id);
+        $buyer = $this->orderRepository->buyerDetails();
+        $consignee = $this->orderRepository->consigneeDetails();
+        $product = $this->orderRepository->productDetails();
+
+        return view('orders.orderForm')->with('order',$order)->with('buyer',$buyer)->with('consignee',$consignee)->with('product',$product)->with('map',$id);
+    }
+
+    public function orderupdate(Request $request,$id)
+    {
+        dd('Hello');
+    }
 }

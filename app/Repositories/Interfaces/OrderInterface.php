@@ -21,4 +21,8 @@ interface OrderInterface
     public function challanDelete($id);
 
     public function paymentComplete($id);
+
+    public function orderDetails($id,$type);
+
+    public function orderById($id);
 }
