@@ -39,9 +39,10 @@ use Illuminate\Support\Facades\Response;
 
 Route::get('/', function () { return redirect('home');});
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/about-us', [HomeController::class, 'aboutus']);
-Route::get('/contact-us', [HomeController::class, 'contactus']);
-Route::get('/quality', [HomeController::class, 'quality']);
+Route::get('/about-us', [HomeController::class, 'aboutus'])->name('aboutus');
+Route::get('/contact-us', [HomeController::class, 'contactus'])->name('contactus');
+Route::get('/quality', [HomeController::class, 'quality'])->name('quality');
+Route::post('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('brochure/{id}',[brochureController::class,'brochure']);
 Route::get('productCategory/{categoryData}',[productCategoryController::class,'productCategory']);
 Route::get('productDetails/{id}',[productDetailsController::class,'productDetails'])->name('productdetails');
@@ -54,6 +55,7 @@ Route::get('forgotpassword',[setPassController::class,'forgotpassword'])->name('
 Route::post('resetpassword',[setPassController::class,'resetpassword'])->name('resetpassword');
 Route::get('newpass/{email}',[setPassController::class,'newpass'])->name('newpass');
 Route::post('passwordchanged/{email}',[setPassController::class,'passwordchanged'])->name('passwordchanged');
+Route::resource('quotation',quotationController::class);
 
 Route::middleware(['setpass'])->group(function () {
     Route::group(['middleware' => ['role:super-admin|admin']], function () {
@@ -82,7 +84,7 @@ Route::middleware(['setpass'])->group(function () {
     Route::post('printchallan/{id}', [ordersController::class, 'printChallan'])->name('Printchallan');
     Route::resource('consignee', consigneeController::class);
     Route::resource('inventory', inventoryController::class);
-    Route::resource('quotation',quotationController::class);
+
     Route::resource('rawmaterial',rawmaterialController::class);
     Route::resource('expense', expenseController::class);
     Route::resource('empsalary', employeeSalaryController::class);

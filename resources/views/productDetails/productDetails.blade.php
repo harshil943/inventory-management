@@ -216,15 +216,15 @@
              });
          });
         </script>
-    @if (auth()->user()->role('super-admin') && auth()->user()->role('admin'))
+
         <script>
             $(function() {
-                $('.product').addClass('active');
-                $('.product ul').addClass('in');
-                $('.product ul li:nth-child(2)').addClass('active');
+                $('.products').addClass('active');
+                $('.products ul').addClass('in');
+                $('.products ul li:nth-child(2)').addClass('active');
             });
         </script>
-    @else
+
     <script>
         $(function() {
             $('.product').addClass('active');
@@ -233,7 +233,7 @@
             $(".product .nav-link").css("color","#fff");
         });
     </script>
-    @endif
+
 
 
 @endpush

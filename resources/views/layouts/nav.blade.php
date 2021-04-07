@@ -17,7 +17,7 @@
                         </a>
                     </li>
                     <li class="nav-item about-us px-1">
-                    <a class="nav-link" href="/about-us">
+                    <a class="nav-link" href="{{route('aboutus')}}">
                         About us
                     </a>
                     </li>
@@ -32,12 +32,12 @@
                     </div>
                     </li>
                     <li class="nav-item quality px-1">
-                        <a class="nav-link" href="/quality">
+                        <a class="nav-link" href="{{route('quality')}}">
                         Quality
                         </a>
                     </li>
                     <li class="nav-item contact-us px-1">
-                        <a class="nav-link" href="/contact-us">
+                        <a class="nav-link" href="{{route('contactus')}}">
                         Contact Us
                         </a>
                     </li>

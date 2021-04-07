@@ -116,9 +116,10 @@
     </div>
     <a id="back2Top" title="Back to top" href="#">&#10148;</a>
 
-    {{-- <div class="footer fixed">
+
+    {{-- <div class="bg-white p-3" style="position: fixed;left:0;bottom:0;width:100%;">
         <div>
-            <strong>Copyright</strong> Example Company © 2014-2018
+            <strong>Copyright</strong> Bright Containers © 2014-2018
         </div>
     </div> --}}
 

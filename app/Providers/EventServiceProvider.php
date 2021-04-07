@@ -24,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\ordermail' => [
             'App\Listeners\orderEmail',
         ],
+        'App\Events\querymail' => [
+            'App\Listeners\queryEmail',
+        ],
     ];
 
     /**
