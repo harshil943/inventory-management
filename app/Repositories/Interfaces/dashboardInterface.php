@@ -24,4 +24,8 @@ interface dashboardInterface
     public function inventoryQuantity();
 
     public function inventoryCost();
+
+    public function getMonth();
+
+    public function getExpense();
 }

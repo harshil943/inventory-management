@@ -1,3 +1,4 @@
+{{-- {{dd($expence)}} --}}
 @extends('layouts.app')
 
 @section('title')
@@ -250,7 +251,10 @@
                         </div>
                     </div>
                 </div>
-
+                <h2 style="font-weight:bold" >Expence</h2>
+                <div class="bg-white">
+                    <canvas id="expenseChart" height="70"></canvas>
+                </div>
                 {{-- <div class="row">
                     <div class="col-lg-6">
                         <div class="ibox float-e-margins">
@@ -445,7 +449,7 @@
         </div> --}}
 
         </div>
-        <div id="right-sidebar">
+        {{-- <div id="right-sidebar">
             <div class="sidebar-container">
 
                 <ul class="nav nav-tabs navs-3">
@@ -822,7 +826,7 @@
 
 
 
-        </div>
+        </div> --}}
     </div>
 
 
@@ -838,28 +842,23 @@
         });
     </script>
 
-    {{-- <script>
+    <script>
         $(document).ready(function() {
 
             var lineData = {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                labels: <?php echo json_encode($month) ?>,
+
                 datasets: [
                     {
-                        label: "Example dataset",
+                        label: "Monthly Expense",
                         backgroundColor: "rgba(26,179,148,0.5)",
                         borderColor: "rgba(26,179,148,0.7)",
                         pointBackgroundColor: "rgba(26,179,148,1)",
                         pointBorderColor: "#fff",
-                        data: [28, 48, 40, 19, 86, 27, 90]
+                        data: <?php echo json_encode($expense) ?>
+
                     },
-                    {
-                        label: "Example dataset",
-                        backgroundColor: "rgba(220,220,220,0.5)",
-                        borderColor: "rgba(220,220,220,1)",
-                        pointBackgroundColor: "rgba(220,220,220,1)",
-                        pointBorderColor: "#fff",
-                        data: [65, 59, 80, 81, 56, 55, 40]
-                    }
+
                 ]
             };
 
@@ -868,9 +867,9 @@
             };
 
 
-            var ctx = document.getElementById("lineChart").getContext("2d");
+            var ctx = document.getElementById("expenseChart").getContext("2d");
             new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
 
         });
-    </script> --}}
+    </script>
 @endpush
