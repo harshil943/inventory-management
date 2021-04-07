@@ -7,7 +7,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use illuminate\Support\Facades\Auth;
 use App\Repositories\Interfaces\productInterface;
-
+use App\Events\querymail;
 class HomeController extends Controller
 {
     protected $productRepository;
@@ -52,7 +52,9 @@ class HomeController extends Controller
         }
         else
         {
-            return view('home.contactus');
+            $products = $this->productRepository->allProducts();
+            $category = $this->productRepository->productsCategoryAll();
+            return view('home.contactus')->with('products',$products)->with('category',$category);
         }
     }
     public function quality()
@@ -65,5 +67,12 @@ class HomeController extends Controller
         {
             return view('home.quality');
         }
+    }
+
+    public function contact(Request $request)
+    {
+        event(new querymail($request));
+        alert()->success('Done','Your Query Registered')->persistent('Close')->autoclose(3000);
+        return back();
     }
 }

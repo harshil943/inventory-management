@@ -137,8 +137,10 @@
                         </div>
                     </div>
                 </div>
-
-
+                <h2 style="font-weight:bold" >Expence</h2>
+                <div class="bg-white">
+                    <canvas id="expenseChart" height="70"></canvas>
+                </div>
                 <h2 style="font-weight:bold">Orders & Payments</h2>
                 <div class="row">
                     <div class="col-lg-3">
@@ -251,10 +253,8 @@
                         </div>
                     </div>
                 </div>
-                <h2 style="font-weight:bold" >Expence</h2>
-                <div class="bg-white">
-                    <canvas id="expenseChart" height="70"></canvas>
-                </div>
+
+
                 {{-- <div class="row">
                     <div class="col-lg-6">
                         <div class="ibox float-e-margins">
@@ -435,19 +435,8 @@
                         </div>
                     </div>
                 </div> --}}
-
                 </div>
-
             </div>
-        {{-- <div class="footer">
-            <div class="pull-right">
-                10GB of <strong>250GB</strong> Free.
-            </div>
-            <div>
-                <strong>Copyright</strong> Example Company &copy; 2014-2017
-            </div>
-        </div> --}}
-
         </div>
         {{-- <div id="right-sidebar">
             <div class="sidebar-container">
