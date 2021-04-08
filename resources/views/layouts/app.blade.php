@@ -138,6 +138,13 @@
 
     <!-- Toastr script -->
     <script src="js/plugins/toastr/toastr.min.js"></script>
+    {{-- Notification query --}}
+    <script>
+        $('#markasread').click(function(){
+            $.get('/markasread');
+        })
+    </script>
+
     <script>
 
 

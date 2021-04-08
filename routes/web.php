@@ -67,6 +67,9 @@ Route::middleware(['setpass'])->group(function () {
         Route::resource('product', productDetailsController::class);
         Route::resource('category', productCategoryController::class);
         Route::resource('machine',machineController::class);
+        Route::get('/markasread',function(){
+            auth()->user()->unreadNotifications->markAsRead();
+        });
     });
     Route::get('/setpassword',[setPassController::class,'index'])->name('setpassword');
     Route::get('orders',[ordersController::class,'index'])->name('orders.index');

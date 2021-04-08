@@ -16,7 +16,7 @@
 @include('sweet::alert')
 <div class="container">
     <div class="row mt-5">
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <div class="card text-center border border-rounded rounded-50" style="width: 18rem;">
                 <span class="card-img-top p-3 fa fa-building fa-5x" style=""></span>
                 <div class="card-title">
@@ -30,7 +30,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <div class="card text-center border border-rounded rounded-50" style="width: 18rem;">
                 <span class="card-img-top p-3 fa fa-map-o fa-5x" style=""></span>
                 <div class="card-title">
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4">
             <div class="card text-center border border-rounded rounded-50" style="width: 18rem;">
                 <span class="card-img-top p-3 fa fa-address-book-o fa-5x" style=""></span>
                 <div class="card-title">
@@ -135,7 +135,7 @@
                             <select id="product" class="form-control" name="product">
                                 <option></option>
                                 @foreach ($products as $item)
-                                    <option value="{{$item->id}}">{{$item->product_name}}</option>
+                                    <option value="{{$item->product_name}}">{{$item->product_name}}</option>
                                 @endforeach
                             </select>
                         </div>
