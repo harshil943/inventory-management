@@ -55,7 +55,7 @@ Route::get('forgotpassword',[setPassController::class,'forgotpassword'])->name('
 Route::post('resetpassword',[setPassController::class,'resetpassword'])->name('resetpassword');
 Route::get('newpass/{email}',[setPassController::class,'newpass'])->name('newpass');
 Route::post('passwordchanged/{email}',[setPassController::class,'passwordchanged'])->name('passwordchanged');
-Route::resource('quotation',quotationController::class);
+
 
 Route::middleware(['setpass'])->group(function () {
     Route::group(['middleware' => ['role:super-admin|admin']], function () {
@@ -84,7 +84,7 @@ Route::middleware(['setpass'])->group(function () {
     Route::post('printchallan/{id}', [ordersController::class, 'printChallan'])->name('Printchallan');
     Route::resource('consignee', consigneeController::class);
     Route::resource('inventory', inventoryController::class);
-
+    Route::resource('quotation',quotationController::class);
     Route::resource('rawmaterial',rawmaterialController::class);
     Route::resource('expense', expenseController::class);
     Route::resource('empsalary', employeeSalaryController::class);
