@@ -31,48 +31,50 @@
 @endsection
 
 @section('content')
-<div class="text-center animated fadeInDown" style="padding: 10px;">
-    @if (isset($employeeDetails))
-    <form class="m-t" role="form" action="{{ route('employee.update',$employeeDetails->id) }}">
-        @csrf
-        @method('PATCH')
-    @else
-    <form class="m-t" role="form" action="{{ route('employee.store') }}" method="POST">
-        @csrf
-    @endif
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label for="name">Employee Name</label>
+<div class="text-center animated fadeInDown white-bg my-5" style="padding: 10px;">
+    <div class="p-5 border border-rounded border-primary">
+
+        @if (isset($employeeDetails))
+        <form class="m-t" role="form" action="{{ route('employee.update',$employeeDetails->id) }}">
+            @csrf
+            @method('PATCH')
+            @else
+            <form class="m-t" role="form" action="{{ route('employee.store') }}" method="POST">
+                @csrf
+                @endif
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="name">Employee Name</label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" @if (isset($employeeDetails->id)) value="{{$employeeDetails->employee_name}}" @endif value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>
+                                </div>
+                            </div>
+                            @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
-                        <div class="col-sm-8">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" @if (isset($employeeDetails->id)) value="{{$employeeDetails->employee_name}}" @endif value="{{ old('name') }}" required autocomplete="name" placeholder="Name" autofocus>
-                        </div>
-                    </div>
-                    @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="col-sm-8">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for="email">Email</label>
+                                </div>
+                                <div class="col-sm-8">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" @if (isset($employeeDetails->id)) value="{{$employeeDetails->email_id}}" @endif value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
                         </div>
                     </div>
 
                     @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
                         </span>
-                    @enderror
-                </div>
+                        @enderror
+                    </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-4">
@@ -143,7 +145,7 @@
                         <select class="form-control" id="designation" name="designation" @if (isset($employeeDetails->id)) value="{{$employeeDetails->designation}}" @endif required>
                             <option></option>
                             @foreach ($designation as $item)
-                                <option value="{{$item->id}}">{{$item->designation_name}}</option>
+                            <option value="{{$item->id}}">{{$item->designation_name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -151,11 +153,12 @@
             </div>
         </div>
         @if (isset($employeeDetails))
-            <button type="submit" class="ladda-button btn btn-primary m-b" data-style="expand-right">Edit Employee</button>
+        <button type="submit" class="ladda-button btn btn-primary m-b" data-style="expand-right">Edit Employee</button>
         @else
-            <button type="submit" class="ladda-button btn btn-primary m-b" data-style="expand-right">Add Employee</button>
+        <button type="submit" class="ladda-button btn btn-primary m-b" data-style="expand-right">Add Employee</button>
         @endif
     </form>
+</div>
 </div>
 @endsection
 

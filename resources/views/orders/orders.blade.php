@@ -32,9 +32,10 @@
 @endsection
 
 @section('content')
-  <div class="table-responsive">
+<div class="container-fluid gray-bg">
+    <div class="table-responsive">
         @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
-            <br>
+        <br>
             <form action="{{URL('orderForm')}}" method="get" style="padding-left:20px;">
                 <button type="submit" class="btn btn-primary" style="display:block;width:15%;">
                     <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;
@@ -42,18 +43,18 @@
                 </button>
             </form>
         @endif
-    <br>
+        <br>
     <table class="table text-center table-bordered table-hover" id="ordersTable" >
-      <thead>
-        <tr>
-          <th>Sr. No</th>
-          <th>Product Name</th>
-          <th>Quantity</th>
+        <thead>
+            <tr>
+                <th>Sr. No</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
           <th>
-            @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+              @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
               Buyer Name
             @else
-              Seller Or Consignee
+            Seller Or Consignee
             @endif
           </th>
           <th>Order Status</th>
@@ -63,79 +64,79 @@
         </tr>
       </thead>
       <tbody>
-        @for($i = 0; $i < sizeof($order); $i++)
+          @for($i = 0; $i < sizeof($order); $i++)
           <tr class="gradeX">
-            <td style="vertical-align:middle;"></td>
+              <td style="vertical-align:middle;"></td>
 
-            <td class="text-left ml-5 p-3">
-              @php
+              <td class="text-left ml-5 p-3">
+                  @php
                 $count = 0;
-              @endphp
+                @endphp
               @foreach ($order[$i]->order->product_id as $name)
-                {{$name}}
-                @if(count($order[$i]->order->product_id) != ++$count)
-                  <hr>
-                @endif
+              {{$name}}
+              @if(count($order[$i]->order->product_id) != ++$count)
+              <hr>
+              @endif
               @endforeach
             </td>
 
             <td class="ml-5 p-3">
-              @php
+                @php
                 $count = 0;
-              @endphp
+                @endphp
               @foreach ($order[$i]->order->quantity as $quantity)
-                {{$quantity}}
-                @if(count($order[$i]->order->quantity) != ++$count)
-                  <hr>
+              {{$quantity}}
+              @if(count($order[$i]->order->quantity) != ++$count)
+              <hr>
                 @endif
-              @endforeach
+                @endforeach
             </td>
             <td style="vertical-align:middle;">
-              @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+                @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
                 {{$order[$i]->buyer->name}}
-              @else
-                @if ($order[$i]->consignee)
-                  {{$order[$i]->consignee->name}}
                 @else
-                  {{$order[$i]->seller->name}}
+                @if ($order[$i]->consignee)
+                {{$order[$i]->consignee->name}}
+                @else
+                {{$order[$i]->seller->name}}
                 @endif
-              @endif
+                @endif
             </td>
             <td class="align-middle">
-              @switch($order[$i]->order_status)
-                  @case('pending')
-                    <center><span class="label label-warning" style="display:block;width:75%;padding:6px;">Pending</span></center>
-                    @break
-                  @case('shipped')
-                    <center><span class="label label-success" style="display:block;width:75%;padding:6px;">Shipped</span></center>
-                    @break
-                  @case('canceled')
-                    <center><span class="label label-danger" style="display:block;width:75%;padding:6px;">Canceled</span></center>
-                    @break
+                @switch($order[$i]->order_status)
+                @case('pending')
+                <center><span class="label label-warning" style="display:block;width:75%;padding:6px;">Pending</span></center>
+                @break
+                @case('shipped')
+                <center><span class="label label-success" style="display:block;width:75%;padding:6px;">Shipped</span></center>
+                @break
+                @case('canceled')
+                <center><span class="label label-danger" style="display:block;width:75%;padding:6px;">Canceled</span></center>
+                @break
                   @case('completed')
-                    <center><span class="label label-primary" style="display:block;width:75%;padding:6px;">Completed</span></center>
+                  <center><span class="label label-primary" style="display:block;width:75%;padding:6px;">Completed</span></center>
                     @break
-                  @default
+                    @default
                     <center><span class="label label-block" style="display:block;width:75%;padding:6px;">Unknown</span></center>
                     @break
-              @endswitch
+                    @endswitch
             </td>
 
             <td class="align-middle">
-              @switch($order[$i]->payment_status)
-                  @case('pending')
-                    <center><span class="label label-warning" style="display:block;width:75%;padding:6px;">Pending</span></center>
-                    @break
-                  @case('canceled')
-                    <center><span class="label label-danger" style="display:block;width:75%;padding:6px;">Canceled</span></center>
-                    @break
-                  @case('completed')
-                    <center><span class="label label-primary" style="display:block;width:75%;padding:6px;">Completed</span></center>
-                    @break
-                  @default
-                    <center><span class="label label-block" style="display:block;width:75%;padding:6px;">Unknown</span></center>
-                    @break
-              @endswitch
+                @switch($order[$i]->payment_status)
+                @case('pending')
+                <center><span class="label label-warning" style="display:block;width:75%;padding:6px;">Pending</span></center>
+                @break
+                @case('canceled')
+                <center><span class="label label-danger" style="display:block;width:75%;padding:6px;">Canceled</span></center>
+                @break
+                @case('completed')
+                <center><span class="label label-primary" style="display:block;width:75%;padding:6px;">Completed</span></center>
+                @break
+                @default
+                <center><span class="label label-block" style="display:block;width:75%;padding:6px;">Unknown</span></center>
+                @break
+                @endswitch
             </td>
 
 
@@ -169,23 +170,21 @@
                     @endif
                 </center>
             </td>
-
-
             <td style="vertical-align:middle;">
                 <center>
                     @if ($order[$i]->challan_id)
-                        <form action="{{URL('challanDetails',[$order[$i]->challan_id])}}" method="post">
-                            @csrf
-                            <button type="submit" class="btn-rounded btn-primary" style="display:block;width:70%;padding:5px;">
-                                <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
-                                Show
-                            </button>
-                        </form>
-                        @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
-                            <br>
-                            <form action="{{route('Orderdetails',[$order[$i]->order->id])}}" method="post">
-                                @csrf
-                                <button type="submit" class="btn-rounded btn-secondary" style="display:block;width:70%;padding:5px;">
+                    <form action="{{route('Challandetails',[$order[$i]->challan_id])}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn-rounded btn-primary" style="display:block;width:70%;padding:5px;">
+                            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;
+                            Show
+                        </button>
+                    </form>
+                    @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+                    <br>
+                    <form action="{{route('Orderdetails',[$order[$i]->order->id])}}" method="post">
+                        @csrf
+                        <button type="submit" class="btn-rounded btn-secondary" style="display:block;width:70%;padding:5px;">
                                     <i class="fa fa-pencil" aria-hidden="true"></i>
                                     Edit
                                 </button>
@@ -198,9 +197,9 @@
                                     Delete
                                 </button>
                             </form>
-                        @endif
-                    @else
-                        @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+                            @endif
+                            @else
+                            @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
                             <form action="{{route('orders.challanForm',[$order[$i]->id])}}" method="post">
                                 @csrf
                                 <button type="submit" class="btn-rounded btn-primary" style="display:block;width:70%;padding:5px;">
@@ -208,17 +207,18 @@
                                     Create
                                 </button>
                             </form>
-                        @else
+                            @else
                             <strong>Not Yet Generated</strong>
-                        @endif
+                            @endif
                     @endif
                 </center>
             </td>
-          </tr>
+        </tr>
         @endfor
-      </tbody>
-    </table>
-  </div>
+    </tbody>
+</table>
+</div>
+</div>
 @endsection
 
 @push('script')

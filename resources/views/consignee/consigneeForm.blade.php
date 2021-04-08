@@ -2,10 +2,10 @@
 
 @section('title')
 @if (isset($consignee))
-    
+
 Edit Consignee | Bright Containers
 @else
-    
+
 Add Consignee | Bright Containers
 @endif
 @endsection
@@ -13,9 +13,9 @@ Add Consignee | Bright Containers
 @section('content')
 <div class="gray-bg container-fluid">
     <div class="text-center loginscreen animated fadeInDown">
-        <div class="">
+        <div class="p-5 border border-rounded border-primary">
             @if (isset($consignee))
-                
+
             <h3>Edit Consignee to <br>Bright Containers</h3>
             <form class="m-t mt-3" role="form"  action="{{ route('consignee.update',$consignee->id) }}" method="post">
                 @csrf
@@ -57,7 +57,7 @@ Add Consignee | Bright Containers
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -93,10 +93,10 @@ Add Consignee | Bright Containers
                         </div>
                     </div>
                     @if (isset($consignee->id))
-                        
+
                     <button type="submit" class="btn btn-primary">Edit Consignee</button>
                     @else
-                        
+
                     <button type="submit" class="btn btn-primary">Add Consignee</button>
                     @endif
             </form>
@@ -107,7 +107,7 @@ Add Consignee | Bright Containers
 @endsection
 
 @push('script')
-    
+
 <script>
     $(function() {
         $('.consignee').addClass('active');

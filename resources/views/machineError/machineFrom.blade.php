@@ -17,8 +17,8 @@ Add Machine Error | Bright Containers
 
 @section('content')
 <div class="gray-bg container">
-    <div class="text-center loginscreen animated fadeInDown">
-        <div class="mt-3">
+    <div class="text-center loginscreen animated fadeInDown my-5 p-3">
+        <div class="mt-3 p-5 border border-rounded border-primary">
             @if (isset($machine))
 
             <h3>Edit Machine Error to <br>Bright Containers</h3>
