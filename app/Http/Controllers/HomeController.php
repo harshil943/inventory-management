@@ -8,6 +8,9 @@ use Spatie\Permission\Models\Permission;
 use illuminate\Support\Facades\Auth;
 use App\Repositories\Interfaces\productInterface;
 use App\Events\querymail;
+use App\Notifications\queryNotification;
+use Illuminate\Support\Facades\Notification;
+
 class HomeController extends Controller
 {
     protected $productRepository;
@@ -25,6 +28,7 @@ class HomeController extends Controller
     {
         if(Auth::user() && (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin')))
         {
+
             return redirect('dashboard');
         }
         else
@@ -71,8 +75,16 @@ class HomeController extends Controller
 
     public function contact(Request $request)
     {
-        event(new querymail($request));
-        alert()->success('Done','Your Query Registered')->persistent('Close')->autoclose(3000);
+        // if (auth()->user() != null) {
+        //     auth()->user()->notify(new queryNotification());
+        // }
+        try {
+            auth()->user()->find('1')->notify(new queryNotification($request));
+        } finally {
+            event(new querymail($request));
+            alert()->success('Done','Your Query Registered')->persistent('Close')->autoclose(3000);
+        }
+
         return back();
     }
 }
