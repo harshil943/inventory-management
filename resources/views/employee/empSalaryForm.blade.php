@@ -17,8 +17,8 @@ Add Expense | Bright Containers
 @endpush
 @section('content')
 <div class="gray-bg container">
-    <div class="text-center loginscreen animated fadeInDown">
-        <div class="mt-3">
+    <div class="text-center loginscreen animated fadeInDown my-5 p-3">
+        <div class=" p-5 border border-rounded border-primary">
             <h3>Add Salary to <br>Bright Container's Employee </h3>
             <form class="m-t mt-3" role="form"  action="{{ route('empsalary.store') }}" method="POST">
                 @csrf

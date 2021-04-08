@@ -47,25 +47,27 @@
 @endif
 
 @section('content')
-<div class="text-center animated fadeInDown" style="padding:10px;">
-    <div class="mt-3">
+<div class="container">
+
+    <div class="text-center animated fadeInDown my-5 p-3 white-bg" style="padding:10px;">
+        <div class="mt-3 p-5 border border-rounded border-primary">
         @if (isset($challan))
-            <form class="m-t mt-3" role="form" action="{{route('orders.challanCreate',[$map])}}">
-                @csrf
+        <form class="m-t mt-3" role="form" action="{{route('orders.challanCreate',[$map])}}">
+            @csrf
                 @method('PATCH')
         @else
-            <form class="m-t mt-3" role="form" action="{{route('orders.challanCreate',[$map])}}" method="post">
-                    @csrf
-        @endif
-                <div class="row text-left">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-4 mt-2">
-                                    <label class="form-label" for="total_no_packages">Total Packages</label>
-                                </div>
-                                <div class="col-sm-8">
-                                    <input type="text" class="form-control" placeholder="Total Number of packages" name="total_no_packages" required>
+        <form class="m-t mt-3" role="form" action="{{route('orders.challanCreate',[$map])}}" method="post">
+            @csrf
+            @endif
+            <div class="row text-left">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 mt-2">
+                                <label class="form-label" for="total_no_packages">Total Packages</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="Total Number of packages" name="total_no_packages" required>
                                 </div>
                             </div>
                         </div>
@@ -103,20 +105,13 @@
                                                 @foreach ($product as $item)
                                                 <option value="{{$item->id}}">{{$item->product_name}}</option>
                                             @endforeach
-                                            </select>
+                                        </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row mt-4">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="unit">Color</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="color[]"  class="form-control" placeholder="Color" required>
-                                        </div>
-                                    </div>
-                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-4">
@@ -133,29 +128,52 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="quantity">Bundle</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="bundle[]" class="form-control" placeholder="Bundle" required>
+                        </div>
+                        <div class="my-3">
+                            <span class="fa fa-plus btn btn-primary" id="add_product">
+                                Add Color
+                            </span>
+                            <span class="btn btn-danger remove_product fa fa-minus"> Remove</span>
+                            <div class="row text-left">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="row mt-5">
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="unit">Color</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" name="color[]"  class="form-control" placeholder="Color" required>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="price">Pack Size</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="pack_size[]" class="form-control" placeholder="Pack Size" required>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="row mt-5">
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="quantity">Bundle</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" name="bundle[]" class="form-control" placeholder="Bundle" required>
+                                            </div>
                                         </div>
                                     </div>
-                                </div></div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="row mt-5">
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="price">Pack Size</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" name="pack_size[]" class="form-control" placeholder="Pack Size" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 <div class="add-product-area mt-5">
 
@@ -164,17 +182,18 @@
                 <div>
                     <button type="submit" class="btn btn-primary m-b">Done Order</button>
                 </div>
-        </form>
-    </div>
+            </form>
+        </div>
+</div>
 </div>
 
 @endsection
 
 @push('script')
-     {{-- Select 2 JS --}}
-     <script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script>
+{{-- Select 2 JS --}}
+<script src="{{asset('js/plugins/select2/select2.full.min.js')}}"></script>
 
-     <script>
+<script>
         $(function() {
             $('.orders').addClass('active');
             $('.orders ul').addClass('in');
@@ -201,16 +220,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row mt-4">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="unit">Color</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="color[]"  class="form-control" placeholder="Color" required>
-                                        </div>
-                                    </div>
-                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-4">
@@ -227,29 +239,52 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="quantity">Bundle</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="bundle[]" class="form-control" placeholder="Bundle" required>
+                        </div>
+                        <div class="my-3">
+                            <span class="fa fa-plus btn btn-primary" id="add_product">
+                                Add Color
+                            </span>
+                            <span class="btn btn-danger remove_product fa fa-minus"> Remove</span>
+                            <div class="row text-left">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="row mt-5">
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="unit">Color</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" name="color[]"  class="form-control" placeholder="Color" required>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="form-label" for="price">Pack Size</label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <input type="text" name="pack_size[]" class="form-control" placeholder="Pack Size" required>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="row mt-5">
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="quantity">Bundle</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" name="bundle[]" class="form-control" placeholder="Bundle" required>
+                                            </div>
                                         </div>
                                     </div>
-                                </div></div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <div class="row mt-5">
+                                            <div class="col-sm-4">
+                                                <label class="form-label" for="price">Pack Size</label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" name="pack_size[]" class="form-control" placeholder="Pack Size" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </div>`)
                         $(".product_id").select2({
                             placeholder: "Select Product",

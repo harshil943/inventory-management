@@ -2,10 +2,10 @@
 
 @section('title')
 @if (isset($raw))
-    
+
 Edit Material | Bright Containers
 @else
-    
+
 Add Material | Bright Containers
 @endif
 @endsection
@@ -16,10 +16,10 @@ Add Material | Bright Containers
 @endpush
 @section('content')
 <div class="gray-bg container">
-    <div class="text-center loginscreen animated fadeInDown">
-        <div class="mt-3">
+    <div class="text-center loginscreen animated fadeInDown p-3 my-5">
+        <div class="mt-3 p-5 border border-rounded border-primary">
             @if (isset($raw))
-                
+
             <h3>Edit Material to <br>Bright Containers</h3>
             <form class="m-t mt-3" role="form"  action="{{ route('rawmaterial.update',$raw->id) }}" method="post">
                 @csrf
@@ -72,10 +72,10 @@ Add Material | Bright Containers
                         </div>
                     </div>
                     @if (isset($raw))
-                        
+
                     <button type="submit" class="btn btn-primary">Edit Material</button>
                     @else
-                        
+
                     <button type="submit" class="btn btn-primary">Add Material</button>
                     @endif
             </form>

@@ -2,20 +2,20 @@
 
 @section('title')
 @if (isset($category))
-    
+
 Edit Category | Bright Containers
 @else
-    
+
 Add Category | Bright Containers
 @endif
 @endsection
 
 @section('content')
 <div class="gray-bg container">
-    <div class="text-center loginscreen animated fadeInDown">
-        <div class="mt-3">
+    <div class="text-center loginscreen animated fadeInDown p-3 my-5">
+        <div class="mt-3 p-5 border border-rounded border-primary">
             @if (isset($category))
-                
+
             <h3>Edit Category to <br>Bright Containers</h3>
             <form class="m-t mt-3" role="form"  action="{{ route('category.update',$category->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -62,10 +62,10 @@ Add Category | Bright Containers
                         </div>
                     </div>
                     @if (isset($category->id))
-                        
+
                     <button type="submit" class="btn btn-primary">Edit Category</button>
                     @else
-                        
+
                     <button type="submit" class="btn btn-primary">Add Category</button>
                     @endif
             </form>
@@ -76,7 +76,7 @@ Add Category | Bright Containers
 @endsection
 
 @push('script')
-    
+
 <script>
     $(function() {
         $('.product').addClass('active');

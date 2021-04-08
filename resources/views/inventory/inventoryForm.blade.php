@@ -2,10 +2,10 @@
 
 @section('title')
 @if (isset($inventory))
-    
+
 Edit Inventory | Bright Containers
 @else
-    
+
 Add Inventory | Bright Containers
 @endif
 @endsection
@@ -17,10 +17,10 @@ Add Inventory | Bright Containers
 
 @section('content')
 <div class="gray-bg container">
-    <div class="text-center loginscreen animated fadeInDown">
-        <div class="mt-3">
+    <div class="text-center loginscreen animated fadeInDown my-5 p-3">
+        <div class="mt-3 p-5 border border-rounded border-primary">
             @if (isset($inventory))
-                
+
             <h3>Edit Inventory to <br>Bright Containers</h3>
             <form class="m-t mt-3" role="form"  action="{{ route('inventory.update',$inventory->id) }}" method="post" >
                 @csrf
@@ -80,10 +80,10 @@ Add Inventory | Bright Containers
                         </div>
                     </div>
                     @if (isset($inventory))
-                        
+
                     <button type="submit" class="btn btn-primary">Edit Inventory</button>
                     @else
-                        
+
                     <button type="submit" class="btn btn-primary">Add Inventory</button>
                     @endif
             </form>
