@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Interfaces\dashboardInterface;
 use App\Models\ExpenseDetails;
+use App\Models\OrderDetails;
 use App\Repositories\dashboardRepository;
 use Illuminate\Support\Facades\DB;
 
@@ -20,18 +21,10 @@ class dashboardController extends Controller
     public function index()
     {
 
-        // $expenses = ExpenseDetails::select(DB::raw("sum(quantity*cost_per_quantity) as sum"))->groupBy(DB::raw('MONTH(created_at)'))->get()->toArray();
-        // $months = ExpenseDetails::select(DB::raw("MONTH(created_at) as month"))->distinct()->get()->toArray();
-        // $month = array();
-        // $expense = array();
-        // foreach ($months as $item) {
-        //     array_push($month,$item['month']);
-
-        // }foreach ($expenses as $item) {
-        //     array_push($expense,$item['sum']);
-        // }
-
-        $month = $this->dashboardRepository->getMonth();
+        $totalSell = $this->dashboardRepository->totalSell();
+        $ordersMonth = $this->dashboardRepository->ordersMonth();
+        $orders = $this->dashboardRepository->orders();
+        $expenseMonth = $this->dashboardRepository->expenseMonth();
         $expense = $this->dashboardRepository->getExpense();
         $pendingOrders = $this->dashboardRepository->pendingOrders();
         $completedOrders = $this->dashboardRepository->completedOrders();
@@ -54,6 +47,9 @@ class dashboardController extends Controller
         ->with('inventoryQuantity',$inventoryQuantity)
         ->with('inventoryCost',$inventoryCost)
         ->with('expense',$expense)
-        ->with('month',$month);
+        ->with('expenseMonth',$expenseMonth)
+        ->with('totalSell',$totalSell)
+        ->with('ordersMonth',$ordersMonth)
+        ->with('orders',$orders);
     }
 }

@@ -25,7 +25,13 @@ interface dashboardInterface
 
     public function inventoryCost();
 
-    public function getMonth();
+    public function expenseMonth();
 
     public function getExpense();
+
+    public function totalSell();
+
+    public function ordersMonth();
+
+    public function orders();
 }

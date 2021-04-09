@@ -20,6 +20,10 @@
   @endif
 @endsection
 
+@push('css')
+  <link href="{{asset('css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
+@endpush
+
 @section('content')
 
     <form action="{{URL('orderForm')}}" method="get" style="padding-left:20px;">
@@ -58,11 +62,12 @@
                 </div>
             </div>
         </div>
-        <div class="ibox-content mt-5 mb-5" style="background: lightgrey;">
+        <div class="ibox-content mt-5 mb-5" style="background: white;">
             <big>
-            <table class="table text-center table-bordered table-hover" >
+            <table class="table text-center table-bordered table-hover" id="designationTable">
                 <thead>
                   <tr>
+                      <th></th>
                     <th>Designation Name</th>
                     <th> Given Access</th>
                     <th>Delete</th>
@@ -71,6 +76,7 @@
                 <tbody>
                     @foreach ($designation as $item)
                     <tr>
+                        <td></td>
                         <td>{{$item->designation_name}}</td>
                         <td>{{$item->access}}</td>
                         <td><form action="{{route('designation.destroy',$item->id)}}" method="POST">
@@ -96,4 +102,26 @@
             $('.designation').addClass('active');
         });
     </script>
+
+    <script src="{{asset('js/plugins/dataTables/datatables.min.js')}}"></script>
+    <script src="{{asset('js/plugins/dataTables/dataTables.bootstrap4.min.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            var t = $('#designationTable').DataTable({
+                "columnDefs": [ {
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": 0
+                } ],
+                pageLength: 5,
+                responsive: true
+
+            });
+            t.on( 'order.dt search.dt', function () {
+                t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+                    cell.innerHTML = i+1;
+                } );
+            } ).draw();
+        });
+      </script>
 @endpush
