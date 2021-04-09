@@ -115,19 +115,29 @@
         </div>
     </div>
     <a id="back2Top" title="Back to top" href="#">&#10148;</a>
-       @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
+    @if (Auth::user() != null)
+        @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
             <div class="footer">
                 <div>
                     <strong>Copyright</strong> Brighter Containers © 2014-2019
                 </div>
             </div>
-       @else
-            <div class="">
-                <div>
-                    <strong>Copyright</strong> Brighter Containers © 2014-2019
-                </div>
+
+            @else
+                 <div class="">
+                     <div>
+                         <strong>Copyright</strong> Brighter Containers © 2014-2019
+                     </div>
+                 </div>
+            @endif
+    @else
+        <div class="">
+            <div>
+                <strong>Copyright</strong> Brighter Containers © 2014-2019
             </div>
-       @endif
+        </div>
+    @endif
+
 
         {{-- <div class="bg-white p-3" style="position: relative;left:0;bottom:0;width:100%;">
             <div>

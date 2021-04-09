@@ -61,14 +61,17 @@ Route::middleware(['setpass'])->group(function () {
     Route::group(['middleware' => ['role:super-admin|admin']], function () {
         Route::get('dashboard',[dashboardController::class,'index'])->name('dashboard');
         Route::resource('employee',employeeController::class);
-        Route::resource('designation',designationController::class);
-        Route::post('makeAdmin/{id}',[employeeController::class,'makeAdmin']);
-        Route::get('removeadmin/{id}',[employeeController::class,'removeAdmin']);
+
         Route::resource('product', productDetailsController::class);
         Route::resource('category', productCategoryController::class);
         Route::resource('machine',machineController::class);
         Route::get('/markasread',function(){
             auth()->user()->unreadNotifications->markAsRead();
+        });
+        Route::group(['middleware' => ['role:super-admin']], function () {
+            Route::resource('designation',designationController::class);
+            Route::post('makeAdmin/{id}',[employeeController::class,'makeAdmin']);
+            Route::get('removeadmin/{id}',[employeeController::class,'removeAdmin']);
         });
     });
     Route::get('/setpassword',[setPassController::class,'index'])->name('setpassword');
