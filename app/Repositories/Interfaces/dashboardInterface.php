@@ -36,4 +36,6 @@ interface dashboardInterface
     public function orders();
 
     public function quantityPerMonth();
+
+    public function sellPerMonth();
 }

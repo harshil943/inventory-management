@@ -91,32 +91,8 @@ class dashboardRepository implements dashboardInterface
 
     public function totalSell()
     {
-
-        $sell = OrderDetails::select(DB::raw('quantity,price_per_piece,extra_cost_price'))
-        ->orderBy('created_at')
-        ->get();
-        $total = 0;
-        $subtotal = 0;
-        $taxtotal = 0;
-        $extra_cost =0;
-        $gst = 18;
-        foreach ($sell as $product) {
-            $quantity = json_decode($product->quantity);
-            $cost = json_decode($product->price_per_piece);
-            $extra = json_decode($product->extra_cost_price);
-            for ($i=0; $i < count($quantity) ; $i++) {
-                $subtotal += $quantity[$i] * $cost[$i];
-                $taxtotal += $quantity[$i]  * (($cost[$i] * $gst)/100);
-            }
-            if ($extra != null) {
-                foreach ($extra as $item) {
-                    $extra_cost += $item;
-                }
-            }
-            $total += $subtotal + $taxtotal + $extra_cost;
-        }
-        return round($total);
-
+        $total = OrderDetails::select()->sum('totalCost');
+        return $total;
     }
     public function ordersMonth()
     {
@@ -162,5 +138,20 @@ class dashboardRepository implements dashboardInterface
         }
 
         return $quantity;
+    }
+
+    public function sellPerMonth()
+    {
+        $sells = OrderDetails::select(DB::raw('sum(totalCost) as sum'))
+        ->orderBy('created_at')
+        ->groupBy(DB::raw("DATE_FORMAT(created_at, '%m-%Y')"))
+        ->get()->toArray();
+
+        $sell = array();
+        foreach ($sells as $item) {
+            array_push($sell,$item['sum']);
+        }
+
+        return $sell;
     }
 }

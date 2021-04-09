@@ -30,6 +30,7 @@ class OrderSeeder extends Seeder
         $order1->igst_applicable = '0';
         $order1->gst_percentage = '18';
         $order1->payment_link = 'https://brightcontainers.com/product-description?product_id=16';
+        $order1->totalCost = '795614';
         $order1->totalQuantity = '16542';
 
 
@@ -49,6 +50,7 @@ class OrderSeeder extends Seeder
         $order2->igst_applicable = '1';
         $order2->gst_percentage = '18';
         $order2->payment_link = 'https://brightcontainers.com/product-description?product_id=16';
+        $order2->totalCost = '168880';
         $order2->totalQuantity = '1000';
 
 
@@ -68,6 +70,7 @@ class OrderSeeder extends Seeder
         $order3->igst_applicable = '0';
         $order3->gst_percentage = '18';
         $order3->payment_link = 'https://brightcontainers.com/product-description?product_id=16';
+        $order3->totalCost = '74758';
         $order3->totalQuantity = '3500';
 
 
