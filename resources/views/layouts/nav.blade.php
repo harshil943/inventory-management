@@ -9,20 +9,20 @@
         </button>
         <div class="collapse navbar-collapse font-weight-bold" id="navbarSupportedContent">
             <big>
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto ">
                     <li class="nav-item home px-1">
-                    <a class="nav-link" href="{{url('/home')}}">
+                    <a class="nav-link p-2" href="{{url('/home')}}">
                         Home
                         <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item about-us px-1">
-                    <a class="nav-link" href="{{route('aboutus')}}">
+                    <a class="nav-link p-2" href="{{route('aboutus')}}">
                         About us
                     </a>
                     </li>
                     <li class="nav-item dropdown product px-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link p-2 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Product Category
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -32,12 +32,12 @@
                     </div>
                     </li>
                     <li class="nav-item quality px-1">
-                        <a class="nav-link" href="{{route('quality')}}">
+                        <a class="nav-link p-2" href="{{route('quality')}}">
                         Quality
                         </a>
                     </li>
                     <li class="nav-item contact-us px-1">
-                        <a class="nav-link" href="{{route('contactus')}}">
+                        <a class="nav-link p-2" href="{{route('contactus')}}">
                         Contact Us
                         </a>
                     </li>
@@ -49,7 +49,7 @@
                 @guest
                 @if (Route::has('login'))
                 <li class="nav-item">
-                    <a class="nav-link btn bg-white border border-dark px-3 text-dark font-weight-bold" href="{{ route('login') }}">{{ __('Log in') }}</a>
+                    <a class="nav-link btn bg-white border border-dark px-3 ml-3 text-dark font-weight-bold" href="{{ route('login') }}">{{ __('Log in') }}</a>
                 </li>
                 @endif
                 @if (Route::has('register'))

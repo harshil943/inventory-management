@@ -4,7 +4,7 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element"> <span>
-                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                        <img alt="image" class="img-circle" style="height: 80px;" src="{{asset('storage/Logo/profile_default.png')}}" />
                          </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="text-decoration:none;">
                         <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{auth()->user()->name}}</strong>
@@ -151,11 +151,6 @@
             <li>
                 <a href={{route('logout')}}>
                     <i class="fa fa-sign-out"></i> Logout
-                </a>
-            </li>
-            <li>
-                <a class="right-sidebar-toggle">
-                    <i class="fa fa-tasks"></i>
                 </a>
             </li>
         </ul>

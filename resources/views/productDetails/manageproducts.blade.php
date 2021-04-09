@@ -55,9 +55,9 @@
 <script src="{{asset('js/plugins/dataTables/dataTables.bootstrap4.min.js')}}"></script>
 <script>
     $(function() {
-        $('.product').addClass('active');
-        $('.product ul').addClass('in');
-        $('.product ul li:nth-child(2)').addClass('active');
+        $('.products').addClass('active');
+        $('.products ul').addClass('in');
+        $('.products ul li:nth-child(2)').addClass('active');
     });
 </script>
 <script>
