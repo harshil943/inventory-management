@@ -147,4 +147,20 @@ class dashboardRepository implements dashboardInterface
         // dd($orders);
         return $orders;
     }
+
+    public function quantityPerMonth()
+    {
+
+        $quantitys = OrderDetails::select(DB::raw("sum(totalQuantity) as sum"))
+        ->orderBy('created_at')
+        ->groupBy(DB::raw("DATE_FORMAT(created_at, '%m-%Y')"))
+        ->get()->toArray();
+
+        $quantity = array();
+        foreach ($quantitys as $item) {
+            array_push($quantity,$item['sum']);
+        }
+
+        return $quantity;
+    }
 }

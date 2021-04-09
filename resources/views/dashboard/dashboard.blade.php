@@ -150,6 +150,12 @@
                             <canvas id="ordersChart"></canvas>
                         </div>
                     </div>
+                    <div class="col-md-6 my-3">
+                        <h2 style="font-weight:bold" >Quantity per Month</h2>
+                        <div class="bg-white">
+                            <canvas id="quantityChart"></canvas>
+                        </div>
+                    </div>
                 </div>
                 <h2 style="font-weight:bold" class="mt-3">Orders & Payments</h2>
                 <div class="row">
@@ -314,6 +320,27 @@
                 responsive: true
             };
             var ctx = document.getElementById("ordersChart").getContext("2d");
+            new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
+
+            // quantity Chart
+            var lineData = {
+                labels: <?php echo json_encode($ordersMonth) ?>,
+                datasets: [
+                    {
+                        label: "Monthly Orders",
+                        backgroundColor: "rgba(26,179,148,0.5)",
+                        borderColor: "rgba(26,179,148,0.7)",
+                        pointBackgroundColor: "rgba(26,179,148,1)",
+                        pointBorderColor: "#fff",
+                        data: <?php echo json_encode($quantityPerMonth) ?>
+
+                    },
+                ]
+            };
+            var lineOptions = {
+                responsive: true
+            };
+            var ctx = document.getElementById("quantityChart").getContext("2d");
             new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
         });
     </script>
