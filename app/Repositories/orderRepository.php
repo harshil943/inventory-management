@@ -174,6 +174,11 @@ class orderRepository implements OrderInterface
         } else {
             $order->igst_applicable = '1';
         }
+        $totalQuantity = 0;
+        foreach ($requset->quantity as $item) {
+            $totalQuantity += $item;
+        }
+        $order->totalQuantity = $totalQuantity;
         $order->save();
         $map->order_id = $order->id;
         $map->buyer_id = $requset->buyer_id;

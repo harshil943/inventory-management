@@ -28,6 +28,7 @@ class CreateOrderDetailsTable extends Migration
             $table->boolean('igst_applicable');
             $table->string('gst_percentage')->default('18');
             $table->string('payment_link')->nullable();
+            $table->string('totalQuantity');
             $table->softDeletes();
             $table->timestamps();
         });
