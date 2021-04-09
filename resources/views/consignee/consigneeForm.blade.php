@@ -12,7 +12,7 @@ Add Consignee | Bright Containers
 
 @section('content')
 <div class="gray-bg container-fluid">
-    <div class="text-center loginscreen animated fadeInDown">
+    <div class="text-center p-3 loginscreen animated fadeInDown">
         <div class="p-5 border border-rounded border-primary">
             @if (isset($consignee))
 

@@ -79,9 +79,9 @@ Add Category | Bright Containers
 
 <script>
     $(function() {
-        $('.product').addClass('active');
-        $('.product ul').addClass('in');
-        $('.product ul li:nth-child(3)').addClass('active');
+        $('.product_category').addClass('active');
+        $('.product_category ul').addClass('in');
+        $('.product_category ul li:nth-child(1)').addClass('active');
     });
 </script>
 @endpush

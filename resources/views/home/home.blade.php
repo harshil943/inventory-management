@@ -29,7 +29,7 @@
 <div class="container mt-5">
     <div class="row">
         @foreach ($products as $item)
-            <div class="col-sm-4">
+            <div class="col-md-4">
                 {{-- <div class="ibox-content product-box animated shake infinite"> --}}
                 <div class="ibox-content product-box">
                     <a href="{{route('productdetails',$item->id)}}" style="text-decoration:none;">

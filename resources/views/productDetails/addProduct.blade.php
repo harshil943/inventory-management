@@ -484,9 +484,9 @@ Add Product | Bright Containers
      </script>
 <script>
     $(function() {
-        $('.product').addClass('active');
-        $('.product ul').addClass('in');
-        $('.product ul li:nth-child(1)').addClass('active');
+        $('.products').addClass('active');
+        $('.products ul').addClass('in');
+        $('.products ul li:nth-child(1)').addClass('active');
     });
 </script>
 @endpush
