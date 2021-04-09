@@ -43,72 +43,72 @@
         </div>
     </div>
     <section id="about">
-        <h3 style="color: #000000;">
+        <h4 style="color: #000000;">
             <strong>&nbsp;&nbsp;Different Indusries Where Our Products Used</strong>
-        </h3>
+        </h4>
         <br>
         <div class="card-deck" style="margin-left:10px;margin-right: 10px;">
             <div class="row">
-                <div class="col-sm-3">
-                    <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Pesticides</h2>
+                <div class="col-md-3">
+                    <div class="widget style1 blue-bg" >
+                        <h4 class="font-bold">Pesticides</h4>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-md-3">
                     <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Agro Chemicals</h2>
+                        <h4 class="font-bold">Agro Chemicals</h4>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-md-3">
                     <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Lubricating Oil</h2>
+                        <h4 class="font-bold">Lubricating Oil</h4>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-md-3">
                     <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Ayurvedic Product Packing</h2>
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Paint Chemical Industries</h2>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Bio-nutrients</h2>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Fungicides</h2>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Coolant Water Packing</h2>
+                        <h4 class="font-bold">Ayurvedic Product Packing</h4>
                     </div>
                 </div>
 
-                <div class="col-sm-3">
+                <div class="col-md-3">
                     <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Aloevera Product Packing</h2>
+                        <h4 class="font-bold">Paint Chemical Industries</h4>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-md-3">
                     <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Water Proofing Chemicals</h2>
+                        <h4 class="font-bold">Bio-nutrients</h4>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-md-3">
                     <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Plant Growth Promoter</h2>
+                        <h4 class="font-bold">Fungicides</h4>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-md-3">
                     <div class="widget style1 blue-bg">
-                        <h2 class="font-bold">Bio-Pesticides</h2>
+                        <h4 class="font-bold">Coolant Water Packing</h4>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="widget style1 blue-bg">
+                        <h4 class="font-bold">Aloevera Product Packing</h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="widget style1 blue-bg">
+                        <h4 class="font-bold">Water Proofing Chemicals</h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="widget style1 blue-bg">
+                        <h4 class="font-bold">Plant Growth Promoter</h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="widget style1 blue-bg">
+                        <h4 class="font-bold">Bio-Pesticides</h4>
                     </div>
                 </div>
             </div>

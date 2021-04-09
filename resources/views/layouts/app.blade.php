@@ -91,7 +91,7 @@
 
 {{-- <body style="background-image: linear-gradient(to top,#0997a7,#fff 80%);"> --}}
 <body>
-    <div id="wrapper" >
+    <div id="wrapper">
         @if(Auth::user())
             @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
                 @include('layouts.adminNav')
@@ -116,12 +116,23 @@
     </div>
     <a id="back2Top" title="Back to top" href="#">&#10148;</a>
 
+    {{-- @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
 
-    {{-- <div class="bg-white p-3" style="position: fixed;left:0;bottom:0;width:100%;">
-        <div>
-            <strong>Copyright</strong> Bright Containers © 2014-2018
+        <div class="bg-white footer" >
+            <div>
+                <strong>Copyright</strong> Bright Containers © 2014-2018
+            </div>
         </div>
-    </div> --}}
+    @else
+
+        <div class="bg-white footer p-3" style="position: fixed;left:0;bottom:0;width:100%;">
+            <div>
+                <strong>Copyright</strong> Bright Containers © 2014-2018
+            </div>
+        </div>
+    @endif --}}
+
+
 
     {{-- Java Script Section --}}
     <script src="{{asset('js/jquery-3.1.1.min.js')}}"></script>
