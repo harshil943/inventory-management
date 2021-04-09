@@ -169,17 +169,48 @@ class orderRepository implements OrderInterface
         $order->extra_hsn_code = json_encode($requset->extra_hsn_code);
         $order->extra_cost_price = json_encode($requset->extra_cost);
         $order->payment_link = $requset->payment_link;
+
+    // IGST
         if ($requset->igst == null) {
             $order->igst_applicable = '0';
         } else {
             $order->igst_applicable = '1';
         }
+
+    //Total Cost
+        $total = 0;
+        $subtotal = 0;
+        $taxtotal = 0;
+        $extra_cost =0;
+        $gst = 18;
+
+        $quantity = $requset->quantity;
+        $cost = $requset->price;
+        $extra = $requset->extra_cost;
+        // dd($extra);
+        for ($i=0; $i < count($quantity) ; $i++) {
+            // dd($cost);
+            $subtotal += $quantity[$i] * $cost[$i];
+                $taxtotal += $quantity[$i]  * (($cost[$i] * $gst)/100);
+        }
+        if ($extra != null) {
+                foreach ($extra as $item) {
+                    $extra_cost += $item;
+            }
+        }
+        $total += $subtotal + $taxtotal + $extra_cost;
+
+        $order->totalCost =  round($total);
+
+    //Total Quantity
         $totalQuantity = 0;
         foreach ($requset->quantity as $item) {
             $totalQuantity += $item;
         }
         $order->totalQuantity = $totalQuantity;
         $order->save();
+
+
         $map->order_id = $order->id;
         $map->buyer_id = $requset->buyer_id;
         $map->seller_id = '1';

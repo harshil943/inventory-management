@@ -110,7 +110,7 @@
                                         <span class="pull-right text-right">
                                         <small>Average value of sales in the past month in: <strong>United states</strong></small>
                                             <br/>
-                                            All sales: 162,862
+                                            Total Quantity: 162,862
                                         </span>
                                         <h1 class="m-b-xs fa fa-inr fa-3x">     {{$totalSell}}</h1>
                                         <h3 class="font-bold no-margins">
@@ -120,7 +120,7 @@
                                     </div>
 
                                 <div>
-                                    <canvas id="lineChart" height="70"></canvas>
+                                    <canvas id="sellsChart" height="70"></canvas>
                                 </div>
 
                                 <div class="m-t-md">
@@ -327,7 +327,7 @@
                 labels: <?php echo json_encode($ordersMonth) ?>,
                 datasets: [
                     {
-                        label: "Monthly Orders",
+                        label: "Monthly Quantity",
                         backgroundColor: "rgba(26,179,148,0.5)",
                         borderColor: "rgba(26,179,148,0.7)",
                         pointBackgroundColor: "rgba(26,179,148,1)",
@@ -341,6 +341,27 @@
                 responsive: true
             };
             var ctx = document.getElementById("quantityChart").getContext("2d");
+            new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
+
+            // Sells Chart
+            var lineData = {
+                labels: <?php echo json_encode($ordersMonth) ?>,
+                datasets: [
+                    {
+                        label: "Monthly Sells",
+                        backgroundColor: "rgba(26,179,148,0.5)",
+                        borderColor: "rgba(26,179,148,0.7)",
+                        pointBackgroundColor: "rgba(26,179,148,1)",
+                        pointBorderColor: "#fff",
+                        data: <?php echo json_encode($sellPerMonth) ?>
+
+                    },
+                ]
+            };
+            var lineOptions = {
+                responsive: true
+            };
+            var ctx = document.getElementById("sellsChart").getContext("2d");
             new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
         });
     </script>

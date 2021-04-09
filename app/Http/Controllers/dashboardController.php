@@ -22,6 +22,7 @@ class dashboardController extends Controller
     {
         $quantityPerMonth = $this->dashboardRepository->quantityPerMonth();
         $totalSell = $this->dashboardRepository->totalSell();
+        $sellPerMonth = $this->dashboardRepository->sellPerMonth();
         $ordersMonth = $this->dashboardRepository->ordersMonth();
         $orders = $this->dashboardRepository->orders();
         $expenseMonth = $this->dashboardRepository->expenseMonth();
@@ -51,6 +52,7 @@ class dashboardController extends Controller
         ->with('totalSell',$totalSell)
         ->with('ordersMonth',$ordersMonth)
         ->with('orders',$orders)
-        ->with('quantityPerMonth',$quantityPerMonth);
+        ->with('quantityPerMonth',$quantityPerMonth)
+        ->with('sellPerMonth',$sellPerMonth);
     }
 }
