@@ -48,9 +48,11 @@
                     <li><a href="{{route('empsalary.index')}}" style="text-decoration:none;">Manage Employee Salary</a></li>
                 </ul>
             </li>
+            @role('super-admin')
             <li class="designation">
                 <a href="{{route('designation.index')}}" style="text-decoration:none;"><i class="fa fa-user"></i> <span class="nav-label">Designation</span></a>
             </li>
+            @endrole
             <li class="orders">
                 <a href="" style="text-decoration:none"><i class="fa fa-list"></i> <span class="nav-label">Orders</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
