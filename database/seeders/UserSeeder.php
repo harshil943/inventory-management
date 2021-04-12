@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
         $user1->mobile = '1234567890';
         $user1->password = Hash::make('123456789');
         $user1->address = '1st Floor,Tribhuvan, Station Rd,Nadiad - 387001';
-        $user1->comp_logo = 'bright_containers.jpg';
+        $user1->comp_logo = 'bright_containers.png';
         $user1->testimonial = 'We are writing this letter for excellent service of M/s Bright Containers, Nadiad has been associated with our organization to supply HDPE bottle for our products packing for more then one decade.';
         $user1->state_code = 'Gujarat - 24';
         $user1->is_company = '0';
@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
         $user2->mobile = '1234567890';
         $user2->password = Hash::make('123456789');
         $user2->address = '1st Floor,Tribhuvan, Station Rd,Nadiad - 387001';
-        $user2->comp_logo = 'bright_containers.jpg';
+        $user2->comp_logo = 'bright_containers.png';
         $user2->testimonial = 'We are writing this letter for excellent service of M/s Bright Containers, Nadiad has been associated with our organization to supply HDPE bottle for our products packing for more then one decade.';
         $user2->state_code = 'Gujarat - 24';
         $user2->is_company = '1';
@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
         $user3->mobile = '1234567890';
         $user3->password = Hash::make('123456789');
         $user3->address = '1st Floor,Tribhuvan, Station Rd,Nadiad - 387001';
-        $user3->comp_logo = 'bright_containers.jpg';
+        $user3->comp_logo = 'bright_containers.png';
         $user3->testimonial = 'We are writing this letter for excellent service of M/s Bright Containers, Nadiad has been associated with our organization to supply HDPE bottle for our products packing for more then one decade.';
         $user3->state_code = 'Gujarat - 24';
         $user3->is_company = '1';
