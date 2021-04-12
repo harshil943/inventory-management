@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\userController;
 use App\Http\Controllers\logoutController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\ordersController;
@@ -55,7 +56,7 @@ Route::get('forgotpassword',[setPassController::class,'forgotpassword'])->name('
 Route::post('resetpassword',[setPassController::class,'resetpassword'])->name('resetpassword');
 Route::get('newpass/{email}',[setPassController::class,'newpass'])->name('newpass');
 Route::post('passwordchanged/{email}',[setPassController::class,'passwordchanged'])->name('passwordchanged');
-
+Route::post('updateprofile/{id}',[userController::class,'updateProfile'])->name('updateprofile');
 
 Route::middleware(['setpass'])->group(function () {
     Route::group(['middleware' => ['role:super-admin|admin']], function () {

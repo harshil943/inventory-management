@@ -55,4 +55,43 @@ class userRepository implements userInterface
         ));
         return true;
     }
+
+    public function updateProfile($request,$id)
+    {
+        if($request['comp_logo'] ?? '')
+        {
+            $logoName = null;
+            $logo = $request['comp_logo'];
+            $logoName = $request['email'].'.'.$logo->getClientOriginalExtension();
+            $path = $request['comp_logo']->storeAs('public/Logo',$logoName);
+
+             User::where('id',$id)->update([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'countryCode' => $request['country'],
+                'mobile' => $request['mobile'],
+                'address' => $request['address'],
+                'gst_number' => $request['gst'],
+                'comp_logo' => $logoName
+                ]);
+
+            // dd('success');
+            return  true;
+        }
+        else{
+
+            User::where('id',$id)->update([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'countryCode' => $request['country'],
+                'mobile' => $request['mobile'],
+                'address' => $request['address'],
+                'gst_number' => $request['gst'],
+                ]);
+
+
+            // dd('success with out image');
+            return true;
+        }
+    }
 }

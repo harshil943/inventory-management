@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Events\UserRegistered;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -105,8 +106,7 @@ class RegisterController extends Controller
             session()->flash('success', 'Welcome to Bright Containers');
             return $user;
         }
-
-
-
     }
+
+
 }

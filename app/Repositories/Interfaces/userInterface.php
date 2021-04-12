@@ -15,4 +15,6 @@ interface userInterface
     public function newpass($email);
 
     public function passwordchanged($request,$email);
+
+    public function updateProfile($request,$id);
 }
