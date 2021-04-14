@@ -1,4 +1,4 @@
-{{-- {{dd($order->order)}} --}}
+{{-- {{dd($order->order->product_id)}} --}}
 @extends('layouts.app')
 
 @section('title')
@@ -323,7 +323,7 @@
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <select class="form-control product_id" id="product_id" name="product_id[]" required>
-                                                        <option selected>{{$order->order->product_id[$i]}}</option>
+                                                        <option selected value="{{$order->order->product_id[$i]}}">{{$order->order->product_name[$i]}}</option>
                                                         @foreach ($product as $item)
                                                         <option value="{{$item->id}}">{{$item->product_name}}</option>
                                                     @endforeach

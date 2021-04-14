@@ -90,7 +90,7 @@ class ordersController extends Controller
 
     public function orderedit($id)
     {
-        $data = $this->orderRepository->orderDetails($id,null);
+        $data = $this->orderRepository->orderById($id);
         $buyer = $this->orderRepository->buyerDetails();
         $consignee = $this->orderRepository->consigneeDetails();
         $product = $this->orderRepository->productDetails();
@@ -100,7 +100,8 @@ class ordersController extends Controller
 
     public function orderupdate(Request $request,$id)
     {
+        // dd($request);
         $this->orderRepository->orderupdate($request,$id);
-        dd('complete');
+        return redirect()->route('orders.index');
     }
 }

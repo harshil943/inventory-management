@@ -40,6 +40,7 @@ class orderRepository implements OrderInterface
                         ->select('product_name')
                         ->where('id',$id)
                         ->get();
+                        // dd($pi);
                 array_push($arr,$data2[0]->product_name);
             }
             $data[$i]->order->product_id = $arr;
@@ -284,7 +285,35 @@ class orderRepository implements OrderInterface
 
     public function orderById($id)
     {
-        return map_order_challan::where('order_id',$id)->firstorfail();
+        $data = map_order_challan::where('order_id',$id)->firstorfail();
+
+        $pi = json_decode($data->order->product_id,true);
+        $hsn = json_decode($data->order->hsn_code,true);
+        $q = json_decode($data->order->quantity,true);
+        $unit = json_decode($data->order->unit,true);
+        $ppp = json_decode($data->order->price_per_piece,true);
+        $ex = json_decode($data->order->name_of_extra_cost,true);
+        $ehc = json_decode($data->order->extra_hsn_code,true);
+        $cp = json_decode($data->order->extra_cost_price,true);
+        $arr = array();
+        foreach($pi as $id)
+        {
+            $data2 = DB::table('product_details')
+                    ->select('product_name')
+                    ->where('id',$id)
+                    ->first();
+            array_push($arr,$data2->product_name);
+        }
+        $data->order->product_name = $arr;
+        $data->order->product_id = $pi;
+        $data->order->hsn_code = $hsn;
+        $data->order->quantity = $q;
+        $data->order->unit = $unit;
+        $data->order->price_per_piece = $ppp;
+        $data->order->name_of_extra_cost = $ex;
+        $data->order->extra_hsn_code = $ehc;
+        $data->order->extra_cost_price = $cp;
+        return $data;
     }
 
     public function orderupdate($request,$id)
