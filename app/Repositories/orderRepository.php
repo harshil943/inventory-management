@@ -287,5 +287,91 @@ class orderRepository implements OrderInterface
         return map_order_challan::where('order_id',$id)->firstorfail();
     }
 
+    public function orderupdate($request,$id)
+    {
+        //Total Cost
+        $total = 0;
+        $subtotal = 0;
+        $taxtotal = 0;
+        $extra_cost =0;
+        $gst = 18;
 
+        $quantity = $request->quantity;
+        $cost = $request->price;
+        $extra = $request->extra_cost;
+        // dd($extra);
+        for ($i=0; $i < count($quantity) ; $i++) {
+            // dd($cost);
+            $subtotal += $quantity[$i] * $cost[$i];
+                $taxtotal += $quantity[$i]  * (($cost[$i] * $gst)/100);
+        }
+        if ($extra != null) {
+                foreach ($extra as $item) {
+                    $extra_cost += $item;
+            }
+        }
+        $total += $subtotal + $taxtotal + $extra_cost;
+
+
+
+    //Total Quantity
+        $totalQuantity = 0;
+        foreach ($request->quantity as $item) {
+            $totalQuantity += $item;
+        }
+
+
+        map_order_challan::where('order_id',$id)->update([
+            'buyer_id' => $request->buyer_id,
+            'consignee_id' => $request->consignee_id,
+            'vehical_number' => $request->vehical_number,
+            'order_status' => $request->order_status,
+            'payment_status' => $request->payment_status,
+            'shipping_date' => $request->shipping_date,
+            'dispatch_method' => $request->dispatch_method,
+            'dispatch_document_number' => $request->dispatch_document_number,
+            'lr_number' => $request->LR_number,
+            'order_date' => $request->order_date,
+            'due_date' => $request->due_date,
+        ]);
+
+            if (isset($request->igst)) {
+                OrderDetails::where('id',$id)->update([
+                    'e_way_bill_number' => $request->e_way_bill_number,
+                    'buyer_order_number' => $request->buyer_order_number,
+                    'product_id' => $request->product_id,
+                    'hsn_code' => $request->hsn,
+                    'quantity' => $request->quantity,
+                    'unit' => $request->unit,
+                    'price_per_piece' => $request->price,
+                    'name_of_extra_cost' => $request->name_of_extra_cost,
+                    'extra_hsn_code' => $request->extra_hsn_code,
+                    'extra_cost_price' => $request->extra_cost,
+                    'igst_applicable' => $request->igst,
+                    'payment_link' => $request->payment_link,
+                    'totalCost' => round($total),
+                    'totalQuantity' => $totalQuantity,
+                ]);
+            } else {
+                OrderDetails::where('id',$id)->update([
+                    'e_way_bill_number' => $request->e_way_bill_number,
+                    'buyer_order_number' => $request->buyer_order_number,
+                    'product_id' => $request->product_id,
+                    'hsn_code' => $request->hsn,
+                    'quantity' => $request->quantity,
+                    'unit' => $request->unit,
+                    'price_per_piece' => $request->price,
+                    'name_of_extra_cost' => $request->name_of_extra_cost,
+                    'extra_hsn_code' => $request->extra_hsn_code,
+                    'extra_cost_price' => $request->extra_cost,
+                    'payment_link' => $request->payment_link,
+                    'totalCost' => round($total),
+                    'totalQuantity' => $totalQuantity,
+                ]);
+            }
+
+
+
+        return true;
+    }
 }

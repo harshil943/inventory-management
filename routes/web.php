@@ -79,7 +79,7 @@ Route::middleware(['setpass'])->group(function () {
     Route::post('challanCreate/{id}',[ordersController::class,'challanCreate'])->name('orders.challanCreate');
     Route::post('orderDetails/{id}',[ordersController::class,'orderDetails'])->name('Orderdetails');
     Route::post('orderedit/{id}',[ordersController::class,'orderedit'])->name('orderedit');
-    Route::post('orderupdate/{id}',[ordersController::class,'orderupdate'])->name('orderupdate');
+    Route::patch('orderupdate/{id}',[ordersController::class,'orderupdate'])->name('orderupdate');
     Route::post('orderDelete/{id}',[ordersController::class,'orderDelete'])->name('Orderdelete');
     Route::post('challanDelete/{id}',[ordersController::class,'challanDelete'])->name('Challandelete');
     Route::post('challanDetails/{id}',[ordersController::class,'challanDetails'])->name('Challandetails');
