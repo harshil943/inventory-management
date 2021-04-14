@@ -10,6 +10,7 @@ use App\Models\ProductDetails;
 use App\Repositories\Interfaces\dashboardInterface;
 use App\Models\ExpenseDetails;
 use App\Models\OrderDetails;
+use App\Models\RawMaterialPurchaseDetails;
 
 class dashboardRepository implements dashboardInterface
 {
@@ -153,5 +154,29 @@ class dashboardRepository implements dashboardInterface
         }
 
         return $sell;
+    }
+
+    public function rawMaterial()
+    {
+        $rawMonth = RawMaterialPurchaseDetails::select(DB::raw("DATE_FORMAT(created_at, '%m-%Y') as month"))
+        ->orderBy('created_at')
+        ->distinct()
+        ->get()->toArray();
+
+        $month = array();
+        foreach ($rawMonth as $item) {
+            array_push($month,$item['month']);
+        }
+
+        $raw = RawMaterialPurchaseDetails::select(DB::raw("sum(quantity*cost_per_quantity) as sum"))
+        ->orderBy('created_at')
+        ->groupBy(DB::raw("DATE_FORMAT(created_at, '%m-%Y')"))
+        ->get()->toArray();
+
+        $rawPerMonth = array();
+        foreach ($raw as $item) {
+            array_push($rawPerMonth,$item['sum']);
+        }
+        return ['rawMonth'=>$month,'rawPerMonth'=>$rawPerMonth];
     }
 }

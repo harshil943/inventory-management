@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Http\Request;
+use App\Models\RawMaterialPurchaseDetails;
 use App\Repositories\Interfaces\dashboardInterface;
-use App\Models\ExpenseDetails;
-use App\Models\OrderDetails;
-use App\Repositories\dashboardRepository;
-use Illuminate\Support\Facades\DB;
 
 class dashboardController extends Controller
 {
@@ -20,6 +15,7 @@ class dashboardController extends Controller
     }
     public function index()
     {
+        $rawMaterial = $this->dashboardRepository->rawMaterial();
         $quantityPerMonth = $this->dashboardRepository->quantityPerMonth();
         $totalSell = $this->dashboardRepository->totalSell();
         $sellPerMonth = $this->dashboardRepository->sellPerMonth();
@@ -53,6 +49,7 @@ class dashboardController extends Controller
         ->with('ordersMonth',$ordersMonth)
         ->with('orders',$orders)
         ->with('quantityPerMonth',$quantityPerMonth)
-        ->with('sellPerMonth',$sellPerMonth);
+        ->with('sellPerMonth',$sellPerMonth)
+        ->with('rawMaterial',$rawMaterial);
     }
 }

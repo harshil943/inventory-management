@@ -73,6 +73,12 @@
                 <canvas id="quantityChart"></canvas>
             </div>
         </div>
+        <div class="col-md-6 my-3">
+            <h2 style="font-weight:bold" >Raw Material per Month</h2>
+            <div class="bg-white">
+                <canvas id="rawmaterialChart"></canvas>
+            </div>
+        </div>
     </div>
     <h2 style="font-weight:bold" class="mt-3">Orders & Payments</h2>
     <div class="row">
@@ -280,6 +286,28 @@
             };
             var ctx = document.getElementById("sellsChart").getContext("2d");
             new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
+
+            // Raw Chart
+            var lineData = {
+                labels: <?php echo json_encode($rawMaterial['rawMonth']) ?>,
+                datasets: [
+                    {
+                        label: "Monthly Raw material cost",
+                        backgroundColor: "rgba(26,179,148,0.5)",
+                        borderColor: "rgba(26,179,148,0.7)",
+                        pointBackgroundColor: "rgba(26,179,148,1)",
+                        pointBorderColor: "#fff",
+                        data: <?php echo json_encode($rawMaterial['rawPerMonth']) ?>
+
+                    },
+                ]
+            };
+            var lineOptions = {
+                responsive: true
+            };
+            var ctx = document.getElementById("rawmaterialChart").getContext("2d");
+            new Chart(ctx, {type: 'line', data: lineData, options:lineOptions});
         });
+
     </script>
 @endpush

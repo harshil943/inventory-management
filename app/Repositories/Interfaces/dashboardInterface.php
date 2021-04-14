@@ -38,4 +38,6 @@ interface dashboardInterface
     public function quantityPerMonth();
 
     public function sellPerMonth();
+
+    public function rawMaterial();
 }
