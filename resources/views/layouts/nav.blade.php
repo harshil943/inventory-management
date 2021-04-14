@@ -70,7 +70,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
                         <big>
-                            <a href="{{route('UserProfile')}}" class="dropdown-item">Profile</a>
+                            <a href="{{url('/profile')}}" class="dropdown-item">Profile</a>
                             <a href="{{ url('/orders') }}" class="dropdown-item">Oreder Details</a>
                             <a class="dropdown-item" href="{{ route('logout') }}">
                                 {{ __('Log out') }}

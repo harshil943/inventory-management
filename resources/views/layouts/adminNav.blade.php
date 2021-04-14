@@ -19,7 +19,7 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="profile">Profile</a></li>
                         <li><a href={{route('logout')}}>Logout</a></li>
                     </ul>
                 </div>

@@ -84,15 +84,15 @@ class ProductSeeder extends Seeder
         $detail3->cap_name = '["Lock Cap","Imida,big","Lock Cap"]';
 
         //Product Details 4
-        // $detail4 = new ProductDetails();
-        // $detail4->id = '4';
-        // $detail4->category_id = '1';
-        // $detail4->product_name = 'Imida Cap';
-        // $detail4->product_visible = '0';
+        $detail4 = new ProductDetails();
+        $detail4->id = '4';
+        $detail4->category_id = '1';
+        $detail4->product_name = 'Imida Cap';
+        $detail4->product_visible = '0';
 
         $detail1->save();
         $detail2->save();
         $detail3->save();
-        // $detail4->save();
+        $detail4->save();
     }
 }
