@@ -114,45 +114,14 @@
             @yield('content')
         </div>
     </div>
-    <a id="back2Top" title="Back to top" href="#">&#10148;</a>
-    @if (Auth::user() != null)
-        @if (Auth::user()->hasRole('super-admin') || Auth::user()->hasRole('admin'))
-            <div class="footer">
-                <div>
-                    <strong>Copyright</strong> Brighter Containers © 2014-2019
-                </div>
-            </div>
 
-            @else
-                 <div class="">
-                     <div>
-                         <strong>Copyright</strong> Brighter Containers © 2014-2019
-                     </div>
-                 </div>
-            @endif
-    @else
-        <div class="">
-            <div>
-                <strong>Copyright</strong> Brighter Containers © 2014-2019
-            </div>
+    {{-- <div class="footer">
+        <div>
+            <strong>Copyright</strong> Brighter Containers © 2014-2019
         </div>
-    @endif
+    </div> --}}
 
-
-        {{-- <div class="bg-white p-3" style="position: relative;left:0;bottom:0;width:100%;">
-            <div>
-                <strong>Copyright</strong> Bright Containers © 2014-2018
-            </div>
-        </div> --}}
-
-
-        {{-- <div class="bg-white footer p-3" style="position: fixed;left:0;bottom:0;width:100%;">
-            <div>
-                <strong>Copyright</strong> Bright Containers © 2014-2018
-            </div>
-        </div> --}}
-
-
+    <a id="back2Top" title="Back to top" href="#">&#10148;</a>
 
     {{-- Java Script Section --}}
     <script src="{{asset('js/jquery-3.1.1.min.js')}}"></script>

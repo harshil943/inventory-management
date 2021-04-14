@@ -482,40 +482,28 @@
         });
      </script>
      <script>
-            // const url = '/country';
-            //     window.onload = async function() {
-            //     const response = await fetch(url);
-            //     window.data = await response.json();
-            //     conData = data;
-            //     for (var i = 0; i < conData.length; i++) {
-            //         var newOption = new Option(conData[i]['Iso']+" - "+conData[i]['name'],conData[i]['Iso'], false, false);
-            //         // var newOption = new Option(conData[i]["State Code"]+" - "+conData[i]["State Name"],conData[i]["State Code"], false, false);
-            //         $('#buyer_id').append(newOption);
-            //     }
-            //     $('#buyer_id').trigger('change');
+            const url = '/json/hsn.json';
+                window.onload = async function() {
+                const response = await fetch(url);
+                window.data = await response.json();
+                conData = data;
+                for (var i = 0; i < conData.length; i++) {
+                    var newOption = new Option(conData[i]["code"]+" - "+conData[i]["description"],conData[i]["code"], false, false);
+                    $('#hsn').append(newOption);
+                }
+                $('#hsn').trigger('change');
             }
-            // const url = '/hsn';
-            //     window.onload = async function() {
-            //     const response = await fetch(url);
-            //     window.data = await response.json();
-            //     conData = data;
-            //     for (var i = 0; i < conData.length; i++) {
-            //         var newOption = new Option(conData[i]["HSC Code"]+" - "+conData[i]["HSC Description"],conData[i]["HSC Code"], false, false);
-            //         $('#hsn').append(newOption);
-            //     }
-            //     $('#hsn').trigger('change');
-            // }
-            // const url = '/unit';
-            //     window.onload = async function() {
-            //     const response = await fetch(url);
-            //     window.data = await response.json();
-            //     conData = data;
-            //     for (var i = 0; i < conData.length; i++) {
-            //         var newOption = new Option(conData[i]["Unit Code"]+" - "+conData[i]["Unit Description"],conData[i]["Unit Code"], false, false);
-            //         $('#buyer_id').append(newOption);
-            //     }
-            //     $('#buyer_id').trigger('change');
-            // }
+            const url = '/json/unit.json';
+                window.onload = async function() {
+                const response = await fetch(url);
+                window.data = await response.json();
+                conData = data;
+                for (var i = 0; i < conData.length; i++) {
+                    var newOption = new Option(conData[i]["code"]+" - "+conData[i]["description"],conData[i]["code"], false, false);
+                    $('#buyer_id').append(newOption);
+                }
+                $('#buyer_id').trigger('change');
+            }
      </script>
     <script>
 

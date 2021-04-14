@@ -53,7 +53,7 @@
         <div class="mt-3 p-5 border border-rounded border-primary">
         @if (isset($challan))
         <form class="m-t mt-3" role="form" action="{{route('orders.challanCreate',[$map])}}">
-            @csrf
+            @csrf+
                 @method('PATCH')
         @else
         <form class="m-t mt-3" role="form" action="{{route('orders.challanCreate',[$map])}}" method="post">

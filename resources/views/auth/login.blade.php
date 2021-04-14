@@ -36,7 +36,7 @@
                     @csrf
                         <div class="form-group">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Id" autofocus>
-                            
+
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -69,15 +69,6 @@
                         <a class="btn btn-sm btn-white btn-block" href="register">Create an account</a>
                     </form>
                 </div>
-            </div>
-        </div>
-        <hr/>
-        <div class="row">
-            <div class="col-md-6">
-                Copyright Bright Containers
-            </div>
-            <div class="col-md-6 text-right">
-               <small>© 2021</small>
             </div>
         </div>
     </div>

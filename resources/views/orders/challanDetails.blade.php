@@ -120,12 +120,12 @@
         </div>
         <br>
         <div class="table-responsive m-t">
-            <table class="table table-bordered invoice-table">
+            <table class="table table-bordered table-hover invoice-table">
                 <thead>
                     <tr>
                         <th class="text-center align-middle">Item List</th>
                         <th class="text-center align-middle">Color</th>
-                        <th class="text-center align-middle">Bundle</th>
+                        <th class="text-center align-middle">Bundle Size</th>
                         <th class="text-center align-middle">Pack Size</th>
                         <th class="text-center align-middle">Sub Total</th>
                     </tr>
@@ -221,7 +221,7 @@
                         <td>
                             <strong>Extra Note :</strong>
                         </td>
-                        <td style="width:70%;">
+                        <td style="width:60%;">
                             {{$challan->challan->extra_note}}
                         </td>
                     </tr>
@@ -234,15 +234,15 @@
             <div class="col-sm-6 border-right">
                 <br><br><br><br>
                 <strong>
-                    Stamp & Signature <br>
-                    To {{$challan->buyer->name}},
+                    Stamp & Signature, <br>
+                    of {{$challan->buyer->name}}
                 </strong>
             </div>
             <div class="col-sm-6 text-right">
                 <br><br><br><br>
                 <strong>
-                    Stamp & Signature <br>
-                    From {{$challan->seller->name}},
+                    Stamp & Signature, <br>
+                    of {{$challan->seller->name}}
                 </strong>
             </div>
         </div>

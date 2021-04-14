@@ -137,13 +137,14 @@
                 allowClear: true
             });
         });
-        const url = '/country';
+        const url = '/json/country.json';
             window.onload = async function() {
             const response = await fetch(url);
             window.data = await response.json();
+            console.log(data);
             conData = data;
             for (var i = 0; i < conData.length; i++) {
-                var newOption = new Option(conData[i]['Iso']+" - "+conData[i]['name'],conData[i]['Iso'], false, false);
+                var newOption = new Option(conData[i]['iso']+" - "+conData[i]['name'],conData[i]['iso'], false, false);
                 // var newOption = new Option(conData[i]["State Code"]+" - "+conData[i]["State Name"],conData[i]["State Code"], false, false);
                 $('#country').append(newOption);
             }

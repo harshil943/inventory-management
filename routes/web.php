@@ -50,19 +50,15 @@ Route::get('productDetails/{id}',[productDetailsController::class,'productDetail
 Auth::routes();
 Route::get('logout',[logoutController::class,'out']);
 Route::post('donepassword',[setPassController::class,'changepass'])->name('donepassword');
-// Route::post('generate-quotation',[quotationController::class,'generateQuotation'])->name('generate-quotation');
-Route::get('Profile',[profileController::class,'userProfile'])->name('UserProfile');
 Route::get('forgotpassword',[setPassController::class,'forgotpassword'])->name('forgotpassword');
 Route::post('resetpassword',[setPassController::class,'resetpassword'])->name('resetpassword');
 Route::get('newpass/{email}',[setPassController::class,'newpass'])->name('newpass');
 Route::post('passwordchanged/{email}',[setPassController::class,'passwordchanged'])->name('passwordchanged');
-Route::post('updateprofile/{id}',[userController::class,'updateProfile'])->name('updateprofile');
 
 Route::middleware(['setpass'])->group(function () {
     Route::group(['middleware' => ['role:super-admin|admin']], function () {
         Route::get('dashboard',[dashboardController::class,'index'])->name('dashboard');
         Route::resource('employee',employeeController::class);
-
         Route::resource('product', productDetailsController::class);
         Route::resource('category', productCategoryController::class);
         Route::resource('machine',machineController::class);
@@ -98,28 +94,8 @@ Route::middleware(['setpass'])->group(function () {
     Route::resource('asset', assetController::class);
     Route::get('payment/{amount}{id}', [paymentController::class, 'index'])->name('payment');
     Route::post('payment/{id}', [paymentController::class, 'store'])->name('payment.store');
-
-});
-
-
-Route::get('/country', function () {
-    $country = Storage::get('public/country.json');
-    return json_decode($country, true);
-});
-
-Route::get('/hsn', function () {
-    $hsn = Storage::get('public/hsn.json');
-    return json_decode($hsn, true);
-});
-
-Route::get('/state', function () {
-    $state = Storage::get('public/state.json');
-    return json_decode($state, true);
-});
-
-Route::get('/unit', function () {
-    $unit = Storage::get('public/unit.json');
-    return json_decode($unit, true);
+    Route::get('profile',[profileController::class,'userProfile'])->name('UserProfile');
+    Route::post('updateprofile/{id}',[userController::class,'updateProfile'])->name('updateprofile');
 });
 
 Route::get('storage/{filename}', function ($filename)
