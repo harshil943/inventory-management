@@ -92,7 +92,7 @@ Route::middleware(['setpass'])->group(function () {
     Route::resource('expense', expenseController::class);
     Route::resource('empsalary', employeeSalaryController::class);
     Route::resource('asset', assetController::class);
-    Route::get('payment/{amount}{id}', [paymentController::class, 'index'])->name('payment');
+    Route::get('payment/{amount}/{id}', [paymentController::class, 'index'])->name('payment.index');
     Route::post('payment/{id}', [paymentController::class, 'store'])->name('payment.store');
     Route::get('profile',[profileController::class,'userProfile'])->name('UserProfile');
     Route::post('updateprofile/{id}',[userController::class,'updateProfile'])->name('updateprofile');
