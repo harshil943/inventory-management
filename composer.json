@@ -17,8 +17,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "pusher/pusher-php-server": "^6.1",
-        "razorpay/razorpay": "^2.5",
         "spatie/laravel-permission": "^4.0",
+        "stripe/stripe-php": "^7.77",
         "uxweb/sweet-alert": "^2.0",
         "yajra/laravel-datatables-oracle": "^9.15"
     },

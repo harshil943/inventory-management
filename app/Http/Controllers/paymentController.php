@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Razorpay\Api\Api;
+use Illuminate\Support\Facades\Redirect;
 use Session;
-use Exception;
+use Stripe;
 use App\Repositories\Interfaces\OrderInterface;
 class paymentController extends Controller
 {
@@ -17,31 +17,25 @@ class paymentController extends Controller
     }
     public function index($amount,$id)
     {
-        // dd($id);
+        // dd($amount);
         return view('payment.payment')->with('amount',$amount)->with('id',$id);
     }
 
     public function store(Request $request,$id)
     {
 
-        $input = $request->all();
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create ([
+                "amount" => $request->amount,
+                "currency" => "INR",
+                "source" => $request->stripeToken,
+                "description" => "Test payment"
+        ]);
 
-        $api = new Api(env('RAZORPAY_KEY'), env('RAZORPAY_SECRET'));
+        // Session::flash('success', 'Payment successful!');
 
-        $payment = $api->payment->fetch($input['razorpay_payment_id']);
+        // return back();
 
-        if(count($input)  && !empty($input['razorpay_payment_id'])) {
-            try {
-                $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount']));
-
-            } catch (Exception $e) {
-                return  $e->getMessage();
-                Session::put('error',$e->getMessage());
-                return redirect()->back();
-            }
-        }
-
-        Session::put('success', 'Payment successful');
         $this->orderRepository->paymentComplete($id);
         session()->flash('success', 'Payment successfully');
         return redirect()->route('orders.index');
