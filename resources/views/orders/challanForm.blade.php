@@ -53,8 +53,8 @@
         <div class="mt-3 p-5 border border-rounded border-primary">
         @if (isset($challan))
         <form class="m-t mt-3" role="form" action="{{route('orders.challanCreate',[$map])}}">
-            @csrf+
-                @method('PATCH')
+            @csrf
+            @method('PATCH')
         @else
         <form class="m-t mt-3" role="form" action="{{route('orders.challanCreate',[$map])}}" method="post">
             @csrf
@@ -109,66 +109,48 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-label" for="quantity">Bundle</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="bundle[]" class="form-control" placeholder="Bundle" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label for="cap">Is Cap</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                                <select name="cap[]" id="cap">
+                                                    <option value="0" selected>No</option>
+                                                    <option value="1">Yes</option>
+                                                </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label for="igst">Is Cap</label>
+                                            <label class="form-label" for="unit">Color</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" name="igst" class="onoffswitch-checkbox" id="igst">
-                                                <label class="onoffswitch-label" for="igst">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
-                                            </div>
+                                            <input type="text" name="color[]"  class="form-control" placeholder="Color" required>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="my-3">
-                            <span class="fa fa-plus btn btn-primary" id="add_product">
-                                Add Color
-                            </span>
-                            <span class="btn btn-danger remove_product fa fa-minus"> Remove</span>
-                            <div class="row text-left">
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <div class="row mt-5">
-                                            <div class="col-sm-4">
-                                                <label class="form-label" for="unit">Color</label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="color[]"  class="form-control" placeholder="Color" required>
-                                            </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-label" for="price">Pack Size</label>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <div class="row mt-5">
-                                            <div class="col-sm-4">
-                                                <label class="form-label" for="quantity">Bundle</label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="bundle[]" class="form-control" placeholder="Bundle" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <div class="row mt-5">
-                                            <div class="col-sm-4">
-                                                <label class="form-label" for="price">Pack Size</label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="pack_size[]" class="form-control" placeholder="Pack Size" required>
-                                            </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="pack_size[]" class="form-control" placeholder="Pack Size" required>
                                         </div>
                                     </div>
                                 </div>
@@ -216,70 +198,54 @@
                                                 @foreach ($product as $item)
                                                 <option value="{{$item->id}}">{{$item->product_name}}</option>
                                             @endforeach
-                                            </select>
+                                        </select>
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-label" for="quantity">Bundle</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="bundle[]" class="form-control" placeholder="Bundle" required>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <label for="igst">Is Cap</label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" name="igst" class="onoffswitch-checkbox" id="igst">
-                                                <label class="onoffswitch-label" for="igst">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
+                                            <div class="col-sm-8">
+                                                <select name="cap[]" id="cap">
+                                                    <option value="0" selected>No</option>
+                                                    <option value="1">Yes</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="my-3">
-                            <span class="fa fa-plus btn btn-primary" id="add_product">
-                                Add Color
-                            </span>
-                            <span class="btn btn-danger remove_product fa fa-minus"> Remove</span>
-                            <div class="row text-left">
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <div class="row mt-5">
-                                            <div class="col-sm-4">
-                                                <label class="form-label" for="unit">Color</label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="color[]"  class="form-control" placeholder="Color" required>
-                                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-label" for="unit">Color</label>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="color[]"  class="form-control" placeholder="Color" required>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <div class="row mt-5">
-                                            <div class="col-sm-4">
-                                                <label class="form-label" for="quantity">Bundle</label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="bundle[]" class="form-control" placeholder="Bundle" required>
-                                            </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="form-label" for="price">Pack Size</label>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <div class="row mt-5">
-                                            <div class="col-sm-4">
-                                                <label class="form-label" for="price">Pack Size</label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <input type="text" name="pack_size[]" class="form-control" placeholder="Pack Size" required>
-                                            </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="pack_size[]" class="form-control" placeholder="Pack Size" required>
                                         </div>
                                     </div>
                                 </div>
@@ -295,6 +261,7 @@
                 placeholder: "Select Product",
                 allowClear: true
              });
+
 
             $('.remove_product').click(function(){
                 $('#product').remove();
