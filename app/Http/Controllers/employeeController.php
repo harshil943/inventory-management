@@ -50,7 +50,7 @@ class employeeController extends Controller
     {
         $this->employeeRepository->storeEmp($request);
         session()->flash('success', 'Employee added successfully');
-        return redirect()->route('employee.create');
+        return redirect()->route('employee.index');
     }
 
     /**
