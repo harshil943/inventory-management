@@ -120,6 +120,9 @@ class orderRepository implements OrderInterface
         $bundle = json_decode($data->challan->bundle,true);
         $pack_size = json_decode($data->challan->pack_size,true);
         $arr = array();
+        // dd($bundle);
+        // $bundle = explode(',',$bundle[0][0]);
+        // dd((int)$bundle[0]);
         foreach($pi as $id)
         {
             $data2 = DB::table('product_details')
@@ -229,24 +232,32 @@ class orderRepository implements OrderInterface
         return true;
     }
 
-    public function challanCreate($id,$requset)
+    public function challanCreate($id,$request)
     {
-        // dd($requset);
-
+        // dd(json_encode(array($request->color[0])));
+        // dd($request);
         $challan = new challan;
-        $challan->total_no_packages = $requset->total_no_packages;
-        $challan->extra_note = $requset->extra_note;
-        $challan->product_id = json_encode($requset->product_id);
-        $challan->is_cap = json_encode($requset->is_cap);
-        $challan->bundle = json_encode($requset->bundle);
-        $challan->color = json_encode($requset->color);
-        $challan->pack_size = json_encode($requset->pack_size);
+        $challan->total_no_packages = $request->total_no_packages;
+        $challan->extra_note = $request->extra_note;
+        $challan->product_id = json_encode($request->product_id);
+        $challan->is_cap = json_encode($request->cap);
 
-        if ($requset->igst == null) {
-            $challan->is_cap = json_encode('0');
-        } else {
-            $challan->is_cap = json_encode('1');
+
+        $color = array();
+        $bundle = array();
+        $pack_size = array();
+        for ($i=0; $i < count($request->color); $i++) {
+            array_push($color,explode(',',$request->color[$i]));
+            array_push($bundle,explode(',',$request->bundle[$i]));
+            // dd(explode(',',$request->bundle[1]));
+            array_push($pack_size,explode(',',$request->pack_size[$i]));
         }
+
+
+        $challan->color = json_encode($color);
+        $challan->bundle = json_encode($bundle);
+        $challan->pack_size = json_encode($pack_size);
+        // dd($bundle);
         $challan->save();
 
         map_order_challan::where('id',$id)->update(array(

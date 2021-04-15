@@ -21,8 +21,8 @@ class ChallanSeeder extends Seeder
         $challan1->product_id = '[1,2,3]';
         $challan1->is_cap = '[0,0,0]';
         $challan1->color = '[["MS"],["RED","BLACK"],["RED"]]';
-        $challan1->bundle = '[[10],[15,10],[20]]';
-        $challan1->pack_size = '[[1000],[136,18],[200]]';
+        $challan1->bundle = '[["10"],["15","10"],["20"]]';
+        $challan1->pack_size = '[["1000"],["136","18"],["200"]]';
         $challan1->extra_note = 'Inner small - 5000 (with value) & Mono Cap - 150 (Free) include in above detail';
 
         //Challan Details 2
@@ -32,8 +32,8 @@ class ChallanSeeder extends Seeder
         $challan2->product_id = '[1,2]';
         $challan2->is_cap = '[0,1]';
         $challan2->color = '[["RED"],["BLACK"]]';
-        $challan2->bundle = '[[10],[8.93]]';
-        $challan2->pack_size = '[[66],[665]]';
+        $challan2->bundle = '[["10"],["93"]]';
+        $challan2->pack_size = '[["66"],["665"]]';
         $challan2->extra_note = NULL;
 
         $challan1->save();

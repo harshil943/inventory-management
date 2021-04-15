@@ -154,13 +154,13 @@
                                         {{$challan->challan->pack_size[$i][$j]}} UNT
                                     </td>
                                     <td>
-                                        {{number_format((float)(($challan->challan->bundle[$i][$j] * $challan->challan->pack_size[$i][$j])/1000), 2, '.', '')}} KGS
+                                        {{number_format((float)(((int)$challan->challan->bundle[$i][$j] * (int)$challan->challan->pack_size[$i][$j])/1000), 2, '.', '')}} KGS
                                     </td>
                                     @if ($j != 0)
                                         </tr>
                                     @endif
                                     @php
-                                        $total += ($challan->challan->bundle[$i][$j] * $challan->challan->pack_size[$i][$j])/1000;
+                                        $total += ((int)$challan->challan->bundle[$i][$j] * (int)$challan->challan->pack_size[$i][$j])/1000;
                                     @endphp
                                 @endfor
                                 <tr>
@@ -186,13 +186,13 @@
                                         {{$challan->challan->pack_size[$i][$j]}} UNT
                                     </td>
                                     <td>
-                                        {{$challan->challan->bundle[$i][$j] * $challan->challan->pack_size[$i][$j]}} UNT
+                                        {{(int)$challan->challan->bundle[$i][$j] * (int)$challan->challan->pack_size[$i][$j]}} UNT
                                     </td>
                                     @if ($j != 0)
                                         </tr>
                                     @endif
                                     @php
-                                        $total += $challan->challan->bundle[$i][$j] * $challan->challan->pack_size[$i][$j];
+                                        $total += (int)$challan->challan->bundle[$i][$j] * (int)$challan->challan->pack_size[$i][$j];
                                     @endphp
                                 @endfor
                                 <tr>
